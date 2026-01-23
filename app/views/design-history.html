@@ -1,0 +1,1064 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Design history" %}
+
+{% block content %}
+
+<div class="govuk-grid-row no-site-page">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">Design history</h1>
+    <p class="govuk-body-s"><em>Last updated: 2 January 2026</em></p>
+
+    <p class="govuk-body-l">A record of how we designed the Council Tax Wales Reform service prototype - the patterns we used, the decisions we made, and how the interface evolved through testing.</p>
+
+    <p class="govuk-body">This page provides the detailed design rationale and research findings. For a quick list of all versions with links to start each journey, see the <a href="index.html">prototype versions page</a>.</p>
+
+    <nav class="govuk-contents-list" aria-label="Contents">
+      <h2 class="govuk-heading-m">Contents</h2>
+      <ol class="govuk-list govuk-list--number">
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#journey-architecture">Journey architecture</a></li>
+        <li><a href="#version-history">Version history and design decisions</a></li>
+        <li><a href="#key-themes">Key themes</a></li>
+        <li><a href="#design-process">Design process and technical implementation</a></li>
+       <!-- <li><a href="#accessibility">Accessibility</a></li>-->
+      </ol>
+    </nav>
+
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+    <h2 id="overview" class="govuk-heading-l govuk-!-margin-top-6">Overview</h2>
+
+    <p class="govuk-body">This prototype explored how to make it easier for people in Wales to view, update and request a review of their council tax band. Earlier versions had two separate journeys — one to update details and one to challenge/review a band. The journey was simplified into a single flow to improve clarity and reduce duplication. From v1.5 onwards, terminology changed from "challenge" to "review" to make it less confrontational for users.</p>
+
+    <p class="govuk-body">User research guided the design at every stage. We tested with a mix of property owners, renters, landlords, users with low digital confidence, and people with cognitive accessibility needs. Methods included sessions and stepwise highlighter testing to validate journeys and key assumptions.</p>
+
+    <p class="govuk-body">We tested all prototype elements on smartphones and desktops to ensure usability.</p>
+
+    <p class="govuk-body"><a href="#top">Back to top</a></p>
+
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+    <h2 id="version-timeline" class="govuk-heading-l govuk-!-margin-top-6">Version timeline</h2>
+
+    <p class="govuk-body">The prototype evolved through 11 versions from July 2025 to January 2026. Here's the journey:</p>
+
+    <ol class="hmrc-timeline">
+      <li class="hmrc-timeline__event">
+        <h3 class="hmrc-timeline__event-title govuk-heading-s">Version 1.7 - Integration</h3>
+        <time class="hmrc-timeline__event-meta" datetime="2026-01-02">2 January 2026</time>
+        <div class="hmrc-timeline__event-content">
+          <p class="govuk-body"><strong>74 files</strong> - Brought successful patterns from v1.6 and v1.6.1 back into full journey. Added scenario selection, evidence upload, property review pages. Ready for Round 6 testing.</p>
+          <p class="govuk-body"><strong>New:</strong> Formal/informal scenario selection, evidence upload journey, pending updates page</p>
+          <p class="govuk-body"><a href="#v17-details">View detailed v1.7 design decisions →</a></p>
+        </div>
+      </li>
+      <li class="hmrc-timeline__event">
+        <h3 class="hmrc-timeline__event-title govuk-heading-s">Version 1.6.1 - Evidence concepts</h3>
+        <time class="hmrc-timeline__event-meta" datetime="2025-12-24">24 December 2025</time>
+        <div class="hmrc-timeline__event-content">
+          <p class="govuk-body"><strong>15 files</strong> - Ultra-focused variant testing 9 evidence upload approaches. Team selected multi-page with routing.</p>
+          <p class="govuk-body"><strong>Testing:</strong> Concept selection by design team (not user tested)</p>
+          <p class="govuk-body"><a href="#v161-details">View detailed v1.6.1 design decisions →</a></p>
+        </div>
+      </li>
+      <li class="hmrc-timeline__event">
+        <h3 class="hmrc-timeline__event-title govuk-heading-s">Version 1.6 - UX pattern concepts</h3>
+        <time class="hmrc-timeline__event-meta" datetime="2025-11-28">28 November 2025</time>
+        <div class="hmrc-timeline__event-content">
+          <p class="govuk-body"><strong>19 files</strong> - Radical simplification for isolated testing. Tested self-authentication, 4 property display patterns (accordions won), explicit formal/informal scenarios.</p>
+          <p class="govuk-body"><strong>Testing:</strong> Round 5 user research - <a href="https://app.mural.co/t/hmrcmain2035/m/hmrcmain2035/1765967134723/08ed51959d148d58c951380fca32b4c12ea1ebc4">View findings</a></p>
+          <p class="govuk-body"><a href="#v16-details">View detailed v1.6 design decisions →</a></p>
+        </div>
+      </li>
+      <li class="hmrc-timeline__event">
+        <h3 class="hmrc-timeline__event-title govuk-heading-s">Version 1.5.2 - Complete journey (Stable)</h3>
+        <time class="hmrc-timeline__event-meta" datetime="2025-10-30">30 October 2025</time>
+        <div class="hmrc-timeline__event-content">
+          <p class="govuk-body"><strong>69 files</strong> - Completed streamlined journey combining all features from v1.5 and v1.5.1. Users review property details first before challenging band.</p>
+          <p class="govuk-body"><strong>Status:</strong> Current stable version with complete E2E journey</p>
+        </div>
+      </li>
+      <li class="hmrc-timeline__event">
+        <h3 class="hmrc-timeline__event-title govuk-heading-s">Version 1.5.1 - Guidance testing</h3>
+        <time class="hmrc-timeline__event-meta" datetime="2025-10-23">23 October 2025</time>
+        <div class="hmrc-timeline__event-content">
+          <p class="govuk-body"><strong>68 files</strong> - Parallel variant testing guidance pages and start page with review journey disabled.</p>
+          <p class="govuk-body"><strong>Testing:</strong> Round 3 user research (10-12 participants)</p>
+        </div>
+      </li>
+      <li class="hmrc-timeline__event">
+        <h3 class="hmrc-timeline__event-title govuk-heading-s">Version 1.5 - Major expansion</h3>
+        <time class="hmrc-timeline__event-meta" datetime="2025-09-15">15 September 2025</time>
+        <div class="hmrc-timeline__event-content">
+          <p class="govuk-body"><strong>68 files</strong> - Added comprehensive challenge journey, 17 property change scenarios, multi-page guidance, changed terminology from "challenge" to "review".</p>
+          <p class="govuk-body"><strong>Testing:</strong> Round 4 user research (10-12 participants)</p>
+        </div>
+      </li>
+      <li class="hmrc-timeline__event">
+        <h3 class="hmrc-timeline__event-title govuk-heading-s">Version 1.4 - Simplification</h3>
+        <time class="hmrc-timeline__event-meta" datetime="2025-09-02">2 September 2025</time>
+        <div class="hmrc-timeline__event-content">
+          <p class="govuk-body"><strong>32 files</strong> - Simplified parking workflow, removed complex questions users couldn't answer (parking dimensions, local authority field).</p>
+          <p class="govuk-body"><strong>Testing:</strong> Round 2 user research (10-12 participants)</p>
+        </div>
+      </li>
+      <li class="hmrc-timeline__event">
+        <h3 class="hmrc-timeline__event-title govuk-heading-s">Version 1.3 - Property types & authorization</h3>
+        <time class="hmrc-timeline__event-meta" datetime="2025-09-02">2 September 2025</time>
+        <div class="hmrc-timeline__event-content">
+          <p class="govuk-body"><strong>37 files</strong> - Added property type sub-flows, self-certification, authority to act verification, error pages, challenge bifurcation (wrong band vs property changes).</p>
+          <p class="govuk-body"><strong>Testing:</strong> Round 1 user research (10-12 participants)</p>
+        </div>
+      </li>
+      <li class="hmrc-timeline__event">
+        <h3 class="hmrc-timeline__event-title govuk-heading-s">Version 1.2 - Content refinement</h3>
+        <time class="hmrc-timeline__event-meta" datetime="2025-08-20">20 August 2025</time>
+        <div class="hmrc-timeline__event-content">
+          <p class="govuk-body"><strong>27 files</strong> - Improved hint text, clearer labels, added details component for help, first draft of challenge form.</p>
+        </div>
+      </li>
+      <li class="hmrc-timeline__event">
+        <h3 class="hmrc-timeline__event-title govuk-heading-s">Version 1.1 - Property update journey</h3>
+        <time class="hmrc-timeline__event-meta" datetime="2025-08-07">7 August 2025</time>
+        <div class="hmrc-timeline__event-content">
+          <p class="govuk-body"><strong>27 files</strong> - Added property details correction journey with 14 form pages, check answers pattern, decision point (update vs challenge).</p>
+        </div>
+      </li>
+      <li class="hmrc-timeline__event">
+        <h3 class="hmrc-timeline__event-title govuk-heading-s">Version 1 - Initial prototype</h3>
+        <time class="hmrc-timeline__event-meta" datetime="2025-07-28">28 July 2025</time>
+        <div class="hmrc-timeline__event-content">
+          <p class="govuk-body"><strong>8 files</strong> - MVP with postcode search, property details (public and authenticated views), Welsh-first bilingual toggle.</p>
+        </div>
+      </li>
+    </ol>
+
+    <p class="govuk-body"><a href="#top">Back to top</a></p>
+
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+    <h2 id="journey-architecture" class="govuk-heading-l govuk-!-margin-top-6">Journey architecture</h2>
+
+    <h3 class="govuk-heading-m">Core user journeys</h3>
+
+    <p>We built the service around three journeys:</p>
+
+    <ol class="govuk-list govuk-list--number">
+      <li><strong>Journey 1: View property data</strong> — Users can see their property's attributes and how the band was calculated</li>
+      <li><strong>Journey 2: Update property data</strong> — A form flow for correcting information we hold about a property</li>
+      <li><strong>Review Journey</strong> — The formal process for requesting a review of a council tax band (called "Challenge" in v1-v1.4)</li>
+    </ol>
+
+    <div class="govuk-inset-text">
+      The journeys are deliberately separate. Users have to view and confirm their property data before they can request a review of their band. This creates a natural decision point and helps prevent inappropriate reviews.
+    </div>
+
+    <figure class="govuk-!-margin-top-6 govuk-!-margin-bottom-6">
+      <a href="/public/images/e2ejourney.png" target="_blank" style="display: block; cursor: zoom-in;">
+        <img src="/public/images/e2ejourney.png" alt="End-to-end user journey diagram showing the complete flow from start to confirmation for the Council Tax Wales Reform service" style="width: 100%; height: auto; border: 1px solid #b1b4b6;">
+      </a>
+      <figcaption class="govuk-body-s govuk-!-margin-top-2">End-to-end journey for v1.5.2 showing the streamlined flow from start to confirmation (click to view full size)</figcaption>
+    </figure>
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+    <h3 class="govuk-heading-m">How the structure evolved</h3>
+
+<p>The information architecture for the Council Tax Wales Reform prototype journey evolved gradually across versions as user needs and technical capabilities matured:</p>
+
+<ul class="govuk-list govuk-list--bullet">
+  <li><strong>v1.1 to v1.4:</strong> The journey used a two-branch approach (<a href="v1-4/incorrect-info.html?languagePreference=en">/letusknow route</a>) where users could independently choose to update property details or challenge their council tax band.</li>
+  <li><strong>v1.5:</strong> Introduced a new <a href="v1-5/challenge.html?languagePreference=en">/challenge route</a> enabling partial integration of update and review flows, beginning the transition toward a streamlined journey. Changed terminology from "challenge" to "review". Both original and new patterns existed.</li>
+  <li><strong>v1.5.1:</strong> Further developed routing logic with <a href="v1-5-1/challenge.html?languagePreference=en">/challenge-alt route</a> providing enhanced handling of review and update scenarios.</li>
+  <li><strong>v1.5.2:</strong> Completed the journey evolution with <a href="v1-5-2/challenge.html?languagePreference=en">streamlined review journey</a>. This fully streamlined the user experience, requiring property details review before band review, thus improving clarity and legal compliance.</li>
+</ul>
+
+<p>This incremental evolution allowed isolated testing of new paths before combining them into a unified journey, improving research clarity and user experience.</p>
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+    <h3 class="govuk-heading-m">Testing strategy for v1.5 series</h3>
+
+    <p>Versions 1.5, 1.5.1, and 1.5.2 ran as parallel testing variants - three different builds developed simultaneously, each with different journeys enabled to isolate specific testing goals:</p>
+
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Version</th>
+          <th scope="col" class="govuk-table__header">Property Update</th>
+          <th scope="col" class="govuk-table__header">Review</th>
+          <th scope="col" class="govuk-table__header">Guidance</th>
+          <th scope="col" class="govuk-table__header">Purpose</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">v1.5</th>
+          <td class="govuk-table__cell">No</td>
+          <td class="govuk-table__cell">Yes</td>
+          <td class="govuk-table__cell">Yes</td>
+          <td class="govuk-table__cell">Test review journey and guidance</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">v1.5.1</th>
+          <td class="govuk-table__cell">Yes</td>
+          <td class="govuk-table__cell">No</td>
+          <td class="govuk-table__cell">Yes</td>
+          <td class="govuk-table__cell">Test property update and guidance</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">v1.5.2</th>
+          <td class="govuk-table__cell">Yes</td>
+          <td class="govuk-table__cell">Yes</td>
+          <td class="govuk-table__cell">Yes</td>
+          <td class="govuk-table__cell">Complete version with all journeys</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Testing each change separately helped us see what was confusing users before we joined everything together in v1.5.2. Note: From v1.5 onwards, we changed the terminology from "challenge" to "review" to be less confrontational.</p>
+
+    <div class="govuk-inset-text">
+      <strong>Note:</strong> Versions 1.6 and 1.6.1 were parallel concept testing branches run separately from the v1.5 series. These tested specific concepts for rounds 5 and 6 without disrupting the stable complete journey in v1.5.2.
+    </div>
+
+    <p class="govuk-body"><a href="#top">Back to top</a></p>
+
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+    <h2 id="version-history" class="govuk-heading-l govuk-!-margin-top-6">Version history and design decisions</h2>
+
+    <details class="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          Show older versions (v1 - v1.4)
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+
+    <details class="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          Version 1 - Initial prototype (28 July to 7 August 2025)
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+
+        <h4 class="govuk-heading-s">What we built</h4>
+        <ul class="govuk-list govuk-list--bullet">
+          <li><strong>Simple linear flow:</strong> <a href="v1/start_en.html">Start</a> → <a href="v1/search.html?languagePreference=en">Search</a> → <a href="v1/search-results.html?languagePreference=en">Results</a> → <a href="v1/property-details.html?languagePreference=en">Property Details</a> → <a href="v1/gov-gateway.html?languagePreference=en">Sign in</a> → <a href="v1/property-details-extended.html?languagePreference=en">Extended Details</a></li>
+          <li><strong>Postcode search:</strong> One text input with autocomplete to find addresses</li>
+          <li><strong>Results table:</strong> Shows band and local authority, can be sorted</li>
+          <li><strong>Language toggle:</strong> Used the HMRC pattern - remembers which language you chose</li>
+          <li><strong>Two levels of detail:</strong> Basic property details for anyone, more detailed info once you sign in</li>
+        </ul>
+
+        <h4 class="govuk-heading-s">Core patterns used</h4>
+        <ul class="govuk-list govuk-list--bullet">
+          <li><strong>Start page:</strong> GOV.UK start page pattern with prominent start button</li>
+          <li><strong>Search pattern:</strong> Postcode search with autocomplete and results table</li>
+          <li><strong>Summary list:</strong> GOV.UK summary list for displaying property data</li>
+          <li><strong>Language toggle:</strong> HMRC language selector pattern (Welsh first)</li>
+        </ul>
+
+        <h4 class="govuk-heading-s">Testing</h4>
+        <p>This version was not formally tested with users - it was an internal build to establish the core patterns and basic structure.</p>
+
+        <h4 class="govuk-heading-s">Why we designed it this way</h4>
+        <p>We stuck to proven GOV.UK patterns. The two-tier approach (public and signed-in views) meant we could be transparent about property data while still protecting more sensitive information.</p>
+
+        <figure class="govuk-!-margin-top-4 govuk-!-margin-bottom-4">
+          <a href="/public/screenshots/en/v1/property-details.png" target="_blank" style="display: block; cursor: zoom-in;">
+            <img src="/public/screenshots/en/v1/property-details.png" alt="Screenshot of the property details page showing public information before sign-in" style="max-width: 800px; width: 100%; height: auto; border: 1px solid #b1b4b6;">
+          </a>
+          <figcaption class="govuk-body-s govuk-!-margin-top-2">The property details page showing basic information available to all users (click to view full size)</figcaption>
+        </figure>
+
+      </div>
+    </details>
+
+    <details class="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          Version 1.1 - Property details update journey (7 to 20 August 2025)
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+
+        <h4 class="govuk-heading-s">What changed</h4>
+        <ul class="govuk-list govuk-list--bullet">
+          <li><strong>Decision page:</strong> Added a <a href="v1-1/let-us-know.html?languagePreference=en">"Let us know"</a> page where users choose whether to update data or challenge their band</li>
+          <li><strong>Change links:</strong> Each property detail got its own change link in the <a href="v1-1/property-details-extended.html?languagePreference=en">extended view</a> (GOV.UK summary list pattern)</li>
+          <li><strong>Check answers page:</strong> Users review all their changes before submitting (GOV.UK <a href="v1-1/correct/check-answers.html?languagePreference=en">check answers</a> pattern)</li>
+          <li><strong>One question per page:</strong> Built 14 separate form pages, each asking about one property attribute (GOV.UK question pages pattern)</li>
+        </ul>
+
+        <figure class="govuk-!-margin-top-4 govuk-!-margin-bottom-4">
+          <a href="/public/screenshots/en/v1-1/let-us-know.png" target="_blank" style="display: block; cursor: zoom-in;">
+            <img src="/public/screenshots/en/v1-1/let-us-know.png" alt="Screenshot of the 'Let us know' decision page where users choose between updating property details or challenging their band" style="max-width: 800px; width: 100%; height: auto; border: 1px solid #b1b4b6;">
+          </a>
+          <figcaption class="govuk-body-s govuk-!-margin-top-2">The "Let us know" decision page introduced the two-branch approach (click to view full size)</figcaption>
+        </figure>
+
+        <h4 class="govuk-heading-s">New patterns introduced</h4>
+        <ul class="govuk-list govuk-list--bullet">
+          <li><strong>One question per page:</strong> GOV.UK question pages pattern - each form asks one specific question (see <a href="#key-themes">GOV.UK Design System patterns</a>)</li>
+          <li><strong>Check answers:</strong> GOV.UK check answers pattern with change links (see <a href="#key-themes">GOV.UK Design System patterns</a>)</li>
+          <li><strong>Conditional reveals:</strong> GOV.UK radios with conditional reveals for contextual questions (see <a href="#key-themes">Journey splits and conditional routing</a>)</li>
+        </ul>
+
+        <h4 class="govuk-heading-s">How the journey worked</h4>
+        <p>From the <a href="v1-1/property-details-extended.html?languagePreference=en">property details page</a>, users clicked a change link, went through the forms one by one (e.g. <a href="v1-1/correct/property-type.html?languagePreference=en">property type</a>, <a href="v1-1/correct/bedrooms.html?languagePreference=en">bedrooms</a>, <a href="v1-1/correct/bathrooms.html?languagePreference=en">bathrooms</a>), checked their answers, then got a confirmation.</p>
+        <p>Each form had a back link and continued to the next form or the <a href="v1-1/correct/check-answers.html?languagePreference=en">check answers page</a>.</p>
+
+        <h4 class="govuk-heading-s">Testing</h4>
+        <p>This version was not formally tested with users - it was an internal build to establish the basic journey structure.</p>
+
+        <h4 class="govuk-heading-s">Why we designed it this way</h4>
+
+        <div class="govuk-inset-text">
+          <strong>Key learning:</strong> Users were confusing "updating data" with "challenging the band" - creating a clear decision point was essential to prevent inappropriate submissions.
+        </div>
+
+
+        <p><strong>Why one question per page?</strong> This is a core GOV.UK Service Manual pattern. Asking one question per page reduces cognitive load, makes forms work better on mobile, and lets us provide focused help text for each question.</p>
+
+        <p><strong>Why check answers?</strong> It's a GOV.UK pattern for transactions. Lets users review everything before they submit, which reduces mistakes and makes people more confident. The change links let users go back and fix individual answers without starting over.</p>
+
+      </div>
+    </details>
+
+    <details class="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          Version 1.2 - Content refinement (20 August to 2 September 2025)
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+
+        <h4 class="govuk-heading-s">Interface improvements</h4>
+        <ul class="govuk-list govuk-list--bullet">
+          <li><strong>Better hint text:</strong> Added GOV.UK hint text to all forms explaining what we needed (see <a href="#key-themes">Built-in help instead of glossaries</a>)</li>
+          <li><strong>Clearer labels:</strong> Rewrote form labels following GOV.UK content style guide</li>
+          <li><strong>Details component:</strong> GOV.UK details component used for extra explanations without cluttering the page (see <a href="#key-themes">Built-in help instead of glossaries</a>)</li>
+        </ul>
+
+        <h4 class="govuk-heading-s">Challenge journey - first draft</h4>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Built the basic <a href="v1-2/challenge-band.html?languagePreference=en">challenge form</a> structure using GOV.UK question pages pattern</li>
+          <li>Content adapted from the England live service CCYCTB (Check and Challenge Your Council Tax Band)</li>
+          <li>Added GOV.UK file upload component for evidence</li>
+          <li>GOV.UK textarea component for explaining the challenge</li>
+        </ul>
+
+        <h4 class="govuk-heading-s">Language changes</h4>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>"Local Authority" became "Local Council"</li>
+          <li>"Property" became "Home" in user-facing text</li>
+          <li>Made buttons and links more conversational</li>
+        </ul>
+
+        <h4 class="govuk-heading-s">Testing</h4>
+        <p>This version was not formally tested with users - it was an internal build to refine content and establish the challenge journey structure.</p>
+
+        <h4 class="govuk-heading-s">Why we focused on content</h4>
+        <p>This version wasn't about changing the structure - we polished the existing interface with better content, clearer labels, and more helpful text.</p>
+
+        <figure class="govuk-!-margin-top-4 govuk-!-margin-bottom-4">
+          <a href="/public/screenshots/en/v1-2/challenge-band.png" target="_blank" style="display: block; cursor: zoom-in;">
+            <img src="/public/screenshots/en/v1-2/challenge-band.png" alt="Screenshot of the first draft challenge band form with file upload and textarea components" style="max-width: 800px; width: 100%; height: auto; border: 1px solid #b1b4b6;">
+          </a>
+          <figcaption class="govuk-body-s govuk-!-margin-top-2">The first draft of the challenge band form with content adapted from England's CCYCTB (Check and Challenge Your Council Tax Band) service (click to view full size)</figcaption>
+        </figure>
+
+      </div>
+    </details>
+
+    <details class="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          Version 1.3 - Property types and authorization (2 September to 19 September 2025)
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+
+        <h4 class="govuk-heading-s">What we added</h4>
+        <ul class="govuk-list govuk-list--bullet">
+          <li><strong>Self-certification page:</strong> GOV.UK checkboxes component where users <a href="v1-3/self-cert.html?languagePreference=en">confirm they're liable</a> for council tax</li>
+          <li><strong>Two-step property type:</strong> First pick the main type (house, flat, etc.), then the specific sub-type (using GOV.UK radios with conditional reveals)</li>
+          <li><strong>Split the challenge route:</strong> Users choose whether their band is wrong or their property has changed on <a href="v1-3/why-challenge.html?languagePreference=en">why challenge</a> page (GOV.UK radios component)</li>
+          <li><strong>Error pages:</strong> GOV.UK error page pattern telling users they can't proceed if they're <a href="v1-3/errors/no-liable.html?languagePreference=en">not liable</a> or don't have authority</li>
+        </ul>
+
+        <figure class="govuk-!-margin-top-4 govuk-!-margin-bottom-4">
+          <a href="/public/screenshots/en/v1-3/why-challenge.png" target="_blank" style="display: block; cursor: zoom-in;">
+            <img src="/public/screenshots/en/v1-3/why-challenge.png" alt="Screenshot of the why challenge page where users choose between wrong band or property has changed" style="max-width: 800px; width: 100%; height: auto; border: 1px solid #b1b4b6;">
+          </a>
+          <figcaption class="govuk-body-s govuk-!-margin-top-2">The "Why challenge" page split the challenge route into two distinct paths (click to view full size)</figcaption>
+        </figure>
+
+        <h4 class="govuk-heading-s">How the forms worked</h4>
+        <ul class="govuk-list govuk-list--bullet">
+          <li><strong>Property type:</strong> Choose <a href="v1-3/correct/type/house.html?languagePreference=en">house</a>, <a href="v1-3/correct/type/bungalow.html?languagePreference=en">bungalow</a>, <a href="v1-3/correct/type/flat.html?languagePreference=en">flat</a>, <a href="v1-3/correct/type/maisonette.html?languagePreference=en">maisonette</a> or <a href="v1-3/correct/type/other.html?languagePreference=en">other</a>, then get more specific (like studio, 1-bed, 2-bed for flats)</li>
+          <li><strong>Liability check:</strong> One checkbox saying "I confirm I am liable for council tax at this property"</li>
+          <li><strong>Conditional forms:</strong> Different questions appear depending on why you're challenging</li>
+        </ul>
+
+        <h4 class="govuk-heading-s">What we learned from testing</h4>
+        <p>Round 1 user research (10-12 participants) revealed several key insights:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li><strong>Understanding council tax:</strong> Many users were unclear about how council tax bands are determined, often assuming banding relates to size or number of rooms. They wanted clearer explanations of terms and band purpose</li>
+          <li><strong>Content clarity:</strong> Users valued plain language. Welsh speakers preferred Welsh-first content but sometimes referred to English for technical terms. Guidance about which PAD items could be updated was missing or unclear</li>
+          <li><strong>Form questions:</strong> Users struggled with complex questions like parking type or property subtypes. They called for more descriptive labels and examples - particularly for parking and area questions which people couldn't answer accurately</li>
+          <li><strong>Inline help:</strong> Inline help and details components were more effective than separate glossary pages, which users often ignored</li>
+          <li><strong>Authorization:</strong> Clarity needed on who can access or update property data (landlords vs tenants), requiring clearer service guidance</li>
+        </ul>
+
+        <h4 class="govuk-heading-s">Why we designed it this way</h4>
+        <p><strong>Why two steps for property type?</strong> We wanted to keep it simple upfront without overwhelming people, but still capture the detail we need for valuation. Using conditional reveals (GOV.UK pattern) meant we only showed the sub-type question after users selected the main category.</p>
+
+        <p><strong>Why use a checkbox?</strong> It's the standard GOV.UK pattern for confirmations and declarations. One checkbox with a clear statement is simpler than yes/no radio buttons, and follows GOV.UK guidance for consent and agreement flows.</p>
+
+      </div>
+    </details>
+
+    <details class="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          Version 1.4 - Workflow simplification (11 September to 7 October 2025)
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+
+    <div class="govuk-inset-text">
+      <strong>Note:</strong> Development of v1.4 began while v1.3 was in user testing, allowing us to iterate quickly based on research findings.
+    </div>
+
+    <h4 class="govuk-heading-s">Focus on form simplification</h4>
+    <p>v1.4 kept the two-branch architecture (<a href="v1-4/property-details-extended.html?languagePreference=en">review property details</a> OR <a href="v1-4/challenge-band.html?languagePreference=en">challenge the band</a>) but focused on making the forms simpler and faster to complete.</p>
+
+    <h4 class="govuk-heading-s">Making it simpler</h4>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><strong>Shorter parking flow:</strong> Cut it from 3 pages down to 2 - removed the dimensions/size page</li>
+      <li><strong>Simplified proxy authorization:</strong> Integrated it into the main authorization instead of having a separate page</li>
+    </ul>
+
+    <h4 class="govuk-heading-s">Pages we deleted</h4>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>parking-size.html (which had 5 form fields)</li>
+      <li>local-authority.html and local-authority-why.html</li>
+      <li>proxy.html</li>
+      <li>errors/no-ata.html</li>
+    </ul>
+
+    <h4 class="govuk-heading-s">What changed</h4>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Parking questions now just ask about type (allocated/unallocated) and how many spaces</li>
+      <li>Removed all the complex measurement fields (width, length, area calculations)</li>
+      <li>Reduced the journey from 16 pages down to 11</li>
+    </ul>
+
+    <h4 class="govuk-heading-s">Testing</h4>
+    <p>Round 2 user research (10-12 participants) tested the simplified forms and validated the removal of complex questions users couldn't accurately answer.</p>
+
+    <h4 class="govuk-heading-s">Why we simplified</h4>
+
+    <div class="govuk-inset-text">
+      <strong>Key learning:</strong> People couldn't estimate parking dimensions accurately - asking for data users don't have creates friction and gives bad data. Only ask for information you really need.
+    </div>
+
+
+    <figure class="govuk-!-margin-top-4 govuk-!-margin-bottom-4">
+      <a href="/public/screenshots/en/v1-4/correct/parking.png" target="_blank" style="display: block; cursor: zoom-in;">
+        <img src="/public/screenshots/en/v1-4/correct/parking.png" alt="Screenshot of the simplified parking question asking only for type and count" style="max-width: 800px; width: 100%; height: auto; border: 1px solid #b1b4b6;">
+      </a>
+      <figcaption class="govuk-body-s govuk-!-margin-top-2">The simplified parking form with complex measurement fields removed (click to view full size)</figcaption>
+    </figure>
+
+      </div>
+    </details>
+
+      </div>
+    </details>
+
+    <details class="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          Version 1.5 - Challenge journey and guidance (18 September to 5 November 2025)
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+
+    <h4 class="govuk-heading-s">Beginning the architecture transition</h4>
+    <p>v1.5 introduced new routing logic that began shifting from the two-branch approach (review OR challenge) toward a streamlined journey where users review property details first, then can challenge. We fine-tuned the routing and conditional logic again in v1.5.1 and v1.5.2 after seeing where people got stuck.</p>
+
+    <h4 class="govuk-heading-s">What we added</h4>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><strong>Multi-page guidance:</strong> Separate pages for <a href="v1-5/start/how-bands-decided.html?languagePreference=en">"How bands are decided"</a>, <a href="v1-5/property-details-used.html?languagePreference=en">"Property details used"</a>, <a href="v1-5/contact-voa.html?languagePreference=en">"Contact VOA"</a> with a navigation sidebar (content page pattern)</li>
+      <li><strong>Accordions:</strong> GOV.UK accordion component used for FAQs and complex guidance that doesn't need to be visible all the time</li>
+      <li><strong>Bands table:</strong> GOV.UK table component showing all council tax bands A-I with their 2003 valuation ranges</li>
+      <li><strong>More challenge routes:</strong> Split "property changes" into specific scenarios like demolished, split, merged, etc. using GOV.UK radios with conditional routing</li>
+      <li><strong>Inset text:</strong> GOV.UK inset text component for important information about the challenge process</li>
+    </ul>
+
+    <h4 class="govuk-heading-s">Fixes from testing</h4>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><strong>Show full address everywhere:</strong> Changed "this property" to the actual address throughout (see <a href="#key-themes">Keeping people oriented</a>)</li>
+      <li><strong>Reordered the login:</strong> Now goes Property details → Self certification → Government Gateway → Extended details</li>
+      <li><strong>Bigger band display:</strong> Made the band letter larger, put supporting info in smaller text</li>
+    </ul>
+
+    <h4 class="govuk-heading-s">Start page redesign</h4>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Combined English and Welsh into <a href="v1-5/start.html?languagePreference=en">one page</a> with a table of contents (following GOV.UK start page pattern)</li>
+      <li>Used GOV.UK accordion component for different user needs</li>
+      <li>Explained what the service does and doesn't do before people start (GOV.UK Service Manual guidance)</li>
+    </ul>
+
+    <figure class="govuk-!-margin-top-4 govuk-!-margin-bottom-4">
+      <a href="/public/screenshots/en/v1-5/start.png" target="_blank" style="display: block; cursor: zoom-in;">
+        <img src="/public/screenshots/en/v1-5/start.png" alt="Screenshot of the redesigned start page with accordion component and table of contents" style="max-width: 800px; width: 100%; height: auto; border: 1px solid #b1b4b6;">
+      </a>
+      <figcaption class="govuk-body-s govuk-!-margin-top-2">The redesigned start page combined English and Welsh with accordions for different user needs (click to view full size)</figcaption>
+    </figure>
+
+    <h4 class="govuk-heading-s">What we tested</h4>
+    <p>Round 4 user research focused on testing the review journey with 10-12 participants (run in parallel with Round 3 testing v1.5.1). We removed the property details update flow to isolate testing of the new guidance pages and review forms. This let us test:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Whether the new guidance helped people understand the challenge process</li>
+      <li>If the challenge routing worked (wrong band vs property changes)</li>
+      <li>How people used the navigation sidebar</li>
+    </ul>
+
+    <h4 class="govuk-heading-s">Why we designed it this way</h4>
+
+    <div class="govuk-inset-text">
+      <strong>Key learning:</strong> Saying "this property" caused users to lose track of which property they were viewing. Showing the full address on every page keeps users oriented throughout their journey.
+    </div>
+
+    <p><strong>Why multiple guidance pages?</strong> Breaking complex information into chunks makes it easier to digest. The sidebar lets people jump straight to what they need. Accordions hide detail until someone wants it.</p>
+
+    <p><strong>Why show the full address?</strong> If someone's checking multiple properties or looking at old data, saying "this property" meant they lost track of which one they were looking at. The full address keeps them oriented.</p>
+
+      </div>
+    </details>
+
+    <details class="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          Version 1.5.1 - Guidance and start page testing (18 September to 4 November 2025)
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+
+    <h4 class="govuk-heading-s">Small improvements</h4>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><strong>Better accordions:</strong> Clearer visual hierarchy and expand/collapse buttons</li>
+      <li><strong>Help button positioning:</strong> Put them inline with labels instead of floating</li>
+      <li><strong>Mobile table:</strong> Fixed how the bands table behaves on phones</li>
+      <li><strong>Sign out link:</strong> Added Welsh translation and put it in a consistent place</li>
+    </ul>
+
+    <h4 class="govuk-heading-s">What we tested</h4>
+    <p>Round 3 user research (run in parallel with Round 4 testing v1.5) focused on testing the guidance and property update forms with 10-12 participants. We removed the review journey from this version to isolate testing. This meant we could check:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Could people navigate the guidance using the sidebar?</li>
+      <li>Did accordions work for complex information?</li>
+      <li>How did people interpret the bands table?</li>
+      <li>Did showing the full address give enough context?</li>
+    </ul>
+
+    <h4 class="govuk-heading-s">Why we tested this way</h4>
+    <p><strong>Why test in isolation?</strong> The journey is so long that testing everything together would have been overwhelming for participants. Breaking it into separate testing variants (v1.5 for challenge, v1.5.1 for property update) meant each session could focus on a manageable amount of content.</p>
+
+    <figure class="govuk-!-margin-top-4 govuk-!-margin-bottom-4">
+      <a href="/public/screenshots/en/v1-5-1/property-details-extended.png" target="_blank" style="display: block; cursor: zoom-in;">
+        <img src="/public/screenshots/en/v1-5-1/property-details-extended.png" alt="Screenshot of the property details page showing the full address throughout" style="max-width: 800px; width: 100%; height: auto; border: 1px solid #b1b4b6;">
+      </a>
+      <figcaption class="govuk-body-s govuk-!-margin-top-2">Property details showing the full address (instead of "this property") to keep users oriented (click to view full size)</figcaption>
+    </figure>
+
+      </div>
+    </details>
+
+    <details class="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          Version 1.5.2 - Complete challenge and review journey (November 2025 - current)
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+
+    <h4 class="govuk-heading-s">Completed streamlined journey</h4>
+    <p>v1.5.2 completed the architectural transition begun in v1.5. This is the current version of the prototype. It fully implements the streamlined journey where users must review their property details first before they can challenge their band. This was clearer than the earlier two-branch approach: users review details before challenging.</p>
+
+    <h4 class="govuk-heading-s">Testing</h4>
+    <p>This version was not user tested - it exists as a reference implementation showing the complete end-to-end journey with all features combined.</p>
+
+    <h4 class="govuk-heading-s">What we built</h4>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><strong>Different confirmation pages:</strong> GOV.UK confirmation page pattern showing different content depending on whether someone chose <a href="v1-5-2/confirmation/change-band.html?languagePreference=en">formal</a> or <a href="v1-5-2/confirmation/nochange-noband.html?languagePreference=en">informal review</a></li>
+      <li><strong>Multi-level routing:</strong> <a href="v1-5-2/challenge/why.html?languagePreference=en">Challenge reason</a> → <a href="v1-5-2/challenge/changes.html?languagePreference=en">Type of property change</a> (8 options) → Different forms depending on what they picked (GOV.UK radios with conditional routing)</li>
+      <li><strong>Autocomplete:</strong> Address lookup and contact details with proper autocomplete attributes (following GOV.UK guidance for autofill)</li>
+      <li><strong>Conditional check answers:</strong> GOV.UK check answers pattern - the summary page shows/hides sections based on which route someone took</li>
+      <li><strong>6-month rule:</strong> Conditional logic checks if the property changed more than 6 months ago before showing formal review option</li>
+    </ul>
+
+    <figure class="govuk-!-margin-top-4 govuk-!-margin-bottom-4">
+      <a href="/public/screenshots/en/v1-5-2/challenge/why.png" target="_blank" style="display: block; cursor: zoom-in;">
+        <img src="/public/screenshots/en/v1-5-2/challenge/why.png" alt="Screenshot of the streamlined challenge reason page" style="max-width: 800px; width: 100%; height: auto; border: 1px solid #b1b4b6;">
+      </a>
+      <figcaption class="govuk-body-s govuk-!-margin-top-2">The streamlined "Why do you want to review your band?" page in v1.5.2 (click to view full size)</figcaption>
+    </figure>
+
+    <h4 class="govuk-heading-s">8 different property change types</h4>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a href="v1-5-2/challenge/changes/demolished.html?languagePreference=en">Demolished or uninhabitable</a> → Upload evidence + pick a date</li>
+      <li>Part demolished → Evidence and description</li>
+      <li><a href="v1-5-2/challenge/changes/split-property.html?languagePreference=en">Split into multiple properties</a> → Form for new property details</li>
+      <li>Merged with other properties → Reference for the merged property</li>
+      <li><a href="v1-5-2/challenge/changes/business-when.html?languagePreference=en">Part or all now used for business</a> → What it was before and what it is now</li>
+      <li><a href="v1-5-2/challenge/changes/domestic.html?languagePreference=en">Part or all now used as home (domestic use)</a> → Previous and current use</li>
+      <li><a href="v1-5-2/challenge/changes/local-area.html?languagePreference=en">Local area changes affecting value</a> → Description and date</li>
+      <li><a href="v1-5-2/challenge/changes/somethingelse.html?languagePreference=en">Something else</a> → Open description field</li>
+    </ul>
+
+    <figure class="govuk-!-margin-top-4 govuk-!-margin-bottom-4">
+      <a href="/public/screenshots/en/v1-5-2/challenge/changes.png" target="_blank" style="display: block; cursor: zoom-in;">
+        <img src="/public/screenshots/en/v1-5-2/challenge/changes.png" alt="Screenshot of the property changes page showing 8 different change types" style="max-width: 800px; width: 100%; height: auto; border: 1px solid #b1b4b6;">
+      </a>
+      <figcaption class="govuk-body-s govuk-!-margin-top-2">The 8 property change types with conditional routing to different forms (click to view full size)</figcaption>
+    </figure>
+
+    <h4 class="govuk-heading-s">Language change</h4>
+    <p>Changed "Challenge" to "Review" throughout - in buttons, headings, navigation, confirmation pages. This was a content design decision based on user research findings and our Welsh-first strategy, making the terminology more accessible and less confrontational for users.</p>
+
+    <h4 class="govuk-heading-s">Forms we removed</h4>
+    <p>After user research and stakeholder discussions, we removed forms that users couldn't answer accurately or that only applied to a small percentage of properties:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><strong>floor-level:</strong> People couldn't accurately tell if they were on ground, 1st or 2nd floor</li>
+      <li><strong>improvement:</strong> Required expert knowledge that users didn't have</li>
+      <li><strong>mixed-use:</strong> Only applies to less than 5% of properties - edge cases can be handled elsewhere</li>
+    </ul>
+
+    <h4 class="govuk-heading-s">Why we designed it this way</h4>
+
+    <div class="govuk-inset-text">
+      <strong>Key learning:</strong> The streamlined journey (review property details first, then challenge if needed) was clearer than the two-branch approach. Requiring property review before challenge improved clarity and legal compliance.
+    </div>
+
+    <p><strong>Why conditional routing?</strong> Different property changes need completely different information. Only showing relevant questions makes it faster and less overwhelming.</p>
+
+    <p><strong>Why split formal and informal?</strong> They're legally different pathways. Formal reviews have statutory timelines and require Notice of Alteration. Informal reviews are quicker but non-binding. The confirmation pages needed to set the right expectations for each.</p>
+
+
+      </div>
+    </details>
+
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+    <h3 class="govuk-heading-m govuk-!-margin-top-6">Concept testing variants (parallel branches)</h3>
+    <p class="govuk-body">Versions 1.6 and 1.6.1 were not complete journeys - they were isolated concept testing variants run alongside the stable v1.5.2 to validate specific UX patterns before integration.</p>
+
+    <details class="govuk-details" id="v16-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          Version 1.6 - Testing concepts for round 5 (28 November to 24 December 2025)
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+
+    <div class="govuk-inset-text">
+      <strong>Important:</strong> Version 1.6 was NOT a complete journey. It was a radical simplification (19 files vs 69 in v1.5.2) designed purely for concept testing specific UX patterns in isolation.
+    </div>
+
+    <h4 class="govuk-heading-s">Why the radical simplification?</h4>
+    <p>We needed to test specific UX patterns without the complexity of the full journey overwhelming participants. By stripping down to just the concepts being tested, we could get clearer feedback on what worked and what didn't.</p>
+
+    <h4 class="govuk-heading-s">Three concepts tested</h4>
+
+    <h5 class="govuk-heading-s">1. Self Authentication</h5>
+    <p>Tested two methods for users to verify their identity:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><strong>Council Tax Bill number:</strong> Enter reference number from bill</li>
+      <li><strong>File upload:</strong> Upload a copy of CT bill as proof</li>
+    </ul>
+
+    <h5 class="govuk-heading-s">2. Property Display Patterns (PADs)</h5>
+    <p><strong>Problem:</strong> Too much data was overwhelming users. We needed a flexible way to show data in case more was added.</p>
+
+    <p>We tested 4 different display patterns:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><strong>Accordions</strong> - Collapsible sections per property detail ✓ <em>Winner</em></li>
+      <li><strong>Tabs</strong> - Tabbed interface for property categories</li>
+      <li><strong>Cards</strong> - Card-based layout with placeholders</li>
+      <li><strong>Tags</strong> - Semantic tag-based display</li>
+    </ul>
+
+    <!-- Screenshot placeholder: Before comparison (v1.5.2 property details with linear list) -->
+    <p class="govuk-body"><em>Screenshot: Property details in v1.5.2 displayed as a long linear list</em></p>
+
+    <p><strong>Testing outcome:</strong> Users preferred the accordion pattern. It reduced visual clutter while keeping information accessible.</p>
+
+    <h5 class="govuk-heading-s">3. Formal/Informal Challenge</h5>
+    <p><strong>Problem:</strong> Previous implementation used a subtle question "For how long have you been paying council tax?" which wasn't transparent enough. Users didn't understand the distinction between formal and informal challenges.</p>
+
+    <p><strong>Solution tested:</strong> Explicit scenario selection with 4 options explaining what each type means, how it works, evidence required, and decision timescales.</p>
+
+    <!-- Screenshot placeholder: Scenario selection page from v1.6 testing -->
+    <p class="govuk-body"><em>Screenshot: The explicit scenario selection tested in v1.6 - much clearer than the previous subtle question</em></p>
+
+    <h4 class="govuk-heading-s">Testing</h4>
+    <p>Round 5 user research tested these concepts with participants. <a href="https://app.mural.co/t/hmrcmain2035/m/hmrcmain2035/1765967134723/08ed51959d148d58c951380fca32b4c12ea1ebc4">View UR analysis of round 5</a>.</p>
+
+    <h4 class="govuk-heading-s">Key findings</h4>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><strong>Accordion display preferred</strong> for property details - balanced information density with accessibility</li>
+      <li><strong>Explicit scenario selection clearer</strong> than subtle questions - users understood their options better</li>
+      <li><strong>Formal/informal distinction needed better explanation</strong> - but the new approach was a significant improvement</li>
+    </ul>
+
+    <h4 class="govuk-heading-s">Why we tested this way</h4>
+    <p>These concepts needed isolated testing before potentially integrating them into the main journey. Testing them separately let us validate assumptions without disrupting the stable v1.5.2 version. The findings directly informed v1.7 development.</p>
+
+      </div>
+    </details>
+
+    <details class="govuk-details" id="v161-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          Version 1.6.1 - Testing concepts for round 6 (24 December 2025)
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+
+    <div class="govuk-inset-text">
+      <strong>Ultra-focused variant:</strong> Version 1.6.1 was even more focused than v1.6 - just 15 files testing evidence upload UX patterns in complete isolation.
+    </div>
+
+    <h4 class="govuk-heading-s">What we tested</h4>
+    <p><strong>Problem:</strong> What's the best UX for evidence submission? How should users understand evidence requirements?</p>
+
+    <h5 class="govuk-heading-s">9 Evidence Upload Concepts</h5>
+    <p>We created 9 different concept approaches showing variations in:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Information architecture for evidence explanations</li>
+      <li>Different approaches to instructions and guidance</li>
+      <li>Layout variations for file upload interface</li>
+      <li>How to explain what evidence helps</li>
+    </ul>
+
+    <!-- Screenshot placeholder: Evidence upload decision point -->
+    <p class="govuk-body"><em>Screenshot: The evidence upload decision point - do you have documents to upload?</em></p>
+
+    <!-- Screenshot placeholder: Evidence upload interface -->
+    <p class="govuk-body"><em>Screenshot: The file upload interface using HMRC file upload component</em></p>
+
+    <h4 class="govuk-heading-s">Testing approach</h4>
+    <p><strong>Note:</strong> This version was NOT formally tested with users. The design team selected the best approach based on:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>GDS compliance and design patterns</li>
+      <li>Simplicity and clarity</li>
+      <li>Integration potential with main journey</li>
+    </ul>
+
+    <h4 class="govuk-heading-s">Winner: Journey 2 - Multi-page with routing</h4>
+    <p>The team selected this approach because it was:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><strong>Most simple</strong> - Clear decision point before file upload</li>
+      <li><strong>GDS compatible</strong> - Used established GOV.UK patterns</li>
+      <li><strong>Flexible</strong> - Allows users to skip if no evidence available</li>
+      <li><strong>Progressive disclosure</strong> - Only shows file upload when needed</li>
+    </ul>
+
+    <h4 class="govuk-heading-s">Why this approach</h4>
+    <p>Similar to v1.6, this parallel branch allowed us to explore evidence upload patterns without affecting the stable v1.5.2. The selected approach was then integrated into v1.7 as part of the main challenge journey.</p>
+
+      </div>
+    </details>
+
+    <details class="govuk-details" id="v17-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          Version 1.7 - Complete E2E journey with integrated concepts (2 January 2026)
+        </span>
+      </summary>
+      <div class="govuk-details__text">
+
+    <h4 class="govuk-heading-s">Re-integration and maturation</h4>
+    <p>Version 1.7 brings successful patterns from v1.6 and v1.6-1 back into the complete journey from v1.5.2. This represents a full-circle design process: build comprehensively (v1.5), experiment through reduction (v1.6), refine specific elements (v1.6.1), then reintegrate with learnings (v1.7).</p>
+
+    <p><strong>File count:</strong> 74 files</p>
+
+    <h4 class="govuk-heading-s">What's new in v1.7</h4>
+
+    <h5 class="govuk-heading-s">1. Formal/Informal Challenge Integration</h5>
+    <p>Integrated from v1.6 testing - explicit scenario selection replaces subtle questions:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><strong>New: <a href="v1-7/challenge/scenario.html?languagePreference=en">scenario.html</a></strong> - "Which of these applies to you?" decision point</li>
+      <li><strong>New: <a href="v1-7/challenge/option1.html?languagePreference=en">option1.html</a></strong> - Formal review (less than 6 months liable)</li>
+      <li><strong>New: <a href="v1-7/challenge/option2.html?languagePreference=en">option2.html</a></strong> - Informal review (more than 6 months liable)</li>
+      <li><strong>New: <a href="v1-7/challenge/option3.html?languagePreference=en">option3.html</a></strong> - Band changed by VOA</li>
+      <li><strong>New: <a href="v1-7/challenge/option4.html?languagePreference=en">option4.html</a></strong> - Property changes</li>
+    </ul>
+
+    <p>Each option page explains what this challenge type means, how it works, evidence required, decision timescales, and potential outcomes.</p>
+
+    <h5 class="govuk-heading-s">2. Evidence Upload Integration</h5>
+    <p>Integrated from v1.6.1 testing - multi-page journey with routing:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><strong>New: <a href="v1-7/challenge/evidence-upload-choice.html?languagePreference=en">evidence-upload-choice.html</a></strong> - Do you have documents to upload?</li>
+      <li><strong>New: <a href="v1-7/challenge/evidence-upload.html?languagePreference=en">evidence-upload.html</a></strong> - HMRC file upload component (JPG, PNG, PDF, 10MB limit)</li>
+      <li><strong>Updated: <a href="v1-7/challenge/review-details.html?languagePreference=en">review-details.html</a></strong> - Shows uploaded documents as list</li>
+    </ul>
+
+    <p><strong>Journey position:</strong> After explaining why band is wrong, before selecting which band is correct</p>
+
+    <p><strong>Terminology change:</strong> "Evidence" → "Uploaded documents" (less formal, based on content feedback)</p>
+
+    <h5 class="govuk-heading-s">3. Property Updates Visibility</h5>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><strong>New: <a href="v1-7/pending-updates.html?languagePreference=en">pending-updates.html</a></strong> - Shows Current vs Submitted comparison table</li>
+      <li><strong>New: <a href="v1-7/property-details-review.html?languagePreference=en">property-details-review.html</a></strong> - Property review page with accordion display</li>
+    </ul>
+
+    <!-- Screenshot placeholder: After comparison (v1.7 property details with accordions) -->
+    <p class="govuk-body"><em>Screenshot: Property details in v1.7 using accordion pattern selected from v1.6 testing</em></p>
+
+    <h5 class="govuk-heading-s">4. Technical Improvements</h5>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><strong>Back links:</strong> All 74 pages use javascript:history.back() consistently</li>
+      <li><strong>Language switching:</strong> Uses history.replaceState() - back button skips over language toggles</li>
+      <li><strong>Language parameter routing:</strong> ?languagePreference= propagated across all URLs</li>
+      <li><strong>Court code information:</strong> Now in collapsible details component ("What the codes mean")</li>
+    </ul>
+
+    <h4 class="govuk-heading-s">Updated routing in v1.7</h4>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><strong>Option 1 flow:</strong> scenario → option1 → date-payer → wrong-details → evidence-upload-choice → which-band → contact-details</li>
+      <li><strong>Option 2 flow:</strong> scenario → option2 → notice-alteration → [if yes: date-notice →] wrong-details → evidence-upload-choice → which-band → contact-details</li>
+      <li><strong>Bypass how-long-lived:</strong> Scenario selection already captures this information</li>
+    </ul>
+
+    <h4 class="govuk-heading-s">Round 6 testing</h4>
+    <p><strong>Status:</strong> Scheduled for January 2026. This version will test the integrated journey including self verification, Property Attribute Details (PADs), and check/review journey.</p>
+
+    <h5 class="govuk-heading-s">Research focus areas</h5>
+    <p><em>The areas below will be investigated during Round 6 testing:</em></p>
+
+    <h5 class="govuk-heading-s">Self Verification & Authentication</h5>
+    <p><strong>Questions to investigate:</strong></p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Do users prefer entering Council Tax bill number over uploading a copy?</li>
+      <li>If CT bill is the only authentication method, is this clear upfront?</li>
+      <li>Do users prefer accordion format for entering additional information?</li>
+      <li>Is it clear WHY information is public vs private?</li>
+      <li>Are terms like "verify & liability" user-friendly enough?</li>
+    </ul>
+
+    <h5 class="govuk-heading-s">Property Attribute Details (PADs)</h5>
+    <p><strong>Questions to investigate:</strong></p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Do users understand how band is determined and how PADs impact it?</li>
+      <li>Is guidance clear on how to update incorrect PADs?</li>
+      <li>Should we provide metric and imperial options for house sizes?</li>
+      <li>Should we show when information was last updated?</li>
+      <li>Do users understand what counts as a room in "total rooms"?</li>
+      <li>Would showing comparable houses in the same area help users understand band differences?</li>
+      <li>How do users respond to the motivation question: "What's the incentive to report improvements that might increase Council Tax?"</li>
+    </ul>
+
+    <h5 class="govuk-heading-s">Check and Review Journey</h5>
+    <p><strong>Questions to investigate:</strong></p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Do users want to select scenario BEFORE reading detailed business process information?</li>
+      <li>Should legal definitions come AFTER scenario selection?</li>
+      <li>Is a simple summary of four scenarios clear ("formal/informal proposal/band challenge")?</li>
+      <li>Is jargon minimized and the VOA role explained clearly?</li>
+      <li>Is it clear that CT bill may go up OR down as result of changes?</li>
+      <li>Do users want to select which specific PAD elements to challenge?</li>
+      <li>Is it clear what evidence is required for each PAD element?</li>
+      <li>Do users understand timescales - how many times they can challenge, timescales to re-appeal?</li>
+      <li>Should we consider options for those with neither English nor Welsh as first language?</li>
+    </ul>
+
+    <h4 class="govuk-heading-s">Areas to investigate for future iterations</h4>
+    <p>Based on patterns from previous testing rounds, we'll explore:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><strong>Authentication:</strong> Simplifying to CT bill number as primary method</li>
+      <li><strong>PADs Presentation:</strong> Adding comparable properties, calculation tools, clearer explanations</li>
+      <li><strong>Journey Reordering:</strong> Moving scenario selection earlier in the flow</li>
+      <li><strong>Content Simplification:</strong> Removing jargon, adding specific examples for each PAD element</li>
+      <li><strong>Transparency:</strong> Being explicit about potential for bill increases/decreases</li>
+      <li><strong>Accessibility:</strong> Considering multilingual support beyond English/Welsh</li>
+    </ul>
+
+    <h4 class="govuk-heading-s">Why we designed it this way</h4>
+
+    <div class="govuk-inset-text">
+      <strong>Key learning:</strong> The explicit scenario selection (from v1.6) is significantly clearer than the previous subtle "how long have you lived here?" question. Users understand their options and the implications upfront.
+    </div>
+
+    <p><strong>Why integrate evidence upload here?</strong> Positioning it after explaining why the band is wrong creates a logical flow - users explain their reasoning, then can optionally provide supporting evidence, then specify which band they believe is correct.</p>
+
+    <p><strong>Why multi-page evidence?</strong> The decision point before file upload follows progressive disclosure principles - only show the upload interface when users confirm they have documents to share.</p>
+
+      </div>
+    </details>
+
+    <p class="govuk-body"><a href="#top">Back to top</a></p>
+
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+    <h2 id="key-themes" class="govuk-heading-l govuk-!-margin-top-6">Key themes</h2>
+
+    <h3 class="govuk-heading-m">Journey splits and conditional routing</h3>
+    <p>Started with one linear path, ended up with multiple routes based on what users needed:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><strong>First split:</strong> <a href="v1-4/let-us-know.html?languagePreference=en">Update property data or review band</a> (called "challenge" in v1-v1.4)</li>
+      <li><strong>Second split:</strong> <a href="v1-5-2/challenge/why.html?languagePreference=en">Wrong band or property has changed</a></li>
+      <li><strong>Third split:</strong> <a href="v1-5-2/challenge/changes.html?languagePreference=en">8 different property change types</a>, each with different forms</li>
+      <li><strong>Fourth split:</strong> Formal or informal review</li>
+    </ul>
+    <p>Each decision point meant we only showed people what was relevant to their situation.</p>
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+    <h3 class="govuk-heading-m">GOV.UK Design System patterns</h3>
+    <p>All design decisions were based on <a href="https://design-system.service.gov.uk/">GOV.UK Design System components</a> and Service Manual patterns:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><strong>Question pages (one thing per page):</strong> GOV.UK Service Manual pattern - every form asks one question to reduce cognitive load</li>
+      <li><strong>Check answers pattern:</strong> GOV.UK pattern for transactions - standard summary with change links and conditional sections</li>
+      <li><strong>Radios with conditional reveals:</strong> GOV.UK component for property type, challenge reason, showing/hiding follow-up questions</li>
+      <li><strong>Details component:</strong> GOV.UK component for extra help without cluttering the page</li>
+      <li><strong>Summary list component:</strong> GOV.UK component for showing property details with change links</li>
+      <li><strong>Back links:</strong> GOV.UK back link component on every form page</li>
+    </ul>
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+    <h3 id="keeping-people-oriented" class="govuk-heading-m">Keeping people oriented</h3>
+    <p>Design choices to stop people getting lost (following GOV.UK guidance on navigation):</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Show the full address on every page (not "this property") - helps users maintain context</li>
+      <li><strong>Back links:</strong> GOV.UK back link component on all forms</li>
+      <li><strong>Change links:</strong> GOV.UK check answers pattern - keep you in context when editing from check answers</li>
+      <li><strong>Breadcrumbs:</strong> GOV.UK breadcrumbs component in the guidance section</li>
+      <li><strong>Language toggle:</strong> HMRC language selector always in the header</li>
+    </ul>
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+    <h3 class="govuk-heading-m">Built-in help instead of glossaries</h3>
+    <p>Started with separate glossary pages, ended with help built into the forms (following GOV.UK guidance on contextual help):</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><strong>Hint text:</strong> GOV.UK hint text on all form inputs explaining what we need</li>
+      <li><strong>Details component:</strong> GOV.UK details component for longer explanations that don't clutter the page</li>
+      <li><strong>Inset text:</strong> GOV.UK inset text component for highlighting important information</li>
+      <li><strong>Guidance within the journey:</strong> Not separate reference pages - following GOV.UK Service Manual guidance to provide help in context</li>
+    </ul>
+    <p>Testing showed people rarely clicked through to separate glossaries - they were more likely to read help that was right there on the page.</p>
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+    <h3 class="govuk-heading-m">Welsh-first bilingual design</h3>
+    <p>The service provided a fully bilingual experience using the <a href="https://design.tax.service.gov.uk/hmrc-design-patterns/welsh-language-toggle/">HMRC Welsh language toggle pattern</a>:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><strong>Language choice:</strong> Users can select English or Welsh; their preference is saved in a session cookie and remembered throughout the journey</li>
+      <li><strong>URL parameter:</strong> Language preference is visible in the URL (?languagePreference=en or cy) for easier testing and sharing</li>
+      <li><strong>Seamless switching:</strong> Users can switch language mid-journey without losing form data</li>
+      <li><strong>Consistent placement:</strong> Toggle always visible in the header, following HMRC pattern guidance</li>
+    </ul>
+
+    <p class="govuk-body"><a href="#top">Back to top</a></p>
+
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+    <h2 id="design-process" class="govuk-heading-l govuk-!-margin-top-6">Design process and technical implementation</h2>
+
+    <div class="govuk-inset-text">
+      <strong>Two-week sprint cycle:</strong> Test → Learn → Update → Test again. This rhythm kept research and design tightly integrated throughout the project.
+    </div>
+
+    <h3 class="govuk-heading-m">Team structure</h3>
+
+    <p>The UCD team consisted of:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>1 User Research Lead</li>
+      <li>2 User Researchers</li>
+      <li>1 Service Designer</li>
+      <li>1 Content Designer</li>
+      <li>1 Interaction Designer</li>
+    </ul>
+
+    <p>The Content Designer worked with a separate trio writing team (content designer, translator, SMEs) to produce bilingual content.</p>
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+    <h3 class="govuk-heading-m">Bilingual content workflow</h3>
+
+    <p>Content was drafted in English first, translated into Welsh, then refined in English to ensure consistency across languages. This workflow ensured both languages remained aligned throughout the prototype.</p>
+
+    <p>During testing, users could interact with English and Welsh content using the HMRC Welsh language toggle (see <a href="#key-themes">Key themes → Welsh-first bilingual design</a> for toggle pattern and technical implementation). This approach allowed realistic usability testing without duplicating journeys and made iteration easier.</p>
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+    <h3 class="govuk-heading-m">How the process worked: from research to design</h3>
+
+    <p>Every two weeks, the prototype was tested, findings were gathered, updates were made to screens and content, and then tested again.</p>
+
+    <h4 class="govuk-heading-s">The workflow</h4>
+    <ol class="govuk-list govuk-list--number">
+      <li><strong>User researchers</strong> shared insights from each round (about 10 participants per cycle)</li>
+      <li><strong>Interaction designer</strong> produced a first draft of the prototype based on those findings with placeholder or current content</li>
+      <li><strong>Trio writing team</strong> (content designer, translator, subject expert) wrote bilingual content</li>
+      <li><strong>Interaction designer</strong> integrated content into the prototype and built any new logic</li>
+      <li><strong>Whole UCD team</strong> reviewed updates before the next testing round</li>
+    </ol>
+
+    <p>Major terminology decisions (like changing "Challenge" to "Review") were agreed collectively with the UCD team to ensure alignment between design, content, and service design.</p>
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+
+    <h3 class="govuk-heading-m">Prototyping tools and approach</h3>
+
+    <p><strong>GOV.UK Prototype Kit</strong> (runs on Express.js) was the main tool.</p>
+
+    <h4 class="govuk-heading-s">What it let us build</h4>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><strong>Realistic prototypes:</strong> Mid to high fidelity that felt like a real service</li>
+      <li><strong>Language switching:</strong> Full English and Welsh with persistent preference</li>
+      <li><strong>Session persistence:</strong> Form data that persists as users navigate</li>
+    </ul>
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+    <h3 class="govuk-heading-m">What we tested</h3>
+
+    <p>Each round focused on specific aspects of the user journey:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><strong>Journey routing:</strong> Decision points and how the conditional logic worked</li>
+      <li><strong>Core journeys:</strong> Update property data and challenge band paths</li>
+      <li><strong>Check answers:</strong> Conditional sections based on user choices</li>
+    </ul>
+
+    <h4 class="govuk-heading-s">How we measured success</h4>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Could people complete the task without getting stuck?</li>
+      <li>What did people say in testing sessions?</li>
+      <li>Did users understand the terminology and guidance?</li>
+    </ul>
+
+    <p class="govuk-body"><a href="#top">Back to top</a></p>
+
+    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+    <p class="govuk-body"><a href="index.html">Back to prototype versions</a></p>
+
+  </div>
+</div>
+
+{% endblock %}

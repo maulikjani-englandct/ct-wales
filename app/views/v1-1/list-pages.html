@@ -1,0 +1,44 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  List of pages – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<h2 class="govuk-heading-xl">Version 1.1 - List of pages</h2>
+
+<h3 class="govuk-heading-m">Main pages</h3>
+<ul class="govuk-list govuk-list--bullet">
+  <li><a href="start_en.html">Start page (English)</a></li>
+  <li><a href="start_cy.html">Start page (Welsh)</a></li>
+  <li><a href="gov-gateway.html">Government Gateway</a></li>
+  <li><a href="search.html">Search</a></li>
+  <li><a href="search-results.html">Search results</a></li>
+  <li><a href="property-details.html">Property details (public)</a></li>
+  <li><a href="property-details-extended.html">Property details (extended)</a></li>
+  <li><a href="let-us-know.html">Decision point (update/challenge)</a></li>
+  <li><a href="incorrect-info.html">Update property details hub</a></li>
+  <li><a href="challenge-band.html">Challenge band</a></li>
+  <li><a href="confirm-incorrect.html">Confirmation page</a></li>
+</ul>
+
+<h3 class="govuk-heading-m">Property details update pages (/correct/)</h3>
+<ul class="govuk-list govuk-list--bullet">
+  <li><a href="correct/property-type.html">Property type</a></li>
+  <li><a href="correct/rooms.html">Total rooms</a></li>
+  <li><a href="correct/bedrooms.html">Bedrooms</a></li>
+  <li><a href="correct/bathrooms.html">Bathrooms</a></li>
+  <li><a href="correct/area.html">Area</a></li>
+  <li><a href="correct/floor-level.html">Floor level</a></li>
+  <li><a href="correct/floor-house.html">Floors (house)</a></li>
+  <li><a href="correct/parking.html">Parking type</a></li>
+  <li><a href="correct/parking-spot.html">Parking spaces</a></li>
+  <li><a href="correct/parking-size.html">Parking size</a></li>
+  <li><a href="correct/improvement.html">Improvement indicator</a></li>
+  <li><a href="correct/mixed-use.html">Mixed-use property</a></li>
+  <li><a href="correct/local-authority.html">Local authority</a></li>
+  <li><a href="correct/local-authority-why.html">Local authority reason</a></li>
+  <li><a href="correct/check-answers.html">Check your answers</a></li>
+</ul>
+
+{% endblock %}

@@ -1,0 +1,471 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Property information
+{% endblock %}
+
+{% block header %}
+{% if data['languagePreference'] == "en" %}
+{{ hmrcHeader({
+    serviceUrl : "/",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+
+  {% else %}
+  {{ hmrcHeader({
+    serviceUrl : "/",
+    language : "cy",
+    signOutHref : "?sign-out",
+    useTudorCrown: true
+  }) }}
+{% endif %}
+{% endblock %}
+{% block beforeContent %}
+
+{{
+
+  hmrcLanguageSelect({
+
+      language: 'cy' if data['languagePreference'] === 'cy' else 'en',
+
+      en: { href: '?languagePreference=en' },
+
+      cy: { href: '?languagePreference=cy' }
+
+  })
+
+}}
+{% if data['languagePreference'] == "en" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "search-results?languagePreference=en"
+}) }}
+{% else %}
+{{ govukBackLink({
+  text: "Yn ôl",
+  href: "search-results?languagePreference=cy"
+}) }}
+
+{% endif %}
+{% endblock %}
+{% block content %}
+
+{% if data['languagePreference'] == "en" %}
+
+  <div class="govuk-grid-row">
+    
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Information for:</span>
+        {{ data['address'] }}
+      </h1>
+      <h2 class="govuk-heading-m">Public information</h2>
+      {{ govukInsetText({
+        text: "Anybody can view this information"
+      }) }}
+      {{ govukDetails({
+        summaryText: "What does the information mean?",
+        html: "<ul class=\"govuk-list govuk-list--spaced\">" +
+              "<li><strong>Council Tax band</strong><br> The current band for the property.<br> This is based on the property value on 01 April 2003.</li>" +
+              "<li><strong>Local Council</strong><br> The Local Council set the  amount of Council Tax you pay each year</li>" +
+              "<li><strong>Local Council reference number</strong><br> A reference number for the property</li>" +
+              "<li><strong>Improvement indicator</strong><br> If a property has been improved or extended since it was placed in a Council Tax band, a Yes will be shown. This means the band will be reviewed and may increase following the sale of the property.</li>" +
+              "<li><strong>With effect from</strong><br> The date the current band came into effect</li>" +
+              "<li><strong>Mixed-use property</strong><br> A property which is used as a home and a business. For example, a working farm or a flat above a shop.</li>" +
+              "<li><strong>Court code</strong><br> If the Council Tax band has been reviewed by a Valuation Tribunal or High Court, a court code will be shown. The codes are:
+<br>
+                V - Valuation Tribunal determination<br>
+                C - Valuation Tribunal confirmation<br>
+                R - Valuation Tribunal redetermination following High Court referral<br>
+                
+                D - High Court determination<br>
+                H - High Court confirmation<br>
+                E - High Court consent order</li>" +
+              "</ul>"
+      }) }}
+      {{ govukTable({
+        firstCellIsHeader: true,
+        rows: [
+          [
+            {
+              text: "Council Tax band"
+            },
+            {
+              text: "B"
+            }
+          ],
+          [
+            {
+              text: "Local Council"
+              },
+            {
+              html: "<a href='https://www.pembrokeshire.gov.uk/'>Pembrokeshire</a>"
+            }
+          ],
+          [
+            {
+              text: "Local Council reference number"
+            },
+            {
+              text: "110380008111000100"
+            }
+          ],
+          [
+            {
+              text: "Improvement indicator"
+             },
+            {
+              text: "No"
+            }
+          ],
+          [
+            {
+              text: "With effect from"
+            },
+            {
+              text: "9 October 2008"
+            } 
+          ],
+          [
+            {
+              text: "Mixed-use property"
+             },
+            {
+              text: "No"
+            }
+            ],
+            [
+            {
+              text: "Court code"
+             },
+            {
+              text: "None"
+            }
+            ]]
+
+
+      }) }}
+      <h2 class="govuk-heading-m">Your property details</h2>
+      <div class="govuk-inset-text">
+        Only you can see this information.
+      </div>
+      {{ govukDetails({
+        summaryText: "What does the information mean?",
+        html: "<ul class=\"govuk-list govuk-list--spaced\">" +
+              "<li><strong>Total rooms</strong><br> All rooms in your home. This includes living rooms and bedrooms, but does not include bathrooms, kitchens, utility rooms and conservatories.</li>" +
+              "<li><strong>Bedrooms</strong><br> Includes bedrooms used as a study, home office or playroom.</li>" +
+              "<li><strong>Bathrooms</strong><br> With at least a bath or shower, toilet and sink.</li>" +
+              "<li><strong>Type of home</strong><br> For example, a detached house, terraced house or flat.</li>" +
+              "<li><strong>Size of home</strong><br> For houses and bungalows, we use external measurements. For flats, we use internal measurements.</li>" +
+              "<li><strong>Floor level</strong><br>The floor level of your flat, for example 3rd floor</li>" +
+              "<li><strong>Floors</strong><br> The number of floors in your home, for example 2 floors.</li>" +
+              "<li><strong>Parking</strong><br>For example, a single garage or parking on a drive.</li>" +
+              "<li><strong>Features that may affect value</strong><br> These can be positive or negative</li>" +
+              "</ul>"
+      }) }}
+      {{ govukTable({
+        firstCellIsHeader: true,
+        rows: [
+          [
+            {
+              text: "Total rooms"
+              },
+            {
+              text: "4"
+            }
+          ],
+          [
+            {
+              text: "Bedrooms"
+            },
+            {
+              text: "2"
+            }
+          ],
+          [
+            {
+              text: "Bathrooms"
+             },
+            {
+              text: "1"
+            }
+          ],
+          [
+            {
+              text: "Type of home"
+             },
+            {
+              text: "Mid-terraced house"
+            }
+          ],
+          [
+            {
+              text: "Size of home"
+            },
+            {
+              text: "90"
+            } 
+          ],
+          [
+            {
+              text: "Floor level"
+             },
+            {
+              text: "n/a"
+            }
+            ],
+            [
+              {
+                text: "Floors"
+               },
+              {
+                text: "2"
+              }
+              ],
+              [
+                {
+                  text: "Parking"
+                 },
+                {
+                  text: "No parking exists (on or off street)"
+                }
+                ],
+                [
+                  {
+                    text: "Features that may affect value"
+                   },
+                  {
+                    text: "View"
+                  }
+                  ]]
+
+
+      }) }}
+      
+      
+      <h2 class="govuk-heading-m">Is this information correct?</h2>
+      <p>Tell us if you think any of the public information or your property details are incorrect.</p>
+      {{ govukButton({
+        text: "Continue",
+        href: 'let-us-know'
+      }) }}
+      <p class="govuk-body">
+        <a href="#" class="govuk-link">Exit</a>
+      </p>
+    </div>
+    
+  </div>
+
+
+  {% else %}
+  <div class="govuk-grid-row">
+    
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Dyma'r wybodaeth ar gyfer:</span>
+        {{ data['address'] }}
+      </h1>
+      <h1 class="govuk-heading-m">Gwybodaeth gyhoeddus</h1>
+      {{ govukInsetText({
+        text: "Gall unrhyw un weld yr wybodaeth hon."
+      }) }}
+      {{ govukDetails({
+        summaryText: "Beth mae'r wybodaeth yn ei olygu?",
+        html: "<ul class=\"govuk-list govuk-list--spaced\">" +
+              "<li><strong>Band Treth Gyngor</strong><br>Y band y mae’r eiddo ynddo ar hyn o bryd.
+                <br>Sail hwn yw gwerth yr eiddo ar 1 Ebrill 2003.</li>" +
+              "<li><strong>Cyngor Lleol</strong><br>Y Cyngor Lleol sy'n gosod swm y Treth Gyngor yr wyt yn ei dalu bob blwyddyn</li>" +
+              "<li><strong>Cyfeirnod y Cyngor Lleol</strong><br> Cyfeirnod ar gyfer yr eiddo</li>" +
+              "<li><strong>Dangosydd gwelliant</strong><br>Os yw'r eiddo wedi cael ei wella neu ei ymestyn ers iddo gael ei roi mewn band Treth Gyngor, dangosir 'Oes'. Mae hyn yn golygu bydd y band yn cael ei adolygu, a gall gynyddu ar ôl i'r eiddo gael ei werthu neu ar ôl ailbrisiad</li>" +
+              "<li><strong>Dyddiad dod i rym</strong><br>Y dyddiad wnaeth y band presennol ddechrau</li>" +
+              "<li><strong>Eiddo defnydd cymysg</strong><br> Eiddo sy'n cael ei ddefnyddio fel cartref a busnes. Er enghraifft,  fferm weithredol, neu fflat uwchben siop.</li>" +
+              "<li><strong>Cod y Llys</strong><br>Os yw’r band Treth Gyngor wedi ei adolygu gan Dribiwnlys Prisio neu Uchel Lys, dangosir cod y llys. Dyma’r codau:<br>
+
+                V - Penderfyniad gan Dribiwnlys Prisio<br>
+                C - Cadarnhad gan Dribiwnlys Prisio<br>
+                R - Ail benderfyniad y Tribiwnlys Prisio yn dilyn atgyfeiriad gan yr Uchel Lys<br>
+                
+                D - Penderfyniad gan Uchel Lys<br>
+                H - Cadarnhad gan Uchel Lys<br>
+                E - Gorchymyn cydsynio’r Uchel Lys</li>" +
+              "</ul>"
+      }) }}
+      {{ govukTable({
+        firstCellIsHeader: true,
+        rows: [
+          [
+            {
+              text: "Band Treth Gyngor"
+            },
+            {
+              text: "B"
+            }
+          ],
+          [
+            {
+              text: "Cyngor Lleol"
+            },
+            {
+              html: "<a href='https://www.pembrokeshire.gov.uk/'>Pembrokeshire</a>"
+            }
+          ],
+          [
+            {
+              text: "Cyfeirnod y Cyngor Lleol"
+            },
+            {
+              text: "110380008111000100"
+            }
+          ],
+          [
+            {
+              text: "Dangosydd gwelliant"
+             },
+            {
+              text: "Nacoes"
+            }
+          ],
+          [
+            {
+              text: "Dyddiad dod i rym"
+            },
+            {
+              text: "9 Hydref 2008"
+            } 
+          ],
+          [
+            {
+              text: "Eiddo defnydd cymysg"
+             },
+            {
+              text: "Nacoes"
+            }
+            ],
+            [
+            {
+              text: "Cod y Llys"
+             },
+            {
+              text: "Dim"
+            }
+            ]]
+
+
+      }) }}
+      <h2 class="govuk-heading-m">Manylion dy eiddo</h2>
+      {{ govukInsetText({
+        text: "Dim ond ti sy’n gallu gweld yr wybodaeth hon."
+      }) }}
+      {{ govukDetails({
+        summaryText: "Beth mae'r wybodaeth yn ei olygu?",
+        html: "<ul class=\"govuk-list govuk-list--spaced\">" +
+              "<li><strong>Pob ystafell</strong><br> Pob ystafell yn dy gartref. Mae hyn yn cynnwys  ystafelloedd byw ac ystafelloedd gwely, ond nid yw’n cynnwys ystafelloedd ymolchi, ceginau, ystafelloedd aml-bwrpas nac ystafelloedd gwydr.</li>" +
+              "<li><strong>Ystafelloedd gwely</strong><br> Ystafelloedd sy'n cael eu defnyddio ar gyfer astudio/gweithio gartre neu ystafelloedd chwarae.</li>" +
+              "<li><strong>Ystafelloedd ymolchi</strong><br> Gydag o leiaf bath neu gawod, toiled a basn.</li>" +
+              "<li><strong>Math o gartref</strong><br> Er enghraifft, tŷ ar wahân, tŷ teras neu fflat.</li>" +
+              "<li><strong>Maint y cartref</strong><br> Ar gyfer tai a byngalos, rydym yn defnyddio mesuriadau allanol. Ar gyfer fflatiau, rydym yn defnyddio mesuriadau mewnol. </li>" +
+              "<li><strong>Llawr y fflat</strong><br> Y llawr lle mae’r fynedfa i’r fflat wedi’i leoli.</li>" +
+              "<li><strong>Lloriau</strong><br> Nifer y lloriau yn dy gartref, er enghraifft 2.</li>" +
+              "<li><strong>Parcio</strong><br> Er enghraifft, garej sengl neu parcio ar y dreif.</li>" +
+              "<li><strong>Pethau a all effeithio ar werth y cartref</strong><br>Maen nhw'n gallu bod yn bositif neu'n negyddol.</li>" +
+              "</ul>"
+      }) }}
+      {{ govukTable({
+        firstCellIsHeader: true,
+        rows: [
+          [
+            {
+              text: "Pob ystafell"
+              },
+            {
+              text: "4"
+            }
+          ],
+          [
+            {
+              text: "Ystafelloedd gwely"
+            },
+            {
+              text: "2"
+            }
+          ],
+          [
+            {
+              text: "Ystafelloedd ymolchi"
+             },
+            {
+              text: "1"
+            }
+          ],
+          [
+            {
+              text: "Math o gartref"
+             },
+            {
+              text: "Mid-terraced house"
+            }
+          ],
+          [
+            {
+              text: "Maint y cartref"
+            },
+            {
+              text: "90"
+            } 
+          ],
+          [
+            {
+              text: "Llawr y fflat"
+             },
+            {
+              text: "n/a"
+            }
+            ],
+            [
+              {
+                text: "Lloriau"
+               },
+              {
+                text: "2"
+              }
+              ],
+              [
+                {
+                  text: "Parcio"
+                 },
+                {
+                  text: "No parking exists (on or off street)"
+                }
+                ],
+                [
+                  {
+                    text: "Pethau a all effeithio ar werth y cartref"
+                   },
+                  {
+                    text: "View"
+                  }
+                  ]]
+
+
+      }) }}
+
+
+    <h2 class="govuk-heading-m">Ydy’r manylion hyn yn gywir?</h2>
+      <p>Rho wybod i ni os wyt ti’n meddwl bod unrhywbeth am yr wybodaeth gyhoeddus neu fanylion dy eiddo yn anghywir.</p>
+      {{ govukButton({
+        text: "Ymlaen",
+        classes: "govuk-button--primary",
+        href: 'let-us-know'
+      }) }}
+      <p class="govuk-body">
+        <a href="#" class="govuk-link">Gadael</a>
+      </p>
+    </div>
+  </div>
+
+
+  {% endif %}
+{% endblock %}

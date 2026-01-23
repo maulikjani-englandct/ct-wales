@@ -1,0 +1,102 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Which local authority is related to this property? – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="/v1-2/parking-check" method="post">
+        {{ govukRadios({
+          name: "parking-type",
+          fieldset: {
+            legend: {
+              text: "What's the correct parking type for this property?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "Guidance on parking"
+          },
+          items: [
+
+          {
+            value: "garaging",
+            text: "Garaging",
+            hint: {
+              text: "Info on garaging"
+            }
+          },
+          {
+            value: "open-parking",
+            text: "Open parking",
+            hint: {
+              text: "Info on open parking"
+            }
+          },
+          {
+            value: "carport",
+            text: "Carport",
+            hint: {
+              text: "Info on open parking"
+            }
+          },
+          {
+            value: "remote-garaging",
+            text: "Remote garaging",
+            hint: {
+              text: "Info on remote garaging"
+            }
+          },
+          {
+            value: "open-parking",
+            text: "Open parking space for 1-9 cars",
+            hint: {
+              text: "Info on open parking space"
+            }
+          },
+          {
+            value: "street-communal",
+            text: "Steet/Communal parking only",
+            hint: {
+              text: "Info on no parking space"
+            }
+          },
+          {
+            value: "no-parking",
+            text: "No parking exists",
+            hint: {
+              text: "Info on no parking space"
+            }
+          }
+          ]
+        }) }}
+<div class="govuk-button-group">
+  {{ govukButton({
+    text: "Continue",
+    type: "submit"
+  }) }}
+
+  {{ govukButton({
+    text: "Cancel",
+    classes: "govuk-button--secondary"
+  }) }}
+</div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

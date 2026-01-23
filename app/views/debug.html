@@ -1,0 +1,10 @@
+{% extends "layouts/main.html" %}
+
+{% block content %}
+<a href="/v1-5/challenge/start" class="govuk-back-link">Back</a>
+<pre id="sessionData"></pre>
+<script>
+  const sessionData = JSON.parse('{{ data | safe | escape("js") }}');
+  document.getElementById('sessionData').textContent = JSON.stringify(sessionData, null, 2);
+</script>
+{% endblock %}

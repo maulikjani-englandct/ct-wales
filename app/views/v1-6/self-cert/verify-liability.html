@@ -1,0 +1,114 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+{% if data['languagePreference'] == "en" %}
+Enter your Council Tax reference number – GOV.UK Prototype Kit
+
+{% else %}
+Rho dy gyfeirnod Treth Gyngor – GOV.UK Prototype Kit
+
+{% endif %}
+{% endblock %}
+{% block header %}
+{% if data['languagePreference'] == "en" %}
+{{ hmrcHeader({
+    serviceUrl : "/v1-6/start?languagePreference=en",
+    useTudorCrown: "true"
+  }) }}
+
+  {% else %}
+  {{ hmrcHeader({
+    serviceUrl : "/v1-6/start?languagePreference=cy",
+language : "cy",
+    useTudorCrown: true
+  }) }}
+{% endif %}
+{% endblock %}
+{% block beforeContent %}
+
+{{
+
+  hmrcLanguageSelect({
+
+      language: 'cy' if data['languagePreference'] == 'cy' else 'en',
+
+      en: { href: '?languagePreference=en' },
+
+      cy: { href: '?languagePreference=cy' }
+
+  })
+
+}}
+{% if data['languagePreference'] == "en" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:history.back()"
+}) }}
+{% else %}
+{{ govukBackLink({
+  text: "Yn ôl",
+  href: "javascript:history.back()"
+}) }}
+{% endif %}
+{% endblock %}
+
+{% block content %}
+
+{% if data['languagePreference'] == "en" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+<form class="form" action="/v1-6/verification-complete" method="post">
+  <span class="govuk-caption-l">19, St David's Crescent, Cardiff, CF5 4GP</span>
+<h1 class="govuk-heading-l">Enter your Council Tax reference number</h1>
+
+<p class="govuk-body">You can find your Council Tax reference number on your Council Tax bill.</p>
+
+{{ govukInput({
+  label: {
+    text: "Council Tax reference number"
+  },
+  id: "council-tax-bill-number",
+  name: "council-tax-bill-number",
+  classes: "govuk-input--width-20"
+}) }}
+
+        {{ govukButton({
+          text: "Continue",
+          type: "submit"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+  {% else %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+<form class="form" action="/v1-6/verification-complete" method="post">
+    <span class="govuk-caption-l">19, St David's Crescent, Cardiff, CF5 4GP</span>
+<h1 class="govuk-heading-l">Rho dy gyfeirnod Treth Gyngor</h1>
+
+<p class="govuk-body">Rwyt ti’n gallu dod o hyd i’r cyfeirnod Treth Gyngor ar dy fil Treth Gyngor.</p>
+
+{{ govukInput({
+  label: {
+    text: "Cyfeirnod Treth Gyngor"
+  },
+  id: "council-tax-bill-number-cy",
+  name: "council-tax-bill-number",
+  classes: "govuk-input--width-20"
+}) }}
+
+        {{ govukButton({
+          text: "Parhau",
+          type: "submit"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,395 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+{% if data['languagePreference'] == "en" %}
+Information for: 19, St David's Crescent, Cardiff, CF5 4GP – GOV.UK Prototype Kit
+{% else %}
+Dyma'r wybodaeth ar gyfer: 19, St David's Crescent, Cardiff, CF5 4GP – GOV.UK Prototype Kit
+{% endif %}
+{% endblock %}
+
+{% block header %}
+{% if data['languagePreference'] == "en" %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-5-2/start?languagePreference=en",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+
+{% else %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-5-2/start?languagePreference=cy",
+    language : "cy",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+
+{{
+
+  hmrcLanguageSelect({
+
+      language: 'cy' if data['languagePreference'] === 'cy' else 'en',
+
+      en: { href: '?languagePreference=en' },
+
+      cy: { href: '?languagePreference=cy' }
+
+  })
+
+}}
+{% if data['languagePreference'] == "en" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:history.back()"
+}) }}
+{% else %}
+{{ govukBackLink({
+  text: "Yn ôl",
+  href: "javascript:history.back()"
+}) }}
+
+{% endif %}
+{% endblock %}
+{% block content %}
+
+{% if data['languagePreference'] == "en" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Information for:</span>
+        19, St David's Crescent, Cardiff, CF5 4GP
+      </h1>
+
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">Your property details</h2>
+        </div>
+        <div class="govuk-summary-card__content">
+          <p class="govuk-body-s">Only you can see this information.</p>
+          {{ govukSummaryList({
+            rows: [
+              {
+                key: {
+                  text: "Total rooms"
+                },
+                value: {
+                  text: "4"
+                }
+              },
+              {
+                key: {
+                  text: "Bedrooms"
+                },
+                value: {
+                  text: "2"
+                }
+              },
+              {
+                key: {
+                  text: "Bathrooms"
+                },
+                value: {
+                  text: "1"
+                }
+              },
+              {
+                key: {
+                  text: "Type of home"
+                },
+                value: {
+                  text: "Mid-terraced house"
+                }
+              },
+              {
+                key: {
+                  text: "Size of home"
+                },
+                value: {
+                  text: "90 m²"
+                }
+              },
+              {
+                key: {
+                  text: "Floors"
+                },
+                value: {
+                  text: "2"
+                }
+              },
+              {
+                key: {
+                  text: "Parking"
+                },
+                value: {
+                  text: "Street or public parking"
+                }
+              },
+              {
+                key: {
+                  text: "Features that may affect value"
+                },
+                value: {
+                  text: "View"
+                }
+              }
+            ]
+          }) }}
+        </div>
+      </div>
+
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">Public information</h2>
+        </div>
+        <div class="govuk-summary-card__content">
+          <p class="govuk-body-s">Anybody can view this information.</p>
+          {{ govukSummaryList({
+            rows: [
+              {
+                key: {
+                  text: "Council Tax band"
+                },
+                value: {
+                  text: "D"
+                }
+              },
+              {
+                key: {
+                  text: "Local Council"
+                },
+                value: {
+                  html: "<a href='https://www.cardiff.gov.uk/ENG/Pages/default.aspx'>Cardiff</a>"
+                }
+              },
+              {
+                key: {
+                  text: "Local Council reference number"
+                },
+                value: {
+                  text: "110380008111000100"
+                }
+              },
+              {
+                key: {
+                  text: "Improvement indicator"
+                },
+                value: {
+                  text: "Yes"
+                }
+              },
+              {
+                key: {
+                  text: "With effect from"
+                },
+                value: {
+                  text: "9 October 2008"
+                }
+              },
+              {
+                key: {
+                  text: "Mixed-use property"
+                },
+                value: {
+                  text: "No"
+                }
+              },
+              {
+                key: {
+                  text: "Court code"
+                },
+                value: {
+                  text: "None"
+                }
+              }
+            ]
+          }) }}
+        </div>
+      </div>
+
+      <h2 class="govuk-heading-m">Is this information correct?</h2>
+      <p>Tell us if you think any of your property details are incorrect.</p>
+      <p>Once you have checked the details of your property, you will have the opportunity to review your Council Tax Band.</p>
+      {{ govukButton({
+        text: "Review details",
+        href: 'incorrect-info'
+      }) }}
+      <p class="govuk-body">
+        <a href="#" class="govuk-link">Exit</a>
+      </p>
+    </div>
+  </div>
+
+{% else %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Dyma'r wybodaeth ar gyfer:</span>
+        19, St David's Crescent, Cardiff, CF5 4GP
+      </h1>
+
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">Manylion dy eiddo</h2>
+        </div>
+        <div class="govuk-summary-card__content">
+          <p class="govuk-body-s">Dim ond ti sy'n gallu gweld yr wybodaeth hon.</p>
+          {{ govukSummaryList({
+            rows: [
+              {
+                key: {
+                  text: "Pob ystafell"
+                },
+                value: {
+                  text: "4"
+                }
+              },
+              {
+                key: {
+                  text: "Ystafelloedd gwely"
+                },
+                value: {
+                  text: "2"
+                }
+              },
+              {
+                key: {
+                  text: "Ystafelloedd ymolchi"
+                },
+                value: {
+                  text: "1"
+                }
+              },
+              {
+                key: {
+                  text: "Math o gartref"
+                },
+                value: {
+                  text: "Tŷ canol teras"
+                }
+              },
+              {
+                key: {
+                  text: "Maint y cartref"
+                },
+                value: {
+                  text: "90 m²"
+                }
+              },
+              {
+                key: {
+                  text: "Lloriau"
+                },
+                value: {
+                  text: "2"
+                }
+              },
+              {
+                key: {
+                  text: "Parcio"
+                },
+                value: {
+                  text: "Parcio cyhoeddus"
+                }
+              },
+              {
+                key: {
+                  text: "Pethau sy'n gallu effeithio ar y gwerth"
+                },
+                value: {
+                  text: "Yr olygfa"
+                }
+              }
+            ]
+          }) }}
+        </div>
+      </div>
+
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">Gwybodaeth gyhoeddus</h2>
+        </div>
+        <div class="govuk-summary-card__content">
+          <p class="govuk-body-s">Gall unrhyw un weld yr wybodaeth hon.</p>
+          {{ govukSummaryList({
+            rows: [
+              {
+                key: {
+                  text: "Band Treth Gyngor"
+                },
+                value: {
+                  text: "D"
+                }
+              },
+              {
+                key: {
+                  text: "Cyngor Lleol"
+                },
+                value: {
+                  html: "<a href='https://www.cardiff.gov.uk/ENG/Pages/default.aspx'>Caerdydd</a>"
+                }
+              },
+              {
+                key: {
+                  text: "Cyfeirnod y Cyngor Lleol"
+                },
+                value: {
+                  text: "110380008111000100"
+                }
+              },
+              {
+                key: {
+                  text: "Dangosydd gwelliant"
+                },
+                value: {
+                  text: "Oes"
+                }
+              },
+              {
+                key: {
+                  text: "Dyddiad dod i rym"
+                },
+                value: {
+                  text: "9 Hydref 2008"
+                }
+              },
+              {
+                key: {
+                  text: "Eiddo defnydd cymysg"
+                },
+                value: {
+                  text: "Nac oes"
+                }
+              },
+              {
+                key: {
+                  text: "Cod y Llys"
+                },
+                value: {
+                  text: "Dim"
+                }
+              }
+            ]
+          }) }}
+        </div>
+      </div>
+
+      <h2 class="govuk-heading-m">Ydy'r manylion hyn yn gywir?</h2>
+      <p>Rho wybod i ni os wyt ti'n meddwl bod unrhywbeth am yr wybodaeth gyhoeddus neu fanylion dy eiddo yn anghywir.</p><p>Ar ôl gwirio manylion dy eiddo, bydd cyfle i ti adolygu dy Fand Treth Gyngor.</p>
+      {{ govukButton({
+        text: "Gwirio'r manylion",
+        classes: "govuk-button--primary",
+        href: 'incorrect-info'
+      }) }}
+      <p class="govuk-body">
+        <a href="#" class="govuk-link">Gadael</a>
+      </p>
+    </div>
+  </div>
+
+{% endif %}
+{% endblock %}

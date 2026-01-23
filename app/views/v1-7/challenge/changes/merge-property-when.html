@@ -1,0 +1,140 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+{% if data['languagePreference'] == "en" %}
+When was the work to merge your properties completed? – GOV.UK Prototype Kit
+ {% else %}
+Pryd wnaeth y gwaith o gyfuno dy gartref orffen? – GOV.UK Prototype Kit
+ {% endif %}
+{% endblock %}
+
+
+{% block header %}
+{% if data['languagePreference'] == "en" %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-7/start?languagePreference=en",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+
+{% else %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-7/start?languagePreference=cy",
+    language : "cy",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+
+{{
+
+  hmrcLanguageSelect({
+
+      language: 'cy' if data['languagePreference'] === 'cy' else 'en',
+
+      en: { href: '?languagePreference=en' },
+
+      cy: { href: '?languagePreference=cy' }
+
+  })
+
+}}
+{% if data['languagePreference'] == "en" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "merge-property?languagePreference=en"
+}) }}
+{% else %}
+{{ govukBackLink({
+  text: "Yn ôl",
+  href: "merge-property?languagePreference=cy"
+}) }}
+
+{% endif %}
+{% endblock %}
+{% block content %}
+   <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+<form action="new-address" method="post">
+{% if data['languagePreference'] == "en" %}
+  {{ govukDateInput({
+    id: "merged-property-start",
+    namePrefix: "merged-property-start",
+    fieldset: {
+      legend: {
+        text: "When was the work to merge your properties completed?",
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--l"
+      }
+    },
+    hint: {
+      text: "For example, if the work was completed on 27 April 2025, enter 27 4 2025."
+    }
+  }) }}
+  <button class="govuk-button" data-module="govuk-button">Continue</button>
+{% else %}
+       <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" role="group" aria-describedby="notice-issued-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+       Pryd wnaeth y gwaith o gyfuno dy gartref orffen?
+      </h1>
+    </legend>
+    <div id="notice-issued-hint" class="govuk-hint">
+      Er enghraifft, os wnaeth y gwaith orffen ar 27 Ebrill 2025, rhowch 27 4 2025.
+    </div>
+    <div class="govuk-date-input" id="notice-issued">
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="notice-issued-day">
+            Dydd
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="notice-issued-day" name="notice-issued-day" type="text" inputmode="numeric">
+        </div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="notice-issued-month">
+            Mis
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="notice-issued-month" name="notice-issued-month" type="text" inputmode="numeric">
+        </div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="notice-issued-year">
+            Blwyddyn
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="notice-issued-year" name="notice-issued-year" type="text" inputmode="numeric">
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
+  <button class="govuk-button" data-module="govuk-button">Parhau</button>
+{% endif %}
+</form>
+    </div>
+    </div>
+
+<script>
+  // Handle language switching without creating new history entries
+  document.addEventListener('DOMContentLoaded', function() {
+    var langLinks = document.querySelectorAll('.hmrc-language-select__list-item a');
+
+    langLinks.forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        var newUrl = this.href;
+        // Replace current history state instead of pushing new one
+        history.replaceState(null, '', newUrl);
+        // Reload page to show new language
+        window.location.reload();
+      });
+    });
+  });
+</script>
+{% endblock %}

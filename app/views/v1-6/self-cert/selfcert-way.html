@@ -1,0 +1,136 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+{% if data['languagePreference'] == "en" %}
+How do you want to verify your Council Tax bill liability? – GOV.UK Prototype Kit
+
+{% else %}
+Sut wyt ti eisiau gwirio dy atebolrwydd am fil y Dreth Gyngor? – GOV.UK Prototype Kit
+
+{% endif %}
+{% endblock %}
+{% block header %}
+{% if data['languagePreference'] == "en" %}
+{{ hmrcHeader({
+    serviceUrl : "/v1-6/start?languagePreference=en",
+    useTudorCrown: "true"
+  }) }}
+
+  {% else %}
+  {{ hmrcHeader({
+    serviceUrl : "/v1-6/start?languagePreference=cy",
+language : "cy",
+    useTudorCrown: true
+  }) }}
+{% endif %}
+{% endblock %}
+{% block beforeContent %}
+
+{{
+
+  hmrcLanguageSelect({
+
+      language: 'cy' if data['languagePreference'] == 'cy' else 'en',
+
+      en: { href: '?languagePreference=en' },
+
+      cy: { href: '?languagePreference=cy' }
+
+  })
+
+}}
+{% if data['languagePreference'] == "en" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:history.back()"
+}) }}
+{% else %}
+{{ govukBackLink({
+  text: "Yn ôl",
+  href: "javascript:history.back()"
+}) }}
+{% endif %}
+{% endblock %}
+
+{% block content %}
+
+{% if data['languagePreference'] == "en" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+<form class="form" action="/v1-6/verification-method" method="post">
+  <span class="govuk-caption-l">19, St David's Crescent, Cardiff, CF5 4GP</span>
+<h1 class="govuk-heading-l">How will you prove you are responsible for paying Council Tax?</h1>
+
+<p class="govuk-body">Choose how you would like to prove you are responsible for paying Council Tax on the property</p>
+
+       {{ govukRadios({
+        name: "verification-method",
+        fieldset: {
+          legend: {
+            text: "",
+            classes: "govuk-visually-hidden"
+          }
+        },
+        items: [
+          {
+            value: "enter-number",
+            text: "Enter Council Tax bill Number"
+          },
+          {
+            value: "upload-bill",
+            text: "Upload Council Tax bill"
+          }
+        ]
+      }) }}
+
+        {{ govukButton({
+          text: "Continue",
+          type: "submit"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+  {% else %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+<form class="form" action="/v1-6/verification-method" method="post">
+    <span class="govuk-caption-l">19, St David's Crescent, Cardiff, CF5 4GP</span>
+<h1 class="govuk-heading-l">Sut wyt ti am brofi dy fod yn gyfrifol am dalu Treth Gyngor?</h1>
+
+<p class="govuk-body">Dewisa sut wyt ti eisiau profi dy fod yn gyfrifol am dalu Treth Gyngor ar yr eiddo.</p>
+
+       {{ govukRadios({
+        name: "verification-method",
+        fieldset: {
+          legend: {
+            text: "Sut wyt ti am brofi dy fod yn gyfrifol am dalu Treth Gyngor?",
+            classes: "govuk-visually-hidden"
+          }
+        },
+        items: [
+          {
+            value: "enter-number",
+            text: "Rhoi cyfeirnod bil Treth Gyngor"
+          },
+          {
+            value: "upload-bill",
+            text: "Uwchlwytho bil Treth Gyngor"
+          }
+        ]
+      }) }}
+
+        {{ govukButton({
+          text: "Parhau",
+          type: "submit"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+  {% endif %}
+{% endblock %}

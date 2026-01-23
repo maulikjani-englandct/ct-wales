@@ -1,0 +1,418 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+{% if data['languagePreference'] == "en" %}
+Search results for LL55 2EW – GOV.UK Prototype Kit
+ {% else %}
+ Canlyniadau chwilio am LL55 2EW – GOV.UK Prototype Kit
+ {% endif %}
+{% endblock %}
+
+{% block header %}
+{% if data['languagePreference'] == "en" %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-4/start_en",
+    useTudorCrown: "true"
+  }) }}
+
+{% else %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-4/start_cy",
+    useTudorCrown: "true"
+  }) }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+
+{{
+
+  hmrcLanguageSelect({
+
+      language: 'cy' if data['languagePreference'] === 'cy' else 'en',
+
+      en: { href: '?languagePreference=en' },
+
+      cy: { href: '?languagePreference=cy' }
+
+  })
+
+}}
+{% if data['languagePreference'] == "en" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "search?languagePreference=en"
+}) }}
+{% else %}
+{{ govukBackLink({
+  text: "Yn ôl",
+  href: "search?languagePreference=cy"
+}) }}
+
+{% endif %}
+{% endblock %}
+{% block content %}
+
+{% if data['languagePreference'] == "en" %}
+
+  <div class="govuk-grid-row">
+    
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-xl">
+        Search results for LL55 2EW
+      </h1>
+      <p>Showing 1 - 10 of 106 results</p>
+      {{ govukTable({
+        firstCellIsHeader: false,
+        head: [
+          {
+            text: "Address"
+          },
+          {
+            text: "Council Tax band"
+          },
+          {
+            text: "Local authority"
+          }
+        ],
+        rows: [
+          [
+            {
+              html: "<a href='property-details?address=1, Lon Helen, Caernarfon, LL55 2EW'>1, Lon Helen, Caernarfon, LL55 2EW</a>"
+            },
+            {
+              text: "C"
+            }
+            ,
+            {
+              text: "Gwynedd ",
+              html: "<a href='https://www.gwynedd.llyw.cymru/'>Gwynedd </a>"
+            }
+          ],
+          [
+            {
+           html: "<a href='#'>2, Lon Helen, Caernarfon, LL55 2EW</a>"
+            },
+            {
+              text: "B"
+            }
+            ,
+            {
+              text: "Gwynedd ",
+              html: "<a href='https://www.gwynedd.llyw.cymru/'>Gwynedd </a>"
+            }
+          ],
+          [
+            {
+              html: "<a href='#'>3, Lon Helen, Caernarfon, LL55 2EW</a>"
+            },
+            {
+              text: "B"
+            }
+            ,
+            {
+              text: "Gwynedd ",
+              html: "<a href='https://www.gwynedd.llyw.cymru/'>Gwynedd </a>"
+            }
+          ],
+          [
+            {
+              html: "<a href='#'>4, Lon Helen, Caernarfon, LL55 2EW</a>"
+            },
+            {
+              text: "B"
+            }
+            ,
+            {
+              text: "Gwynedd ",
+              html: "<a href='https://www.gwynedd.llyw.cymru/'>Gwynedd </a>"
+            }
+          ],
+          [
+            {
+              html: "<a href='#'>5, Lon Helen, Caernarfon, LL55 2EW</a>"
+            },
+            {
+              text: "B"
+            }
+            ,
+            {
+              text: "Gwynedd ",
+              html: "<a href='https://www.gwynedd.llyw.cymru/'>Gwynedd </a>"
+            }
+          ],
+          [
+            {
+              html: "<a href='#'>6, Lon Helen, Caernarfon, LL55 2EW</a>"
+            },
+            {
+              text: "B"
+            }
+            ,
+            {
+              text: "Gwynedd ",
+              html: "<a href='https://www.gwynedd.llyw.cymru/'>Gwynedd </a>"
+            }
+          ],
+          [
+            {
+              html: "<a href='#'>7, Lon Helen, Caernarfon, LL55 2EW</a>"
+            },
+            {
+              text: "B"
+            }
+            ,
+            {
+              text: "Gwynedd ",
+              html: "<a href='https://www.gwynedd.llyw.cymru/'>Gwynedd </a>"
+            }
+          ],
+          [
+            {
+              html: "<a href='#'>8, Lon Helen, Caernarfon, LL55 2EW</a>"
+            },
+            {
+              text: "B"
+            }
+            ,
+            {
+              text: "Gwynedd ",
+              html: "<a href='https://www.gwynedd.llyw.cymru/'>Gwynedd </a>"
+            }
+          ],
+          [
+            {
+              html: "<a href='#'>9, Lon Helen, Caernarfon, LL55 2EW</a>"
+            },
+            {
+              text: "B"
+            }
+            ,
+            {
+              text: "Gwynedd ",
+              html: "<a href='https://www.gwynedd.llyw.cymru/'>Gwynedd </a>"
+            }
+          ],
+          [
+            {
+              html: "<a href='#'>10, Lon Helen, Caernarfon, LL55 2EW</a>"
+            },
+            {
+              text: "B"
+            }
+            ,
+            {
+              text: "Gwynedd ",
+              html: "<a href='https://www.gwynedd.llyw.cymru/'>Gwynedd </a>"
+            }
+          ]
+        ]
+      }) }}
+      {{ govukPagination({
+        next: {
+          href: "#"
+        },
+        items: [
+          {
+            number: 1,
+            current: true,
+            href: "#"
+          },
+          {
+            number: 2,
+            href: "#"
+          }
+        ]
+      }) }}
+    </div>
+  </div>
+
+
+  {% else %}
+  <div class="govuk-grid-row">
+    
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-xl">
+        Canlyniadau chwilio am LL55 2EW
+      </h1>
+      <p>Yn dangos 1 - 10 o 106 canlyniad</p>
+      {{ govukTable({
+        firstCellIsHeader: false,
+        head: [
+          {
+            text: "Cyfeiriad"
+          },
+          {
+            text: "Band Treth Gyngor"
+          },
+          {
+            text: "Cyngor lleol"
+          }
+        ],
+        rows: [
+          [
+            {
+              html: "<a href='property-details?address=, Lon Helen, Caernarfon, LL55 2EW'>1, Lon Helen, Caernarfon, LL55 2EW</a>"
+            },
+            {
+              text: "C"
+            }
+            ,
+            {
+              text: "Gwynedd",
+              html: "<a href='https://www.gwynedd.llyw.cymru/'>Gwynedd</a>"
+            }
+          ],
+          [
+            {
+              html: "<a href='#'>2, Lon Helen, Caernarfon, LL55 2EW</a>"
+            },
+            {
+              text: "B"
+            }
+            ,
+            {
+              text: "Gwynedd",
+              html: "<a href='https://www.gwynedd.llyw.cymru/'>Gwynedd</a>"
+            }
+          ],
+          [
+            {
+              html: "<a href='#'>3, Lon Helen, Caernarfon, LL55 2EW</a>"
+            },
+            {
+              text: "B"
+            }
+            ,
+            {
+              text: "Gwynedd",
+              html: "<a href='https://www.gwynedd.llyw.cymru/'>Gwynedd</a>"
+            }
+          ],
+          [
+            {
+              html: "<a href='#'>4, Lon Helen, Caernarfon, LL55 2EW</a>"
+            },
+            {
+              text: "B"
+            }
+            ,
+            {
+              text: "Gwynedd",
+              html: "<a href='https://www.gwynedd.llyw.cymru/'>Gwynedd</a>"
+            }
+          ],
+          [
+            {
+              html: "<a href='#'>5, Lon Helen, Caernarfon, LL55 2EW</a>"
+            },
+            {
+              text: "B"
+            }
+            ,
+            {
+              text: "Gwynedd",
+              html: "<a href='https://www.gwynedd.llyw.cymru/'>Gwynedd</a>"
+            }
+          ],
+          [
+            {
+              html: "<a href='#'>6, Lon Helen, Caernarfon, LL55 2EW</a>"
+            },
+            {
+              text: "B"
+            }
+            ,
+            {
+              text: "Gwynedd",
+              html: "<a href='https://www.gwynedd.llyw.cymru/'>Gwynedd</a>"
+            }
+          ],
+          [
+            {
+              html: "<a href='#'>7, Lon Helen, Caernarfon, LL55 2EW</a>"
+            },
+            {
+              text: "B"
+            }
+            ,
+            {
+              text: "Gwynedd",
+              html: "<a href='https://www.gwynedd.llyw.cymru/'>Gwynedd</a>"
+            }
+          ],
+          [
+            {
+              html: "<a href='#'>8, Lon Helen, Caernarfon, LL55 2EW</a>"
+            },
+            {
+              text: "B"
+            }
+            ,
+            {
+              text: "Gwynedd",
+              html: "<a href='https://www.gwynedd.llyw.cymru/'>Gwynedd</a>"
+            }
+          ],
+          [
+            {
+              html: "<a href='#'>9, Lon Helen, Caernarfon, LL55 2EW</a>"
+            },
+            {
+              text: "B"
+            }
+            ,
+            {
+              text: "Gwynedd",
+              html: "<a href='https://www.gwynedd.llyw.cymru/'>Gwynedd</a>"
+            }
+          ],
+          [
+            {
+              html: "<a href='#'>10, Lon Helen, Caernarfon, LL55 2EW</a>"
+            },
+            {
+              text: "B"
+            }
+            ,
+            {
+              text: "Gwynedd",
+              html: "<a href='https://www.gwynedd.llyw.cymru/'>Gwynedd</a>"
+            }
+          ]
+        ]
+      }) }}
+      <nav class="govuk-pagination" aria-label="Pagination">
+        <ul class="govuk-pagination__list">
+          <li class="govuk-pagination__item govuk-pagination__item--current">
+            <a class="govuk-link govuk-pagination__link" href="#" aria-label="Page 1">
+              1
+            </a>
+          </li>
+          <li class="govuk-pagination__item">
+            <a class="govuk-link govuk-pagination__link" href="#" aria-label="Page 2" aria-current="page">
+              2
+            </a>
+          </li>
+        </ul>
+        <div class="govuk-pagination__next">
+          <a class="govuk-link govuk-pagination__link" href="#" rel="next">
+            <span class="govuk-pagination__link-title">
+              Nesaf
+            </span>
+            <svg class="govuk-pagination__icon govuk-pagination__icon--next" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+              <path d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
+            </svg>
+          </a>
+        </div>
+      </nav>
+    </div>
+
+    </div>
+  </div>
+
+
+  {% endif %}
+{% endblock %}

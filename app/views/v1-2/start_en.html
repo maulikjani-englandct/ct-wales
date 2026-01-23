@@ -1,0 +1,96 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Start page – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+{% block beforeContent %}
+
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#"
+      },
+      {
+        text: "Housing and local services",
+        href: "#"
+      },
+      {
+        text: "Council Tax"
+      }
+    ]
+  }) }}
+
+{% endblock %}
+{% block content %}
+
+  <div class="govuk-grid-row">
+    
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Check your Council Tax band
+      </h1>
+      <div class="govuk-inset-text">
+        <p>This page is available in English and <a href='start_cy'>Welsh (Cymraeg)</a>. You can change the language at any time.</p>
+ </div>
+
+      <p>Use the Check your Council Tax Band service to view the Council Tax band of any property in Wales</p>
+      
+      <h2 class="govuk-heading-m">Who can use this service</h2>
+
+      <p>
+        Anyone can use this service to view the Council Tax band of a property. You do not need to sign in to view basic property details</p>
+        <h2 class="govuk-heading-m">View additional property details</h2>
+     <p>If you pay the council tax for a property you can also:</p>
+     <ul class="govuk-list govuk-list--bullet">
+      <li>view additional property details</li>
+      <li>tell us if you think the property details are wrong</li>
+      </ul>
+      <p>You will need a Government Gateway account to sign in.</p>
+      <p><a class="govuk-link" href="">Register for a Government Gateway account</a></p>
+     </ul>
+      {{ govukButton({
+        text: "Start now",
+        href: "search?languagePreference=en",
+        isStartButton: true
+      }) }}
+
+     </div>
+
+    <div class="govuk-grid-column-one-third">
+
+      <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
+        <h2 class="govuk-heading-m" id="subsection-title">
+          Related content
+        </h2>
+        <nav role="navigation" aria-labelledby="subsection-title">
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li>
+              <a href="https://www.gov.uk/council-tax">
+                How Council Tax works
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                Council Tax in Wales
+              </a>
+            </li>
+            <li>
+              <a href="https://www.gov.uk/guidance/understand-how-council-tax-bands-are-assessed">
+                How domestic properties are assessed for Council Tax bands
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,116 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+{% if data['languagePreference'] == "en" %}
+Have you become responsible for paying Council Tax for your home within the last six months? – GOV.UK Prototype Kit
+ {% else %}
+Wyt ti wedi dod yn gyfrifol am dalu Treth Gyngor am dy gartref yn ystod y chwe mis diwethaf? – GOV.UK Prototype Kit
+ {% endif %}
+{% endblock %}
+
+{% block header %}
+{% if data['languagePreference'] == "en" %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-5-2/start?languagePreference=en",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+
+{% else %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-5-2/start?languagePreference=cy",
+    language : "cy",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+  {% endif %}
+{% endblock %}
+
+
+{% block beforeContent %}
+
+{{
+
+  hmrcLanguageSelect({
+
+      language: 'cy' if data['languagePreference'] == 'cy' else 'en',
+
+      en: { href: '?languagePreference=en' },
+
+      cy: { href: '?languagePreference=cy' }
+
+  })
+
+}}
+
+{% if data['languagePreference'] == "en" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:history.back()"
+}) }}
+{% else %}
+{{ govukBackLink({
+  text: "Yn ôl",
+  href: "javascript:history.back()"
+}) }}
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+<form action="/v1-5-2/howlonglived" method="post" novalidate>
+  {% if data['languagePreference'] == "en" %}
+  <div class="govuk-form-group">
+    <fieldset class="govuk-fieldset" aria-describedby="howLongLived-hint">
+     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading">
+                  Have you become responsible for paying Council Tax for your home within the last six months?
+                </h1>
+              </legend>
+      <div id="howLongLived-hint" class="govuk-hint">
+        This is the date that you moved into, started renting, or bought your home.
+      </div>
+      <div class="govuk-radios" data-module="govuk-radios">
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="yes" name="howLongLived" type="radio" value="yes">
+          <label class="govuk-label govuk-radios__label" for="yes">Yes</label>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="no" name="howLongLived" type="radio" value="no">
+          <label class="govuk-label govuk-radios__label" for="no">No</label>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+  <button class="govuk-button" data-module="govuk-button" type="submit">Continue</button>
+  {% else %}
+  <div class="govuk-form-group">
+    <fieldset class="govuk-fieldset" aria-describedby="howLongLived-hint">
+     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading">
+                  Wyt ti wedi dod yn gyfrifol am dalu Treth Gyngor am dy gartref yn ystod y chwe mis diwethaf?
+                </h1>
+              </legend>
+      <div id="howLongLived-hint" class="govuk-hint">
+        Dyma'r dyddiad wnest ti symud i mewn i, dechrau rhentu, neu brynu dy gartref.
+      </div>
+      <div class="govuk-radios" data-module="govuk-radios">
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="yes" name="howLongLived" type="radio" value="yes">
+          <label class="govuk-label govuk-radios__label" for="yes">Ydw</label>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="no" name="howLongLived" type="radio" value="no">
+          <label class="govuk-label govuk-radios__label" for="no">Nac ydw</label>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+  <button class="govuk-button" data-module="govuk-button" type="submit">Parhau</button>
+  {% endif %}
+</form>
+</div>
+</div>
+{% endblock %}

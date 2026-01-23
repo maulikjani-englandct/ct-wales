@@ -1,0 +1,76 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Why do you think your Council Tax band is wrong? – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+{{ hmrcHeader({
+  serviceUrl : "/v1-6-1/start?languagePreference=en",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="/v1-6-1/evidence-upload-router" method="post">
+
+        <h1 class="govuk-heading-l">Why do you think your Council Tax band is wrong?</h1>
+
+        <div class="govuk-form-group">
+          <div id="why-wrong-hint" class="govuk-hint">
+            Tell us why you think your Council Tax band is wrong. Give as much detail as possible. For example, a similar sized home in your street is in a lower band.
+          </div>
+          <textarea class="govuk-textarea" id="why-wrong" name="why-wrong" rows="8" maxlength="3000" aria-describedby="why-wrong-hint"></textarea>
+          <div id="why-wrong-info" class="govuk-hint">
+            You have 3000 characters remaining
+          </div>
+        </div>
+
+        <div class="govuk-form-group govuk-!-margin-top-8">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h2 class="govuk-fieldset__heading">
+                Do you have documents to upload as evidence?
+              </h2>
+            </legend>
+            <div id="upload-hint" class="govuk-hint">
+              This could include screenshots of property listings, sale records, or other documents that support your request.
+            </div>
+
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="upload-yes" name="has-documents" type="radio" value="yes">
+                <label class="govuk-label govuk-radios__label" for="upload-yes">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="upload-no" name="has-documents" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="upload-no">
+                  No
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

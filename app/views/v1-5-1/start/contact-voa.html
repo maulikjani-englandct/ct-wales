@@ -1,0 +1,295 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+{% if data['languagePreference'] == "en" %}
+Contact the VOA – GOV.UK Prototype Kit
+{% else %}
+Cysylltu â'r VOA – GOV.UK Prototype Kit
+{% endif %}
+{% endblock %}
+
+{% block header %}
+{% if data['languagePreference'] == "en" %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-5-1/start?languagePreference=en",
+
+    useTudorCrown: "true"
+  }) }}
+
+{% else %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-5-1/start?languagePreference=cy",
+
+    useTudorCrown: "true"
+  }) }}
+  {% endif %}
+{% endblock %}
+{% block beforeContent %}
+
+{% if data['languagePreference'] == "en" %}
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Home",
+      href: "#"
+    },
+    {
+      text: "Housing and local services",
+      href: "#"
+    },
+    {
+      text: "Council Tax"
+    }
+  ]
+}) }}
+{% else %}
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Hafan",
+      href: "#"
+    },
+    {
+      text: "Tai a gwasanaethau lleol",
+      href: "#"
+    },
+    {
+      text: "Treth Gyngor"
+    }
+  ]
+}) }}
+{% endif %}
+
+{% endblock %}
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    {% if data['languagePreference'] == "en" %}
+      <h1 class="govuk-heading-xl">Check and review your Council Tax band</h1>
+      <nav data-module="ga4-link-tracker" aria-label="Contents" class="gem-c-contents-list govuk-!-margin-bottom-4">
+        <h2 class="gem-c-contents-list__title">Contents</h2>
+        <ol class="gem-c-contents-list__list">
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="../start">
+              <span class="govuk-visually-hidden">Contents: </span>
+              Check your Council Tax band
+            </a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="how-bands-decided">
+              <span class="govuk-visually-hidden">Contents: </span>
+              How Council Tax bands are decided
+            </a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="property-details-used">
+              <span class="govuk-visually-hidden">Contents: </span>
+              What details are used to decide a band
+            </a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="check-update-property">
+              <span class="govuk-visually-hidden">Contents: </span>
+              Checking and updating the details of your home
+            </a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="changes-affect-band">
+              <span class="govuk-visually-hidden">Contents: </span>
+              What can affect the band a home is in
+            </a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="think-band-wrong">
+              <span class="govuk-visually-hidden">Contents: </span>
+              I think my Council Tax band is wrong
+            </a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="role-voa-council">
+              <span class="govuk-visually-hidden">Contents: </span>
+              What the VOA and your local council do
+            </a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed gem-c-contents-list__list-item--active">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <span class="govuk-visually-hidden">Contents: </span>
+            Contact the VOA
+          </li>
+        </ol>
+      </nav>
+      
+<h2 class="govuk-heading-l">Contact the VOA</h2>
+<div class="govuk-inset-text">
+        <p>This page is also available in <a href='?languagePreference=cy'>Welsh (Cymraeg)</a>.</p>
+      </div>
+      <p>If you are unable to use the online service, you can contact the Valuation Office Agency by phone, letter or email if you want to:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>check your Council Tax band</li>
+        <li>challenge your Council Tax band</li>
+        <li>tell us about changes to your home</li>
+      </ul>
+
+      <p>You may be doing this on behalf of a friend or relative who has limited or no access to the internet. We may ask you for identification or proof that you have the authority to act on behalf of the person responsible for paying the Council Tax.</p>
+
+      <h2 class="govuk-heading-m">How to get in touch:</h2>
+
+      <h3 class="govuk-heading-s">Telephone</h3>
+      <p>Valuation Office Agency</p>
+      <p>Telephone (England): 03000 501 501<br>
+      Telephone (Wales): 03000 505 505</p>
+      <p>Monday to Tuesday, 9am to 4:30pm<br>
+      Wednesday, 10am to 4:30pm<br>
+      Thursday to Friday, 9am to 4:30pm</p>
+      <p><a href="https://www.gov.uk/call-charges">Find out about call charges</a></p>
+
+      <h3 class="govuk-heading-s">Email</h3>
+      <p>Email the VOA Customer Services Team:<br><a href="mailto:ctinbox@voa.gov.uk">ctinbox@voa.gov.uk</a></p>
+
+      <h3 class="govuk-heading-s">Post</h3>
+      <p>You can send letters, forms or general enquiries to:<br>
+      <br>
+      Durham Customer Service Centre,<br>
+      Valuation Office Agency,<br>
+      Wycliffe House,<br>
+      Green Lane,<br>
+      Durham<br>
+      DH1 3UW</p>
+    {% else %}
+      <h1 class="govuk-heading-xl">Gwirio ac adolygu dy fand Treth Gyngor</h1>
+      <nav data-module="ga4-link-tracker" aria-label="Contents" class="gem-c-contents-list govuk-!-margin-bottom-4">
+        <h2 class="gem-c-contents-list__title">Cynnwys</h2>
+        <ol class="gem-c-contents-list__list">
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="../start">
+              <span class="govuk-visually-hidden">Cynnwys: </span>
+              Gwirio dy fand Treth Gyngor
+            </a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="how-bands-decided">
+              <span class="govuk-visually-hidden">Cynnwys: </span>
+              Sut mae bandiau Treth Gyngor yn cael eu penderfynu
+            </a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="property-details-used">
+              <span class="govuk-visually-hidden">Cynnwys: </span>
+              Pa fanylion sy'n cael eu defnyddio i benderfynu band
+            </a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="check-update-property">
+              <span class="govuk-visually-hidden">Cynnwys: </span>
+              Gwirio a diweddaru manylion dy gartref
+            </a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="changes-affect-band">
+              <span class="govuk-visually-hidden">Cynnwys: </span>
+              Beth sy'n gallu effeithio ar y band mae cartref ynddo
+            </a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="think-band-wrong">
+              <span class="govuk-visually-hidden">Cynnwys: </span>
+              Rydw i'n meddwl bod fy mand Treth Gyngor yn anghywir
+            </a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="role-voa-council">
+              <span class="govuk-visually-hidden">Cynnwys: </span>
+              Beth mae'r VOA a'r cyngor lleol yn ei wneud
+            </a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed gem-c-contents-list__list-item--active">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <span class="govuk-visually-hidden">Cynnwys: </span>
+            Cysylltu â'r VOA
+          </li>
+        </ol>
+      </nav>
+
+      <h2 class="govuk-heading-l">Cysylltu â'r VOA</h2>
+      <div class="govuk-inset-text">
+        <p>Mae'r dudalen hon hefyd ar gael yn <a href='?languagePreference=en'>Saesneg (English)</a>.</p>
+      </div>
+      <p>Os dwyt ti ddim yn gallu defnyddio'r gwasanaeth ar-lein, rwyt ti'n gallu cysylltu ag Asiantaeth y Swyddfa Brisio dros y ffôn, drwy lythyr neu drwy e-bost, os wyt ti eisiau:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>gwirio dy fand Treth Gyngor</li>
+        <li>herio dy fand Treth Gyngor</li>
+        <li>gadael i ni wybod am newidiadau i dy gartref</li>
+      </ul>
+
+      <p>Efallai dy fod yn gwneud hyn ar ran ffrind neu aelod o'r teulu sydd ddim yn gallu defnyddio'r rhyngrwyd. Efallai y byddwn yn gofyn i ti brofi bod gen ti awdurdod i weithredu ar ran y person sy'n gyfrifol am dalu'r Dreth Gyngor.</p>
+
+      <h2 class="govuk-heading-m">Sut i gysylltu â ni:</h2>
+
+      <h3 class="govuk-heading-s">Ffôn</h3>
+      <p>Asiantaeth y Swyddfa Brisio</p>
+      <p>Ffôn (Lloegr): 03000 501 501<br>
+      Ffôn (Cymru): 03000 505 505</p>
+      <p>Dydd Llun i Ddydd Mawrth: 9am – 4:30pm<br>
+      Dydd Mercher: 10am – 4:30pm<br>
+      Dydd Iau i Ddydd Gwener: 9am – 4:30pm</p>
+      <p><a href="https://www.gov.uk/call-charges">Dysgu mwy am gostau galwadau</a></p>
+
+      <h3 class="govuk-heading-s">E-bost</h3>
+      <p>Anfona e-bost at Dîm Gwasanaethau Cwsmer y VOA: <br><a href="mailto:ctinbox@voa.gov.uk">ctinbox@voa.gov.uk</a></p>
+
+      <h3 class="govuk-heading-s">Post</h3>
+      <p>Rwyt ti'n gallu anfon llythyrau, ffurflenni neu ymholiadau cyffredinol i:<br>
+      <br>
+      Durham Customer Service Centre,<br>
+      Valuation Office Agency,<br>
+      Wycliffe House,<br>
+      Green Lane,<br>
+      Durham<br>
+      DH1 3UW</p>
+    {% endif %}
+  </div>
+
+  <div class="govuk-grid-column-one-third">
+    <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
+      <h2 class="govuk-heading-m" id="subsection-title">
+        {% if data['languagePreference'] == "en" %}
+          Related content
+        {% else %}
+          Cynnwys perthnasol
+        {% endif %}
+      </h2>
+      <nav role="navigation" aria-labelledby="subsection-title">
+        <ul class="govuk-list govuk-!-font-size-16">
+          {% if data['languagePreference'] == "en" %}
+            <li><a href="https://www.gov.uk/council-tax">How Council Tax works</a></li>
+            <li><a href="#">Council Tax in Wales</a></li>
+            <li><a href="https://www.gov.uk/guidance/understand-how-council-tax-bands-are-assessed">How domestic properties are assessed for Council Tax bands</a></li>
+          {% else %}
+            <li><a href="https://www.gov.uk/council-tax">Sut mae’r Dreth Gyngor yn gweithio</a></li>
+            <li><a href="https://www.llyw.cymru/treth-gyngor">Treth Gyngor yng Nghymru</a></li>
+            <li><a href="https://www.gov.uk/guidance/understand-how-council-tax-bands-are-assessed.cy">Sut y caiff eiddo domestig ei asesu ar gyfer bandiau Treth Gyngor</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+    </aside>
+  </div>
+</div>
+
+{% endblock %}

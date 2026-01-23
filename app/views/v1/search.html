@@ -1,0 +1,101 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+ Search for a property
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+{% block beforeContent %}
+
+{{
+
+  hmrcLanguageSelect({
+
+      language: 'cy' if data['languagePreference'] === 'cy' else 'en',
+
+      en: { href: '?languagePreference=en' },
+
+      cy: { href: '?languagePreference=cy' }
+
+  })
+
+}}
+{% if data['languagePreference'] == "en" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "start_en"
+}) }}
+{% else %}
+{{ govukBackLink({
+  text: "Yn ôl",
+  href: "start_cy"
+}) }}
+
+{% endif %}
+{% endblock %}
+{% block content %}
+
+{% if data['languagePreference'] == "en" %}
+
+  <div class="govuk-grid-row">
+    
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Search for a property
+      </h1>
+      <form action="search-results?languagePreference=en">
+      <fieldset class="govuk-fieldset">
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="address-postcode">
+          Enter a postcode
+        </label>
+        <div id="address-postcode-hint" class="govuk-hint">
+          For example CF10 3NQ
+        </div>
+        <input class="govuk-input govuk-input--width-10" id="address-postcode" name="addressPostcode" type="text" autocomplete="postal-code">
+      </div>
+    </fieldset>
+    <button type="submit" class="govuk-button" data-module="govuk-button">
+      Continue
+    </button>
+  </form>
+    <p><a href="#">Other search options</a></p>
+    </div>
+  </div>
+
+
+  {% else %}
+  <div class="govuk-grid-row">
+    
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Chwilio am eiddo 
+      </h1>
+      <form action="search-results?languagePreference=cy">
+      <fieldset class="govuk-fieldset">
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="address-postcode">
+          Nodwch y cod post
+        </label>
+        <div id="address-postcode-hint" class="govuk-hint">
+          For example CF10 3NQ
+        </div>
+        <input class="govuk-input govuk-input--width-10" id="address-postcode" name="addressPostcode" type="text" autocomplete="postal-code">
+      </div>
+    </fieldset>
+    <button type="submit" class="govuk-button" data-module="govuk-button">
+      Chwilio
+    </button>
+  </form>
+    <p><a href="#">Opsiynau chwilio eraill</a></p>
+    </div>
+  </div>
+
+
+  {% endif %}
+{% endblock %}

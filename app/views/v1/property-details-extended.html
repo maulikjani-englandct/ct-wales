@@ -1,0 +1,359 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Property information
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+{% block beforeContent %}
+
+{{
+
+  hmrcLanguageSelect({
+
+      language: 'cy' if data['languagePreference'] === 'cy' else 'en',
+
+      en: { href: '?languagePreference=en' },
+
+      cy: { href: '?languagePreference=cy' }
+
+  })
+
+}}
+{% if data['languagePreference'] == "en" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "search-results?languagePreference=en"
+}) }}
+{% else %}
+{{ govukBackLink({
+  text: "Back",
+  href: "search-results?languagePreference=cy"
+}) }}
+
+{% endif %}
+{% endblock %}
+{% block content %}
+
+{% if data['languagePreference'] == "en" %}
+
+  <div class="govuk-grid-row">
+    
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Property information for</span>
+        {{ data['address'] }}
+      </h1>
+      <h2 class="govuk-heading-m">Public information</h2>
+      {{ govukDetails({
+        summaryText: "What does each label mean?",
+        html: "<ul class=\"govuk-list govuk-list--spaced\">" +
+              "<li><strong>Council Tax band</strong><br> Lorem ipsum</li>" +
+              "<li><strong>Local Authority</strong><br>Lorem ipsum</li>" +
+              "<li><strong>Local Authority reference number</strong><br>Lorem ipsum</li>" +
+              "<li><strong>Improvement indicator</strong><br> Lorem ipsum</li>" +
+              "<li><strong>With effect from date</strong><br> Lorem ipsum</li>" +
+              "<li><strong>Mixed-use property</strong><br> Lorem ipsum</li>" +
+              "<li><strong>Court code</strong><br> Lorem ipsum</li>" +
+              "</ul>"
+      }) }}
+      <table class="govuk-table">
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Council Tax band</th>
+            <td class="govuk-table__cell">B</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Local Authority</th>
+            <td class="govuk-table__cell"><a href='https://www.pembrokeshire.gov.uk/'>Pembrokeshire</a></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Local Authority reference number</th>
+            <td class="govuk-table__cell">110380008111000100</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Improvement indicator</th>
+            <td class="govuk-table__cell">No</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">With effect from</th>
+            <td class="govuk-table__cell">9 October 2008</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Mixed-use property</th>
+            <td class="govuk-table__cell">No</td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Court code</th>
+            <td class="govuk-table__cell">None</td>
+          </tr>
+        </tbody>
+      </table>
+      <h2 class="govuk-heading-m">Property details</h2>
+      <div class="govuk-inset-text">
+        The information below is only viewable by the main taxpayer of this property.
+      </div>
+      {{ govukDetails({
+        summaryText: "What does each label mean?",
+        html: "<ul class=\"govuk-list govuk-list--spaced\">" +
+              "<li><strong>Rooms</strong><br> All rooms in your property, including bedrooms but excluding bathrooms, kitchens and utility rooms.</li>" +
+              "<li><strong>Bedrooms</strong><br> Includes bedrooms used as studies or playrooms.</li>" +
+              "<li><strong>Bathrooms</strong><br> With at least a bath or shower, toilet and sink.</li>" +
+              "<li><strong>Property type</strong><br> The type of property.</li>" +
+              "<li><strong>Area of dwelling</strong><br> The size of your property.</li>" +
+              "<li><strong>Floor level</strong><br> Lorem ipsum</li>" +
+              "<li><strong>Floor houses</strong><br> Lorem ipsum</li>" +
+              "<li><strong>Parking</strong><br> Lorem ipsum</li>" +
+              "<li><strong>Value significant description</strong><br> Lorem ipsum</li>" +
+              "</ul>"
+      }) }}
+      {{ govukTable({
+        firstCellIsHeader: true,
+        rows: [
+          [
+            {
+              text: "Rooms"
+              },
+            {
+              text: "4"
+            }
+          ],
+          [
+            {
+              text: "Bedrooms"
+            },
+            {
+              text: "2"
+            }
+          ],
+          [
+            {
+              text: "Bathrooms"
+             },
+            {
+              text: "1"
+            }
+          ],
+          [
+            {
+              text: "Property type"
+             },
+            {
+              text: "Mid-terraced house"
+            }
+          ],
+          [
+            {
+              text: "Area of dwelling (in square metres)"
+            },
+            {
+              text: "90"
+            } 
+          ],
+          [
+            {
+              text: "Floor level"
+             },
+            {
+              text: "n/a"
+            }
+            ],
+            [
+              {
+                text: "Floor houses"
+               },
+              {
+                text: "2"
+              }
+              ],
+              [
+                {
+                  text: "Parking"
+                 },
+                {
+                  text: "No parking exists (on or off street)"
+                }
+                ],
+                [
+                  {
+                    text: "Value significant description"
+                   },
+                  {
+                    text: "View"
+                  }
+                  ]]
+
+
+      }) }}
+      
+      
+      <p>If you think any of these details are incorrect, please <a href="#" class="govuk-link">let us know</a>.</p>
+
+      <p class="govuk-body">
+        <a href="#" class="govuk-link">Leave service</a>
+      </p>
+    </div>
+    
+  </div>
+
+
+  {% else %}
+  <div class="govuk-grid-row">
+    
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Gwybodaeth eiddo am</span>
+        {{ data['address'] }}
+      </h1>
+      <h2 class="govuk-heading-m">Public information</h2>
+            {{ govukDetails({
+        summaryText: "Beth yw ystyr pob manylyn eiddo?",
+        html: "<ul class=\"govuk-list govuk-list--spaced\">" +
+              "<li><strong>Band Treth Gyngor:</strong><br> Lorem ipsum</li>" +
+              "<li><strong>Awdurdod lleol:</strong><br> Lorem ipsum</li>" +
+              "<li><strong>Ystafelloedd gwely:</strong><br> Lorem ipsum</li>" +
+              "<li><strong>Dangosydd gwella:</strong><br> Lorem ipsum</li>" +
+              "<li><strong>Yn dod i rym ar:</strong><br> Lorem ipsum</li>" +
+              "<li><strong>Eiddo defnydd cymysg:</strong><br> Lorem ipsum</li>" +
+              "<li><strong>Cod y Llys:</strong><br> Lorem ipsum</li>" +
+              "</ul>"
+      }) }}
+      {{ govukTable({
+        firstCellIsHeader: true,
+        rows: [
+          [
+            {
+              text: "Band Treth Gyngor"
+            },
+            {
+              text: "B"
+            }
+          ],
+          [
+            {
+              text: "Awdurdod lleol"
+              },
+            {
+              html: "<a href='https://www.pembrokeshire.gov.uk/'>Pembrokeshire</a>"
+            }
+          ],
+          [
+            {
+              text: "Ystafelloedd gwely"
+            },
+            {
+              text: "110380008111000100"
+            }
+          ],
+          [
+            {
+              text: "Dangosydd gwella"
+             },
+            {
+              text: "Nacoes"
+            }
+          ],
+          [
+            {
+              text: "Yn dod i rym ar"
+            },
+            {
+              text: "9 Hydref 2008"
+            } 
+          ],
+          [
+            {
+              text: "Eiddo defnydd cymysg"
+             },
+            {
+              text: "Nacoes"
+            }
+            ],
+            [
+            {
+              text: "Cod y Llys"
+             },
+            {
+              text: "Dim"
+            }
+            ]]
+
+
+      }) }}
+      <h2 class="govuk-heading-m">Property details</h2>
+      {{ govukDetails({
+        summaryText: "Beth yw ystyr pob manylyn eiddo?",
+        html: "<ul class=\"govuk-list govuk-list--spaced\">" +
+              "<li><strong>Ystafelloedd:</strong><br> Pob ystafell yn eich eiddo, gan gynnwys ystafelloedd gwely ond heb gynnwys ystafelloedd ymolchi, ceginau neu ystafelloedd amlbwrpas.</li>" +
+              "<li><strong>Ystafelloedd gwely:</strong><br> Mae hyn yn cynnwys ystafelloedd gwely sy’n cael eu defnyddio fel stydi neu ystafell chwarae.</li>" +
+              "<li><strong>Ystafelloedd ymolchi:</strong><br> Gydag o leiaf bath neu gawod, toiled a sinc.</li>" +
+              "<li><strong>Arwynebedd:</strong><br> Maint eich eiddo.</li>" +
+              "<li><strong>Math:</strong><br> Y math o eiddo.</li>" +
+              "</ul>"
+      }) }}
+      {{ govukTable({
+        firstCellIsHeader: true,
+        rows: [
+
+          [
+            {
+              text: "Ystafelloedd"
+              },
+            {
+              text: "4"
+            }
+          ],
+          [
+            {
+              text: "Ystafelloedd gwely"
+            },
+            {
+              text: "2"
+            }
+          ],
+          [
+            {
+              text: "Ystafelloedd ymolchi"
+             },
+            {
+              text: "1"
+            }
+          ],
+          [
+            {
+              text: "Arewynebedd"
+            },
+            {
+              text: "83 metr sgwâr"
+            } 
+          ],
+          [
+            {
+              text: "Math"
+             },
+            {
+              text: "Tŷ yng nghanol teras"
+            }
+            ]]
+
+
+      }) }}
+
+
+    
+      <p>If these details don't look correct, you can challenge them.</p>
+      {{ govukButton({
+        text: "Challenge those details",
+        classes: "govuk-button--primary"
+      }) }}
+    </div>
+  </div>
+
+
+  {% endif %}
+{% endblock %}

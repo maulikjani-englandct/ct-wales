@@ -1,0 +1,102 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Check your answers template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+{% if data['languagePreference'] == "en" %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-3/start_en",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+
+{% else %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-3/start_cy",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+
+{{
+
+  hmrcLanguageSelect({
+
+      language: 'cy' if data['languagePreference'] === 'cy' else 'en',
+
+      en: { href: '?languagePreference=en' },
+
+      cy: { href: '?languagePreference=cy' }
+
+  })
+
+}}
+{% if data['languagePreference'] == "en" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "gov-gateway?languagePreference=en"
+}) }}
+{% else %}
+{{ govukBackLink({
+  text: "Yn ôl",
+  href: "gov-gateway?languagePreference=cy"
+}) }}
+
+{% endif %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+<form class="form" action="/v1-3/liable-check" method="post">
+       {{ govukRadios({
+        name: "liability",
+        fieldset: {
+          legend: {
+            text: "Are you liable for Council Tax on this property?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        hint: {
+          text: "Liability guidance TBC"
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes, I am liable myself.",
+            hint: {
+              text: "Guidance TBD"
+            }
+          },
+          {
+            value: "proxy",
+            text: "I am acting on behalf of someone liable.",
+            hint: {
+              text: "Guidance TBD"
+            }
+          },
+          {
+            value: "no",
+            text: "No, I am not liable.",
+            hint: {
+              text: "Guidance TBD"
+            }
+          }
+        ]
+      }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

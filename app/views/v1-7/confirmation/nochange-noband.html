@@ -1,0 +1,128 @@
+{% extends "layouts/main.html" %}
+
+{% block header %}
+{% if data['languagePreference'] == "en" %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-7/start?languagePreference=en",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+
+{% else %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-7/start?languagePreference=cy",
+    language : "cy",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+  {% endif %}
+{% endblock %}
+
+{% block pageTitle %}
+{% if data['languagePreference'] == "en" %}
+Changes sent for review – GOV.UK Prototype Kit
+{% else %}
+Newidiadau wedi’u hanfon i’w hadolygu – GOV.UK Prototype Kit
+{% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+
+{{
+
+  hmrcLanguageSelect({
+
+      language: 'cy' if data['languagePreference'] === 'cy' else 'en',
+
+      en: { href: '?languagePreference=en' },
+
+      cy: { href: '?languagePreference=cy' }
+
+  })
+
+}}
+
+{% endblock %}
+
+{% block content %}
+{% if data['languagePreference'] == "en" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukPanel({
+        titleText: "Details confirmed"
+      }) }}
+  <p>
+         
+      </p>
+      <h2 class="govuk-heading-m">
+        What happens next
+      </h2>
+
+      <p>
+         
+      </p>
+
+      <p>
+        <a href="#">
+          What did you think of this service?
+        </a> (takes 30 seconds)
+      </p>
+
+
+    </div>
+  </div>
+  {% else %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {{ govukPanel({
+        titleText: "Newidiadau wedi’u hanfon i’w hadolygu"
+      }) }}
+
+      <p>
+        Rydym wedi anfon cadarnhad drwy e-bost atat.
+
+      </p>
+
+      <h2 class="govuk-heading-m">
+        Yr hyn sy'n digwydd nesaf
+      </h2>
+
+      <p>
+        Mae dy gais wedi’i basio ymlaen i Asiantaeth y Swyddfa Brisio.
+      </p>
+
+      <p>
+        Byddwn yn ysgrifennu atat o fewn X diwrnod.
+      </p>
+      <p>
+        <a href="#">
+          Beth oedd dy farn am y gwasanaeth?
+        </a> (mae’n cymryd 30 eiliad)
+      </p>
+
+
+    </div>
+  </div>
+  {% endif %}
+
+<script>
+  // Handle language switching without creating new history entries
+  document.addEventListener('DOMContentLoaded', function() {
+    var langLinks = document.querySelectorAll('.hmrc-language-select__list-item a');
+
+    langLinks.forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        var newUrl = this.href;
+        // Replace current history state instead of pushing new one
+        history.replaceState(null, '', newUrl);
+        // Reload page to show new language
+        window.location.reload();
+      });
+    });
+  });
+</script>
+{% endblock %}

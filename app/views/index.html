@@ -1,0 +1,355 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+<div class="govuk-grid-row no-site-page">
+  <div class="govuk-grid-column-two-thirds">
+
+   
+    <h1 class="govuk-heading-xl">
+      {{ serviceName }}
+    </h1>
+      <p>This is a prototype to view the Council Tax Wales Reform service - it is not a live service. It will only be used for testing purposes.</p>
+      <p>The most recent stable version with a complete journey is Version 1.5.2. You can launch it by clicking on the Start button below.</p>
+      <a href="v1-5-2/start?languagePreference=en" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
+  Start stable complete journey
+  <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+    <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
+  </svg>
+</a>
+     <p><a href="design-history.html">View detailed design history and research findings</a></p>
+      <h3 class="govuk-heading-m govuk-!-margin-top-6">Latest version</h3>
+
+                  <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Version 1.7 (In development) - Complete E2E journey
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+            <h4>Version creation date</h4>
+            <p>2 January 2026</p>
+          <h4>Changelog</h4>
+            <ul>
+              <li>Updated journey based on round 5 takeaways</li>
+              <ul>
+                <li>Added pending property updates page showing Current vs Submitted comparison table</li>
+                <li>Integrated evidence upload journey into challenge flow:
+                  <ul>
+                    <li>Added evidence-upload-choice page (do you have documents to upload)</li>
+                    <li>Added evidence-upload page with HMRC file upload component</li>
+                    <li>Updated wrong-details page to route to evidence upload flow</li>
+                  </ul>
+                </li>
+                <li>Updated review-details page to show uploaded documents as a list (council-tax-bill.pdf, screenshot.jpg)</li>
+                <li>Court code information in property-details pages now in collapsible details component ("What the codes mean")</li>
+              </ul>
+              <li>Tested during round 6</li>
+            </ul>
+            <h4>Links</h4>
+            <ul>
+              <li><a href='v1-7/start?languagePreference=en'>Start</a></li>
+              <li><a href='v1-7/list-pages'>List of pages</a></li>
+                </ul>
+        </div>
+      </details>
+          <h3 class="govuk-heading-m govuk-!-margin-top-6">Concept testing versions</h3>
+          <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Show concept testing versions (v1.6.1 - v1.6)
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+      <p>Parallel concept testing versions (not part of main E2E journey)</p>
+                  <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Version 1.6.1 - Testing concepts for round 6
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+            <h4>Version creation date</h4>
+            <p>24 December 2025</p>
+          <h4>Changelog</h4>
+            <ul>
+              <li>Different concepts created for round 6</li>
+              <ul>
+              <li>Committed PADs</li>
+
+            </ul>
+            </ul>
+            <h4>Links</h4>
+            <ul>
+              <li><a href='v1-6-1/list-pages'>List of pages</a></li>
+                </ul>
+        </div>
+      </details>
+                            <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Version 1.6 - Testing concepts for round 5
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+            <h4>Version creation date</h4>
+            <p>28 November 2025</p>
+            <h4>Version end date</h4>
+            <p>24 December 2025</p>
+          <h4>Changelog</h4>
+            <ul>
+              <li>Different concepts created for round 5</li>
+              <ul>
+              <li>Self authentication (using Council Tax Bill number or file upload)</li>
+              <li>Public/"private" PADs differentiation</li>
+              <li>Formal/informal challenge</li>
+            </ul>
+            <li><a href="https://app.mural.co/t/hmrcmain2035/m/hmrcmain2035/1765967134723/08ed51959d148d58c951380fca32b4c12ea1ebc4">Link to UR analysis of round 5</a></li>
+            </ul>
+            <h4>Links</h4>
+            <ul>
+              <li><a href='v1-6/list-pages'>List of pages</a></li>
+                </ul>
+        </div>
+      </details>
+        </div>
+      </details>
+          <h3 class="govuk-heading-m govuk-!-margin-top-6">Older versions</h3>
+          <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Show older versions (v1.5.2 - v1)
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+                  <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Version 1.5.2 (Current stable version) - Complete challenge and review journey
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+            <h4>Version creation date</h4>
+            <p>30 October 2025</p>
+            <h4>Version end date</h4>
+            <p>24 December 2025</p>
+          <h4>Changelog</h4>
+            <ul>
+              <li>Complete challenge journey added with formal and informal review pathways</li>
+              <li>Same changes as 1.5 and 1.5.1</li>
+            </ul>
+            <p><strong>Note:</strong> This is the version launched by the "Start stable complete journey" button at the top of this page.</p>
+            <h4>Links</h4>
+            <ul>
+              <li><a href='v1-5-2/start?languagePreference=en'>Start</a></li>
+              <li><a href='v1-5-2/list-pages'>List of pages</a></li>
+                </ul>
+        </div>
+      </details>
+            <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Version 1.5.1 - Guidance and start page (not E2E journey - for testing purposes only)
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+            <h4>Version creation date</h4>
+            <p>23 October 2025</p>
+          <h4>Changelog</h4>
+            <ul>
+                <li>Challenge journey disabled for testing purposes</li>
+                <li>Same changes as 1.5</li>
+              <li>Multi-page GOV.UK guidance section (how bands decided, property details used, contact VOA, etc.)</li>
+              <li>Unified bilingual start page with table of contents</li>
+              <li>Round 1 of testing takeaways implemented:
+                  <ul>
+                      <li>Removed change links from public property details</li>
+                      <li>Updated band display on detail pages</li>
+                      <li>Added full address to screens instead of 'this property'</li>
+                      <li>Reordered login pages and rewrote details page login section</li>
+                      <li>Updated prototype address to: 19, ST DAVIDS CRESCENT, CARDIFF, CF5 4GP (Band D)</li>
+                  </ul>
+              </li>
+              </ul>
+            <h4>Links</h4>
+            <ul>
+              <li><a href='v1-5-1/start?languagePreference=en'>Start</a></li>
+              <li><a href='v1-5-1/list-pages'>List of pages</a></li>
+                </ul>
+        </div>
+      </details>
+                  <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Version 1.5 - Challenge journey and guidance (not E2E journey - for testing purposes only)
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+            <h4>Version creation date</h4>
+            <p>15 September 2025</p>
+          <h4>Changelog</h4>
+            <ul>
+              <li>Challenge journey added with wrong band and property changes pathways</li>
+              <li>Multi-page GOV.UK guidance section (how bands decided, property details used, contact VOA, etc.)</li>
+              <li>Unified bilingual start page with table of contents</li>
+              <li>Round 1 of testing takeaways implemented:
+                  <ul>
+                      <li>Removed change links from public property details</li>
+                      <li>Updated band display on detail pages</li>
+                      <li>Added full address to screens instead of 'this property'</li>
+                      <li>Reordered login pages and rewrote details page login section</li>
+                      <li>Updated prototype address to: 19, ST DAVIDS CRESCENT, CARDIFF, CF5 4GP (Band D)</li>
+                  </ul>
+              </li>
+            </ul>
+            <h4>Links</h4>
+            <ul>
+              <li><a href='v1-5/start?languagePreference=en'>Start</a></li>
+              <li><a href='v1-5/list-pages'>List of pages</a></li>
+                </ul>
+        </div>
+      </details>
+                <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Version 1.4 - Workflow simplification
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+            <h4>Version creation date</h4>
+            <p>2 September 2025</p>
+          <h4>Changelog</h4>
+            <ul>
+                <li>Self-certification journey and content added</li>
+                <li>Parking workflow simplified - removed parking size/dimensions page</li>
+                <li>Local authority field removed - can be derived from postcode</li>
+                <li>Proxy authorization flow streamlined</li>
+                <li>Removed pages: proxy.html, errors/no-ata.html, correct/parking-size.html, correct/local-authority.html, correct/local-authority-why.html</li>
+                <li>Tested during round 2</li>
+            </ul>
+            <h4>Links</h4>
+            <ul>
+              <li><a href='v1-4/start_en'>Start</a></li>
+              <li><a href='v1-4/list-pages'>List of pages</a></li>
+                </ul>
+        </div>
+      </details>
+                <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Version 1.3 - Property types and authorization
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+            <h4>Version creation date</h4>
+            <p>2 September 2025</p>
+          <h4>Changelog</h4>
+            <ul>
+                <li>Journey 1 & 2A - content updates</li>
+                <li>Self-certification liability verification added</li>
+                <li>Authority to Act verification for proxy users</li>
+                <li>Property type granular classification added (house, bungalow, flat, maisonette, other sub-types)</li>
+                <li>Error pages added for non-liable users and missing Authority to Act</li>
+                <li>Challenge reason bifurcation page added (wrong band vs property changes)</li>
+                <li>Tested during round 1</li>
+            </ul>
+            <h4>Links</h4>
+            <ul>
+              <li><a href='v1-3/start_en'>Start</a></li>
+              <li><a href='v1-3/list-pages'>List of pages</a></li>
+                </ul>
+        </div>
+      </details>
+          <details class="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text">
+                Version 1.2 - Content refinement
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+                <h4>Version creation date</h4>
+                <p>20 August 2025</p>
+                <h4>Version end date</h4>
+                <p>2 September 2025</p>
+              <h4>Changelog</h4>
+                <ul>
+                    <li>Journey 1 - content updates</li>
+                    <li>Challenge band journey - first draft</li>
+                    <li>All placeholder text replaced with production-quality definitions</li>
+                    <li>Terminology refinement: "Local Authority" → "Local Council", "Property" → "Home"</li>
+                    <li>Property details help text upgraded with clear explanations</li>
+                    <li>Welsh language improvements with natural translations</li>
+                </ul>
+                <h4>Links</h4>
+                <ul>
+                  <li><a href='v1-2/start_en'>Start</a></li>
+                  <li><a href='v1-2/list-pages'>List of pages</a></li>
+                    </ul>
+            </div>
+          </details>
+          <details class="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      Version 1.1 - Property details update journey
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+    <h4>Version creation date</h4>
+    <p>7 August 2025</p>
+    <h4>Version end date</h4>
+    <p>20 August 2025</p>
+    <h4>Changelog</h4>
+    <ul>
+      <li>Added the first draft of the update property details journey (journey 2a)</li>
+      <li>Updated start page content to align with the new workflow</li>
+      <li>Implemented "let us know" link to guide users to update property info or challenge their band</li>
+      <li>Extended public property details page to link into the update property details workflow</li>
+      <li>Property details update pages for: rooms, bedrooms, bathrooms, property type, area, floor level, floors, parking, improvement, mixed-use, local authority</li>
+      <li>Check answers pattern introduced before submission</li>
+      <li>Maintained Welsh-first toggle and bilingual functionality across all pages</li>
+      <li>Shown to the team for feedback on 20/08/2025</li>
+    </ul>
+    <h4>Links</h4>
+    <ul>
+      <li><a href='v1-1/start_en'>Start</a></li>
+      <li><a href='v1-1/list-pages'>List of pages</a></li>
+       </ul>
+  </div>
+</details>
+         <details class="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      Version 1 - Initial prototype
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+    <h4>Version creation date</h4>
+    <p>28 July 2025</p>
+    <h4>Version end date</h4>
+    <p>7 August 2025</p>
+    <h4>Changelog</h4>
+    <ul>
+      <li>Initial start pages in English and Welsh, introducing the service and who can use it</li>
+      <li>Simple postcode search and results table showing Council Tax band and local authority</li>
+      <li>Public and authenticated property details views</li>
+      <li>Welsh-first bilingual toggle implemented using HMRC pattern, fully functional across pages</li>
+      <li>User journey: Start → Search → Results → Property Details → (Sign in) → Extended Details</li>
+      <li>Based on discovery knowledge; no formal user testing yet</li>
+    </ul>
+    <h4>Links</h4>
+    <ul>
+      <li><a href='v1/start_en'>Start</a></li>
+      <li><a href='v1/list-pages'>List of pages</a></li>
+       </ul>
+  </div>
+</details>
+        </div>
+      </details>
+
+
+  </div>
+</div>
+
+{% endblock %}

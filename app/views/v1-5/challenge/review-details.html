@@ -1,0 +1,713 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+{% if data['languagePreference'] == "en" %}
+  {% if data['challenge'] == "yes" %}
+Check your answers before sending your request for a review – GOV.UK Prototype Kit
+  {% else %}
+Review your changes – GOV.UK Prototype Kit
+  {% endif %}
+{% else %}
+  {% if data['challenge'] == "yes" %}
+Gwiria dy atebion cyn anfon dy gais am adolygiad – GOV.UK Prototype Kit
+  {% else %}
+Adolygu dy newidiadau – GOV.UK Prototype Kit
+  {% endif %}
+{% endif %}
+{% endblock %}
+
+{% block header %}
+{% if data['languagePreference'] == "en" %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-5/start?languagePreference=en",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+
+{% else %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-5/start?languagePreference=cy",
+    language : "cy",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+
+{{
+
+  hmrcLanguageSelect({
+
+      language: 'cy' if data['languagePreference'] == 'cy' else 'en',
+
+      en: { href: '?languagePreference=en' },
+
+      cy: { href: '?languagePreference=cy' }
+
+  })
+
+}}
+{% if data['languagePreference'] == "en" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "contact-details?languagePreference=en"
+}) }}
+{% else %}
+{{ govukBackLink({
+  text: "Yn ôl",
+  href: "contact-details?languagePreference=cy"
+}) }}
+
+{% endif %}
+{% endblock %}
+
+{% block content %}
+{% if data['languagePreference'] == "en" %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+            {% if data['challenge'] == "yes" %}
+      <h1 class="govuk-heading-xl">
+        Check your answers before sending your request for a review
+      </h1>
+                  {% else %}
+                        <h1 class="govuk-heading-xl">
+        Review your changes
+      </h1>
+                  {% endif %}
+
+
+{{ govukSummaryList({
+        rows: [
+         {
+            key: {
+              text: "Address"
+            },
+            value: {
+              text: "19, St David's Crescent, Cardiff, CF5 4GP"
+            }
+          }
+          ]
+      }) }}
+      {% if data['detailsChanged'] == "true" %}
+     <h2 class="govuk-heading-m">
+        Property details
+ </h2>
+
+ {{ govukSummaryList({
+        rows: [
+         {
+            key: {
+              text: "Total rooms"
+            },
+            value: {
+              text: "5"
+            },
+            actions: {
+              items: [
+                {
+                  href: "../correct/rooms",
+                  text: "Change",
+                  visuallyHiddenText: "Change total rooms"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Bedrooms"
+            },
+            value: {
+              text: "3"
+            },
+            actions: {
+              items: [
+                {
+                  href: "../correct/bedrooms",
+                  text: "Change",
+                  visuallyHiddenText: "Change number of bedrooms"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Bathrooms"
+            },
+            value: {
+              text: "2"
+            },
+            actions: {
+              items: [
+                {
+                  href: "../correct/bathrooms",
+                  text: "Change",
+                  visuallyHiddenText: "Change number of bathrooms"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Parking"
+            },
+            value: {
+              text: "Street or public parking"
+            },
+            actions: {
+              items: [
+                {
+                  href: "../correct/parking",
+                  text: "Change",
+                  visuallyHiddenText: "Change parking details"
+                }
+              ]
+            }
+          }
+        ]
+}) }}
+      {% endif %}
+            {% if data['challenge'] == "yes" %}
+     <h2 class="govuk-heading-m">
+        Details of your request for a review
+ </h2>
+      {{ govukSummaryList({
+        rows: [
+       
+          {
+            key: {
+              text: "Why do you want us to review your Council Tax band?"
+            },
+            value: {
+              text: "I think my home is in the wrong band"
+            },
+            actions: {
+              items: [
+                {
+                  href: "why",
+                  text: "Change",
+                  visuallyHiddenText: "Change reason for review"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Why do you think the Council Tax band is wrong?"
+            },
+            value: {
+              text: " "
+            },
+            actions: {
+              items: [
+                {
+                  href: "wrong-details",
+                  text: "Change",
+                  visuallyHiddenText: "Change explanation of why band is wrong"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "What do you think the Council Tax band should be?"
+            },
+            value: {
+              text: "Band A"
+            },
+            actions: {
+              items: [
+                {
+                  href: "which-band",
+                  text: "Change",
+                  visuallyHiddenText: "Change proposed band"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Have you become responsible for paying Council Tax for your home within the last six months?"
+            },
+            value: {
+              text: "Yes"
+            },
+            actions: {
+              items: [
+                {
+                  href: "how-long-lived",
+                  text: "Change",
+                  visuallyHiddenText: "Change Council Tax responsibility status"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "When did you become responsible for paying Council Tax for your home?"
+            },
+            value: {
+              text: "12 August 2025"
+            },
+            actions: {
+              items: [
+                {
+                  href: "date-payer",
+                  text: "Change",
+                  visuallyHiddenText: "Change date became responsible"
+                }
+              ]
+            }
+          }
+          
+        ]
+      }) }}
+            {% endif %}
+<h2 class="govuk-heading-m">
+        Contact details
+      </h2>
+            {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "First name"
+            },
+            value: {
+              text: "John"
+            },
+            actions: {
+              items: [
+                {
+                  href: "contact-details",
+                  text: "Change",
+                  visuallyHiddenText: "Change first name"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Last name"
+            },
+            value: {
+              text: "Doe"
+            },
+            actions: {
+              items: [
+                {
+                  href: "contact-details",
+                  text: "Change",
+                  visuallyHiddenText: "Change last name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Email address"
+            },
+            value: {
+              text: "johndoe@mail.com"
+            },
+            actions: {
+              items: [
+                {
+                  href: "contact-details",
+                  text: "Change",
+                  visuallyHiddenText: "Change email address"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Telephone number"
+            },
+            value: {
+              text: "07700 900457"
+            },
+            actions: {
+              items: [
+                {
+                  href: "contact-details",
+                  text: "Change",
+                  visuallyHiddenText: "Change telephone number"
+                }
+              ]
+            }
+          }
+          
+        ]
+      }) }}
+
+      {% if data['challenge'] == "yes" %}
+        <h2 class="govuk-heading-m">
+          Send your request for a review
+        </h2>
+        {% if data['liability'] == "yes" %}
+          <p>
+            By sending your request for a review you confirm that, to the best of your knowledge, these details are correct.
+          </p>
+        {% else %}
+          <p>
+            By sending your request for a review you confirm that, to the best of your knowledge, these details are correct.
+          </p>
+          <p>
+            You must send the VOA an <a href=''>Authority to Act</a> form or a <a href=''>Letter of Authority</a> within 28 days before we will review your request.
+          </p>
+        {% endif %}
+      {% else %}
+        <h2 class="govuk-heading-m">
+          Send updated details
+        </h2>
+        {% if data['liability'] == "yes" %}
+          <p>
+            By sending this information you confirm that, to the best of your knowledge, these new details are correct.
+          </p>
+        {% else %}
+          <p>
+            By sending this information you confirm that, to the best of your knowledge, these new details are correct.
+          </p>
+          <p>
+            You must send the VOA an <a href=''>Authority to Act</a> form or a <a href=''>Letter of Authority</a> within 28 days before we will process the update.
+          </p>
+        {% endif %}
+      {% endif %}
+
+      <form action="../confirmation/change-band" method="post" novalidate>
+
+        {{ govukButton({
+          text: "Confirm and send"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+  {% else %}
+    <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+            {% if data['challenge'] == "yes" %}
+      <h1 class="govuk-heading-xl">
+        Gwiria dy atebion cyn anfon dy gais am adolygiad
+      </h1>
+                  {% else %}
+                        <h1 class="govuk-heading-xl">
+       Adolygu dy newidiadau
+      </h1>
+                  {% endif %}
+
+{{ govukSummaryList({
+        rows: [
+         {
+            key: {
+              text: "Cyfeiriad"
+            },
+            value: {
+              text: "19, St David's Crescent, Cardiff, CF5 4GP"
+            }
+          }
+          ]
+      }) }}
+      {% if data['detailsChanged'] == "true" %}
+     <h2 class="govuk-heading-m">
+        Manylion dy eiddo
+ </h2>
+
+ {{ govukSummaryList({
+        rows: [
+         {
+            key: {
+              text: "Pob ystafell"
+            },
+            value: {
+              text: "5"
+            },
+            actions: {
+              items: [
+                {
+                  href: "../correct/rooms",
+                  text: "Newid",
+                  visuallyHiddenText: "Newid cyfanswm yr ystafelloedd"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Ystafelloedd gwely"
+            },
+            value: {
+              text: "3"
+            },
+            actions: {
+              items: [
+                {
+                  href: "../correct/bedrooms",
+                  text: "Newid",
+                  visuallyHiddenText: "Newid nifer yr ystafelloedd gwely"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Ystafelloedd ymolchi"
+            },
+            value: {
+              text: "2"
+            },
+            actions: {
+              items: [
+                {
+                  href: "../correct/bathrooms",
+                  text: "Newid",
+                  visuallyHiddenText: "Newid nifer yr ystafelloedd ymolchi"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Parcio"
+            },
+            value: {
+              text: "Parcio cyhoeddus"
+            },
+            actions: {
+              items: [
+                {
+                  href: "../correct/parking",
+                  text: "Newid",
+                  visuallyHiddenText: "Newid manylion parcio"
+                }
+              ]
+            }
+          }
+        ]
+}) }}
+      {% endif %}
+            {% if data['challenge'] == "yes" %}
+     <h2 class="govuk-heading-m">
+        Manylion dy gais am adolygiad
+ </h2>
+      {{ govukSummaryList({
+        rows: [
+       
+          {
+            key: {
+              text: "Pam wyt ti eisiau i ni adolygu dy fand Treth Gyngor?"
+            },
+            value: {
+              text: "Rwy'n credu bod fy nghartref yn y band anghywir"
+            },
+            actions: {
+              items: [
+                {
+                  href: "why",
+                  text: "Newid",
+                  visuallyHiddenText: "Newid rheswm dros adolygiad"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Pam wyt ti'n meddwl bod dy fand Treth Gyngor yn anghywir?"
+            },
+            value: {
+              text: " "
+            },
+            actions: {
+              items: [
+                {
+                  href: "wrong-details",
+                  text: "Newid",
+                  visuallyHiddenText: "Newid esboniad pam bod y band yn anghywir"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Beth wyt ti'n meddwl  y dylai'r band Treth Gyngor fod?"
+            },
+            value: {
+              text: "Band A"
+            },
+            actions: {
+              items: [
+                {
+                  href: "which-band",
+                  text: "Newid",
+                  visuallyHiddenText: "Newid band arfaethedig"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Wyt ti wedi dod yn gyfrifol am dalu Treth Gyngor am dy gartref yn ystod y chwe mis diwethaf?"
+            },
+            value: {
+              text: "Ydw"
+            },
+            actions: {
+              items: [
+                {
+                  href: "how-long-lived",
+                  text: "Newid",
+                  visuallyHiddenText: "Newid statws cyfrifoldeb Treth Gyngor"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Pryd wnest ti ddod yn gyfrifol am dalu Treth Gyngor am dy gartref?"
+            },
+            value: {
+              text: "12 Awst 2025"
+            },
+            actions: {
+              items: [
+                {
+                  href: "date-payer",
+                  text: "Newid",
+                  visuallyHiddenText: "Newid dyddiad cyfrifoldeb"
+                }
+              ]
+            }
+          }
+          
+        ]
+      }) }}
+            {% endif %}
+<h2 class="govuk-heading-m">
+        Manylion cyswllt
+      </h2>
+            {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Enw cyntaf"
+            },
+            value: {
+              text: "John"
+            },
+            actions: {
+              items: [
+                {
+                  href: "contact-details",
+                  text: "Newid",
+                  visuallyHiddenText: "Newid enw cyntaf"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Enw olaf"
+            },
+            value: {
+              text: "Doe"
+            },
+            actions: {
+              items: [
+                {
+                  href: "contact-details",
+                  text: "Newid",
+                  visuallyHiddenText: "Newid enw olaf"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Cyfeiriad e-bost"
+            },
+            value: {
+              text: "johndoe@mail.com"
+            },
+            actions: {
+              items: [
+                {
+                  href: "contact-details",
+                  text: "Newid",
+                  visuallyHiddenText: "Newid cyfeiriad e-bost"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Rhif ffôn"
+            },
+            value: {
+              text: "07700 900457"
+            },
+            actions: {
+              items: [
+                {
+                  href: "contact-details",
+                  text: "Newid",
+                  visuallyHiddenText: "Newid rhif ffôn"
+                }
+              ]
+            }
+          }
+          
+        ]
+      }) }}
+
+      {% if data['challenge'] == "yes" %}
+        <h2 class="govuk-heading-m">
+          Anfon dy gais am adolygiad
+        </h2>
+        {% if data['liability'] == "yes" %}
+          <p>
+            Trwy anfon dy gais am adolygiad, rwyt yn cadarnhau, hyd eithaf dy wybodaeth, bod y manylion hyn yn gywir.
+          </p>
+        {% else %}
+          <p>
+            Trwy anfon dy gais am adolygiad, rwyt yn cadarnhau, hyd eithaf dy wybodaeth, bod y manylion hyn yn gywir.
+          </p>
+          <p>
+            Bydd raid I ti anfon ffurflen Awdurdod i Weithredu neu Lythyr Awdurdod at y VOA o fewn 28 diwrnod cyn y byddwn yn adolygu dy gais.
+          </p>
+        {% endif %}
+      {% else %}
+        <h2 class="govuk-heading-m">
+          Anfon manylion sydd wedi'u diweddaru
+        </h2>
+        {% if data['liability'] == "yes" %}
+          <p>
+            Trwy gyflwyno'r wybodaeth hon, rwyt yn cadarnhau, hyd eithaf dy wybodaeth, bod y manylion newydd yn gywir.
+          </p>
+        {% else %}
+          <p>
+            Trwy gyflwyno'r wybodaeth hon, rwyt yn cadarnhau, hyd eithaf dy wybodaeth, bod y manylion newydd yn gywir.
+          </p>
+          <p>
+            Bydd raid I ti anfon ffurflen Awdurdod i Weithredu neu Lythyr Awdurdod at y VOA o fewn 28 diwrnod cyn y byddwn yn adolygu dy gais.
+          </p>
+        {% endif %}
+      {% endif %}
+
+      <form action="../confirmation/change-band" method="post" novalidate>
+
+        {{ govukButton({
+          text: "Cadarnhau ac anfon"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+  {% endif %}
+{% endblock %}

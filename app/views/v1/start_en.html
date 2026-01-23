@@ -1,0 +1,124 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Start page – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+{% block beforeContent %}
+
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#"
+      },
+      {
+        text: "Housing and local services",
+        href: "#"
+      },
+      {
+        text: "Council Tax"
+      }
+    ]
+  }) }}
+
+{% endblock %}
+{% block content %}
+
+  <div class="govuk-grid-row">
+    
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Council Tax
+      </h1>
+
+      <p>Use this service to:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>find out the Council Tax band of any property in Wales</li>
+        <li>check the information we hold on your property</li>
+        <li>let us know if you think your Council Tax band is wrong</li>
+      </ul>
+
+      <h2 class="govuk-heading-m">Who can use this service</h2>
+
+      <p>
+        Anyone can use this service to view the Council Tax band of properties in Wales.
+      </p>
+
+      <p>
+        If you want to let us know if any of the information about a property is wrong, you must be responsible for the Council Tax.
+      </p>
+      <p>
+        This can include those who:
+      </p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>own or rent a property</li>
+        <li>do not pay Council Tax (for example, students or people on benefits)</li>
+      </ul>
+      <div class="govuk-inset-text">
+        <p>This page is also available in <a href='start_cy'>Welsh (Cymraeg)</a>.</p>
+        <p>Mae'r dudalen hon hefyd ar gael yn <a href='start_cy'>Gymraeg (Welsh)</a>.</p>
+      </div>
+      {{ govukButton({
+        text: "Start now",
+        href: "search?languagePreference=en",
+        isStartButton: true
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        More information
+      </h2>
+<p>
+  The Welsh Government are making Council Tax fairer. 
+</p>
+<p>
+  They will:
+</p>
+<ul class="govuk-list govuk-list--bullet">
+  <li>review current Council Tax bands</li>
+  <li>improve the process to change your Council Tax band (appeal)</li>
+  <li>share more about what Council Tax money is spent on</li>
+  <li>make it easier to see the information we hold on 
+    your property</li>
+</ul>
+<p>
+  Find out more about how the Welsh Government are <a href='#'>reforming Council Tax</a>.</p>
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+      <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
+        <h2 class="govuk-heading-m" id="subsection-title">
+          Subsection
+        </h2>
+        <nav role="navigation" aria-labelledby="subsection-title">
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li>
+              <a href="https://www.gov.uk/council-tax">
+                How Council Tax works
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                Council Tax in Wales
+              </a>
+            </li>
+            <li>
+              <a href="https://www.gov.uk/guidance/understand-how-council-tax-bands-are-assessed">
+                How domestic properties are assessed for Council Tax bands
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+    </div>
+  </div>
+
+{% endblock %}

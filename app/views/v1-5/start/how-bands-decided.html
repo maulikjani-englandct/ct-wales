@@ -1,0 +1,297 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+{% if data['languagePreference'] == "en" %}
+  How Council Tax bands are decided – GOV.UK Prototype Kit
+{% else %}
+  Sut mae bandiau Treth Gyngor yn cael eu penderfynu – GOV.UK Prototype Kit
+{% endif %}
+{% endblock %}
+
+{% block header %}
+{% if data['languagePreference'] == "en" %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-5/start?languagePreference=en",
+
+    useTudorCrown: "true"
+  }) }}
+
+{% else %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-5/start?languagePreference=cy",
+
+    useTudorCrown: "true"
+  }) }}
+  {% endif %}
+{% endblock %}
+{% block beforeContent %}
+
+{% if data['languagePreference'] == "en" %}
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Home",
+      href: "#"
+    },
+    {
+      text: "Housing and local services",
+      href: "#"
+    },
+    {
+      text: "Council Tax"
+    }
+  ]
+}) }}
+{% else %}
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Hafan",
+      href: "#"
+    },
+    {
+      text: "Tai a gwasanaethau lleol",
+      href: "#"
+    },
+    {
+      text: "Treth Gyngor"
+    }
+  ]
+}) }}
+{% endif %}
+
+{% endblock %}
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    {% if data['languagePreference'] == "en" %}
+      <h1 class="govuk-heading-xl">Check and review your Council Tax band</h1>
+      <nav data-module="ga4-link-tracker" aria-label="Contents" class="gem-c-contents-list govuk-!-margin-bottom-4">
+        <h2 class="gem-c-contents-list__title">Contents</h2>
+        <ol class="gem-c-contents-list__list">
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="../start">
+              <span class="govuk-visually-hidden">Contents: </span>
+              Check your Council Tax band
+            </a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed gem-c-contents-list__list-item--active">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <span class="govuk-visually-hidden">Contents: </span>
+            How Council Tax bands are decided
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="property-details-used">
+              <span class="govuk-visually-hidden">Contents: </span>
+              What details are used to decide a band
+            </a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="check-update-property">
+              <span class="govuk-visually-hidden">Contents: </span>
+              Checking and updating the details of your home
+            </a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="changes-affect-band">
+              <span class="govuk-visually-hidden">Contents: </span>
+              What can affect the band a home is in
+            </a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="think-band-wrong">
+              <span class="govuk-visually-hidden">Contents: </span>
+              I think my Council Tax band is wrong
+            </a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="role-voa-council">
+              <span class="govuk-visually-hidden">Contents: </span>
+              What the VOA and your local council do
+            </a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="contact-voa">
+              <span class="govuk-visually-hidden">Contents: </span>
+              Contact the VOA
+            </a>
+          </li>
+        </ol>
+      </nav>
+
+      <h2 class="govuk-heading-l">How Council Tax bands are decided</h2>
+      <div class="govuk-inset-text">
+        <p>This page is also available in <a href='?languagePreference=cy'>Welsh (Cymraeg)</a>.</p>
+      </div>
+
+      <p>The Council Tax band a home is in is worked out based on its value on a fixed date in the past. It is not based on the current value of the home.</p>
+
+      <h3 class="govuk-heading-m">A valuation based on a fixed date</h3>
+      <p>The VOA values every home in Wales based on what it would have sold for on 1 April 2003.</p>
+      <p>Using this fixed date means the valuation does not change if the price of your home goes up or down.</p>
+
+      <h3 class="govuk-heading-m">Council Tax bands in Wales</h3>
+      <table class="govuk-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Band</th>
+            <th scope="col" class="govuk-table__header">Property Value (on 1 April 2003)</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row"><td class="govuk-table__cell">A</td><td class="govuk-table__cell">Up to £44,000</td></tr>
+          <tr class="govuk-table__row"><td class="govuk-table__cell">B</td><td class="govuk-table__cell">£44,001 to £65,000</td></tr>
+          <tr class="govuk-table__row"><td class="govuk-table__cell">C</td><td class="govuk-table__cell">£65,001 to £91,000</td></tr>
+          <tr class="govuk-table__row"><td class="govuk-table__cell">D</td><td class="govuk-table__cell">£91,001 to £123,000</td></tr>
+          <tr class="govuk-table__row"><td class="govuk-table__cell">E</td><td class="govuk-table__cell">£123,001 to £162,000</td></tr>
+          <tr class="govuk-table__row"><td class="govuk-table__cell">F</td><td class="govuk-table__cell">£162,001 to £223,000</td></tr>
+          <tr class="govuk-table__row"><td class="govuk-table__cell">G</td><td class="govuk-table__cell">£223,001 to £324,000</td></tr>
+          <tr class="govuk-table__row"><td class="govuk-table__cell">H</td><td class="govuk-table__cell">£324,001 to £424,000</td></tr>
+          <tr class="govuk-table__row"><td class="govuk-table__cell">I</td><td class="govuk-table__cell">More than £424,000</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="govuk-heading-m">What affects the band a home is in</h3>
+      <p>The band a home is in can be affected by the size, type, number of rooms and location.</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>A 2 bedroom flat might be in a higher band than a larger 4 bedroom detached house in a different location, if its value was higher in 2003.</li>
+        <li>Two homes of different sizes can still be in the same band if their value in 2003 was in the same band range. For example, one property valued at £330,000 and another valued at £420,000 in 2003 would both be in Band H.</li>
+      </ul>
+    {% else %}
+      <h1 class="govuk-heading-xl">Gwirio ac adolygu dy fand Treth Gyngor</h1>
+      <nav data-module="ga4-link-tracker" aria-label="Contents" class="gem-c-contents-list govuk-!-margin-bottom-4">
+        <h2 class="gem-c-contents-list__title">Cynnwys</h2>
+        <ol class="gem-c-contents-list__list">
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="../start">
+              <span class="govuk-visually-hidden">Cynnwys: </span>
+              Gwirio dy fand Treth Gyngor
+            </a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed gem-c-contents-list__list-item--active">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <span class="govuk-visually-hidden">Cynnwys: </span>
+            Sut mae bandiau Treth Gyngor yn cael eu penderfynu
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="property-details-used">
+              <span class="govuk-visually-hidden">Cynnwys: </span>
+              Pa fanylion sy'n cael eu defnyddio i benderfynu band
+            </a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="check-update-property">
+              <span class="govuk-visually-hidden">Cynnwys: </span>
+              Gwirio a diweddaru manylion dy gartref
+            </a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="changes-affect-band">
+              <span class="govuk-visually-hidden">Cynnwys: </span>
+              Beth sy'n gallu effeithio ar y band mae cartref ynddo
+            </a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="think-band-wrong">
+              <span class="govuk-visually-hidden">Cynnwys: </span>
+              Rydw i'n meddwl bod fy mand Treth Gyngor yn anghywir
+            </a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="role-voa-council">
+              <span class="govuk-visually-hidden">Cynnwys: </span>
+              Beth mae'r VOA a'r cyngor lleol yn ei wneud
+            </a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="contact-voa">
+              <span class="govuk-visually-hidden">Cynnwys: </span>
+              Cysylltu â'r VOA
+            </a>
+          </li>
+        </ol>
+      </nav>
+
+      <h2 class="govuk-heading-l">Sut mae bandiau Treth Gyngor yn cael eu penderfynu</h2>
+      <div class="govuk-inset-text">
+        <p>Mae’r dudalen hon hefyd ar gael yn <a href='?languagePreference=en'>Saesneg (English)</a>.</p>
+      </div>
+
+      <p>Mae band Treth Gyngor cartref yn seiliedig ar werth y cartref ar ddyddiad penodol yn y gorffennol. Dyw e ddim yn seiliedig ar werth y cartref heddiw.</p>
+
+      <h3 class="govuk-heading-m">Gwerth ar ddyddiad penodol</h3>
+      <p>Mae'r VOA yn edrych ar faint y byddai pob cartref yng Nghymru wedi'i werthu amdano ar 1 Ebrill 2003.</p>
+      <p>Mae defnyddio dyddiad penodol yn golygu dyw'r band ddim yn newid os yw pris dy gartref yn mynd i fyny neu i lawr.</p>
+
+      <h3 class="govuk-heading-m">Bandiau Treth Gyngor yng Nghymru</h3>
+      <table class="govuk-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Band</th>
+            <th scope="col" class="govuk-table__header">Gwerth yr eiddo (ar 1 Ebrill 2003)</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row"><td class="govuk-table__cell">A</td><td class="govuk-table__cell">Hyd at £44,000</td></tr>
+          <tr class="govuk-table__row"><td class="govuk-table__cell">B</td><td class="govuk-table__cell">£44,001 i £65,000</td></tr>
+          <tr class="govuk-table__row"><td class="govuk-table__cell">C</td><td class="govuk-table__cell">£65,001 i £91,000</td></tr>
+          <tr class="govuk-table__row"><td class="govuk-table__cell">D</td><td class="govuk-table__cell">£91,001 i £123,000</td></tr>
+          <tr class="govuk-table__row"><td class="govuk-table__cell">E</td><td class="govuk-table__cell">£123,001 i £162,000</td></tr>
+          <tr class="govuk-table__row"><td class="govuk-table__cell">F</td><td class="govuk-table__cell">£162,001 i £223,000</td></tr>
+          <tr class="govuk-table__row"><td class="govuk-table__cell">G</td><td class="govuk-table__cell">£223,001 i £324,000</td></tr>
+          <tr class="govuk-table__row"><td class="govuk-table__cell">H</td><td class="govuk-table__cell">£324,001 i £424,000</td></tr>
+          <tr class="govuk-table__row"><td class="govuk-table__cell">I</td><td class="govuk-table__cell">Dros £424,000</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="govuk-heading-m">Beth sy'n penderfynu pa fand mae cartref ynddo</h3>
+      <p>Mae band cartref yn dibynnu ar bethau fel ei faint, ei fath, nifer yr ystafelloedd a'i leoliad.</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Efallai bydd fflat sydd gyda 2 ystafell wely mewn band uwch na thŷ ar wahân gyda 4 ystafell wely, sy'n fwy ac mewn lleoliad gwahanol, os oedd y fflat yn werth mwy yn 2003.</li>
+        <li>Gall dau gartref o wahanol faint fod yn yr un band os oedd eu gwerth yn 2003 yn debyg. Er enghraifft, os oedd un cartref yn werth £330,000 ac un arall yn werth £420,000 yn 2003, byddai'r ddau yn yr un Band, sef Band H.</li>
+      </ul>
+    {% endif %}
+  </div>
+
+  <div class="govuk-grid-column-one-third">
+    <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
+      <h2 class="govuk-heading-m" id="subsection-title">
+        {% if data['languagePreference'] == "en" %}
+          Related content
+        {% else %}
+          Cynnwys perthnasol
+        {% endif %}
+      </h2>
+      <nav role="navigation" aria-labelledby="subsection-title">
+        <ul class="govuk-list govuk-!-font-size-16">
+          {% if data['languagePreference'] == "en" %}
+            <li><a href="https://www.gov.uk/council-tax" aria-label="How Council Tax works (English)">How Council Tax works</a></li>
+            <li><a href="#" aria-label="Council Tax in Wales (English)">Council Tax in Wales</a></li>
+            <li><a href="https://www.gov.uk/guidance/understand-how-council-tax-bands-are-assessed" aria-label="How domestic properties are assessed for Council Tax bands (English)">How domestic properties are assessed for Council Tax bands</a></li>
+          {% else %}
+            <li><a href="" aria-label="Sut mae’r Dreth Gyngor yn gweithio (Welsh)">Sut mae’r Dreth Gyngor yn gweithio</a></li>
+            <li><a href="https://www.llyw.cymru/treth-gyngor" aria-label="Treth Gyngor yng Nghymru (Welsh)">Treth Gyngor yng Nghymru</a></li>
+            <li><a href="https://www.gov.uk/guidance/understand-how-council-tax-bands-are-assessed.cy" aria-label="Sut y caiff eiddo domestig ei asesu ar gyfer bandiau Treth Gyngor (Welsh)">Sut y caiff eiddo domestig ei asesu ar gyfer bandiau Treth Gyngor</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+    </aside>
+  </div>
+</div>
+
+{% endblock %}

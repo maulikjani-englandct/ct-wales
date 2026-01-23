@@ -1,0 +1,435 @@
+{% extends "layouts/main.html" %}
+{% block header %}
+{% if data['languagePreference'] == "en" %}
+{{ hmrcHeader({
+    serviceUrl : "/v1-5-1/start?languagePreference=en",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+
+  {% else %}
+  {{ hmrcHeader({
+    homepageUrl : "/v1-5-1/start?languagePreference=cy",
+language : "cy",
+    signOutHref : "?sign-out",
+    useTudorCrown: true
+  }) }}
+{% endif %}
+{% endblock %}
+{% block pageTitle %}
+{% if data['languagePreference'] == "en" %}
+Review your changes – GOV.UK Prototype Kit
+{% else %}
+Adolygu dy newidiadau – GOV.UK Prototype Kit
+{% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+
+{{
+
+  hmrcLanguageSelect({
+
+      language: 'cy' if data['languagePreference'] === 'cy' else 'en',
+
+      en: { href: '?languagePreference=en' },
+
+      cy: { href: '?languagePreference=cy' }
+
+  })
+
+}}
+{% if data['languagePreference'] == "en" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "../incorrect-info?languagePreference=en"
+}) }}
+{% else %}
+{{ govukBackLink({
+  text: "Yn ôl",
+  href: "../incorrect-info?languagePreference=cy"
+}) }}
+
+{% endif %}
+{% endblock %}
+
+{% block content %}
+{% if data['languagePreference'] == "en" %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-xl">
+        Review your changes
+      </h1>
+<p>These are the changes you have asked us to look at.</p>
+      <h2 class="govuk-heading-m">Property details</h2>
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Total rooms"
+            },
+            value: {
+              text: "4"
+            },
+            actions: {
+              items: [
+                {
+                  href: "rooms",
+                  text: "Change",
+                  visuallyHiddenText: "Question 2"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Bedrooms"
+            },
+            value: {
+              text: "2"
+            },
+            actions: {
+              items: [
+                {
+                  href: "bedrooms",
+                  text: "Change",
+                  visuallyHiddenText: "Question 2"
+                }
+              ]
+            }
+          }
+          
+          ,
+          {
+            key: {
+              text: "Type of home"
+            },
+            value: {
+              text: "Mid-terraced house"
+            },
+            actions: {
+              items: [
+                {
+                  href: "property-type",
+                  text: "Change",
+                  visuallyHiddenText: "Question 3"
+                }
+              ]
+            }
+          },
+
+          {
+            key: {
+              text: "Parking"
+            },
+            value: {
+              text: "Street or public parking"
+            },
+            actions: {
+              items: [
+                {
+                  href: "parking",
+                  text: "Change",
+                  visuallyHiddenText: "Question 3"
+                }
+              ]
+            }
+          }
+
+        ]
+      }) }}
+<h2 class="govuk-heading-m">
+        Contact details
+      </h2>
+            {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "First name"
+            },
+            value: {
+              text: "John"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "Question 1"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Last name"
+            },
+            value: {
+              text: "Doe"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "Question 2"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Email address"
+            },
+            value: {
+              text: "johndoe@mail.com"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "Question 3"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Telephone number"
+            },
+            value: {
+              text: "07700 900457"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "Question 3"
+                }
+              ]
+            }
+          }
+          
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        Send updated details
+      </h2>
+      {% if data['liability'] == "yes" %}
+      <p>
+        By sending this information you confirm that, to the best of your knowledge, these new details are correct.
+      </p>
+
+      {% else %}
+      <p>
+        By sending this information you confirm that, to the best of your knowledge, these new details are correct.</p>
+       <p>
+        You must send the VOA an <a href=''>Authority to Act</a> form or a <a href=''>Letter of Authority</a> within 28 days before we will review your request.
+       </p>
+
+      {% endif %}
+      <form action="../confirm-incorrect" method="post" novalidate>
+
+        {{ govukButton({
+          text: "Confirm and send"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+  {% else %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-xl">
+        Adolygu dy newidiadau
+      </h1>
+<p>Dyma'r newidiadau rwyt ti wedi gofyn i ni edrych arnynt.</p>
+      <h2 class="govuk-heading-m">Manylion dy eiddo</h2>
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Pob ystafell"
+            },
+            value: {
+              text: "4"
+            },
+            actions: {
+              items: [
+                {
+                  href: "rooms",
+                  text: "Newid",
+                  visuallyHiddenText: "Question 2"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Ystafelloedd gwely"
+            },
+            value: {
+              text: "2"
+            },
+            actions: {
+              items: [
+                {
+                  href: "bedrooms",
+                  text: "Newid",
+                  visuallyHiddenText: "Question 2"
+                }
+              ]
+            }
+          }
+          
+          ,
+          {
+            key: {
+              text: "Math o gartref"
+            },
+            value: {
+              text: "Tŷ canol teras"
+            },
+            actions: {
+              items: [
+                {
+                  href: "property-type",
+                  text: "Newid",
+                  visuallyHiddenText: "Question 3"
+                }
+              ]
+            }
+          },
+
+          {
+            key: {
+              text: "Parcio"
+            },
+            value: {
+              text: "Parcio cyhoeddus"
+            },
+            actions: {
+              items: [
+                {
+                  href: "parking",
+                  text: "Newid",
+                  visuallyHiddenText: "Question 3"
+                }
+              ]
+            }
+          }
+
+        ]
+      }) }}
+<h2 class="govuk-heading-m">
+        Contact details
+      </h2>
+            {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "First name"
+            },
+            value: {
+              text: "John"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "Question 1"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Last name"
+            },
+            value: {
+              text: "Doe"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "Question 2"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Email address"
+            },
+            value: {
+              text: "johndoe@mail.com"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "Question 3"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Telephone number"
+            },
+            value: {
+              text: "07700 900457"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "Question 3"
+                }
+              ]
+            }
+          }
+          
+        ]
+      }) }}
+      <h2 class="govuk-heading-m">
+        Anfon manylion sydd wedi'u diweddaru
+      </h2>
+      {% if data['liability'] == "yes" %}
+      <p>
+        Trwy gyflwyno'r wybodaeth hon, rwyt yn cadarnhau, hyd eithaf dy wybodaeth, bod y manylion newydd yn gywir.
+      </p>
+
+      {% else %}
+      <p>
+        Trwy gyflwyno'r wybodaeth hon, rwyt yn cadarnhau, hyd eithaf dy wybodaeth, bod y manylion newydd yn gywir.</p>
+       <p>
+        Bydd raid i ti anfon ffurflen <a href=''>Awdurdod i Weithredu</a> neu <a href=''>Lythyr Awdurdod</a> at y VOA o fewn 28 diwrnod cyn y byddwn yn adolygu dy gais.
+      </p>
+
+      {% endif %}
+      <form action="../confirm-incorrect" method="post" novalidate>
+
+        {{ govukButton({
+          text: "Cadarnhau ac anfon"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+  {% endif %}
+{% endblock %}

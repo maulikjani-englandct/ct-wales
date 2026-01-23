@@ -1,0 +1,116 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Check your answers template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+{% block header %}
+{% if data['languagePreference'] == "en" %}
+{{ hmrcHeader({
+    serviceUrl : "/",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+
+  {% else %}
+  {{ hmrcHeader({
+    serviceUrl : "/",
+    language : "cy",
+    signOutHref : "?sign-out",
+    useTudorCrown: true
+  }) }}
+{% endif %}
+{% endblock %}
+{% block beforeContent %}
+
+{{
+
+  hmrcLanguageSelect({
+
+      language: 'cy' if data['languagePreference'] === 'cy' else 'en',
+
+      en: { href: '?languagePreference=en' },
+
+      cy: { href: '?languagePreference=cy' }
+
+  })
+
+}}
+{% if data['languagePreference'] == "en" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "let-us-know?languagePreference=en"
+}) }}
+{% else %}
+{{ govukBackLink({
+  text: "Yn ôl",
+  href: "let-us-know?languagePreference=cy"
+}) }}
+
+{% endif %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+       {{ govukRadios({
+        name: "counciltax-band",
+        fieldset: {
+          legend: {
+            text: "What do you think your property’s Council Tax band should be?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        hint: {
+          text: "The band should reflect the value of the property on 1 April 1991 for England and on 1 April 2003 for properties in Wales. Find out how properties are assessed for Council Tax bands (opens in a new tab)."
+        },
+        items: [
+          {
+            value: "a",
+            text: "Band A"
+          },
+          {
+            value: "b",
+            text: "Band B"
+          },
+          {
+            value: "c",
+            text: "Band C"
+          },
+          {
+            value: "d",
+            text: "Band D"
+          },
+          {
+            value: "e",
+            text: "Band E"
+          },
+          {
+            value: "f",
+            text: "Band F"
+          },
+          {
+            value: "g",
+            text: "Band G"
+          },
+          {
+            value: "h",
+            text: "Band H"
+          },
+          {
+            value: "unsure",
+            text: "I am unsure which band to propose"
+          }
+        ]
+      }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

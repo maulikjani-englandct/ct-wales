@@ -1,0 +1,86 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+{% if data['languagePreference'] == "en" %}
+Tell us why your home has been demolished or cannot be lived in – GOV.UK Prototype Kit
+{% else %}
+Dywed wrthym pam fod dy gartref wedi'i ddymchwel neu pam fod neb yn gallu byw ynddo – GOV.UK Prototype Kit
+{% endif %}
+{% endblock %}
+
+{% block header %}
+{% if data['languagePreference'] == "en" %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-5/start?languagePreference=en",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+
+{% else %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-5/start?languagePreference=cy",
+    language : "cy",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+
+{{
+
+  hmrcLanguageSelect({
+
+      language: 'cy' if data['languagePreference'] === 'cy' else 'en',
+
+      en: { href: '?languagePreference=en' },
+
+      cy: { href: '?languagePreference=cy' }
+
+  })
+
+}}
+{% if data['languagePreference'] == "en" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "../changes?languagePreference=en"
+}) }}
+{% else %}
+{{ govukBackLink({
+  text: "Yn ôl",
+  href: "../changes?languagePreference=cy"
+}) }}
+
+{% endif %}
+{% endblock %}
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+<form action="demolished-when" method="post">
+{% if data['languagePreference'] == "en" %}
+  <h1 class="govuk-heading-l">Tell us why your home has been demolished or cannot be lived in</h1>
+  {{ govukTextarea({
+    id: "demolished-reason",
+    name: "demolished-reason",
+
+    hint: {
+      text: "For example, you have completely demolished your home to build a new one, or your home is not protected from wind and rain and cannot be lived in."
+    }
+  }) }}
+  <button class="govuk-button" data-module="govuk-button">Continue</button>
+{% else %}
+  <h1 class="govuk-heading-l">Dywed wrthym pam fod dy gartref wedi'i ddymchwel neu pam fod neb yn gallu byw ynddo</h1>
+  {{ govukTextarea({
+    id: "demolished-reason",
+    name: "demolished-reason",
+    hint: {
+      text: "Er enghraifft, rwyt ti wedi dymchwel dy gartref yn llwyr er mwyn adeiladu un newydd, neu dyw’r cartref ddim wedi’i warchod rhag y gwynt a’r glaw a does neb yn gallu byw ynddo."
+    }
+  }) }}
+  <button class="govuk-button" data-module="govuk-button">Parhau</button>
+{% endif %}
+</form>
+    </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "layouts/main.html" %}
+{% block header %}
+{% if data['languagePreference'] == "en" %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-3/start_en",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+
+{% else %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-3/start_cy",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+  {% endif %}
+{% endblock %}
+{% block pageTitle %}
+  Sorry, you're not allowed... – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper govuk-main-wrapper--l" id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">Sorry, you're not allowed to view more details.</h1>
+        <p class="govuk-body">Liability  guidance TBD</p>
+
+        <p class="govuk-body">
+          <a class="govuk-link" href="../property-details">Go back to property details</a>
+        </p>
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}

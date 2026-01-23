@@ -1,0 +1,189 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+{% if data['languagePreference'] == "en" %}
+ What do you think the Council Tax band should be? – GOV.UK Prototype Kit
+ {% else %}
+Beth wyt ti'n meddwl y dylai'r band Treth Gyngor fod? – GOV.UK Prototype Kit
+ {% endif %}
+{% endblock %}
+
+{% block header %}
+{% if data['languagePreference'] == "en" %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-5-1/start?languagePreference=en",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+
+{% else %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-5-1/start?languagePreference=cy",
+    language : "cy",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+
+{{
+
+  hmrcLanguageSelect({
+
+      language: 'cy' if data['languagePreference'] === 'cy' else 'en',
+
+      en: { href: '?languagePreference=en' },
+
+      cy: { href: '?languagePreference=cy' }
+
+  })
+
+}}
+
+{% if data['languagePreference'] == "en" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:history.back()"
+}) }}
+{% else %}
+{{ govukBackLink({
+  text: "Yn ôl",
+  href: "javascript:history.back()"
+}) }}
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      {% if data['languagePreference'] == "en" %}
+      <form action="how-long-lived" method="post">
+       {{ govukRadios({
+  name: "counciltax-band",
+  fieldset: {
+    legend: {
+      text: "What do you think the Council Tax band should be?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+    }
+  },
+  hint: {
+    html: '<p class="govuk-hint">In Wales, the Council Tax band is based on the value of a home on 1 April 2003.</p><a href="https://www.gov.uk/guidance/understand-how-council-tax-bands-are-assessed?_gl=1*zcv8h4*_ga*ZmFsc2U.*_ga_Y4LWMWY6WS*czE3NjExMzEyMDMkbzMkZzEkdDE3NjExMzEyMjEkajQyJGwwJGgw">Find out more about Council Tax bands</a>'
+  },
+  items: [
+    {
+      value: "a",
+      text: "Band A"
+    },
+    {
+      value: "b",
+      text: "Band B"
+    },
+    {
+      value: "c",
+      text: "Band C"
+    },
+    {
+      value: "d",
+      text: "Band D"
+    },
+    {
+      value: "e",
+      text: "Band E"
+    },
+    {
+      value: "f",
+      text: "Band F"
+    },
+    {
+      value: "g",
+      text: "Band G"
+    },
+    {
+      value: "h",
+      text: "Band H"
+    },
+    {
+      value: "i",
+      text: "Band I"
+    },
+    {
+      value: "unsure",
+      text: "I'm not sure"
+    }
+  ]
+}) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+      {% else %}
+      <form action="how-long-lived" method="post">
+       {{ govukRadios({
+        name: "counciltax-band",
+        fieldset: {
+          legend: {
+            text: "Beth wyt ti'n meddwl y dylai'r band Treth Gyngor fod?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+  hint: {
+    html: '<p class="govuk-hint">Yng Nghymru, mae’r band yn seiliedig ar werth cartref ar 1 Ebrill 2003.</p><a href="https://www.gov.uk/guidance/understand-how-council-tax-bands-are-assessed.cy">Dysga fwy am fandiau Treth Gyngor</a>'
+  },
+        items: [
+          {
+            value: "a",
+            text: "Band A"
+          },
+          {
+            value: "b",
+            text: "Band B"
+          },
+          {
+            value: "c",
+            text: "Band C"
+          },
+          {
+            value: "d",
+            text: "Band D"
+          },
+          {
+            value: "e",
+            text: "Band E"
+          },
+          {
+            value: "f",
+            text: "Band F"
+          },
+          {
+            value: "g",
+            text: "Band G"
+          },
+          {
+            value: "h",
+            text: "Band H"
+          },
+          {
+            value: "i",
+            text: "Band I"
+          },
+          {
+            value: "unsure",
+            text: "Dwi ddim yn siŵr"
+          }
+        ]
+      }) }}
+
+        {{ govukButton({
+          text: "Parhau"
+        }) }}
+      </form>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

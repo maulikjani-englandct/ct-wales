@@ -1,0 +1,162 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+{% if data['languagePreference'] == "en" %}
+What type of bungalow is your home? – GOV.UK Prototype Kit
+{% else %}
+Pa fath o fyngalo yw dy gartref? – GOV.UK Prototype Kit
+{% endif %}
+{% endblock %}
+{% block header %}
+{% if data['languagePreference'] == "en" %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-4/start_en",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+
+{% else %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-4/start_cy",
+    language : "cy",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+  {% endif %}
+{% endblock %}
+{% block beforeContent %}
+
+{{
+
+  hmrcLanguageSelect({
+
+      language: 'cy' if data['languagePreference'] === 'cy' else 'en',
+
+      en: { href: '?languagePreference=en' },
+
+      cy: { href: '?languagePreference=cy' }
+
+  })
+
+}}
+{% if data['languagePreference'] == "en" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "../property-type?languagePreference=en"
+}) }}
+{% else %}
+{{ govukBackLink({
+  text: "Yn ôl",
+  href: "../property-type?languagePreference=cy"
+}) }}
+
+{% endif %}
+{% endblock %}
+
+{% block content %}
+{% if data['languagePreference'] == "en" %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="../../incorrect-info" method="post">
+        {{ govukRadios({
+          name: "signIn",
+          fieldset: {
+            legend: {
+              text: "What type of bungalow is your home?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+
+          {
+            value: "detab",
+            text: "Detached bungalow"
+          },
+          {
+            value: "semib",
+            text: "Semi-detached bungalow"
+          },
+          {
+            value: "eotb",
+            text: "End-of-terrace bungalow"
+            
+          },
+          {
+            value: "midb",
+            text: "Mid-terraced bungalow"
+            
+          }
+          ]
+        }) }}
+<div class="govuk-button-group">
+  {{ govukButton({
+    text: "Continue",
+    type: "submit"
+  }) }}
+
+  {{ govukButton({
+    text: "Cancel",
+    classes: "govuk-button--secondary"
+  }) }}
+</div>
+
+      </form>
+
+    </div>
+  </div>
+  {% else %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="../../incorrect-info" method="post">
+        {{ govukRadios({
+          name: "signIn",
+          fieldset: {
+            legend: {
+              text: "Pa fath o fyngalo yw dy gartref?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+
+          {
+            value: "detab",
+            text: "Byngalo ar wahân"
+          },
+          {
+            value: "semib",
+            text: "Byngalo pâr"
+          },
+          {
+            value: "eotb",
+            text: "Byngalo canol teras"
+            
+          },
+          {
+            value: "midb",
+            text: "Byngalo pen teras"
+            
+          }
+          ]
+        }) }}
+<div class="govuk-button-group">
+  {{ govukButton({
+    text: "Ymlaen",
+    type: "submit"
+  }) }}
+
+  {{ govukButton({
+    text: "Canslo",
+    classes: "govuk-button--secondary"
+  }) }}
+</div>
+
+      </form>
+
+    </div>
+  </div>
+  {% endif %}
+{% endblock %}

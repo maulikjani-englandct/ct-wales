@@ -1,0 +1,204 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Check and review your Council Tax band – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+{% if data['languagePreference'] == "en" %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-5-1/start?languagePreference=en",
+
+    useTudorCrown: "true"
+  }) }}
+
+{% else %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-5-1/start?languagePreference=cy",
+
+    useTudorCrown: "true"
+  }) }}
+  {% endif %}
+{% endblock %}
+{% block beforeContent %}
+
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#"
+      },
+      {
+        text: "Housing and local services",
+        href: "#"
+      },
+      {
+        text: "Council Tax"
+      }
+    ]
+  }) }}
+
+{% endblock %}
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    {% if data['languagePreference'] == "en" %}
+      <h1 class="govuk-heading-xl">Check and review your Council Tax band</h1>
+        <nav data-module="ga4-link-tracker" aria-label="Contents" class="gem-c-contents-list govuk-!-margin-bottom-4">
+  <h2 class="gem-c-contents-list__title">Contents</h2>
+  <ol class="gem-c-contents-list__list">
+    <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+      <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+      <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="../start">Check & review your Council Tax band</a>
+    </li>
+    <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+      <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+      <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="how-bands-decided">How Council Tax bands are decided</a>
+    </li>
+    <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+      <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+      <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="property-details-used">The property details used to decide a band</a>
+    </li>
+    <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+      <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+      <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="check-update-property">Check and update your property detail</a>
+    </li>
+    <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+      <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+      <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="changes-affect-band">Changes that can affect a property’s band</a>
+    </li>
+    <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+      <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+      <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="think-band-wrong">I think my Council Tax band is wrong</a>
+    </li>
+    <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed gem-c-contents-list__list-item--active">
+      <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+      Common issues we are asked about
+    </li>
+    <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+      <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+      <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="role-voa-council">Role of the VOA and your local council</a>
+    </li>
+    <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+      <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+      <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="contact-voa">Contact the VOA</a>
+    </li>
+  </ol>
+</nav>
+
+<h2 class="govuk-heading-l">Common issues we are asked about</h2>
+<div class="govuk-inset-text">
+        <p>This page is also available in <a href='?languagePreference=cy'>Welsh (Cymraeg)</a>.</p>
+      </div>
+<p>Council Tax can be confusing. These are some of the common questions we get asked about:</p>
+
+<h3 class="govuk-heading-m">Why is a smaller home in a higher band?</h3>
+<p>Council Tax bands are based on the price a property would have sold for on 1 April 2003. For example, a smaller property such as a flat in a premium city centre location, may be worth more than a larger home in a different area.</p>
+
+<h3 class="govuk-heading-m">My neighbour extended their property but their band has not changed</h3>
+<p>If a property has been extended or improved by the current owner, the band will not be reviewed by the Valuation Office Agency (VOA) until the property is sold. For example, a neighbour has added a large extension to their house, but their Council Tax band has stayed the same, because they are still living in it. If they sell their property in the future, the band will be reviewed and may go up.</p>
+
+<h3 class="govuk-heading-m">Why do Council Tax bands stay the same when house prices change?</h3>
+<p>Bands in Wales are based on property values on 1 April 2003. This means that even if house prices go up or down, Council Tax bands will stay the same.</p>
+
+<h3 class="govuk-heading-m">My Council Tax bill is too high</h3>
+<p>Your Local Council is responsible for setting the amount of Council Tax you pay, not the VOA. If you think your property is in the wrong Council Tax band, you can ask the VOA to review it. You may be asked to provide evidence to support your request.</p>
+
+<h3 class="govuk-heading-m">Why should I update my property details if I think they are wrong?</h3>
+<p>The VOA are responsible for keeping a fair and accurate list of all properties in Wales. If you tell us that you think your property details are wrong, it will help us to keep an accurate record for your property.</p>
+
+    {% else %}
+      <h1 class="govuk-heading-xl">Gwirio dy fand Treth Gyngor a’i herio</h1>
+      <nav data-module="ga4-link-tracker" aria-label="Contents" class="gem-c-contents-list govuk-!-margin-bottom-4">
+  <h2 class="gem-c-contents-list__title">Contents</h2>
+  <ol class="gem-c-contents-list__list">
+    <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+      <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+      <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="../start">Check & review your Council Tax band</a>
+    </li>
+    <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+      <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+      <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="how-bands-decided">How Council Tax bands are decided</a>
+    </li>
+    <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+      <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+      <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="property-details-used">The property details used to decide a band</a>
+    </li>
+    <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+      <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+      <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="check-update-property">Check and update your property detail</a>
+    </li>
+    <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+      <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+      <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="changes-affect-band">Changes that can affect a property’s band</a>
+    </li>
+    <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+      <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+      <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="think-band-wrong">I think my Council Tax band is wrong</a>
+    </li>
+    <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed gem-c-contents-list__list-item--active">
+      <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+      Common issues we are asked about
+    </li>
+    <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+      <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+      <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="role-voa-council">Role of the VOA and your local council</a>
+    </li>
+    <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+      <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+      <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="contact-voa">Contact the VOA</a>
+    </li>
+  </ol>
+</nav>
+
+<h2 class="govuk-heading-l">Common issues we are asked about</h2>
+      <div class="govuk-inset-text">
+        <p>Mae’r dudalen hon hefyd ar gael yn <a href='?languagePreference=en'>Saesneg (English)</a>.</p>
+      </div>
+<p>Council Tax can be confusing. These are some of the common questions we get asked about:</p>
+
+<h3 class="govuk-heading-m">Why is a smaller home in a higher band?</h3>
+<p>Council Tax bands are based on the price a property would have sold for on 1 April 2003. For example, a smaller property such as a flat in a premium city centre location, may be worth more than a larger home in a different area.</p>
+
+<h3 class="govuk-heading-m">My neighbour extended their property but their band has not changed</h3>
+<p>If a property has been extended or improved by the current owner, the band will not be reviewed by the Valuation Office Agency (VOA) until the property is sold. For example, a neighbour has added a large extension to their house, but their Council Tax band has stayed the same, because they are still living in it. If they sell their property in the future, the band will be reviewed and may go up.</p>
+
+<h3 class="govuk-heading-m">Why do Council Tax bands stay the same when house prices change?</h3>
+<p>Bands in Wales are based on property values on 1 April 2003. This means that even if house prices go up or down, Council Tax bands will stay the same.</p>
+
+<h3 class="govuk-heading-m">My Council Tax bill is too high</h3>
+<p>Your Local Council is responsible for setting the amount of Council Tax you pay, not the VOA. If you think your property is in the wrong Council Tax band, you can ask the VOA to review it. You may be asked to provide evidence to support your request.</p>
+
+<h3 class="govuk-heading-m">Why should I update my property details if I think they are wrong?</h3>
+<p>The VOA are responsible for keeping a fair and accurate list of all properties in Wales. If you tell us that you think your property details are wrong, it will help us to keep an accurate record for your property.</p>
+    {% endif %}
+  </div>
+
+  <div class="govuk-grid-column-one-third">
+    <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
+      <h2 class="govuk-heading-m" id="subsection-title">
+        {% if data['languagePreference'] == "en" %}
+          Related content
+        {% else %}
+          Cynnwys perthnasol
+        {% endif %}
+      </h2>
+      <nav role="navigation" aria-labelledby="subsection-title">
+        <ul class="govuk-list govuk-!-font-size-16">
+          {% if data['languagePreference'] == "en" %}
+            <li><a href="https://www.gov.uk/council-tax">How Council Tax works</a></li>
+            <li><a href="#">Council Tax in Wales</a></li>
+            <li><a href="https://www.gov.uk/guidance/understand-how-council-tax-bands-are-assessed">How domestic properties are assessed for Council Tax bands</a></li>
+          {% else %}
+            <li><a href="">Sut mae’r Dreth Gyngor yn gweithio</a></li>
+            <li><a href="https://www.llyw.cymru/treth-gyngor">Treth Gyngor yng Nghymru</a></li>
+            <li><a href="https://www.gov.uk/guidance/understand-how-council-tax-bands-are-assessed.cy">Sut y caiff eiddo domestig ei asesu ar gyfer bandiau Treth Gyngor</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+    </aside>
+  </div>
+</div>
+
+{% endblock %}

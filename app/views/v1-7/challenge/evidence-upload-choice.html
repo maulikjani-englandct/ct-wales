@@ -1,0 +1,156 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+{% if data['languagePreference'] == "en" %}
+Do you have documents to upload? – GOV.UK Prototype Kit
+{% else %}
+Do you have documents to upload? – GOV.UK Prototype Kit
+{% endif %}
+{% endblock %}
+
+{% block header %}
+{% if data['languagePreference'] == "en" %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-7/start?languagePreference=en",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+
+{% else %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-7/start?languagePreference=cy",
+    language : "cy",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+
+{{
+
+  hmrcLanguageSelect({
+
+      language: 'cy' if data['languagePreference'] === 'cy' else 'en',
+
+      en: { href: '?languagePreference=en' },
+
+      cy: { href: '?languagePreference=cy' }
+
+  })
+
+}}
+
+{% if data['languagePreference'] == "en" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:history.back()"
+}) }}
+{% else %}
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:history.back()"
+}) }}
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="/v1-7/challenge/evidence-upload-router" method="post">
+
+        {% if data['languagePreference'] == "en" %}
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Do you have documents to upload as evidence?
+              </h1>
+            </legend>
+            <div id="upload-hint" class="govuk-hint">
+              This could include screenshots of property listings, sale records, or other documents that support your request.
+            </div>
+
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="upload-yes" name="has-documents" type="radio" value="yes">
+                <label class="govuk-label govuk-radios__label" for="upload-yes">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="upload-no" name="has-documents" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="upload-no">
+                  No
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+        {% else %}
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Do you have documents to upload as evidence?
+              </h1>
+            </legend>
+            <div id="upload-hint" class="govuk-hint">
+              This could include screenshots of property listings, sale records, or other documents that support your request.
+            </div>
+
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="upload-yes" name="has-documents" type="radio" value="yes">
+                <label class="govuk-label govuk-radios__label" for="upload-yes">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="upload-no" name="has-documents" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="upload-no">
+                  No
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+        {% endif %}
+
+      </form>
+
+    </div>
+  </div>
+
+<script>
+  // Handle language switching without creating new history entries
+  document.addEventListener('DOMContentLoaded', function() {
+    var langLinks = document.querySelectorAll('.hmrc-language-select__list-item a');
+
+    langLinks.forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        var newUrl = this.href;
+        // Replace current history state instead of pushing new one
+        history.replaceState(null, '', newUrl);
+        // Reload page to show new language
+        window.location.reload();
+      });
+    });
+  });
+</script>
+{% endblock %}

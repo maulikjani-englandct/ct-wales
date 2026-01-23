@@ -1,0 +1,210 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+{% if data['languagePreference'] == "en" %}
+ Do you want us to review your Council Tax band? – GOV.UK Prototype Kit
+ {% else %}
+ Wyt ti eisiau i ni adolygu dy fand Treth Gyngor? – GOV.UK Prototype Kit
+ {% endif %}
+{% endblock %}
+
+{% block header %}
+{% if data['languagePreference'] == "en" %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-7/start?languagePreference=en",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+
+{% else %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-7/start?languagePreference=cy",
+    language : "cy",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+
+{{
+
+  hmrcLanguageSelect({
+
+      language: 'cy' if data['languagePreference'] === 'cy' else 'en',
+
+      en: { href: '?languagePreference=en' },
+
+      cy: { href: '?languagePreference=cy' }
+
+  })
+
+}}
+{% if data['languagePreference'] == "en" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "incorrect-info?languagePreference=en"
+}) }}
+{% else %}
+{{ govukBackLink({
+  text: "Yn ôl",
+  href: "incorrect-info?languagePreference=cy"
+}) }}
+
+{% endif %}
+{% endblock %}
+{% block content %}
+
+{% if data['languagePreference'] == "en" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">Council Tax band review</h1>
+
+      <p class="govuk-body">You can ask the VOA (Valuation Office Agency) to review the Council Tax band of your home.</p>
+      <p class="govuk-body">You will need to tell us why you think the band is wrong and you may be asked for more details.</p>
+
+      <p class="govuk-body">You can request a review of your council tax band if:</p>
+      <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+        <li>you became the new taxpayer within the last 6 months</li>
+        <li>the council tax band has changed in the last 6 months</li>
+        <li>the local area has physically changed</li>
+      </ul>
+
+      <p class="govuk-body">You can also request a review if something has changed with the property. For example:</p>
+      <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+        <li>its been demolished</li>
+        <li>its partly used for business</li>
+        <li>its been split into multiple properties or merged into one</li>
+      </ul>
+
+      <p class="govuk-body">If you request a review for one of these reasons and don't agree with the outcome you can appeal the decision.</p>
+
+      <h2 class="govuk-heading-m">Reviewing the band for any other reason</h2>
+
+      <p class="govuk-body">If none of the above apply, we will only review your band if you have strong supporting evidence that it is wrong.</p>
+      <p class="govuk-body">If you don't give us strong enough evidence that the band is wrong, we will reject your request for a band review.</p>
+      <p class="govuk-body">You won't have any legal rights to appeal the outcome of a review.</p>
+
+      <form class="form" action="/v1-7/challenge-router" method="post">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h2 class="govuk-fieldset__heading">
+                Do you want us to review your Council Tax band?
+              </h2>
+            </legend>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="yes" name="challenge" type="radio" value="yes">
+                <label class="govuk-label govuk-radios__label" for="yes">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="no" name="challenge" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="no">
+                  No
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+  {% else %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">Council Tax band review</h1>
+
+      <p class="govuk-body">Rwyt ti'n gallu gofyn i Asiantaeth y Swyddfa Brisio adolygu band Treth Gyngor dy gartref.</p>
+      <p class="govuk-body">Bydd raid i ti ddweud wrthym y rheswm pam, ac efallai y byddwn yn gofyn i ti am ragor o fanylion.</p>
+
+      <p class="govuk-body">You can request a review of your council tax band if:</p>
+      <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+        <li>you became the new taxpayer within the last 6 months</li>
+        <li>the council tax band has changed in the last 6 months</li>
+        <li>the local area has physically changed</li>
+      </ul>
+
+      <p class="govuk-body">You can also request a review if something has changed with the property. For example:</p>
+      <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+        <li>its been demolished</li>
+        <li>its partly used for business</li>
+        <li>its been split into multiple properties or merged into one</li>
+      </ul>
+
+      <p class="govuk-body">If you request a review for one of these reasons and don't agree with the outcome you can appeal the decision.</p>
+
+      <h2 class="govuk-heading-m">Reviewing the band for any other reason</h2>
+
+      <p class="govuk-body">If none of the above apply, we will only review your band if you have strong supporting evidence that it is wrong.</p>
+      <p class="govuk-body">If you don't give us strong enough evidence that the band is wrong, we will reject your request for a band review.</p>
+      <p class="govuk-body">You won't have any legal rights to appeal the outcome of a review.</p>
+
+      <form class="form" action="/v1-7/challenge-router" method="post">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h2 class="govuk-fieldset__heading">
+                Wyt ti eisiau i ni adolygu dy fand Treth Gyngor?
+              </h2>
+            </legend>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="yes" name="challenge" type="radio" value="yes">
+                <label class="govuk-label govuk-radios__label" for="yes">
+                  Ydw
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="no" name="challenge" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="no">
+                  Nac ydw
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        {{ govukButton({
+          text: "Parhau"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+  {% endif %}
+
+<script>
+  // Handle language switching without creating new history entries
+  document.addEventListener('DOMContentLoaded', function() {
+    var langLinks = document.querySelectorAll('.hmrc-language-select__list-item a');
+
+    langLinks.forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        var newUrl = this.href;
+        // Replace current history state instead of pushing new one
+        history.replaceState(null, '', newUrl);
+        // Reload page to show new language
+        window.location.reload();
+      });
+    });
+  });
+</script>
+{% endblock %}

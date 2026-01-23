@@ -1,0 +1,6 @@
+repoVisibility: private_12E5349CFB8BBA30AF464C24760B70343C0EAE9E9BD99156345DD0852C2E0F6F
+prototype-name: ct-walesreform-prototype
+prototype-auto-publish: true # set this to true to have prototypes automatically deploy to Heroku on push to the repository's default branch
+# slack channels for notification should be listed here without the # prefix
+#prototype-slack-notification-channels:
+type: prototype

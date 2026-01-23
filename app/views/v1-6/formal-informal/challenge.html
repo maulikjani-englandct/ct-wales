@@ -1,0 +1,137 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+{% if data['languagePreference'] == "en" %}
+ Do you want us to review your Council Tax band? – GOV.UK Prototype Kit
+{% else %}
+ Wyt ti eisiau i ni adolygu dy fand Treth Gyngor? – GOV.UK Prototype Kit
+{% endif %}
+{% endblock %}
+
+{% block header %}
+{% if data['languagePreference'] == "en" %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-5-2/start?languagePreference=en",
+  signOutHref : "?sign-out",
+  useTudorCrown: "true"
+}) }}
+{% else %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-5-2/start?languagePreference=cy",
+  language : "cy",
+  signOutHref : "?sign-out",
+  useTudorCrown: "true"
+}) }}
+{% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+{{
+  hmrcLanguageSelect({
+    language: 'cy' if data['languagePreference'] === 'cy' else 'en',
+    en: { href: '?languagePreference=en' },
+    cy: { href: '?languagePreference=cy' }
+  })
+}}
+
+{% if data['languagePreference'] == "en" %}
+  {{ govukBackLink({ text: "Back", href: "javascript:history.back()" }) }}
+{% else %}
+  {{ govukBackLink({ text: "Yn ôl", href: "javascript:history.back()" }) }}
+{% endif %}
+{% endblock %}
+
+{% block content %}
+
+{% if data['languagePreference'] == "en" %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="/v1-6/formal-informal/scenario">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Do you want us to review your Council Tax band?
+            </h1>
+          </legend>
+
+          <div id="challenge-hint" class="govuk-hint">
+            You can ask the VOA (Valuation Office Agency) to review the Council Tax band of your home.<br>
+            You will need to tell us why you think the band is wrong, and you may be asked for more information.
+          </div>
+
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="yes" name="challenge" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="yes">
+                Yes
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="no" name="challenge" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="no">
+                No
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      {{ govukButton({ text: "Continue" }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% else %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="/v1-6/formal-informal/scenario">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Wyt ti eisiau i ni adolygu dy fand Treth Gyngor?
+            </h1>
+          </legend>
+
+          <div id="challenge-hint" class="govuk-hint">
+            Rwyt ti’n gallu gofyn i Asiantaeth y Swyddfa Brisio (VOA) i adolygu band Treth Gyngor dy gartref.<br>
+            Mae angen i ti ddweud wrthym pam rwyt ti’n meddwl bod y band yn anghywir, ac efallai byddwn ni’n gofyn am fwy o wybodaeth.
+          </div>
+
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="yes" name="challenge" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="yes">
+                Ydw
+              </label>
+            </div>
+
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="no" name="challenge" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="no">
+                Na
+              </label>
+            </div>
+          </div>
+
+        </fieldset>
+      </div>
+
+      {{ govukButton({ text: "Parhau" }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endif %}
+{% endblock %}

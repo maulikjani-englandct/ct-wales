@@ -1,0 +1,52 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Which local authority is related to this property? – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="../incorrect-info" method="post">
+        {{ govukInput({
+          label: {
+            text: "How many rooms are there in your property?",
+            classes: "govuk-label--l",
+            isPageHeading: true
+          },
+          classes: "govuk-input--width-10",
+          hint: {
+            text: "Guidance on what rooms are here (content TBD)"
+          },
+          id: "rooms",
+          name: "rooms",
+          inputmode: "numeric",
+          spellcheck: false
+        }) }}
+<div class="govuk-button-group">
+  {{ govukButton({
+    text: "Continue",
+    type: "submit"
+  }) }}
+
+  {{ govukButton({
+    text: "Cancel",
+    classes: "govuk-button--secondary"
+  }) }}
+</div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

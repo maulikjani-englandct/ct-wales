@@ -1,0 +1,9 @@
+{
+  "serviceName": "Check and challenge your Council Tax band in Wales",
+  "plugins": {
+    "govuk-frontend": {
+    "rebrand": true
+    }
+  }
+}
+

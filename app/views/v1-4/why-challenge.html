@@ -1,0 +1,101 @@
+{% extends "layouts/main.html" %}
+{% block header %}
+{% if data['languagePreference'] == "en" %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-4/start_en",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+
+{% else %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-4/start_cy",
+    language : "cy",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+  {% endif %}
+{% endblock %}
+{% block pageTitle %}
+What do you want to do next? – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+
+{{
+
+  hmrcLanguageSelect({
+
+      language: 'cy' if data['languagePreference'] === 'cy' else 'en',
+
+      en: { href: '?languagePreference=en' },
+
+      cy: { href: '?languagePreference=cy' }
+
+  })
+
+}}
+{% if data['languagePreference'] == "en" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "property-details-extended?languagePreference=en"
+}) }}
+{% else %}
+{{ govukBackLink({
+  text: "Yn ôl",
+  href: "property-details-extended?languagePreference=cy"
+}) }}
+
+{% endif %}
+{% endblock %}
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+  
+      <form class="form" action="/v1-4/letusknow" method="post">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Why do you want to challenge the council tax band?
+              </h1>
+            </legend>
+            <div id="signIn-hint" class="govuk-hint">
+              Placeholder for guidance
+            </div>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="incorrect" name="help" type="radio" value="incorrect">
+                <label class="govuk-label govuk-radios__label" for="incorrect">
+                  There been a change that affects the property
+                </label>
+                <div id="signIn-item-hint" class="govuk-hint govuk-radios__hint">
+                 Guidance TBD
+                </div>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="challenge" name="help" type="radio" value="challenge">
+                <label class="govuk-label govuk-radios__label" for="challenge">
+                  I think the band is wrong
+                </label>
+                <div id="signIn-item-hint" class="govuk-hint govuk-radios__hint">
+                 Guidance TBD
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

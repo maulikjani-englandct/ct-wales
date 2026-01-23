@@ -1,0 +1,95 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Which local authority is related to this property? – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="../incorrect-info" method="post">
+        {{ govukRadios({
+          name: "signIn",
+          fieldset: {
+            legend: {
+              text: "What's the correct property type for this property?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "Guidance on property type"
+          },
+          items: [
+
+          {
+            value: "detached",
+            text: "Detached house",
+            hint: {
+              text: "Info on detached house"
+            }
+          },
+          {
+            value: "semi-detached",
+            text: "Semi-detached house",
+            hint: {
+              text: "Info on semi-detached house"
+            }
+          },
+          {
+            value: "terraced",
+            text: "Terraced house",
+            hint: {
+              text: "Info on terraced house"
+            }
+          },
+          {
+            value: "end-terrace",
+            text: "End-of-terrace house",
+            hint: {
+              text: "Info on end-of-terrace house"
+            }
+          },
+          {
+            value: "flat-purpose-built",
+            text: "Flat in purpose-built block",
+            hint: {
+              text: "Info on flat purpose built"
+            }
+          },
+          {
+            value: "flat-converted-house",
+            text: "Flat in converted or shared house",
+            hint: {
+              text: "Info on flat converted/shared house"
+            }
+          }
+          ]
+        }) }}
+<div class="govuk-button-group">
+  {{ govukButton({
+    text: "Continue",
+    type: "submit"
+  }) }}
+
+  {{ govukButton({
+    text: "Cancel",
+    classes: "govuk-button--secondary"
+  }) }}
+</div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

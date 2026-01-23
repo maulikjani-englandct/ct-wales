@@ -1,0 +1,176 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+{% if data['languagePreference'] == "en" %}
+What type of property is your home? – {{ serviceName }} – GOV.UK Prototype Kit
+{% else %}
+Pa fath o eiddo yw dy gartref? – {{ serviceName }} – GOV.UK Prototype Kit
+{% endif %}
+{% endblock %}
+
+{% block header %}
+{% if data['languagePreference'] == "en" %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-3/start_en",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+
+{% else %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-3/start_cy",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+
+{{
+
+  hmrcLanguageSelect({
+
+      language: 'cy' if data['languagePreference'] === 'cy' else 'en',
+
+      en: { href: '?languagePreference=en' },
+
+      cy: { href: '?languagePreference=cy' }
+
+  })
+
+}}
+{% if data['languagePreference'] == "en" %}
+
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:history.back()"
+}) }}
+
+{% else %}
+
+{{ govukBackLink({
+  text: "Yn ôl",
+  href: "javascript:history.back()"
+}) }}
+
+{% endif %}
+{% endblock %}
+
+{% block content %}
+{% if data['languagePreference'] == "en" %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="/v1-3/propertytype" method="post">
+        {{ govukRadios({
+          name: "type",
+          fieldset: {
+            legend: {
+              text: "What type of property is your home?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+
+          {
+            value: "house",
+            text: "House"
+          },
+          {
+            value: "flat",
+            text: "Flat"
+          },
+          {
+            value: "maisonette",
+            text: "Maisonette"
+            
+          },
+          {
+            value: "bungalow",
+            text: "Bungalow"
+            
+          },
+          {
+            value: "other",
+            text: "Other"
+            
+          }
+          ]
+        }) }}
+<div class="govuk-button-group">
+  {{ govukButton({
+    text: "Continue",
+    type: "submit"
+  }) }}
+
+  {{ govukButton({
+    text: "Cancel",
+    classes: "govuk-button--secondary"
+  }) }}
+</div>
+
+      </form>
+
+    </div>
+  </div>
+  {% else %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="/v1-3/propertytype" method="post">
+        {{ govukRadios({
+          name: "type",
+          fieldset: {
+            legend: {
+              text: "Pa fath o eiddo yw dy gartref?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+
+          {
+            value: "house",
+            text: "Tŷ"
+          },
+          {
+            value: "flat",
+            text: "Fflat"
+          },
+          {
+            value: "maisonette",
+            text: "Fflat deulawr"
+            
+          },
+          {
+            value: "bungalow",
+            text: "Byngalo"
+            
+          },
+          {
+            value: "other",
+            text: "Arall"
+            
+          }
+          ]
+        }) }}
+<div class="govuk-button-group">
+  {{ govukButton({
+    text: "Ymlaen",
+    type: "submit"
+  }) }}
+
+  {{ govukButton({
+    text: "Canslo",
+    classes: "govuk-button--secondary"
+  }) }}
+</div>
+
+      </form>
+
+    </div>
+  </div>
+  {% endif %}
+{% endblock %}

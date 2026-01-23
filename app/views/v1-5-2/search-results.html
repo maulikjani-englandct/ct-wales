@@ -1,0 +1,429 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+{% if data['languagePreference'] == "en" %}
+Search results for LL55 2EW – GOV.UK Prototype Kit
+ {% else %}
+ Canlyniadau chwilio am LL55 2EW – GOV.UK Prototype Kit
+ {% endif %}
+{% endblock %}
+
+{% block header %}
+{% if data['languagePreference'] == "en" %}
+{{ hmrcHeader({
+    serviceUrl : "/v1-5-2/start?languagePreference=en",
+    useTudorCrown: "true"
+  }) }}
+
+  {% else %}
+  {{ hmrcHeader({
+    homepageUrl : "/v1-5-2/start?languagePreference=cy",
+  language : "cy",
+    useTudorCrown: true
+  }) }}
+{% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+
+{{
+
+  hmrcLanguageSelect({
+
+      language: 'cy' if data['languagePreference'] === 'cy' else 'en',
+
+      en: { href: '?languagePreference=en' },
+
+      cy: { href: '?languagePreference=cy' }
+
+  })
+
+}}
+{% if data['languagePreference'] == "en" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "search?languagePreference=en"
+}) }}
+{% else %}
+{{ govukBackLink({
+  text: "Yn ôl",
+  href: "search?languagePreference=cy"
+}) }}
+
+{% endif %}
+{% endblock %}
+{% block content %}
+
+{% if data['languagePreference'] == "en" %}
+
+  <div class="govuk-grid-row">
+    
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-xl">
+        Search results for CF5 4GP
+      </h1>
+      <p>Showing 1 - 10 of 106 results</p>
+      {{ govukTable({
+        firstCellIsHeader: false,
+        head: [
+          {
+            text: "Address"
+          },
+          {
+            text: "Council Tax band"
+          },
+          {
+            text: "Local authority"
+          }
+        ],
+        rows: [
+          [
+            {
+              html: "<a href='property-details?address=19, St David's Crescent, Cardiff, CF5 4GP'>19, St David's Crescent, Cardiff, CF5 4GP</a>"
+            },
+            {
+              text: "D"
+            }
+            ,
+            {
+              text: "Cardiff ",
+              html: "<a href='https://www.cardiff.gov.uk/ENG/Pages/default.aspx'>Cardiff </a>"
+            }
+          ],
+          [
+            {
+           html: "<a href='property-details-alt1?address=21, St David's Crescent, Cardiff, CF5 4GP'>21, St David's Crescent, Cardiff, CF5 4GP</a>"
+            },
+            {
+              text: "B"
+            }
+            ,
+            {
+              text: "Cardiff ",
+              html: "<a href='https://www.cardiff.gov.uk/ENG/Pages/default.aspx'>Cardiff </a>"
+            }
+          ],
+          [
+            {
+              html: "<a href='#'>23, St David's Crescent, Cardiff, CF5 4GP</a>"
+            },
+            {
+              text: "B"
+            }
+            ,
+            {
+              text: "Cardiff ",
+              html: "<a href='https://www.cardiff.gov.uk/ENG/Pages/default.aspx'>Cardiff </a>"
+            }
+          ],
+          [
+            {
+              html: "<a href='#'>25, St David's Crescent, Cardiff, CF5 4GP</a>"
+            },
+            {
+              text: "B"
+            }
+            ,
+            {
+              text: "Cardiff ",
+              html: "<a href='https://www.cardiff.gov.uk/ENG/Pages/default.aspx'>Cardiff </a>"
+            }
+          ],
+          [
+            {
+              html: "<a href='#'>27, St David's Crescent, Cardiff, CF5 4GP</a>"
+            },
+            {
+              text: "B"
+            }
+            ,
+            {
+              text: "Cardiff ",
+              html: "<a href='https://www.cardiff.gov.uk/ENG/Pages/default.aspx'>Cardiff </a>"
+            }
+          ],
+          [
+            {
+              html: "<a href='#'>29, St David's Crescent, Cardiff, CF5 4GP</a>"
+            },
+            {
+              text: "B"
+            }
+            ,
+            {
+              text: "Cardiff ",
+              html: "<a href='https://www.cardiff.gov.uk/ENG/Pages/default.aspx'>Cardiff </a>"
+            }
+          ],
+          [
+            {
+              html: "<a href='#'>31, St David's Crescent, Cardiff, CF5 4GP</a>"
+            },
+            {
+              text: "B"
+            }
+            ,
+            {
+              text: "Cardiff ",
+              html: "<a href='https://www.cardiff.gov.uk/ENG/Pages/default.aspx'>Cardiff </a>"
+            }
+          ],
+          [
+            {
+              html: "<a href='#'>33, St David's Crescent, Cardiff, CF5 4GP</a>"
+            },
+            {
+              text: "B"
+            }
+            ,
+            {
+              text: "Cardiff ",
+              html: "<a href='https://www.cardiff.gov.uk/ENG/Pages/default.aspx'>Cardiff </a>"
+            }
+          ],
+          [
+            {
+              html: "<a href='#'>35, St David's Crescent, Cardiff, CF5 4GP</a>"
+            },
+            {
+              text: "B"
+            }
+            ,
+            {
+              text: "Cardiff ",
+              html: "<a href='https://www.cardiff.gov.uk/ENG/Pages/default.aspx'>Cardiff </a>"
+            }
+          ],
+          [
+            {
+              html: "<a href='#'>37, St David's Crescent, Cardiff, CF5 4GP</a>"
+            },
+            {
+              text: "B"
+            }
+            ,
+            {
+              text: "Cardiff ",
+              html: "<a href='https://www.cardiff.gov.uk/ENG/Pages/default.aspx'>Cardiff </a>"
+            }
+          ]
+        ]
+      }) }}
+      {{ govukPagination({
+        next: {
+          href: "#"
+        },
+        items: [
+          {
+            number: 1,
+            current: true,
+            href: "#"
+          },
+          {
+            number: 2,
+            href: "#"
+          }
+        ]
+      }) }}
+    </div>
+  </div>
+
+
+  {% else %}
+  <div class="govuk-grid-row">
+    
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-xl">
+        Canlyniadau chwilio am CF5 4GP
+      </h1>
+      <p>Yn dangos 1 - 10 o 106 canlyniad</p>
+      {{ govukTable({
+        firstCellIsHeader: false,
+        head: [
+          {
+            text: "Cyfeiriad"
+          },
+          {
+            text: "Band Treth Gyngor"
+          },
+          {
+            text: "Cyngor lleol"
+          }
+        ],
+        rows: [
+          [
+            {
+              html: "<a href='property-details?address=19, St David&#39;s Crescent, Cardiff, CF5 4GP'>19, St David&#39;s Crescent, Cardiff, CF5 4GP<span class='govuk-visually-hidden'> - Gweld manylion ar gyfer 19, St David&#39;s Crescent, Cardiff, CF5 4GP</span></a>",
+              visuallyHiddenText: "View details for 19, St David's Crescent, Cardiff, CF5 4GP"
+            },
+            {
+              text: "D"
+            },
+            {
+              text: "Caerdydd",
+              html: "<a href='https://www.cardiff.gov.uk/ENG/Pages/default.aspx'>Caerdydd<span class='govuk-visually-hidden'> - Ewch i wefan Cyngor Caerdydd</span></a>",
+              visuallyHiddenText: "Go to Cardiff Council website"
+            }
+          ],
+          [
+            {
+              html: "<a href='property-details-alt1?address=21, St David&#39;s Crescent, Cardiff, CF5 4GP'>21, St David&#39;s Crescent, Cardiff, CF5 4GP<span class='govuk-visually-hidden'> - Gweld manylion ar gyfer 21, St David&#39;s Crescent, Cardiff, CF5 4GP</span></a>",
+              visuallyHiddenText: "View details for 21, St David's Crescent, Cardiff, CF5 4GP"
+            },
+            {
+              text: "B"
+            },
+            {
+              text: "Caerdydd",
+              html: "<a href='https://www.cardiff.gov.uk/ENG/Pages/default.aspx'>Caerdydd<span class='govuk-visually-hidden'> - Ewch i wefan Cyngor Caerdydd</span></a>",
+              visuallyHiddenText: "Go to Cardiff Council website"
+            }
+          ],
+          [
+            {
+              html: "<a href='#'>23, St David&#39;s Crescent, Cardiff, CF5 4GP<span class='govuk-visually-hidden'> - Gweld manylion ar gyfer 23, St David&#39;s Crescent, Cardiff, CF5 4GP</span></a>",
+              visuallyHiddenText: "View details for 23, St David's Crescent, Cardiff, CF5 4GP"
+            },
+            {
+              text: "B"
+            },
+            {
+              text: "Caerdydd",
+              html: "<a href='https://www.cardiff.gov.uk/ENG/Pages/default.aspx'>Caerdydd<span class='govuk-visually-hidden'> - Ewch i wefan Cyngor Caerdydd</span></a>",
+              visuallyHiddenText: "Go to Cardiff Council website"
+            }
+          ],
+          [
+            {
+              html: "<a href='#'>25, St David&#39;s Crescent, Cardiff, CF5 4GP<span class='govuk-visually-hidden'> - Gweld manylion ar gyfer 25, St David&#39;s Crescent, Cardiff, CF5 4GP</span></a>",
+              visuallyHiddenText: "View details for 25, St David's Crescent, Cardiff, CF5 4GP"
+            },
+            {
+              text: "B"
+            },
+            {
+              text: "Caerdydd",
+              html: "<a href='https://www.cardiff.gov.uk/ENG/Pages/default.aspx'>Caerdydd<span class='govuk-visually-hidden'> - Ewch i wefan Cyngor Caerdydd</span></a>",
+              visuallyHiddenText: "Go to Cardiff Council website"
+            }
+          ],
+          [
+            {
+              html: "<a href='#'>27, St David&#39;s Crescent, Cardiff, CF5 4GP<span class='govuk-visually-hidden'> - Gweld manylion ar gyfer 27, St David&#39;s Crescent, Cardiff, CF5 4GP</span></a>",
+              visuallyHiddenText: "View details for 27, St David's Crescent, Cardiff, CF5 4GP"
+            },
+            {
+              text: "B"
+            },
+            {
+              text: "Caerdydd",
+              html: "<a href='https://www.cardiff.gov.uk/ENG/Pages/default.aspx'>Caerdydd<span class='govuk-visually-hidden'> - Ewch i wefan Cyngor Caerdydd</span></a>",
+              visuallyHiddenText: "Go to Cardiff Council website"
+            }
+          ],
+          [
+            {
+              html: "<a href='#'>29, St David&#39;s Crescent, Cardiff, CF5 4GP<span class='govuk-visually-hidden'> - Gweld manylion ar gyfer 29, St David&#39;s Crescent, Cardiff, CF5 4GP</span></a>",
+              visuallyHiddenText: "View details for 29, St David's Crescent, Cardiff, CF5 4GP"
+            },
+            {
+              text: "B"
+            },
+            {
+              text: "Caerdydd",
+              html: "<a href='https://www.cardiff.gov.uk/ENG/Pages/default.aspx'>Caerdydd<span class='govuk-visually-hidden'> - Ewch i wefan Cyngor Caerdydd</span></a>",
+              visuallyHiddenText: "Go to Cardiff Council website"
+            }
+          ],
+          [
+            {
+              html: "<a href='#'>31, St David&#39;s Crescent, Cardiff, CF5 4GP<span class='govuk-visually-hidden'> - Gweld manylion ar gyfer 31, St David&#39;s Crescent, Cardiff, CF5 4GP</span></a>",
+              visuallyHiddenText: "View details for 31, St David's Crescent, Cardiff, CF5 4GP"
+            },
+            {
+              text: "B"
+            },
+            {
+              text: "Caerdydd",
+              html: "<a href='https://www.cardiff.gov.uk/ENG/Pages/default.aspx'>Caerdydd<span class='govuk-visually-hidden'> - Ewch i wefan Cyngor Caerdydd</span></a>",
+              visuallyHiddenText: "Go to Cardiff Council website"
+            }
+          ],
+          [
+            {
+              html: "<a href='#'>33, St David&#39;s Crescent, Cardiff, CF5 4GP<span class='govuk-visually-hidden'> - Gweld manylion ar gyfer 33, St David&#39;s Crescent, Cardiff, CF5 4GP</span></a>",
+              visuallyHiddenText: "View details for 33, St David's Crescent, Cardiff, CF5 4GP"
+            },
+            {
+              text: "B"
+            },
+            {
+              text: "Caerdydd",
+              html: "<a href='https://www.cardiff.gov.uk/ENG/Pages/default.aspx'>Caerdydd<span class='govuk-visually-hidden'> - Ewch i wefan Cyngor Caerdydd</span></a>",
+              visuallyHiddenText: "Go to Cardiff Council website"
+            }
+          ],
+          [
+            {
+              html: "<a href='#'>35, St David&#39;s Crescent, Cardiff, CF5 4GP<span class='govuk-visually-hidden'> - Gweld manylion ar gyfer 35, St David&#39;s Crescent, Cardiff, CF5 4GP</span></a>",
+              visuallyHiddenText: "View details for 35, St David's Crescent, Cardiff, CF5 4GP"
+            },
+            {
+              text: "B"
+            },
+            {
+              text: "Caerdydd",
+              html: "<a href='https://www.cardiff.gov.uk/ENG/Pages/default.aspx'>Caerdydd<span class='govuk-visually-hidden'> - Ewch i wefan Cyngor Caerdydd</span></a>",
+              visuallyHiddenText: "Go to Cardiff Council website"
+            }
+          ],
+          [
+            {
+              html: "<a href='#'>37, St David&#39;s Crescent, Cardiff, CF5 4GP<span class='govuk-visually-hidden'> - Gweld manylion ar gyfer 37, St David&#39;s Crescent, Cardiff, CF5 4GP</span></a>",
+              visuallyHiddenText: "View details for 37, St David's Crescent, Cardiff, CF5 4GP"
+            },
+            {
+              text: "B"
+            },
+            {
+              text: "Caerdydd",
+              html: "<a href='https://www.cardiff.gov.uk/ENG/Pages/default.aspx'>Caerdydd<span class='govuk-visually-hidden'> - Ewch i wefan Cyngor Caerdydd</span></a>",
+              visuallyHiddenText: "Go to Cardiff Council website"
+            }
+          ]
+        ]
+      }) }}
+      <nav class="govuk-pagination" aria-label="Pagination">
+        <ul class="govuk-pagination__list">
+          <li class="govuk-pagination__item govuk-pagination__item--current">
+            <a class="govuk-link govuk-pagination__link" href="#" aria-label="Page 1">
+              1
+            </a>
+          </li>
+          <li class="govuk-pagination__item">
+            <a class="govuk-link govuk-pagination__link" href="#" aria-label="Page 2" aria-current="page">
+              2
+            </a>
+          </li>
+        </ul>
+        <div class="govuk-pagination__next">
+          <a class="govuk-link govuk-pagination__link" href="#" rel="next">
+            <span class="govuk-pagination__link-title">
+              Nesaf
+            </span>
+            <svg class="govuk-pagination__icon govuk-pagination__icon--next" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+              <path d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
+            </svg>
+          </a>
+        </div>
+      </nav>
+    </div>
+
+    </div>
+  </div>
+
+
+  {% endif %}
+{% endblock %}

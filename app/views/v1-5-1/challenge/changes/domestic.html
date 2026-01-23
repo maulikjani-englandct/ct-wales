@@ -1,0 +1,85 @@
+{% extends "layouts/main.html" %}
+{% block pageTitle %}
+  {% if data['languagePreference'] == "en" %}
+    Which parts of your property are now used as a home? – GOV.UK Prototype Kit
+  {% else %}
+    Pa rannau o dy eiddo sy'n cael eu defnyddio fel cartref erbyn hyn? – GOV.UK Prototype Kit
+  {% endif %}
+  {% endblock %}
+
+{% block header %}
+{% if data['languagePreference'] == "en" %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-5-1/start?languagePreference=en",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+
+{% else %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-5-1/start?languagePreference=cy",
+    language : "cy",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+
+{{
+
+  hmrcLanguageSelect({
+
+      language: 'cy' if data['languagePreference'] === 'cy' else 'en',
+
+      en: { href: '?languagePreference=en' },
+
+      cy: { href: '?languagePreference=cy' }
+
+  })
+
+}}
+{% if data['languagePreference'] == "en" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "../changes?languagePreference=en"
+}) }}
+{% else %}
+{{ govukBackLink({
+  text: "Yn ôl",
+  href: "../changes?languagePreference=cy"
+}) }}
+
+{% endif %}
+{% endblock %}
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+<form action="domestic-when" method="post">
+{% if data['languagePreference'] == "en" %}
+  <h1 class="govuk-heading-l">Which parts of your property are now used as a home?</h1>
+  {{ govukTextarea({
+    id: "domestic-reason",
+    name: "domestic-reason",
+
+    hint: {
+      text: "For example, you have converted part of a café back into a living space. Provide as much detail as possible."
+    }
+  }) }}
+  <button class="govuk-button" data-module="govuk-button">Continue</button>
+{% else %}
+  <h1 class="govuk-heading-l">Pa rannau o dy eiddo sy'n cael eu defnyddio fel cartref erbyn hyn?</h1>
+  {{ govukTextarea({
+    id: "domestic-reason",
+    name: "domestic-reason",
+    hint: {
+      text: "Er enghraifft, rwyt ti wedi cyfuno rhan o gaffi yn ôl yn lle i fyw. Rho gymaint o wybodaeth â phosibl."
+    }
+  }) }}
+  <button class="govuk-button" data-module="govuk-button">Parhau</button>
+{% endif %}
+</form>
+    </div>
+    </div>
+{% endblock %}

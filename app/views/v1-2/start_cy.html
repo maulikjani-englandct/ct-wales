@@ -1,0 +1,126 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Start page – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+{% block beforeContent %}
+
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Hafan",
+        href: "#"
+      },
+      {
+        text: "Tai a gwasanaethau Ileo",
+        href: "#"
+      },
+      {
+        text: "Treth Gyngor"
+      }
+    ]
+  }) }}
+
+{% endblock %}
+{% block content %}
+
+  <div class="govuk-grid-row">
+    
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Treth Gyngor
+      </h1>
+      
+      <p>Defnyddiwch y gwasanaeth hwn i: </p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>gael hyd i fand Treth Gyngor unrhyw eiddo yng 
+          Nghymru neu Loegr </li>
+        <li>wirio’r wybodaeth yr ydym yn ei ddal am eich eiddo </li>
+        <li>i roi gwybod inni os credwch fod eich band Treth 
+          Gyngor yn anghywir </li>
+      </ul>
+
+      <h2 class="govuk-heading-m">Pwy all ddefnyddio’r gwasanaeth hwn </h2>      
+      
+      <p>
+        Gall unrhyw un ddefnyddio’r gwasanaeth hwn i weld band Treth Gyngor eiddo yng Nghymru. 
+      </p>
+
+      <p>
+        Os ydych am roi gwybod inni os yw unrhyw ran o’r wybodaeth am eiddo yn anghywir, rhaid mae chi sy’n gyfrifol am y Dreth Gyngor. 
+      </p>
+      <p>
+        Gall hyn gynnwys y rhai: 
+      </p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>sy’n berchen neu yn rhentu eiddo </li>
+        <li>sydd ddim yn talu Treth Gyngor (er enghraifft, myfyrwyr a pobl sy’n derbyn budd-daliadau) </li>
+      </ul>
+      <div class="govuk-inset-text">
+        <p>Mae'r dudalen hon hefyd ar gael yn <a href='start_en'>Saesneg (English)</a>.</p>
+        <p>This page is also available in <a href='start_en'>English (Saesneg)</a>.</p>
+      </div>
+      {{ govukButton({
+        text: "Dechrau nawr",
+        href: "search?languagePreference=cy",
+        isStartButton: true
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        Mwy o wybodaeth 
+      </h2>
+<p>
+  Mae Llywodraeth Cymru yn gwneud Treth Gyngor yn decach.
+</p>
+<p>
+  Byddant yn:
+</p>
+<ul class="govuk-list govuk-list--bullet">
+  <li>adolygu’r bandiau Treth Gyngor presennol </li>
+  <li>gwella’r broses o sialensio eich band Treth Gyngor </li>
+  <li>rhannu mwy am yr hyn y bydd arian Treth Gyngor yn cael ei wario arno </li>
+  <li>ei gwneud yn haws i weld pa wybodaeth yr ydym yn ei ddal am eich eiddo</li>
+</ul>
+<p>
+  Canfyddwch fwy am y ffordd y mae Llywodraeth Cymru yn <a href='#'>diwygio’r Dreth Gyngor</a>.
+</p>
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+
+      <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
+        <h2 class="govuk-heading-m" id="subsection-title">
+          Cynnwys perthnasol 
+        </h2>
+        <nav role="navigation" aria-labelledby="subsection-title">
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li>
+              <a href="https://www.gov.uk/council-tax">
+                Sut mae’r Dreth Gyngor yn gweithio
+              </a>
+            </li>
+            <li>
+              <a href="https://www.llyw.cymru/treth-gyngor">
+                Treth Gyngor
+              </a>
+            </li>
+            <li>
+              <a href="https://www.gov.uk/guidance/understand-how-council-tax-bands-are-assessed">
+                Sut y caiff eiddo domestig ei asesu ar gyfer bandiau Treth Gyngor
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+    </div>
+  </div>
+
+{% endblock %}

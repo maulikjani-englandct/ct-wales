@@ -1,0 +1,87 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+{% if data['languagePreference'] == "en" %}
+ Why do you think the Council Tax band is wrong? – GOV.UK Prototype Kit
+ {% else %}
+Pam wyt ti'n meddwl bod y band Treth Gyngor yn anghywir? – GOV.UK Prototype Kit
+ {% endif %}
+{% endblock %}
+
+{% block header %}
+{% if data['languagePreference'] == "en" %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-5-2/start?languagePreference=en",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+
+{% else %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-5-2/start?languagePreference=cy",
+    language : "cy",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+
+{{
+
+  hmrcLanguageSelect({
+
+      language: 'cy' if data['languagePreference'] == 'cy' else 'en',
+
+      en: { href: '?languagePreference=en' },
+
+      cy: { href: '?languagePreference=cy' }
+
+  })
+
+}}
+
+{% if data['languagePreference'] == "en" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:history.back()"
+}) }}
+{% else %}
+{{ govukBackLink({
+  text: "Yn ôl",
+  href: "javascript:history.back()"
+}) }}
+{% endif %}
+
+{% endblock %}
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+<form action="which-band" method="post">
+{% if data['languagePreference'] == "en" %}
+  <h1 class="govuk-heading-l">Why do you think the Council Tax band is wrong?</h1>
+  {{ govukTextarea({
+    id: "reason",
+    name: "reason",
+
+    hint: {
+      text: "Tell us why you think your Council Tax band is wrong. Give as as much detail as possible. For example, a similar sized home in your street is in a lower band."
+    }
+  }) }}
+  <button class="govuk-button" data-module="govuk-button">Continue</button>
+{% else %}
+  <h1 class="govuk-heading-l">Pam wyt ti'n meddwl bod y band Treth Gyngor yn anghywir?</h1>
+  {{ govukTextarea({
+    id: "reason",
+    name: "reason",
+    hint: {
+      text: "Dwed wrthym pam wyt ti'n meddwl bod dy fand Treth Gyngor yn anghywir. Rho gymaint o fanylion â phosib. Er enghraifft, mae cartref o faint tebyg yn dy stryd mewn band is."
+    }
+  }) }}
+  <button class="govuk-button" data-module="govuk-button">Parhau</button>
+{% endif %}
+</form>
+</div>
+</div>
+{% endblock %}

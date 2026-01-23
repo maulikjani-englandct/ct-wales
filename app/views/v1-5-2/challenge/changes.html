@@ -1,0 +1,166 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+{% if data['languagePreference'] == "en" %}
+What has changed? – GOV.UK Prototype Kit
+{% else %}
+Beth sydd wedi newid? – GOV.UK Prototype Kit
+{% endif %}
+{% endblock %}
+
+{% block header %}
+{% if data['languagePreference'] == "en" %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-5-2/start?languagePreference=en",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+
+{% else %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-5-2/start?languagePreference=cy",
+    language : "cy",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+
+{{
+
+  hmrcLanguageSelect({
+
+      language: 'cy' if data['languagePreference'] === 'cy' else 'en',
+
+      en: { href: '?languagePreference=en' },
+
+      cy: { href: '?languagePreference=cy' }
+
+  })
+
+}}
+{% if data['languagePreference'] == "en" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "why?languagePreference=en"
+}) }}
+{% else %}
+{{ govukBackLink({
+  text: "Yn ôl",
+  href: "why?languagePreference=cy"
+}) }}
+
+{% endif %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      {% if data['languagePreference'] == "en" %}
+      <form action="/v1-5-2/change-reason" method="post">
+       {{ govukRadios({
+        name: "changes",
+        fieldset: {
+          legend: {
+            text: "What has changed?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+          {
+            value: "demolished_uninhabitable",
+            text: "My home has been demolished or cannot be lived in"
+          },
+          {
+            value: "part_demolished",
+            text: "Part of my home has been demolished"
+          },
+          {
+            value: "split",
+            text: "My home has been split into more than one property"
+          },
+          {
+            value: "merged",
+            text: "My home has been merged with other properties"
+          },
+          {
+            value: "business_use",
+            text: "Part or all of my home is now used for business"
+          },
+          {
+            value: "domestic_use",
+            text: "Part or all of my property is now my home"
+          },
+          {
+            value: "local_area_changes",
+            text: "Permanent changes in the local area have affected the value of my home"
+          },
+          {
+            value: "something_else",
+            text: "Something else"
+          }
+        ]
+      }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+      {% else %}
+      <form action="/v1-5-2/change-reason" method="post">
+       {{ govukRadios({
+        name: "changes",
+        fieldset: {
+          legend: {
+            text: "Beth sydd wedi newid?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+          {
+            value: "demolished_uninhabitable",
+            text: "Mae fy nghartref wedi'i ddymchwel neu does neb yn gallu byw ynddo"
+          },
+          {
+            value: "part_demolished",
+            text: "Mae rhan o fy nghartref wedi ei ddymchwel"
+          },
+          {
+            value: "split",
+            text: "Mae fy nghartref wedi'i rannu'n fwy nag un eiddo"
+          },
+          {
+            value: "merged",
+            text: "Mae fy nghartref wedi'i gyfuno gydag un neu fwy eiddo arall"
+          },
+          {
+            value: "business_use",
+            text: "Mae fy nghartref cyfan, neu ran ohono, bellach yn cael ei ddefnyddio fel busnes"
+          },
+          {
+            value: "domestic_use",
+            text: "Mae fy nghartref cyfan, neu ran ohono, bellach yn cael ei ddefnyddio fel cartref"
+          },
+          {
+            value: "local_area_changes",
+            text: "Mae newidiadau parhaol yn yr ardal lleol wedi effeithio ar werth fy nghartref"
+          },
+          {
+            value: "something_else",
+            text: "Rhywbeth arall"
+          }
+        ]
+      }) }}
+
+        {{ govukButton({
+          text: "Parhau"
+        }) }}
+      </form>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

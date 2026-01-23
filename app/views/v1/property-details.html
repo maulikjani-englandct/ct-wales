@@ -1,0 +1,250 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Property information
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+{% block beforeContent %}
+
+{{
+
+  hmrcLanguageSelect({
+
+      language: 'cy' if data['languagePreference'] === 'cy' else 'en',
+
+      en: { href: '?languagePreference=en' },
+
+      cy: { href: '?languagePreference=cy' }
+
+  })
+
+}}
+{% if data['languagePreference'] == "en" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "search-results?languagePreference=en"
+}) }}
+{% else %}
+{{ govukBackLink({
+  text: "Back",
+  href: "search-results?languagePreference=cy"
+}) }}
+
+{% endif %}
+{% endblock %}
+{% block content %}
+
+{% if data['languagePreference'] == "en" %}
+
+  <div class="govuk-grid-row">
+    
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Property information for</span>
+        {{ data['address'] }}
+      </h1>
+      {{ govukDetails({
+        summaryText: "What does each property detail mean?",
+        html: "<ul class=\"govuk-list govuk-list--spaced\">" +
+              "<li><strong>Council Tax band</strong><br> The band the property is currently in. This determines how much Council Tax is paid.</li>" +
+              "<li><strong>Local Authority</strong><br> Lorem ipsum</li>" +
+              "<li><strong>Local Authority reference number</strong><br> Lorem ipsum</li>" +
+              "<li><strong>Improvement indicator</strong><br> Lorem ipsum</li>" +
+              "<li><strong>With effect from</strong><br> Lorem ipsum</li>" +
+              "<li><strong>Mixed-use property</strong><br> Lorem ipsum</li>" +
+              "<li><strong>Court code</strong><br> Lorem ipsum</li>" +
+              "</ul>"
+      }) }}
+      {{ govukTable({
+        firstCellIsHeader: true,
+        rows: [
+          [
+            {
+              text: "Council Tax band"
+            },
+            {
+              text: "B"
+            }
+          ],
+          [
+            {
+              text: "Local Authority"
+              },
+            {
+              html: "<a href='https://www.pembrokeshire.gov.uk/'>Pembrokeshire</a>"
+            }
+          ],
+          [
+            {
+              text: "Local Authority reference number"
+            },
+            {
+              text: "110380008111000100"
+            }
+          ],
+          [
+            {
+              text: "Improvement indicator"
+             },
+            {
+              text: "No"
+            }
+          ],
+          [
+            {
+              text: "With effect from"
+            },
+            {
+              text: "9 October 2008"
+            } 
+          ],
+          [
+            {
+              text: "Mixed-use property"
+             },
+            {
+              text: "No"
+            }
+            ],
+            [
+            {
+              text: "Court code"
+             },
+            {
+              text: "None"
+            }
+            ]]
+
+
+      }) }}
+
+      
+      
+      
+      <p>If you are the tax payer for this property, you can sign in via Government Gateway to view more details.</p>
+      <p> Once logged in, you can also let us know if any details are incorrect or if you think the council tax band is incorrect.</p>
+      {{ govukButton({
+        text: "Sign in",
+        classes: "govuk-button--primary",
+        href: "gov-gateway?languagePreference=en"
+      }) }}
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+      <p>When you're finished, you can search for other properties.</p>
+      {{ govukButton({
+        text: "Search again",
+        classes: "govuk-button--secondary",
+        href: "search?languagePreference=en"
+      }) }}
+      </div>
+  </div>
+
+
+  {% else %}
+  <div class="govuk-grid-row">
+    
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Gwybodaeth eiddo am</span>
+        {{ data['address'] }}
+      </h1>
+      {{ govukDetails({
+        summaryText: "Beth yw ystyr pob manylyn eiddo?",
+        html: "<ul class=\"govuk-list govuk-list--spaced\">" +
+              "<li><strong>Band Treth Gyngor:</strong><br> Lorem ipsum</li>" +
+              "<li><strong>Awdurdod lleol:</strong><br> Lorem ipsum</li>" +
+              "<li><strong>Ystafelloedd gwely:</strong><br> Lorem ipsum</li>" +
+              "<li><strong>Dangosydd gwella:</strong><br> Lorem ipsum</li>" +
+              "<li><strong>Yn dod i rym ar:</strong><br> Lorem ipsum</li>" +
+              "<li><strong>Eiddo defnydd cymysg:</strong><br> Lorem ipsum</li>" +
+              "<li><strong>Cod y Llys:</strong><br> Lorem ipsum</li>" +
+              "</ul>"
+      }) }}
+      {{ govukTable({
+        firstCellIsHeader: true,
+        rows: [
+          [
+            {
+              text: "Band Treth Gyngor"
+            },
+            {
+              text: "B"
+            }
+          ],
+          [
+            {
+              text: "Awdurdod lleol"
+            },
+            {
+              html: "<a href='https://www.pembrokeshire.gov.uk/'>Pembrokeshire</a>"
+            }
+          ],
+          [
+            {
+              text: "Ystafelloedd gwely"
+            },
+            {
+              text: "110380008111000100"
+            }
+          ],
+          [
+            {
+              text: "Dangosydd gwella"
+             },
+            {
+              text: "Nacoes"
+            }
+          ],
+          [
+            {
+              text: "Yn dod i rym ar"
+            },
+            {
+              text: "9 Hydref 2008"
+            } 
+          ],
+          [
+            {
+              text: "Eiddo defnydd cymysg"
+             },
+            {
+              text: "Nacoes"
+            }
+            ],
+            [
+            {
+              text: "Cod y Llys"
+             },
+            {
+              text: "Dim"
+            }
+            ]]
+
+
+      }) }}
+      
+      <p>If you are the tax payer for this property, you can sign in via Government Gateway to view more details. Once logged in, you can also let us know if any details are incorrect or if you think the council tax band is incorrect.</p>
+      {{ govukButton({
+        text: "Sign in",
+        classes: "govuk-button--primary",
+        href: "gov-gateway?languagePreference=cy"
+      }) }}
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+      <p>When you're finished, you can search for other properties.</p>
+      {{ govukButton({
+        text: "Search again",
+        classes: "govuk-button--secondary",
+        href: "search?languagePreference=en"
+      }) }}
+     
+    </div>
+  </div>
+
+
+  {% endif %}
+{% endblock %}

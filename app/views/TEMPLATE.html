@@ -1,0 +1,155 @@
+{#
+  COUNCIL TAX WALES REFORM - PAGE TEMPLATE
+  =========================================
+
+  This template provides the basic structure for creating new pages in v1-7.
+
+  QUICK START:
+  1. Copy this file and rename it
+  2. Update the page title in the pageTitle block
+  3. Change the form action to your next page
+  4. Add your content in both English and Welsh sections (https://designnotes.blog.gov.uk/2024/11/14/how-can-we-test-our-designs-with-welsh-speaking-users/)
+  5. Test in both languages
+#}
+
+{% extends "layouts/main.html" %}
+
+{# ========================================
+   PAGE TITLE
+   Change this for each page - appears in browser tab
+   ======================================== #}
+{% block pageTitle %}
+{% if data['languagePreference'] == "en" %}
+  Page Title – GOV.UK Prototype Kit
+{% else %}
+  Teitl y Dudalen – GOV.UK Prototype Kit
+{% endif %}
+{% endblock %}
+
+{# ========================================
+   HEADER
+   HMRC header with language-specific homepage links
+   DON'T CHANGE unless you need a different homepage URL
+   ======================================== #}
+{% block header %}
+{% if data['languagePreference'] == "en" %}
+  {{ hmrcHeader({
+    homepageUrl: "/v1-7/start?languagePreference=en",
+    signOutHref: "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+{% else %}
+  {{ hmrcHeader({
+    homepageUrl: "/v1-7/start?languagePreference=cy",
+    language: "cy",
+    signOutHref: "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+{% endif %}
+{% endblock %}
+
+{# ========================================
+   BEFORE CONTENT
+   Language selector and back link
+   ALWAYS KEEP THESE - they're required on every page
+   ======================================== #}
+{% block beforeContent %}
+
+{# Language selector - allows users to switch between English/Welsh #}
+{{
+  hmrcLanguageSelect({
+    language: 'cy' if data['languagePreference'] === 'cy' else 'en',
+    en: { href: '?languagePreference=en' },
+    cy: { href: '?languagePreference=cy' }
+  })
+}}
+
+{# Back link - uses javascript:history.back() to go to previous page #}
+{% if data['languagePreference'] == "en" %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:history.back()"
+  }) }}
+{% else %}
+  {{ govukBackLink({
+    text: "Yn ôl",
+    href: "javascript:history.back()"
+  }) }}
+{% endif %}
+
+{% endblock %}
+
+{# ========================================
+   MAIN CONTENT
+   Add your page content here - remember to add in BOTH languages
+   ======================================== #}
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {# ========================================
+       ENGLISH CONTENT
+       Add all your English content here
+       ======================================== #}
+    {% if data['languagePreference'] == "en" %}
+
+      <h1 class="govuk-heading-xl">Page heading</h1>
+
+      {# Update the form action to point to your next page #}
+      <form action="next-page" method="post">
+
+        {# Add your form components here (radios, inputs, textareas, etc.) #}
+        {# See TEMPLATE_GUIDE.md for examples of GOV.UK components #}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    {# ========================================
+       WELSH CONTENT
+       Add all your Welsh content here
+       Keep the structure identical to English, just translate the text
+       ======================================== #}
+    {% else %}
+
+      <h1 class="govuk-heading-xl">Pennawd tudalen</h1>
+
+      {# Form action should be the same as English version #}
+      <form action="next-page" method="post">
+
+        {# Add your form components here (same structure as English) #}
+        {# Only translate the text content, keep component structure the same #}
+
+        {{ govukButton({
+          text: "Parhau"
+        }) }}
+
+      </form>
+
+    {% endif %}
+
+  </div>
+</div>
+
+{# ========================================
+   LANGUAGE SWITCHING SCRIPT
+   REQUIRED - prevents language switches from creating new history entries
+   DON'T REMOVE THIS
+   ======================================== #}
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var langLinks = document.querySelectorAll('.hmrc-language-select__list-item a');
+    langLinks.forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        var newUrl = this.href;
+        history.replaceState(null, '', newUrl);
+        window.location.reload();
+      });
+    });
+  });
+</script>
+
+{% endblock %}

@@ -1,0 +1,496 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+{% if data['languagePreference'] == "en" %}
+Information for: 19, St David's Crescent, Cardiff, CF5 4GP – GOV.UK Prototype Kit
+{% else %}
+Dyma'r wybodaeth ar gyfer: 19, St David's Crescent, Cardiff, CF5 4GP – GOV.UK Prototype Kit
+{% endif %}
+{% endblock %}
+
+{% block header %}
+{% if data['languagePreference'] == "en" %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-6/start?languagePreference=en",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+
+{% else %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-6/start?languagePreference=cy",
+    language : "cy",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+
+{{
+
+  hmrcLanguageSelect({
+
+      language: 'cy' if data['languagePreference'] === 'cy' else 'en',
+
+      en: { href: '?languagePreference=en' },
+
+      cy: { href: '?languagePreference=cy' }
+
+  })
+
+}}
+{% if data['languagePreference'] == "en" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "list-pages?languagePreference=en"
+}) }}
+{% else %}
+{{ govukBackLink({
+  text: "Yn ôl",
+  href: "list-pages?languagePreference=cy"
+}) }}
+
+{% endif %}
+{% endblock %}
+{% block content %}
+
+{% if data['languagePreference'] == "en" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Information for:</span>
+        19, St David's Crescent, Cardiff, CF5 4GP
+      </h1>
+
+      {{ govukTable({
+        head: [
+          {
+            text: "Property detail"
+          },
+          {
+            text: "Value"
+          },
+          {
+            text: "Visibility"
+          }
+        ],
+        rows: [
+          [
+            {
+              text: "Total rooms"
+            },
+            {
+              text: "4"
+            },
+            {
+              html: govukTag({ text: "Private", classes: "govuk-tag--blue" })
+            }
+          ],
+          [
+            {
+              text: "Bedrooms"
+            },
+            {
+              text: "2"
+            },
+            {
+              html: govukTag({ text: "Private", classes: "govuk-tag--blue" })
+            }
+          ],
+          [
+            {
+              text: "Bathrooms"
+            },
+            {
+              text: "1"
+            },
+            {
+              html: govukTag({ text: "Private", classes: "govuk-tag--blue" })
+            }
+          ],
+          [
+            {
+              text: "Type of home"
+            },
+            {
+              text: "Mid-terraced house"
+            },
+            {
+              html: govukTag({ text: "Private", classes: "govuk-tag--blue" })
+            }
+          ],
+          [
+            {
+              text: "Size of home"
+            },
+            {
+              text: "90 m²"
+            },
+            {
+              html: govukTag({ text: "Private", classes: "govuk-tag--blue" })
+            }
+          ],
+          [
+            {
+              text: "Floors"
+            },
+            {
+              text: "2"
+            },
+            {
+              html: govukTag({ text: "Private", classes: "govuk-tag--blue" })
+            }
+          ],
+          [
+            {
+              text: "Parking"
+            },
+            {
+              text: "Street or public parking"
+            },
+            {
+              html: govukTag({ text: "Private", classes: "govuk-tag--blue" })
+            }
+          ],
+          [
+            {
+              text: "Features that may affect value"
+            },
+            {
+              text: "View"
+            },
+            {
+              html: govukTag({ text: "Private", classes: "govuk-tag--blue" })
+            }
+          ],
+          [
+            {
+              text: "Council Tax band"
+            },
+            {
+              text: "D"
+            },
+            {
+              html: govukTag({ text: "Public", classes: "govuk-tag--grey" })
+            }
+          ],
+          [
+            {
+              text: "Local Council"
+            },
+            {
+              html: "<a href='https://www.cardiff.gov.uk/ENG/Pages/default.aspx'>Cardiff</a>"
+            },
+            {
+              html: govukTag({ text: "Public", classes: "govuk-tag--grey" })
+            }
+          ],
+          [
+            {
+              text: "Local Council reference number"
+            },
+            {
+              text: "110380008111000100"
+            },
+            {
+              html: govukTag({ text: "Public", classes: "govuk-tag--grey" })
+            }
+          ],
+          [
+            {
+              text: "Improvement indicator"
+            },
+            {
+              text: "Yes"
+            },
+            {
+              html: govukTag({ text: "Public", classes: "govuk-tag--grey" })
+            }
+          ],
+          [
+            {
+              text: "With effect from"
+            },
+            {
+              text: "9 October 2008"
+            },
+            {
+              html: govukTag({ text: "Public", classes: "govuk-tag--grey" })
+            }
+          ],
+          [
+            {
+              text: "Mixed-use property"
+            },
+            {
+              text: "No"
+            },
+            {
+              html: govukTag({ text: "Public", classes: "govuk-tag--grey" })
+            }
+          ],
+          [
+            {
+              text: "Court code"
+            },
+            {
+              text: "None"
+            },
+            {
+              html: govukTag({ text: "Public", classes: "govuk-tag--grey" })
+            }
+          ]
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">Need more help</h2>
+      <p class="govuk-body">
+        <a href="glossary?languagePreference=en" class="govuk-link">What does the information mean?</a>
+      </p>
+
+      <h2 class="govuk-heading-m">Is this information correct?</h2>
+      <p>Tell us if you think any of your property details are incorrect.</p>
+      <p>Once you have checked the details of your property, you will have the opportunity to review your Council Tax Band.</p>
+      {{ govukButton({
+        text: "Review details",
+        href: 'incorrect-info'
+      }) }}
+      <p class="govuk-body">
+        <a href="#" class="govuk-link">Exit</a>
+      </p>
+    </div>
+  </div>
+
+{% else %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Dyma'r wybodaeth ar gyfer:</span>
+        19, St David's Crescent, Cardiff, CF5 4GP
+      </h1>
+
+      {{ govukTable({
+        head: [
+          {
+            text: "Manylion eiddo"
+          },
+          {
+            text: "Gwerth"
+          },
+          {
+            text: "Gwelededd"
+          }
+        ],
+        rows: [
+          [
+            {
+              text: "Pob ystafell"
+            },
+            {
+              text: "4"
+            },
+            {
+              html: govukTag({ text: "Preifat", classes: "govuk-tag--blue" })
+            }
+          ],
+          [
+            {
+              text: "Ystafelloedd gwely"
+            },
+            {
+              text: "2"
+            },
+            {
+              html: govukTag({ text: "Preifat", classes: "govuk-tag--blue" })
+            }
+          ],
+          [
+            {
+              text: "Ystafelloedd ymolchi"
+            },
+            {
+              text: "1"
+            },
+            {
+              html: govukTag({ text: "Preifat", classes: "govuk-tag--blue" })
+            }
+          ],
+          [
+            {
+              text: "Math o gartref"
+            },
+            {
+              text: "Tŷ canol teras"
+            },
+            {
+              html: govukTag({ text: "Preifat", classes: "govuk-tag--blue" })
+            }
+          ],
+          [
+            {
+              text: "Maint y cartref"
+            },
+            {
+              text: "90 m²"
+            },
+            {
+              html: govukTag({ text: "Preifat", classes: "govuk-tag--blue" })
+            }
+          ],
+          [
+            {
+              text: "Lloriau"
+            },
+            {
+              text: "2"
+            },
+            {
+              html: govukTag({ text: "Preifat", classes: "govuk-tag--blue" })
+            }
+          ],
+          [
+            {
+              text: "Parcio"
+            },
+            {
+              text: "Parcio cyhoeddus"
+            },
+            {
+              html: govukTag({ text: "Preifat", classes: "govuk-tag--blue" })
+            }
+          ],
+          [
+            {
+              text: "Pethau sy'n gallu effeithio ar y gwerth"
+            },
+            {
+              text: "Yr olygfa"
+            },
+            {
+              html: govukTag({ text: "Preifat", classes: "govuk-tag--blue" })
+            }
+          ],
+          [
+            {
+              text: "Band Treth Gyngor"
+            },
+            {
+              text: "D"
+            },
+            {
+              html: govukTag({ text: "Cyhoeddus", classes: "govuk-tag--grey" })
+            }
+          ],
+          [
+            {
+              text: "Cyngor Lleol"
+            },
+            {
+              html: "<a href='https://www.cardiff.gov.uk/ENG/Pages/default.aspx'>Caerdydd</a>"
+            },
+            {
+              html: govukTag({ text: "Cyhoeddus", classes: "govuk-tag--grey" })
+            }
+          ],
+          [
+            {
+              text: "Cyfeirnod y Cyngor Lleol"
+            },
+            {
+              text: "110380008111000100"
+            },
+            {
+              html: govukTag({ text: "Cyhoeddus", classes: "govuk-tag--grey" })
+            }
+          ],
+          [
+            {
+              text: "Dangosydd gwelliant"
+            },
+            {
+              text: "Oes"
+            },
+            {
+              html: govukTag({ text: "Cyhoeddus", classes: "govuk-tag--grey" })
+            }
+          ],
+          [
+            {
+              text: "Dyddiad dod i rym"
+            },
+            {
+              text: "9 Hydref 2008"
+            },
+            {
+              html: govukTag({ text: "Cyhoeddus", classes: "govuk-tag--grey" })
+            }
+          ],
+          [
+            {
+              text: "Eiddo defnydd cymysg"
+            },
+            {
+              text: "Nac oes"
+            },
+            {
+              html: govukTag({ text: "Cyhoeddus", classes: "govuk-tag--grey" })
+            }
+          ],
+          [
+            {
+              text: "Cod y Llys"
+            },
+            {
+              text: "Dim"
+            },
+            {
+              html: govukTag({ text: "Cyhoeddus", classes: "govuk-tag--grey" })
+            }
+          ]
+        ]
+      }) }}
+
+      <p class="govuk-body">
+        <a href="glossary?languagePreference=cy" class="govuk-link">Beth mae'r wybodaeth yn ei olygu?</a>
+      </p>
+
+      {{ govukDetails({
+        summaryText: "Beth mae'r wybodaeth yn ei olygu?",
+        html: "<ul class=\"govuk-list govuk-list--spaced\">" +
+              "<li><strong>Pob ystafell</strong><br> Pob ystafell yn dy gartref. Mae hyn yn cynnwys ystafelloedd byw ac ystafelloedd gwely, ond nid yw'n cynnwys ystafelloedd ymolchi, ceginau, ystafelloedd aml-bwrpas nac ystafelloedd gwydr.</li>" +
+              "<li><strong>Ystafelloedd gwely</strong><br> Ystafelloedd sy'n cael eu defnyddio ar gyfer astudio/gweithio gartre neu ystafelloedd chwarae.</li>" +
+              "<li><strong>Ystafelloedd ymolchi</strong><br> Gydag o leiaf bath neu gawod, toiled a basn.</li>" +
+              "<li><strong>Math o gartref</strong><br> Dosbarthiad dy gartref, e.e., tŷ ar wahân, tŷ pâr, tŷ teras</li>" +
+              "<li><strong>Maint y cartref</strong><br> Ar gyfer tai a byngalos, rydym yn defnyddio mesuriadau allanol. Ar gyfer fflatiau, rydym yn defnyddio mesuriadau mewnol. Mae'r holl fesuriadau mewn metrau sgwâr (m2).</li>" +
+              "<li><strong>Lloriau</strong><br> Nifer y lloriau yn dy gartref, er enghraifft 2.</li>" +
+              "<li><strong>Parcio</strong><br> Er enghraifft, garej sengl neu parcio ar y dreif.</li>" +
+              "<li><strong>Pethau sy'n gallu effeithio ar y gwerth</strong><br>Maen nhw'n gallu bod yn bositif neu'n negyddol, er enghraifft y lleoliad neu'r olygfa.</li>" +
+              "<li><strong>Band Treth Gyngor</strong><br>Y band y mae'r eiddo ynddo ar hyn o bryd.<br>Sail hwn yw gwerth yr eiddo ar 1 Ebrill 2003.</li>" +
+              "<li><strong>Cyngor Lleol</strong><br>Y Cyngor Lleol sy'n gosod swm y Treth Gyngor yr wyt yn ei dalu bob blwyddyn</li>" +
+              "<li><strong>Cyfeirnod y Cyngor Lleol</strong><br> Cyfeirnod ar gyfer yr eiddo</li>" +
+              "<li><strong>Dangosydd gwelliant</strong><br>Os yw'r eiddo wedi cael ei wella neu ei ymestyn ers iddo gael ei roi mewn band Treth Gyngor, dangosir 'Oes'. Mae hyn yn golygu bydd y band yn cael ei adolygu, a gall gynyddu ar ôl i'r eiddo gael ei werthu neu ar ôl ailbrisiad</li>" +
+              "<li><strong>Dyddiad dod i rym</strong><br>Y dyddiad wnaeth y band presennol ddechrau</li>" +
+              "<li><strong>Eiddo defnydd cymysg</strong><br>Eiddo sy'n cael ei ddefnyddio fel cartref a busnes. Er enghraifft, fflat uwchben siop.</li>" +
+              "<li><strong>Cod y Llys</strong><br>Os yw'r band Treth Gyngor wedi ei adolygu gan Dribiwnlys Prisio neu Uchel Lys, dangosir cod y llys. Dyma'r codau:<br>V - Penderfyniad gan Dribiwnlys Prisio<br>C - Cadarnhad gan Dribiwnlys Prisio<br>R - Ail benderfyniad y Tribiwnlys Prisio yn dilyn atgyfeiriad gan yr Uchel Lys<br>D - Penderfyniad gan Uchel Lys<br>H - Cadarnhad gan Uchel Lys<br>E - Gorchymyn cydsynio'r Uchel Lys</li>" +
+              "</ul>"
+      }) }}
+
+      <h2 class="govuk-heading-m">Ydy'r manylion hyn yn gywir?</h2>
+      <p>Rho wybod i ni os wyt ti'n meddwl bod unrhywbeth am yr wybodaeth gyhoeddus neu fanylion dy eiddo yn anghywir.</p>
+      <p>Ar ôl gwirio manylion dy eiddo, bydd cyfle i ti adolygu dy Fand Treth Gyngor.</p>
+      {{ govukButton({
+        text: "Gwirio'r manylion",
+        classes: "govuk-button--primary",
+        href: 'incorrect-info'
+      }) }}
+      <p class="govuk-body">
+        <a href="#" class="govuk-link">Gadael</a>
+      </p>
+    </div>
+  </div>
+
+{% endif %}
+{% endblock %}

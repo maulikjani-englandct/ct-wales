@@ -1,0 +1,24 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  List of pages – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+<h2 class="govuk-heading-xl">Version 1 - List of pages</h2>
+
+<h3 class="govuk-heading-m">Main pages (7 files)</h3>
+<ul class="govuk-list govuk-list--bullet">
+  <li><a href="start_en.html">Start page (English)</a></li>
+  <li><a href="start_cy.html">Start page (Welsh)</a></li>
+  <li><a href="gov-gateway.html">Government Gateway sign in</a></li>
+  <li><a href="search.html">Postcode search</a></li>
+  <li><a href="search-results.html">Search results</a></li>
+  <li><a href="property-details.html">Property details (public view)</a></li>
+  <li><a href="property-details-extended.html">Property details (authenticated view)</a></li>
+</ul>
+
+<h3 class="govuk-heading-m">User journey</h3>
+<p>Start → Search → Results → Property Details → (Sign in) → Extended Details</p>
+
+{% endblock %}

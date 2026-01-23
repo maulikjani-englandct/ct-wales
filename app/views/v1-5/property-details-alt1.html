@@ -1,0 +1,258 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+{% if data['languagePreference'] == "en" %}
+Information for: 19, St David's Crescent, Cardiff, CF5 4GP – GOV.UK Prototype Kit
+{% else %}
+Dyma'r wybodaeth ar gyfer: 19, St David's Crescent, Cardiff, CF5 4GP – GOV.UK Prototype Kit
+{% endif %}
+{% endblock %}
+
+{% block header %}
+{% if data['languagePreference'] == "en" %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-5/start?languagePreference=en",
+    useTudorCrown: "true"
+  }) }}
+
+{% else %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-5/start?languagePreference=cy",
+    useTudorCrown: "true"
+  }) }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+
+{{
+
+  hmrcLanguageSelect({
+
+      language: 'cy' if data['languagePreference'] === 'cy' else 'en',
+
+      en: { href: '?languagePreference=en' },
+
+      cy: { href: '?languagePreference=cy' }
+
+  })
+
+}}
+{% if data['languagePreference'] == "en" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "search-results?languagePreference=en"
+}) }}
+{% else %}
+{{ govukBackLink({
+  text: "Yn ôl",
+  href: "search-results?languagePreference=cy"
+}) }}
+
+{% endif %}
+{% endblock %}
+{% block content %}
+
+{% if data['languagePreference'] == "en" %}
+
+  <div class="govuk-grid-row">
+    
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Information for:</span>
+        21, St David's Crescent, Cardiff, CF5 4GP
+      </h1>
+      
+      
+<h1 class="govuk-heading-m">Public information
+        <span class="govuk-caption-m">Anybody can view this information</span>
+      </h1>
+      
+      {{ govukTable({
+        firstCellIsHeader: true,
+        rows: [
+          [
+            {
+              html: "Council Tax band<br><span class='govuk-hint'>The current band for the property. This is based on the property value on 01 April 2003.</span>"
+            },
+            {
+              text: "B"
+            }
+          ],
+          [
+            {
+              html: "Local Council<br><span class='govuk-hint'>The Local Council sets the amount of Council Tax you pay each year, based on the band.</span>"
+              },
+            {
+              html: "<a href='https://www.cardiff.gov.uk/ENG/Pages/default.aspx'>Cardiff </a>"
+            }
+          ],
+          [
+            {
+              html: "Local Council reference number<br><span class='govuk-hint'>A reference number for the property.</span>"
+            },
+            {
+              text: "110380008111000100"
+            }
+          ],
+          [
+            {
+              html: "Improvement indicator<br><span class='govuk-hint'>If a property has been improved or extended since it was placed in a Council Tax band, a Yes will be shown. This means the band will be reviewed and may increase following the sale of the property.</span>"
+             },
+            {
+              text: "Yes"
+            }
+          ],
+          [
+            {
+              html: "With effect from<br><span class='govuk-hint'>The date the current band came into effect.</span>"
+            },
+            {
+              text: "9 October 2008"
+            } 
+          ],
+          [
+            {
+              html: "Mixed-use property<br><span class='govuk-hint'>A property which is used as a home and a business. For example, a working farm or a flat above a shop.</span>"
+             },
+            {
+              text: "No"
+            }
+            ],
+            [
+            {
+              html: "Court code<br><span class='govuk-hint'>If the Council Tax band has been reviewed by a Valuation Tribunal or High Court, a court code will be shown. The codes are:<br>V - Valuation Tribunal determination<br>C - Valuation Tribunal confirmation<br>R - Valuation Tribunal redetermination following High Court referral<br>D - High Court determination<br>H - High Court confirmation<br>E - High Court consent order.</span>"
+             },
+            {
+              text: "None"
+            }
+            ]]
+
+
+      }) }}
+      
+      
+      
+      <p>If you are the Council Tax payer or have permission from the Council Tax payer, you can view more property details.</p>
+      <p> You can also let us know if these details or Council Tax band are wrong.</p>
+      <p>You'll need a Government Gateway Account to sign in, as property details are personal data. </p>
+      {{ govukButton({
+        text: "Continue",
+        classes: "govuk-button--primary",
+        href: "self-cert?languagePreference=en"
+      }) }}
+      
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+      {{ govukButton({
+        text: "Search for another property",
+        classes: "govuk-button--secondary",
+        href: "search?languagePreference=en"
+      }) }}
+      
+      </div>
+  </div>
+
+
+  {% else %}
+  <div class="govuk-grid-row">
+    
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Dyma'r wybodaeth ar gyfer:</span>
+        21, St David's Crescent, Cardiff, CF5 4GP
+      </h1>
+      <h1 class="govuk-heading-m">Gwybodaeth gyhoeddus</h1>
+      {{ govukInsetText({
+        text: "Gall unrhyw un weld yr wybodaeth hon."
+      }) }}
+      
+      {{ govukTable({
+        firstCellIsHeader: true,
+        rows: [
+          [
+            {
+              html: "Band Treth Gyngor<br><span class='govuk-hint'>Y band y mae’r eiddo ynddo ar hyn o bryd. Sail hwn yw gwerth yr eiddo ar 1 Ebrill 2003.</span>"
+            },
+            {
+              text: "B"
+            }
+          ],
+          [
+            {
+              html: "Cyngor Lleol<br><span class='govuk-hint'>Y Cyngor Lleol sy'n gosod swm y Treth Gyngor yr wyt yn ei dalu bob blwyddyn.</span>"
+            },
+            {
+              html: "<a href='https://www.cardiff.gov.uk/ENG/Pages/default.aspx'>Caerdydd</a>"
+            }
+          ],
+          [
+            {
+              html: "Cyfeirnod y Cyngor Lleol<br><span class='govuk-hint'>Cyfeirnod ar gyfer yr eiddo.</span>"
+            },
+            {
+              text: "110380008111000100"
+            }
+          ],
+          [
+            {
+              html: "Dangosydd gwelliant<br><span class='govuk-hint'>Os yw'r eiddo wedi cael ei wella neu ei ymestyn ers iddo gael ei roi mewn band Treth Gyngor, dangosir 'Oes'. Mae hyn yn golygu bydd y band yn cael ei adolygu, a gall gynyddu ar ôl i'r eiddo gael ei werthu neu ar ôl ailbrisiad.</span>"
+             },
+            {
+              text: "Oes"
+            }
+          ],
+          [
+            {
+              html: "Dyddiad dod i rym<br><span class='govuk-hint'>Y dyddiad wnaeth y band presennol ddechrau.</span>"
+            },
+            {
+              text: "9 Hydref 2008"
+            } 
+          ],
+          [
+            {
+              html: "Eiddo defnydd cymysg<br><span class='govuk-hint'>Eiddo sy'n cael ei ddefnyddio fel cartref a busnes. Er enghraifft, fflat uwchben siop.</span>"
+             },
+            {
+              text: "Nac oes"
+            }
+            ],
+            [
+            {
+              html: "Cod y Llys<br><span class='govuk-hint'>Os yw’r band Treth Gyngor wedi ei adolygu gan Dribiwnlys Prisio neu Uchel Lys, dangosir cod y llys. Dyma’r codau:<br>V - Penderfyniad gan Dribiwnlys Prisio<br>C - Cadarnhad gan Dribiwnlys Prisio<br>R - Ail benderfyniad y Tribiwnlys Prisio yn dilyn atgyfeiriad gan yr Uchel Lys<br>D - Penderfyniad gan Uchel Lys<br>H - Cadarnhad gan Uchel Lys<br>E - Gorchymyn cydsynio’r Uchel Lys.</span>"
+             },
+            {
+              text: "Dim"
+            }
+            ]]
+
+
+      }) }}
+      
+      <p>Os wyt ti'n talu'r Dreth Gyngor am yr eiddo yma, neu os wyt ti wedi cael caniatâd gan y person hwnnw, fyddi di'n gallu gweld mwy o fanylion eiddo.</p>
+      <p>Rwyt ti hefyd yn gallu dweud wrthym os wyt ti'n meddwl bod y manylion am yr eiddo neu'r band Treth Gyngor yn anghywir.</p>
+      <p>Bydd angen cyfrif Porth y Llywodraeth arnat i fewngofnodi, gan fod manylion eiddo yn cael eu trin fel data personol.</p>
+      {{ govukButton({
+        text: "Parhau",
+        classes: "govuk-button--primary",
+        href: "self-cert?languagePreference=cy"
+      }) }}
+      <p class="govuk-body">
+        <a href="#" class="govuk-link">Creu cyfrif Porth y Llywodraeth</a>
+      </p>
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+       {{ govukButton({
+        text: "Chwilio am eiddo arall",
+        classes: "govuk-button--secondary",
+        href: "search?languagePreference=cy"
+      }) }}
+     
+    </div>
+  </div>
+
+
+  {% endif %}
+{% endblock %}

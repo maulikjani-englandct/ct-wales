@@ -1,0 +1,168 @@
+{% extends "layouts/main.html" %}
+{% block header %}
+{% if data['languagePreference'] == "en" %}
+{{ hmrcHeader({
+  serviceUrl : "/v1-6/start?languagePreference=en",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+
+{% else %}
+{{ hmrcHeader({
+  serviceUrl : "/v1-6/start?languagePreference=cy",
+    language : "cy",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+  {% endif %}
+{% endblock %}
+{% block pageTitle %}
+Glossary of terms – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+
+{{
+
+  hmrcLanguageSelect({
+
+      language: 'cy' if data['languagePreference'] == 'cy' else 'en',
+
+      en: { href: '?languagePreference=en' },
+
+      cy: { href: '?languagePreference=cy' }
+
+  })
+
+}}
+{% if data['languagePreference'] == "en" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:history.back()"
+}) }}
+{% else %}
+{{ govukBackLink({
+  text: "Yn ôl",
+  href: "javascript:history.back()"
+}) }}
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {% if data['languagePreference'] == "cy" %}
+      <h1 class="govuk-heading-xl">Rhestr Termau</h1>
+      <p class="govuk-body">Rhestr o dermau a ddefnyddir yn y gwasanaeth hwn a'u hystyr.</p>
+
+      <h2 class="govuk-heading-m" id="band-treth-gyngor">Band Treth Gyngor</h2>
+      <p class="govuk-body">Y band y mae'r eiddo ynddo ar hyn o bryd. Sail hwn yw gwerth yr eiddo ar 1 Ebrill 2003.</p>
+
+      <h2 class="govuk-heading-m" id="cod-y-llys">Cod y Llys</h2>
+      <p class="govuk-body">Os yw'r band Treth Gyngor wedi ei adolygu gan Dribiwnlys Prisio neu Uchel Lys, dangosir cod y llys. Dyma'r codau: <br>
+      V - Penderfyniad gan Dribiwnlys Prisio<br>
+      C - Cadarnhad gan Dribiwnlys Prisio<br>
+      R - Ail benderfyniad y Tribiwnlys Prisio yn dilyn atgyfeiriad gan yr Uchel Lys<br>
+      D - Penderfyniad gan Uchel Lys<br>
+      H - Cadarnhad gan Uchel Lys<br>
+      E - Gorchymyn cydsynio'r Uchel Lys</p>
+
+      <h2 class="govuk-heading-m" id="cyfeirnod-y-cyngor-lleol">Cyfeirnod y Cyngor Lleol</h2>
+      <p class="govuk-body">Cyfeirnod ar gyfer yr eiddo.</p>
+
+      <h2 class="govuk-heading-m" id="cyngor-lleol">Cyngor Lleol</h2>
+      <p class="govuk-body">Y Cyngor Lleol sy'n gosod swm y Treth Gyngor yr wyt yn ei dalu bob blwyddyn.</p>
+
+      <h2 class="govuk-heading-m" id="dangosydd-gwelliant">Dangosydd gwelliant</h2>
+      <p class="govuk-body">Os yw'r eiddo wedi cael ei wella neu ei ymestyn ers iddo gael ei roi mewn band Treth Gyngor, dangosir 'Oes'. Mae hyn yn golygu bydd y band yn cael ei adolygu, a gall gynyddu ar ôl i'r eiddo gael ei werthu neu ar ôl ailbrisiad.</p>
+
+      <h2 class="govuk-heading-m" id="dyddiad-dod-i-rym">Dyddiad dod i rym</h2>
+      <p class="govuk-body">Y dyddiad wnaeth y band presennol ddechrau.</p>
+
+      <h2 class="govuk-heading-m" id="eiddo-defnydd-cymysg">Eiddo defnydd cymysg</h2>
+      <p class="govuk-body">Eiddo sy'n cael ei ddefnyddio fel cartref a busnes. Er enghraifft, fflat uwchben siop.</p>
+
+      <h2 class="govuk-heading-m" id="lloriau">Lloriau</h2>
+      <p class="govuk-body">Nifer y lloriau yn dy gartref, er enghraifft 2.</p>
+
+      <h2 class="govuk-heading-m" id="maint-y-cartref">Maint y cartref</h2>
+      <p class="govuk-body">Ar gyfer tai a byngalos, rydym yn defnyddio mesuriadau allanol. Ar gyfer fflatiau, rydym yn defnyddio mesuriadau mewnol. Mae'r holl fesuriadau mewn metrau sgwâr (m2).</p>
+
+      <h2 class="govuk-heading-m" id="math-o-gartref">Math o gartref</h2>
+      <p class="govuk-body">Er enghraifft, tŷ ar wahân, tŷ teras neu fflat.</p>
+
+      <h2 class="govuk-heading-m" id="parcio">Parcio</h2>
+      <p class="govuk-body">Er enghraifft, garej sengl neu barcio ar y dreif.</p>
+
+      <h2 class="govuk-heading-m" id="pethau-syn-gallu-effeithio-ar-werth-dy-gartref">Pethau sy'n gallu effeithio ar werth dy gartref</h2>
+      <p class="govuk-body">Maen nhw'n gallu bod yn bositif neu'n negyddol, er enghraifft y lleoliad neu'r olygfa.</p>
+
+      <h2 class="govuk-heading-m" id="pob-ystafell">Pob ystafell</h2>
+      <p class="govuk-body">Pob ystafell yn dy gartref. Mae hyn yn cynnwys ystafelloedd byw ac ystafelloedd gwely, ond nid yw'n cynnwys ystafelloedd ymolchi, ceginau, ystafelloedd aml-bwrpas nac ystafelloedd gwydr.</p>
+
+      <h2 class="govuk-heading-m" id="ystafelloedd-gwely">Ystafelloedd gwely</h2>
+      <p class="govuk-body">Ystafelloedd sy'n cael eu defnyddio ar gyfer astudio/gweithio gartre neu ystafelloedd chwarae.</p>
+
+      <h2 class="govuk-heading-m" id="ystafelloedd-ymolchi">Ystafelloedd ymolchi</h2>
+      <p class="govuk-body">Gydag o leiaf bath neu gawod, toiled a basn.</p>
+
+    {% else %}
+      <h1 class="govuk-heading-xl">Glossary of terms</h1>
+      <p class="govuk-body">A list of terms used in this service and what they mean.</p>
+
+      <h2 class="govuk-heading-m" id="bathrooms">Bathrooms</h2>
+      <p class="govuk-body">With at least a bath or shower, toilet and sink.</p>
+
+      <h2 class="govuk-heading-m" id="bedrooms">Bedrooms</h2>
+      <p class="govuk-body">Includes bedrooms used as a study, home office or playroom.</p>
+
+      <h2 class="govuk-heading-m" id="council-tax-band">Council Tax band</h2>
+      <p class="govuk-body">The current band for the property. This is based on the property value on 01 April 2003.</p>
+
+      <h2 class="govuk-heading-m" id="court-code">Court code</h2>
+      <p class="govuk-body">If the Council Tax band has been reviewed by a Valuation Tribunal or High Court, a court code will be shown. The codes are: <br>
+      V - Valuation Tribunal determination<br>
+      C - Valuation Tribunal confirmation<br>
+      R - Valuation Tribunal redetermination following High Court referral<br>
+      D - High Court determination<br>
+      H - High Court confirmation<br>
+      E - High Court consent order</p>
+
+      <h2 class="govuk-heading-m" id="features-that-may-affect-value">Features that may affect value</h2>
+      <p class="govuk-body">These can be positive or negative, for example the location or view.</p>
+
+      <h2 class="govuk-heading-m" id="floors">Floors</h2>
+      <p class="govuk-body">The number of floors in your home, for example 2 floors.</p>
+
+      <h2 class="govuk-heading-m" id="improvement-indicator">Improvement indicator</h2>
+      <p class="govuk-body">If a property has been improved or extended since it was placed in a Council Tax band, a Yes will be shown. This means the band will be reviewed and may increase following the sale of the property.</p>
+
+      <h2 class="govuk-heading-m" id="local-council">Local Council</h2>
+      <p class="govuk-body">The Local Council sets the amount of Council Tax you pay each year, based on the band.</p>
+
+      <h2 class="govuk-heading-m" id="local-council-reference-number">Local Council reference number</h2>
+      <p class="govuk-body">A reference number for the property.</p>
+
+      <h2 class="govuk-heading-m" id="mixed-use-property">Mixed-use property</h2>
+      <p class="govuk-body">A property which is used as a home and a business. For example, a flat above a shop.</p>
+
+      <h2 class="govuk-heading-m" id="parking">Parking</h2>
+      <p class="govuk-body">For example, a single garage or parking on a drive.</p>
+
+      <h2 class="govuk-heading-m" id="size-of-home">Size of home</h2>
+      <p class="govuk-body">For houses and bungalows, we use external measurements. For flats, we use internal measurements. All measurements are in metres squared (m2).</p>
+
+      <h2 class="govuk-heading-m" id="total-rooms">Total rooms</h2>
+      <p class="govuk-body">All rooms in your home. This includes living rooms and bedrooms, but does not include bathrooms, kitchens, utility rooms and conservatories.</p>
+
+      <h2 class="govuk-heading-m" id="type-of-home">Type of home</h2>
+      <p class="govuk-body">For example, a detached house, terraced house or flat.</p>
+
+      <h2 class="govuk-heading-m" id="with-effect-from">With effect from</h2>
+      <p class="govuk-body">The date the current band came into effect.</p>
+    {% endif %}
+
+  </div>
+</div>
+{% endblock %}

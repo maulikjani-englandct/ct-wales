@@ -1,0 +1,143 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+{% if data['languagePreference'] == "en" %}
+When did all or part of your home change to business use? – GOV.UK Prototype Kit
+ {% else %}
+Pryd wnaeth dy gartref cyfan, neu ran ohono, newid i ddefnydd busnes? – GOV.UK Prototype Kit
+ {% endif %}
+{% endblock %}
+
+{% block header %}
+{% if data['languagePreference'] == "en" %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-7/start?languagePreference=en",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+
+{% else %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-7/start?languagePreference=cy",
+    language : "cy",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+
+{{
+
+  hmrcLanguageSelect({
+
+      language: 'cy' if data['languagePreference'] === 'cy' else 'en',
+
+      en: { href: '?languagePreference=en' },
+
+      cy: { href: '?languagePreference=cy' }
+
+  })
+
+}}
+{% if data['languagePreference'] == "en" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "business?languagePreference=en"
+}) }}
+{% else %}
+{{ govukBackLink({
+  text: "Yn ôl",
+  href: "business?languagePreference=cy"
+}) }}
+
+{% endif %}
+{% endblock %}
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+<form action="new-address" method="post">
+  {% if data['languagePreference'] == "en" %}
+    {{ govukDateInput({
+      id: "business-use-start",
+      namePrefix: "business-use-start",
+      fieldset: {
+        legend: {
+          text: "When did all or part of your home change to business use? ",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      hint: {
+        text: "For example, if you started using part of your home for business on 27 April 2025, enter 27 4 2025."
+      }
+    }) }}
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+  {% else %}
+         <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" role="group" aria-describedby="notice-issued-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+       Pryd wnaeth dy gartref cyfan, neu ran ohono, newid i ddefnydd busnes?
+      </h1>
+    </legend>
+    <div id="notice-issued-hint" class="govuk-hint">
+      Er enghraifft, os wnes di ddechrau defnyddio rhan o dy gartref ar gyfer busnes ar 27 Ebrill 2025, rhowch 27 4 2025.
+    </div>
+    <div class="govuk-date-input" id="notice-issued">
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="notice-issued-day">
+            Dydd
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="notice-issued-day" name="notice-issued-day" type="text" inputmode="numeric">
+        </div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="notice-issued-month">
+            Mis
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="notice-issued-month" name="notice-issued-month" type="text" inputmode="numeric">
+        </div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="notice-issued-year">
+            Blwyddyn
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="notice-issued-year" name="notice-issued-year" type="text" inputmode="numeric">
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
+    {{ govukButton({
+      text: "Parhau"
+    }) }}
+  {% endif %}
+</form>
+</div>
+</div>
+
+<script>
+  // Handle language switching without creating new history entries
+  document.addEventListener('DOMContentLoaded', function() {
+    var langLinks = document.querySelectorAll('.hmrc-language-select__list-item a');
+
+    langLinks.forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        var newUrl = this.href;
+        // Replace current history state instead of pushing new one
+        history.replaceState(null, '', newUrl);
+        // Reload page to show new language
+        window.location.reload();
+      });
+    });
+  });
+</script>
+{% endblock %}

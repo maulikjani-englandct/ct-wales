@@ -1,0 +1,121 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+{% if data['languagePreference'] == "en" %}
+When did this work start, or when could your home not be lived in? – GOV.UK Prototype Kit
+{% else %}
+Pryd wnaeth y gwaith hwn ddechrau, neu pryd doedd neb yn gallu byw ynddo? – GOV.UK Prototype Kit
+{% endif %}
+{% endblock %}
+
+{% block header %}
+{% if data['languagePreference'] == "en" %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-5-1/start?languagePreference=en",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+
+{% else %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-5-1/start?languagePreference=cy",
+    language : "cy",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+
+{{
+
+  hmrcLanguageSelect({
+
+      language: 'cy' if data['languagePreference'] === 'cy' else 'en',
+
+      en: { href: '?languagePreference=en' },
+
+      cy: { href: '?languagePreference=cy' }
+
+  })
+
+}}
+{% if data['languagePreference'] == "en" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "demolished?languagePreference=en"
+}) }}
+{% else %}
+{{ govukBackLink({
+  text: "Yn ôl",
+  href: "demolished?languagePreference=cy"
+}) }}
+
+{% endif %}
+{% endblock %}
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+<form action="../contact-details" method="post">
+{% if data['languagePreference'] == "en" %}
+  {{ govukDateInput({
+    id: "demolition-start",
+    namePrefix: "demolition-start",
+    fieldset: {
+      legend: {
+        text: "When did this work start, or when could your home not be lived in?",
+        isPageHeading: true,
+        classes: "govuk-fieldset__legend--l"
+      }
+    },
+    hint: {
+      text: "For example, if the work to demolish your home started on 27 April 2025, enter 27 4 2025."
+    }
+  }) }}
+  <button class="govuk-button" data-module="govuk-button">Continue</button>
+{% else %}
+      <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" role="group" aria-describedby="notice-issued-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+        Pryd wnaeth y gwaith hwn ddechrau, neu pryd doedd neb yn gallu byw ynddo?
+      </h1>
+    </legend>
+    <div id="notice-issued-hint" class="govuk-hint">
+      Er enghraifft, os wnaeth y gwaith o ddymchwel dy gartref ddechrau ar 27 Ebrill 2025, rhowch 27 4 2025.
+    </div>
+    <div class="govuk-date-input" id="notice-issued">
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="notice-issued-day">
+            Dydd
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="notice-issued-day" name="notice-issued-day" type="text" inputmode="numeric">
+        </div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="notice-issued-month">
+            Mis
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="notice-issued-month" name="notice-issued-month" type="text" inputmode="numeric">
+        </div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="notice-issued-year">
+            Blwyddyn
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="notice-issued-year" name="notice-issued-year" type="text" inputmode="numeric">
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
+  <button class="govuk-button" data-module="govuk-button">Parhau</button>
+{% endif %}
+</form>
+    </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Why do you think the Council Tax band is wrong? – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+{{ hmrcHeader({
+  serviceUrl : "/v1-6-1/start?languagePreference=en",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      <form action="/v1-6-1/evidence-upload-choice" method="post">
+        <h1 class="govuk-heading-l">Why do you think the Council Tax band is wrong?</h1>
+        {{ govukTextarea({
+          id: "reason",
+          name: "reason",
+          hint: {
+            text: "Tell us why you think your Council Tax band is wrong. Give as much detail as possible. For example, a similar sized home in your street is in a lower band."
+          }
+        }) }}
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}

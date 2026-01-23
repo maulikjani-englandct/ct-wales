@@ -1,0 +1,297 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+{% if data['languagePreference'] == "en" %}
+Information for: 19, St David's Crescent, Cardiff, CF5 4GP – GOV.UK Prototype Kit
+{% else %}
+Dyma'r wybodaeth ar gyfer: 19, St David's Crescent, Cardiff, CF5 4GP – GOV.UK Prototype Kit
+{% endif %}
+{% endblock %}
+
+{% block header %}
+{% if data['languagePreference'] == "en" %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-5-1/start?languagePreference=en",
+    useTudorCrown: "true"
+  }) }}
+
+{% else %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-5-1/start?languagePreference=cy",
+    useTudorCrown: "true"
+  }) }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+
+{{
+
+  hmrcLanguageSelect({
+
+      language: 'cy' if data['languagePreference'] === 'cy' else 'en',
+
+      en: { href: '?languagePreference=en' },
+
+      cy: { href: '?languagePreference=cy' }
+
+  })
+
+}}
+{% if data['languagePreference'] == "en" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "search-results?languagePreference=en"
+}) }}
+{% else %}
+{{ govukBackLink({
+  text: "Yn ôl",
+  href: "search-results?languagePreference=cy"
+}) }}
+
+{% endif %}
+{% endblock %}
+{% block content %}
+
+{% if data['languagePreference'] == "en" %}
+
+  <div class="govuk-grid-row">
+    
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Information for:</span>
+        19, St David's Crescent, Cardiff, CF5 4GP
+      </h1>
+      
+<h1 class="govuk-heading-m">Public information
+        <span class="govuk-caption-m">Anybody can view this information.</span>
+      </h1>
+      
+      {{ govukTable({
+        firstCellIsHeader: true,
+        rows: [
+          [
+            {
+              text: "Council Tax band"
+            },
+            {
+              text: "D"
+            }
+          ],
+          [
+            {
+              text: "Local Council"
+              },
+            {
+              html: "<a href='https://www.cardiff.gov.uk/ENG/Pages/default.aspx'>Cardiff </a>"
+            }
+          ],
+          [
+            {
+              text: "Local Council reference number"
+            },
+            {
+              text: "110380008111000100"
+            }
+          ],
+          [
+            {
+              text: "Improvement indicator"
+             },
+            {
+              text: "Yes"
+            }
+          ],
+          [
+            {
+              text: "With effect from"
+            },
+            {
+              text: "9 October 2008"
+            } 
+          ],
+          [
+            {
+              text: "Mixed-use property"
+             },
+            {
+              text: "No"
+            }
+            ],
+            [
+            {
+              text: "Court code"
+             },
+            {
+              text: "None"
+            }
+            ]]
+
+
+      }) }}
+{{ govukDetails({
+        summaryText: "What does the information mean?",
+        html: "<ul class=\"govuk-list govuk-list--spaced\">" +
+              "<li><strong>Council Tax band</strong><br> The current band for the property.<br> This is based on the property value on 01 April 2003.</li>" +
+              "<li><strong>Local Council</strong><br> The Local Council sets the amount of Council Tax you pay each year, based on the band.</li>" +
+              "<li><strong>Local Council reference number</strong><br> A reference number for the property</li>" +
+              "<li><strong>Improvement indicator</strong><br> If a property has been improved or extended since it was placed in a Council Tax band, a Yes will be shown. This means the band will be reviewed and may increase following the sale of the property.</li>" +
+              "<li><strong>With effect from</strong><br> The date the current band came into effect</li>" +
+              "<li><strong>Mixed-use property</strong><br> A property which is used as a home and a business. For example, a working farm or a flat above a shop.</li>" +
+              "<li><strong>Court code</strong><br> If the Council Tax band has been reviewed by a Valuation Tribunal or High Court, a court code will be shown. The codes are:
+<br>
+                V - Valuation Tribunal determination<br>
+                C - Valuation Tribunal confirmation<br>
+                R - Valuation Tribunal redetermination following High Court referral<br>
+                
+                D - High Court determination<br>
+                H - High Court confirmation<br>
+                E - High Court consent order</li>" +
+              "</ul>"
+      }) }}
+      
+      
+      
+      <p>If you are the Council Tax payer or have permission from the Council Tax payer, you can view more property details.</p>
+      <p> You can also let us know if these details or Council Tax band are wrong.</p>
+      <p>You'll need a Government Gateway Account to sign in, as property details are personal data. </p>
+      {{ govukButton({
+        text: "Continue",
+        classes: "govuk-button--primary",
+        href: "self-cert?languagePreference=en"
+      }) }}
+      
+      <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+      {{ govukButton({
+        text: "Search for another property",
+        classes: "govuk-button--secondary",
+        href: "search?languagePreference=en"
+      }) }}
+      
+      </div>
+  </div>
+
+
+  {% else %}
+  <div class="govuk-grid-row">
+    
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Dyma'r wybodaeth ar gyfer:</span>
+        19, St David's Crescent, Cardiff, CF5 4GP
+      </h1>
+      <h1 class="govuk-heading-m">Gwybodaeth gyhoeddus
+        <span class="govuk-caption-m">Gall unrhyw un weld yr wybodaeth hon.</span>
+      </h1>
+
+      
+      {{ govukTable({
+        firstCellIsHeader: true,
+        rows: [
+          [
+            {
+              text: "Band Treth Gyngor"
+            },
+            {
+              text: "D"
+            }
+          ],
+          [
+            {
+              text: "Cyngor Lleol"
+            },
+            {
+              html: "<a href='https://www.cardiff.gov.uk/ENG/Pages/default.aspx'>Caerdydd</a>"
+            }
+          ],
+          [
+            {
+              text: "Cyfeirnod y Cyngor Lleol"
+            },
+            {
+              text: "110380008111000100"
+            }
+          ],
+          [
+            {
+              text: "Dangosydd gwelliant"
+             },
+            {
+              text: "Oes"
+            }
+          ],
+          [
+            {
+              text: "Dyddiad dod i rym"
+            },
+            {
+              text: "9 Hydref 2008"
+            } 
+          ],
+          [
+            {
+              text: "Eiddo defnydd cymysg"
+             },
+            {
+              text: "Nac oes"
+            }
+            ],
+            [
+            {
+              text: "Cod y Llys"
+             },
+            {
+              text: "Dim"
+            }
+            ]]
+
+
+      }) }}
+      {{ govukDetails({
+        summaryText: "Beth mae'r wybodaeth yn ei olygu?",
+        html: "<ul class=\"govuk-list govuk-list--spaced\">" +
+              "<li><strong>Band Treth Gyngor</strong><br>Y band y mae’r eiddo ynddo ar hyn o bryd.
+                <br>Sail hwn yw gwerth yr eiddo ar 1 Ebrill 2003.</li>" +
+              "<li><strong>Cyngor Lleol</strong><br>Y Cyngor Lleol sy'n gosod swm y Treth Gyngor yr wyt yn ei dalu bob blwyddyn</li>" +
+              "<li><strong>Cyfeirnod y Cyngor Lleol</strong><br> Cyfeirnod ar gyfer yr eiddo</li>" +
+              "<li><strong>Dangosydd gwelliant</strong><br>Os yw'r eiddo wedi cael ei wella neu ei ymestyn ers iddo gael ei roi mewn band Treth Gyngor, dangosir 'Oes'. Mae hyn yn golygu bydd y band yn cael ei adolygu, a gall gynyddu ar ôl i'r eiddo gael ei werthu neu ar ôl ailbrisiad</li>" +
+              "<li><strong>Dyddiad dod i rym</strong><br>Y dyddiad wnaeth y band presennol ddechrau</li>" +
+              "<li><strong>Eiddo defnydd cymysg</strong><br>Eiddo sy'n cael ei ddefnyddio fel cartref a busnes. Er enghraifft, fflat uwchben siop.</li>" +
+              "<li><strong>Cod y Llys</strong><br>Os yw’r band Treth Gyngor wedi ei adolygu gan Dribiwnlys Prisio neu Uchel Lys, dangosir cod y llys. Dyma’r codau:<br>
+
+                V - Penderfyniad gan Dribiwnlys Prisio<br>
+                C - Cadarnhad gan Dribiwnlys Prisio<br>
+                R - Ail benderfyniad y Tribiwnlys Prisio yn dilyn atgyfeiriad gan yr Uchel Lys<br>
+                
+                D - Penderfyniad gan Uchel Lys<br>
+                H - Cadarnhad gan Uchel Lys<br>
+                E - Gorchymyn cydsynio’r Uchel Lys</li>" +
+              "</ul>"
+      }) }}
+      <p>Os wyt ti'n talu'r Dreth Gyngor am yr eiddo yma, neu os wyt ti wedi cael caniatâd gan y person hwnnw, fyddi di'n gallu gweld mwy o fanylion eiddo.</p>
+      <p>Rwyt ti hefyd yn gallu dweud wrthym os wyt ti'n meddwl bod y manylion am yr eiddo neu'r band Treth Gyngor yn anghywir.</p>
+      <p>Bydd angen cyfrif Porth y Llywodraeth arnat i fewngofnodi, gan fod manylion eiddo yn cael eu trin fel data personol.</p>
+      {{ govukButton({
+        text: "Parhau",
+        classes: "govuk-button--primary",
+        href: "self-cert?languagePreference=cy"
+      }) }}
+      <p class="govuk-body">
+        <a href="#" class="govuk-link">Creu cyfrif Porth y Llywodraeth</a>
+      </p>
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+       {{ govukButton({
+        text: "Chwilio am eiddo arall",
+        classes: "govuk-button--secondary",
+        href: "search?languagePreference=cy"
+      }) }}
+     
+    </div>
+  </div>
+
+
+  {% endif %}
+{% endblock %}

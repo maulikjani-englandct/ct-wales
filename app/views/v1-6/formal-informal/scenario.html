@@ -1,0 +1,134 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+{% if data['languagePreference'] == "en" %}
+Choose which applies to you – GOV.UK Prototype Kit
+{% else %}
+Dewisa pa un o’r rhain sy’n berthnasol i ti – GOV.UK Prototype Kit
+{% endif %}
+{% endblock %}
+
+{% block header %}
+{% if data['languagePreference'] == "en" %}
+{{ hmrcHeader({
+  serviceUrl : "/v1-6/start?languagePreference=en",
+
+    useTudorCrown: "true"
+  }) }}
+
+{% else %}
+{{ hmrcHeader({
+  serviceUrl : "/v1-6/start?languagePreference=cy",
+
+    useTudorCrown: "true"
+  }) }}
+  {% endif %}
+{% endblock %}
+{% block beforeContent %}
+
+{{
+
+  hmrcLanguageSelect({
+
+      language: 'cy' if data['languagePreference'] == 'cy' else 'en',
+
+      en: { href: '?languagePreference=en' },
+
+      cy: { href: '?languagePreference=cy' }
+
+  })
+
+}}
+{% if data['languagePreference'] == "en" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:history.back()"
+}) }}
+{% else %}
+{{ govukBackLink({
+  text: "Yn ôl",
+  href: "javascript:history.back()"
+}) }}
+{% endif %}
+
+{% endblock %}
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    {% if data['languagePreference'] == "en" %}
+    <form action="#" method="post">
+      {{ govukRadios({
+        name: "challenge-type",
+        fieldset: {
+          legend: {
+            text: "Choose which applies to you",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+          {
+            value: "option1",
+            text: "I’ve been responsible for paying Council Tax for less than 6 months"
+          },
+          {
+            value: "option2",
+            text: "I’ve been responsible for paying Council Tax for more than 6 months"
+          },
+          {
+            value: "option3",
+            text: "My Council Tax band was changed by the Valuation Office Agency (VOA) in the last 6 months"
+          },
+          {
+            value: "option4",
+            text: "There have been changes made to my home or in the local area"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+    {% else %}
+    <form action="#" method="post">
+      {{ govukRadios({
+        name: "challenge-type",
+        fieldset: {
+          legend: {
+            text: "Dewisa pa un o’r rhain sy’n berthnasol i ti",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+          {
+            value: "option1",
+            text: "Rwyf wedi bod yn gyfrifol am dalu’r Dreth Gyngor am lai na 6 mis"
+          },
+          {
+            value: "option2",
+            text: "Rwyf wedi bod yn gyfrifol am dalu’r Dreth Gyngor am fwy na 6 mis"
+          },
+          {
+            value: "option3",
+            text: "Cafodd fy mand Treth Gyngor ei newid gan Asiantaeth y Swyddfa Brisio (VOA) yn y 6 mis diwethaf"
+          },
+          {
+            value: "option4",
+            text: "Mae newidiadau wedi cael eu gwneud i fy nghartref neu yn yr ardal leol"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Parhau"
+      }) }}
+    </form>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}

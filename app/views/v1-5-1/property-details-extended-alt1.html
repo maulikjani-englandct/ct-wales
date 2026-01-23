@@ -1,0 +1,473 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+{% if data['languagePreference'] == "en" %}
+Information for: 19, St David's Crescent, Cardiff, CF5 4GP – GOV.UK Prototype Kit
+{% else %}
+Dyma'r wybodaeth ar gyfer: 19, St David's Crescent, Cardiff, CF5 4GP – GOV.UK Prototype Kit
+{% endif %}
+{% endblock %}
+
+{% block header %}
+{% if data['languagePreference'] == "en" %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-5-1/start?languagePreference=en",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+
+{% else %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-5-1/start?languagePreference=cy",
+    language : "cy",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+
+{{
+
+  hmrcLanguageSelect({
+
+      language: 'cy' if data['languagePreference'] === 'cy' else 'en',
+
+      en: { href: '?languagePreference=en' },
+
+      cy: { href: '?languagePreference=cy' }
+
+  })
+
+}}
+{% if data['languagePreference'] == "en" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:history.back()"
+}) }}
+{% else %}
+{{ govukBackLink({
+  text: "Yn ôl",
+  href: "javascript:history.back()"
+}) }}
+
+{% endif %}
+{% endblock %}
+{% block content %}
+
+{% if data['languagePreference'] == "en" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Information for:</span>
+        19, St David's Crescent, Cardiff, CF5 4GP
+      </h1>
+
+      <div class="govuk-accordion" data-module="govuk-accordion" id="property-details-accordion-en">
+        <div class="govuk-accordion__section">
+          <div class="govuk-accordion__section-header">
+            <h2 class="govuk-accordion__section-heading">
+              <span class="govuk-accordion__section-button" id="property-details-heading-en-1">
+                Your property details
+              </span>
+            </h2>
+            <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-1">
+        Only you can see this information.
+      </div>
+          </div>
+          <div id="property-details-content-en-1" class="govuk-accordion__section-content" aria-labelledby="property-details-heading-en-1">
+
+            {{ govukTable({
+              firstCellIsHeader: true,
+              rows: [
+                [
+                  {
+                    text: "Total rooms",
+                    id: "total-rooms",
+                    html: "Total rooms<br><span class='govuk-hint'>All rooms in your home. This includes living rooms and bedrooms, but does not include bathrooms, kitchens, utility rooms and conservatories.</span>"
+                  },
+                  {
+                    text: "4"
+                  }
+                ],
+                [
+                  {
+                    text: "Bedrooms",
+                    id: "bedrooms",
+                    html: "Bedrooms<br><span class='govuk-hint'>Includes bedrooms used as a study, home office or playroom.</span>"
+                  },
+                  {
+                    text: "2"
+                  }
+                ],
+                [
+                  {
+                    text: "Bathrooms",
+                    id: "bathrooms",
+                    html: "Bathrooms<br><span class='govuk-hint'>With at least a bath or shower, toilet and sink.</span>"
+                  },
+                  {
+                    text: "1"
+                  }
+                ],
+                [
+                  {
+                    text: "Type of home",
+                    id: "type-of-home",
+                    html: "Type of home<br><span class='govuk-hint'>For example, a detached house, terraced house or flat.</span>"
+                  },
+                  {
+                    text: "Mid-terraced house"
+                  }
+                ],
+                [
+                  {
+                    text: "Size of home",
+                    id: "size-of-home",
+                    html: "Size of home<br><span class='govuk-hint'>For houses and bungalows, we use external measurements. For flats, we use internal measurements. All measurements are in metres squared (m2).</span>"
+                  },
+                  {
+                    text: "90 m²"
+                  }
+                ],
+                [
+                  {
+                    text: "Floors",
+                    id: "floors",
+                    html: "Floors<br><span class='govuk-hint'>The number of floors in your home, for example 2 floors.</span>"
+                  },
+                  {
+                    text: "2"
+                  }
+                ],
+                [
+                  {
+                    text: "Parking",
+                    id: "parking",
+                    html: "Parking<br><span class='govuk-hint'>For example, a single garage or parking on a drive.</span>"
+                  },
+                  {
+                    text: "Street or public parking"
+                  }
+                ],
+                [
+                  {
+                    text: "Features that may affect value",
+                    id: "features-that-may-affect-value",
+                    html: "Features that may affect value<br><span class='govuk-hint'>These can be positive or negative, for example the location or view.</span>"
+                  },
+                  {
+                    text: "View"
+                  }
+                ]
+              ]
+            }) }}
+          </div>
+        </div>
+        <div class="govuk-accordion__section">
+          <div class="govuk-accordion__section-header">
+            <h2 class="govuk-accordion__section-heading">
+              <span class="govuk-accordion__section-button" id="property-details-heading-en-2">
+                Public information
+              </span>
+            </h2>
+            <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-1">
+        Anybody can view this information
+      </div>
+          </div>
+          <div id="property-details-content-en-2" class="govuk-accordion__section-content" aria-labelledby="property-details-heading-en-2">
+          
+            {{ govukTable({
+              firstCellIsHeader: true,
+              rows: [
+                [
+                  {
+                    html: "Council Tax band<br><span class='govuk-hint'>The current band for the property. This is based on the property value on 01 April 2003.</span>",
+                    id: "council-tax-band"
+                  },
+                  {
+                    text: "D"
+                  }
+                ],
+                [
+                  {
+                    html: "Local Council<br><span class='govuk-hint'>The Local Council sets the amount of Council Tax you pay each year, based on the band.</span>",
+                    id: "local-council"
+                  },
+                  {
+                    html: "<a href='https://www.cardiff.gov.uk/ENG/Pages/default.aspx'>Cardiff</a>"
+                  }
+                ],
+                [
+                  {
+                    html: "Local Council reference number<br><span class='govuk-hint'>A reference number for the property.</span>",
+                    id: "local-council-reference-number"
+                  },
+                  {
+                    text: "110380008111000100"
+                  }
+                ],
+                [
+                  {
+                    html: "Improvement indicator<br><span class='govuk-hint'>If a property has been improved or extended since it was placed in a Council Tax band, a Yes will be shown. This means the band will be reviewed and may increase following the sale of the property.</span>",
+                    id: "improvement-indicator"
+                  },
+                  {
+                    text: "Yes"
+                  }
+                ],
+                [
+                  {
+                    html: "With effect from<br><span class='govuk-hint'>The date the current band came into effect.</span>",
+                    id: "with-effect-from"
+                  },
+                  {
+                    text: "9 October 2008"
+                  }
+                ],
+                [
+                  {
+                    html: "Mixed-use property<br><span class='govuk-hint'>A property which is used as a home and a business. For example, a working farm or a flat above a shop.</span>",
+                    id: "mixed-use-property"
+                  },
+                  {
+                    text: "No"
+                  }
+                ],
+                [
+                  {
+                    html: "Court code<br><span class='govuk-hint'>If the Council Tax band has been reviewed by a Valuation Tribunal or High Court, a court code will be shown. The codes are: V - Valuation Tribunal determination, C - Valuation Tribunal confirmation, R - Valuation Tribunal redetermination following High Court referral, D - High Court determination, H - High Court confirmation, E - High Court consent order.</span>",
+                    id: "court-code"
+                  },
+                  {
+                    text: "None"
+                  }
+                ]
+              ]
+            }) }}
+          </div>
+        </div>
+      </div>
+
+      <h2 class="govuk-heading-m">Is this information correct?</h2>
+      <p>Tell us if you think any of the public information or your property details are incorrect.</p>
+      <p>Once you have checked the details of your property, you will have the opportunity to review your Council Tax Band.</p>
+      {{ govukButton({
+        text: "Review details",
+        href: 'incorrect-info'
+      }) }}
+      <p class="govuk-body">
+        <a href="#" class="govuk-link">Exit</a>
+      </p>
+    </div>
+  </div>
+
+{% else %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">Dyma'r wybodaeth ar gyfer:</span>
+        19, St David's Crescent, Cardiff, CF5 4GP
+      </h1>
+
+      <div class="govuk-accordion" data-module="govuk-accordion" id="property-details-accordion-cy" data-i18n.hide-all-sections="Cuddio pob adran" data-i18n.show-all-sections="Dangos pob adran" data-i18n.hide-section="Cuddio" data-i18n.show-section="Dangos">
+        <div class="govuk-accordion__section">
+          <div class="govuk-accordion__section-header">
+            <h2 class="govuk-accordion__section-heading">
+              <span class="govuk-accordion__section-button" id="property-details-heading-cy-1">
+                Manylion dy eiddo
+              </span>
+            </h2>
+            <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-1">
+        Dim ond ti sy’n gallu gweld yr wybodaeth hon.
+      </div>
+          </div>
+          <div id="property-details-content-cy-1" class="govuk-accordion__section-content" aria-labelledby="property-details-heading-cy-1">
+            {{ govukTable({
+              firstCellIsHeader: true,
+              rows: [
+                [
+                  {
+                    text: "Pob ystafell",
+                    id: "pob-ystafell",
+                    html: "Pob ystafell<br><span class='govuk-hint'>Pob ystafell yn dy gartref. Mae hyn yn cynnwys ystafelloedd byw ac ystafelloedd gwely, ond nid yw'n cynnwys ystafelloedd ymolchi, ceginau, ystafelloedd aml-bwrpas nac ystafelloedd gwydr.</span>"
+                  },
+                  {
+                    text: "4"
+                  }
+                ],
+                [
+                  {
+                    text: "Ystafelloedd gwely",
+                    id: "ystafelloedd-gwely",
+                    html: "Ystafelloedd gwely<br><span class='govuk-hint'>Ystafelloedd sy'n cael eu defnyddio ar gyfer astudio/gweithio gartre neu ystafelloedd chwarae.</span>"
+                  },
+                  {
+                    text: "2"
+                  }
+                ],
+                [
+                  {
+                    text: "Ystafelloedd ymolchi",
+                    id: "ystafelloedd-ymolchi",
+                    html: "Ystafelloedd ymolchi<br><span class='govuk-hint'>Gydag o leiaf bath neu gawod, toiled a basn.</span>"
+                  },
+                  {
+                    text: "1"
+                  }
+                ],
+                [
+                  {
+                    text: "Math o gartref",
+                    id: "math-o-gartref",
+                    html: "Math o gartref<br><span class='govuk-hint'>Dosbarthiad dy gartref, e.e., tŷ ar wahân, tŷ pâr, tŷ teras</span>"
+                  },
+                  {
+                    text: "Tŷ canol teras"
+                  }
+                ],
+                [
+                  {
+                    text: "Maint y cartref",
+                    id: "maint-y-cartref",
+                    html: "Maint y cartref<br><span class='govuk-hint'>Ar gyfer tai a byngalos, rydym yn defnyddio mesuriadau allanol. Ar gyfer fflatiau, rydym yn defnyddio mesuriadau mewnol. Mae'r holl fesuriadau mewn metrau sgwâr (m2).</span>"
+                  },
+                  {
+                    text: "90 m²"
+                  }
+                ],
+                [
+                  {
+                    text: "Lloriau",
+                    id: "lloriau",
+                    html: "Lloriau<br><span class='govuk-hint'>Nifer y lloriau yn dy gartref, er enghraifft 2.</span>"
+                  },
+                  {
+                    text: "2"
+                  }
+                ],
+                [
+                  {
+                    text: "Parcio",
+                    id: "parcio",
+                    html: "Parcio<br><span class='govuk-hint'>Er enghraifft, garej sengl neu barcio ar y dreif.</span>"
+                  },
+                  {
+                    text: "Parcio cyhoeddus"
+                  }
+                ],
+                [
+                  {
+                    text: "Pethau sy'n gallu effeithio ar y gwerth",
+                    id: "pethau-syn-gallu-effeithio-ar-y-gwerth",
+                    html: "Pethau sy'n gallu effeithio ar y gwerth<br><span class='govuk-hint'>Maen nhw'n gallu bod yn bositif neu'n negyddol, er enghraifft y lleoliad neu'r olygfa.</span>"
+                  },
+                  {
+                    text: "Yr olygfa"
+                  }
+                ]
+              ]
+            }) }}
+          </div>
+        </div>
+        <div class="govuk-accordion__section">
+          <div class="govuk-accordion__section-header">
+            <h2 class="govuk-accordion__section-heading">
+              <span class="govuk-accordion__section-button" id="property-details-heading-cy-2">
+                Gwybodaeth gyhoeddus
+              </span>
+            </h2>
+            <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-1">
+        Gall unrhyw un weld yr wybodaeth hon.
+      </div>
+          </div>
+          <div id="property-details-content-cy-2" class="govuk-accordion__section-content" aria-labelledby="property-details-heading-cy-2">
+            {{ govukTable({
+              firstCellIsHeader: true,
+              rows: [
+                [
+                  {
+                    html: "Band Treth Gyngor<br><span class='govuk-hint'>Y band y mae’r eiddo ynddo ar hyn o bryd. Sail hwn yw gwerth yr eiddo ar 1 Ebrill 2003.</span>",
+                    id: "band-treth-gyngor"
+                  },
+                  {
+                    text: "D"
+                  }
+                ],
+                [
+                  {
+                    html: "Cyngor Lleol<br><span class='govuk-hint'>Y Cyngor Lleol sy'n gosod swm y Treth Gyngor yr wyt yn ei dalu bob blwyddyn.</span>",
+                    id: "cyngor-lleol"
+                  },
+                  {
+                    html: "<a href='https://www.cardiff.gov.uk/ENG/Pages/default.aspx'>Caerdydd</a>"
+                  }
+                ],
+                [
+                  {
+                    html: "Cyfeirnod y Cyngor Lleol<br><span class='govuk-hint'>Cyfeirnod ar gyfer yr eiddo.</span>",
+                    id: "cyfeirnod-y-cyngor-lleol"
+                  },
+                  {
+                    text: "110380008111000100"
+                  }
+                ],
+                [
+                  {
+                    html: "Dangosydd gwelliant<br><span class='govuk-hint'>Os yw'r eiddo wedi cael ei wella neu ei ymestyn ers iddo gael ei roi mewn band Treth Gyngor, dangosir 'Oes'. Mae hyn yn golygu bydd y band yn cael ei adolygu, a gall gynyddu ar ôl i'r eiddo gael ei werthu neu ar ôl ailbrisiad.</span>",
+                    id: "dangosydd-gwelliant"
+                  },
+                  {
+                    text: "Oes"
+                  }
+                ],
+                [
+                  {
+                    html: "Dyddiad dod i rym<br><span class='govuk-hint'>Y dyddiad wnaeth y band presennol ddechrau.</span>",
+                    id: "dyddiad-dod-i-rym"
+                  },
+                  {
+                    text: "9 Hydref 2008"
+                  }
+                ],
+                [
+                  {
+                    html: "Eiddo defnydd cymysg<br><span class='govuk-hint'>Eiddo sy'n cael ei ddefnyddio fel cartref a busnes. Er enghraifft, fflat uwchben siop.</span>",
+                    id: "eiddo-defnydd-cymysg"
+                  },
+                  {
+                    text: "Nac oes"
+                  }
+                ],
+                [
+                  {
+                    html: "Cod y Llys<br><span class='govuk-hint'>Os yw’r band Treth Gyngor wedi ei adolygu gan Dribiwnlys Prisio neu Uchel Lys, dangosir cod y llys. Dyma’r codau: V - Penderfyniad gan Dribiwnlys Prisio, C - Cadarnhad gan Dribiwnlys Prisio, R - Ail benderfyniad y Tribiwnlys Prisio yn dilyn atgyfeiriad gan yr Uchel Lys, D - Penderfyniad gan Uchel Lys, H - Cadarnhad gan Uchel Lys, E - Gorchymyn cydsynio’r Uchel Lys.</span>",
+                    id: "cod-y-llys"
+                  },
+                  {
+                    text: "Dim"
+                  }
+                ]
+              ]
+            }) }}
+          </div>
+        </div>
+      </div>
+
+      <h2 class="govuk-heading-m">Ydy’r manylion hyn yn gywir?</h2>
+      <p>Rho wybod i ni os wyt ti’n meddwl bod unrhywbeth am yr wybodaeth gyhoeddus neu fanylion dy eiddo yn anghywir.</p><p>Ar ôl gwirio manylion dy eiddo, bydd cyfle i ti adolygu dy Fand Treth Gyngor.</p>
+      {{ govukButton({
+        text: "Gwirio'r manylion",
+        classes: "govuk-button--primary",
+        href: 'incorrect-info'
+      }) }}
+      <p class="govuk-body">
+        <a href="#" class="govuk-link">Gadael</a>
+      </p>
+    </div>
+  </div>
+
+{% endif %}
+{% endblock %}

@@ -1,0 +1,107 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Check and challenge your Council Tax band – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+{% if data['languagePreference'] == "en" %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-4/start_en",
+
+    useTudorCrown: "true"
+  }) }}
+
+{% else %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-4/start_cy",
+
+    useTudorCrown: "true"
+  }) }}
+  {% endif %}
+{% endblock %}
+{% block beforeContent %}
+
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Home",
+        href: "#"
+      },
+      {
+        text: "Housing and local services",
+        href: "#"
+      },
+      {
+        text: "Council Tax"
+      }
+    ]
+  }) }}
+
+{% endblock %}
+{% block content %}
+
+  <div class="govuk-grid-row">
+    
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Check and challenge your Council Tax band
+      </h1>
+      <div class="govuk-inset-text">
+        <p>This page is also available in <a href='start_cy'>Welsh (Cymraeg)</a>.</p>
+ </div>
+
+      <p>Use this service to:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>find out the Council Tax band of any home in Wales</li>
+        <li>check and update the information we have about your home</li>
+        <li>let us know if you think your Council Tax band is wrong</li>
+      </ul>
+      {{ govukButton({
+        text: "Start now",
+        href: "search?languagePreference=en",
+        isStartButton: true
+      }) }}
+      <h2 class="govuk-heading-m">More information</h2>
+      <h3 class="govuk-heading-s">What is Council Tax?</h3>
+      <p>Council Tax is a tax on every home in England and Wales. This money helps pay for things like schools, rubbish collection, emergency services and social care.</p>
+      <p>Your local council works out how much tax is payable for each Council Tax band every year. They will send you your Council Tax bill and collect payment.</p>
+      <h3 class="govuk-heading-s">What is a Council Tax Band?</h3>
+      <p>Every home is put into a group called a “band” by the <a href='https://www.gov.uk/government/organisations/valuation-office-agency/about'>Valuation Office Agency (VOA)</a>. Bands range from A to I in Wales, and band A is the lowest. </p><p><a href='https://www.gov.uk/browse/housing-local-services/council-tax'>Find out more about band ranges.</a></p>
+      <p>The band is based on how much your home was worth on 1 April 2003 in Wales. The VOA is responsible for valuing your home and will look at what homes were selling for at that time, not what they are worth today.</p>
+      <p>To do this the VOA will look at the type, size and location of a property. If your home did not sell around these dates, or if it hadn’t been built then, the VOA will look at sales of similar homes which sold nearby. </p>
+
+     </div>
+
+    <div class="govuk-grid-column-one-third">
+
+      <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
+        <h2 class="govuk-heading-m" id="subsection-title">
+          Related content
+        </h2>
+        <nav role="navigation" aria-labelledby="subsection-title">
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li>
+              <a href="https://www.gov.uk/council-tax">
+                How Council Tax works
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                Council Tax in Wales
+              </a>
+            </li>
+            <li>
+              <a href="https://www.gov.uk/guidance/understand-how-council-tax-bands-are-assessed">
+                How domestic properties are assessed for Council Tax bands
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+    </div>
+  </div>
+
+{% endblock %}

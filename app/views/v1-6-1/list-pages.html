@@ -1,0 +1,105 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+List of v1.6.1 prototype pages – Council Tax Wales Reform – GOV.UK
+{% endblock %}
+
+{% block content %}
+<h1 class="govuk-heading-xl">List of v1.6.1 prototype pages</h1>
+
+<p class="govuk-body govuk-hint">
+  This index is for the delivery team and user researchers – it is not part of the public service and only covers version 1.6.1 of the prototype.
+</p>
+
+<h2 class="govuk-heading-m">Pending property updates concepts</h2>
+<p class="govuk-body">Testing different UX patterns to display pending property updates. All concepts show the same data.</p>
+
+<h3 class="govuk-heading-s">Information display patterns</h3>
+<ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+  <li>
+    <a href="concept-1?languagePreference=en">Concept 1</a>
+    <br>
+    <span class="govuk-hint">Updates in accordion section.</span>
+  </li>
+  <li>
+    <a href="concept-2?languagePreference=en">Concept 2</a>
+    <br>
+    <span class="govuk-hint">Before/after comparison (2 → 5).</span>
+  </li>
+  <li>
+    <a href="concept-3?languagePreference=en">Concept 3</a>
+    <br>
+    <span class="govuk-hint">Reordered property details (rooms, spacing, sq ft).</span>
+  </li>
+</ul>
+
+<h3 class="govuk-heading-s">Updates visibility patterns</h3>
+<ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+  <li>
+    <a href="concept-4?languagePreference=en">Concept 4</a>
+    <br>
+    <span class="govuk-hint">Notification banner.</span>
+  </li>
+  <li>
+    <a href="concept-5?languagePreference=en">Concept 5</a>
+    <br>
+    <span class="govuk-hint">Inset text.</span>
+  </li>
+  <li>
+    <a href="concept-6?languagePreference=en">Concept 6</a>
+    <br>
+    <span class="govuk-hint">Warning text.</span>
+  </li>
+  <li>
+    <a href="concept-7?languagePreference=en">Concept 7</a>
+    <br>
+    <span class="govuk-hint">Summary card.</span>
+  </li>
+  <li>
+    <a href="concept-8?languagePreference=en">Concept 8</a>
+    <br>
+    <span class="govuk-hint">Tag.</span>
+  </li>
+</ul>
+
+<h2 class="govuk-heading-m govuk-!-margin-top-8">Evidence collection journeys</h2>
+<p class="govuk-body">Testing different patterns for collecting evidence when challenging Council Tax band.</p>
+
+<h3 class="govuk-heading-s">Journey 1: Single page</h3>
+<ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+  <li>
+    <a href="evidence-why">Evidence submission</a>
+    <br>
+    <span class="govuk-hint">Textarea and file upload on one page.</span>
+  </li>
+</ul>
+
+<h3 class="govuk-heading-s">Journey 2: Multi-page with routing</h3>
+<ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+  <li>
+    <a href="wrong-details">Why do you think the Council Tax band is wrong?</a>
+    <br>
+    <span class="govuk-hint">Start point - Textarea for reason.</span>
+  </li>
+  <li>
+    <a href="evidence-upload-choice">Do you have documents to upload?</a>
+    <br>
+    <span class="govuk-hint">Yes/No routing.</span>
+  </li>
+  <li>
+    <a href="evidence-upload">Upload evidence</a>
+    <br>
+    <span class="govuk-hint">HMRC file upload component.</span>
+  </li>
+</ul>
+
+<h3 class="govuk-heading-s">Journey 3: Combined with routing</h3>
+<ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+  <li>
+    <a href="evidence-why-choice">Evidence submission</a>
+    <br>
+    <span class="govuk-hint">Textarea with radio choice, routes conditionally.</span>
+  </li>
+</ul>
+
+{% endblock %}

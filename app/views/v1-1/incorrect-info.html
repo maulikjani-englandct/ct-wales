@@ -1,0 +1,338 @@
+{% extends "layouts/main.html" %}
+{% block header %}
+{% if data['languagePreference'] == "en" %}
+{{ hmrcHeader({
+    serviceUrl : "/",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+
+  {% else %}
+  {{ hmrcHeader({
+    serviceUrl : "/",
+    language : "cy",
+    signOutHref : "?sign-out",
+    useTudorCrown: true
+  }) }}
+{% endif %}
+{% endblock %}
+{% block pageTitle %}
+Correct information for this property – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+
+{{
+
+  hmrcLanguageSelect({
+
+      language: 'cy' if data['languagePreference'] === 'cy' else 'en',
+
+      en: { href: '?languagePreference=en' },
+
+      cy: { href: '?languagePreference=cy' }
+
+  })
+
+}}
+{% if data['languagePreference'] == "en" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "let-us-know?languagePreference=en"
+}) }}
+{% else %}
+{{ govukBackLink({
+  text: "Yn ôl",
+  href: "let-us-know?languagePreference=cy"
+}) }}
+
+{% endif %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-xl">
+        Update information for this property
+      </h1>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Address"
+            },
+            value: {
+              text: data['address']
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Council Tax band"
+            },
+            value: {
+              text: "B"
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Local Authority"
+            },
+            value: {
+              text: "Pembrokeshire"
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Local Authority reference number"
+            },
+            value: {
+              text: "110380008111000100"
+            }
+          },
+          {
+            key: {
+              text: "Improvement indicator"
+            },
+            value: {
+              text: "	No"
+            },
+            actions: {
+              items: [
+                {
+                  href: "correct/improvement",
+                  text: "Change",
+                  visuallyHiddenText: "Question 3"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "With effect from"
+            },
+            value: {
+              text: "9 October 2008"
+            },
+            actions: {
+              items: [
+                {
+                  href: "correct/effect-date",
+                  text: "Change",
+                  visuallyHiddenText: "Question 3"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Mixed-use property"
+            },
+            value: {
+              text: "No"
+            },
+            actions: {
+              items: [
+                {
+                  href: "correct/mixed-use",
+                  text: "Change",
+                  visuallyHiddenText: "Question 3"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Court code"
+            },
+            value: {
+              text: "	None"
+            }
+          }
+        ]
+      }) }}
+      <h2 class="govuk-heading-m">Property details</h2>
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Rooms"
+            },
+            value: {
+              text: "4"
+            },
+            actions: {
+              items: [
+                {
+                  href: "correct/rooms",
+                  text: "Change",
+                  visuallyHiddenText: "Question 2"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Bedrooms"
+            },
+            value: {
+              text: "2"
+            },
+            actions: {
+              items: [
+                {
+                  href: "correct/bedrooms",
+                  text: "Change",
+                  visuallyHiddenText: "Question 2"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Bathrooms"
+            },
+            value: {
+              text: "1"
+            },
+            actions: {
+              items: [
+                {
+                  href: "correct/bathrooms",
+                  text: "Change",
+                  visuallyHiddenText: "Question 3"
+                }
+              ]
+            }
+          }
+          ,
+          {
+            key: {
+              text: "Property type"
+            },
+            value: {
+              text: "Mid-terraced house"
+            },
+            actions: {
+              items: [
+                {
+                  href: "correct/property-type",
+                  text: "Change",
+                  visuallyHiddenText: "Question 3"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Area of dwelling (in square metres)"
+            },
+            value: {
+              text: "90"
+            },
+            actions: {
+              items: [
+                {
+                  href: "correct/area",
+                  text: "Change",
+                  visuallyHiddenText: "Question 3"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Floor level"
+            },
+            value: {
+              text: "n/a"
+            },
+            actions: {
+              items: [
+                {
+                  href: "correct/floor-level",
+                  text: "Change",
+                  visuallyHiddenText: "Question 3"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Floor (houses)"
+            },
+            value: {
+              text: "	2"
+            },
+            actions: {
+              items: [
+                {
+                  href: "correct/floor-house",
+                  text: "Change",
+                  visuallyHiddenText: "Question 3"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Parking"
+            },
+            value: {
+              text: "No parking exists (on or off street)"
+            },
+            actions: {
+              items: [
+                {
+                  href: "correct/parking",
+                  text: "Change",
+                  visuallyHiddenText: "Question 3"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Value significant description"
+            },
+            value: {
+              text: "View"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "Question 3"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        Check updated details
+      </h2>
+
+      <p>
+      You will be able to look at the changes you have made on the next page.
+      </p>
+
+      <form action="correct/check-answers" method="post" novalidate>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

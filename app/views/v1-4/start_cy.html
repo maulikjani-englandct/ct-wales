@@ -1,0 +1,109 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Gwirio dy fand Treth Gyngor a’i herio - GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+{% if data['languagePreference'] == "en" %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-4/start_en",
+    useTudorCrown: "true"
+  }) }}
+
+{% else %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-4/start_cy",
+
+    useTudorCrown: "true"
+  }) }}
+  {% endif %}
+{% endblock %}
+{% block beforeContent %}
+
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Hafan",
+        href: "#"
+      },
+      {
+        text: "Tai a gwasanaethau Ileol",
+        href: "#"
+      },
+      {
+        text: "Treth Gyngor"
+      }
+    ]
+  }) }}
+
+{% endblock %}
+{% block content %}
+
+  <div class="govuk-grid-row">
+    
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Gwirio dy fand Treth Gyngor a’i herio
+      </h1>
+      <div class="govuk-inset-text">
+        <p>Mae’r dudalen hon hefyd ar gael yn <a href='start_en'>Saesneg (English)</a>.</p>
+      </div>
+      <p>Defnyddia’r gwasanaeth hwn i: </p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>ddod o hyd i fand Treth Gyngor unrhyw gartref yng Nghymru </li>
+        <li>gwirio a diweddaru’r wybodaeth sydd gennym am dy gartref</li>
+        <li>rhoi gwybod i ni os wyt ti’n meddwl bod dy fand Treth Gyngor yn anghywir</li>
+      </ul>
+      {{ govukButton({
+        text: "Dechrau nawr",
+        href: "search?languagePreference=cy",
+        isStartButton: true
+      }) }}
+      <h2 class="govuk-heading-m">Mwy o wybodaeth</h2>
+      <h3 class="govuk-heading-s">Beth yw’r Dreth Gyngor?</h3>      
+      
+      <p>
+        Mae’r Dreth Gyngor yn dreth ar bob cartref yng Nghymru a Lloegr. Mae’r arian hwn yn helpu i dalu am bethau fel ysgolion, casglu sbwriel, gwasanaethau brys a gofal cymdeithasol. 
+      </p>
+      <p>Mae dy gyngor lleol yn gweithio allan faint o dreth sy’n cael ei dalu am bob band Treth Gyngor bob blwyddyn. Nhw fydd yn anfon dy fil Treth Gyngor a chasglu taliad.</p>
+      <h3 class="govuk-heading-s">Beth yw band Treth Gyngor?</h3>  
+      <p>Mae pob cartref yn cael ei roi mewn grŵp neu “band” gan <a href=''>Asiantaeth y Swyddfa Brisio (VOA)</a>. Mae’r bandiau yn mynd o A i I yng Nghymru, a band A yw’r band isaf.</p><p> <a href=''>Dysga fwy am fandiau Treth Gyngor.</a></p>
+    <p>Mae’r band yn seiliedig ar werth dy gartref ar 1 Ebrill 2003 yng Nghymru. Mae’r VOA yn gyfrifol am benderfynu ar werth dy gartref, ac maen nhw’n edrych ar faint roedd cartrefi’n gwerthu amdano bryd hynny – nid faint maen nhw’n werth heddiw.</p>
+    <p>I wneud hyn bydd y VOA yn edrych ar fath, maint a lleoliad eiddo. Os nad oedd dy gartref wedi’i werthu o gwmpas y dyddiadau hyn, neu os oedd e heb ei adeiladu ar y pryd, bydd y VOA yn edrych ar dai tebyg yn yr ardal a gafodd eu gwerthu bryd hynny.</p>
+    
+    
+    </div>
+      <div class="govuk-grid-column-one-third">
+
+      <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
+        <h2 class="govuk-heading-m" id="subsection-title">
+          Cynnwys perthnasol 
+        </h2>
+        <nav role="navigation" aria-labelledby="subsection-title">
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li>
+              <a href="">
+                Sut mae’r Dreth Gyngor yn gweithio
+              </a>
+            </li>
+            <li>
+              <a href="https://www.llyw.cymru/treth-gyngor">
+                Treth Gyngor yng Nghymru
+              </a>
+            </li>
+            <li>
+              <a href="https://www.gov.uk/guidance/understand-how-council-tax-bands-are-assessed.cy">
+                Sut y caiff eiddo domestig ei asesu ar gyfer bandiau Treth Gyngor
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+    </div>
+  </div>
+
+{% endblock %}

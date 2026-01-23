@@ -1,0 +1,74 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Which local authority is related to this property? – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Which local authority is related to this property?
+      </h1>
+
+      <form class="form" action="local-authority-why" method="post">
+
+{{ govukSelect({
+  id: "sort",
+  name: "sort",
+  label: {
+    text: "Local authority"
+  },
+  items: [
+  { value: "local-authority", text: "Select a local authority" },
+  { value: "blaenau-gwent", text: "Blaenau Gwent County Borough Council" },
+  { value: "bridgend", text: "Bridgend County Borough Council" },
+  { value: "caerphilly", text: "Caerphilly County Borough Council" },
+  { value: "cardiff", text: "Cardiff Council" },
+  { value: "carmarthenshire", text: "Carmarthenshire County Council" },
+  { value: "ceredigion", text: "Ceredigion County Council" },
+  { value: "conwy", text: "Conwy County Borough Council" },
+  { value: "denbighshire", text: "Denbighshire County Council" },
+  { value: "flintshire", text: "Flintshire County Council" },
+  { value: "gwynedd", text: "Gwynedd Council" },
+  { value: "anglesey", text: "Isle of Anglesey County Council" },
+  { value: "merthyr-tydfil", text: "Merthyr Tydfil County Borough Council" },
+  { value: "monmouthshire", text: "Monmouthshire County Council" },
+  { value: "neath-port-talbot", text: "Neath Port Talbot County Borough Council" },
+  { value: "newport", text: "Newport City Council" },
+  { value: "pembrokeshire", text: "Pembrokeshire County Council" },
+  { value: "powys", text: "Powys County Council" },
+  { value: "rhondda-cynon-taf", text: "Rhondda Cynon Taf County Borough Council" },
+  { value: "swansea", text: "City and County of Swansea Council" },
+  { value: "torfaen", text: "Torfaen County Borough Council" },
+  { value: "vale-of-glamorgan", text: "Vale of Glamorgan Council" },
+  { value: "wrexham", text: "Wrexham County Borough Council" }
+  ]
+}) }}
+<div class="govuk-button-group">
+  {{ govukButton({
+    text: "Continue",
+    type: "submit"
+  }) }}
+
+  {{ govukButton({
+    text: "Cancel",
+    classes: "govuk-button--secondary"
+  }) }}
+</div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

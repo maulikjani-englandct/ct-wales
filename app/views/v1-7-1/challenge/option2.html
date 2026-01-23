@@ -1,0 +1,300 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+{% if data['languagePreference'] == "en" %}
+Asking for an informal review – GOV.UK Prototype Kit
+{% else %}
+Gofyn am adolygiad anffurfiol – GOV.UK Prototype Kit
+{% endif %}
+{% endblock %}
+
+{% block header %}
+{% if data['languagePreference'] == "en" %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-7-1/start?languagePreference=en",
+  signOutHref : "?sign-out",
+  useTudorCrown: "true"
+}) }}
+{% else %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-7-1/start?languagePreference=cy",
+  language : "cy",
+  signOutHref : "?sign-out",
+  useTudorCrown: "true"
+}) }}
+{% endif %}
+{% endblock %}
+{% block beforeContent %}
+
+{{
+
+  hmrcLanguageSelect({
+
+      language: 'cy' if data['languagePreference'] == 'cy' else 'en',
+
+      en: { href: '?languagePreference=en' },
+
+      cy: { href: '?languagePreference=cy' }
+
+  })
+
+}}
+{% if data['languagePreference'] == "en" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:history.back()"
+}) }}
+{% else %}
+{{ govukBackLink({
+  text: "Yn ôl",
+  href: "javascript:history.back()"
+}) }}
+{% endif %}
+
+{% endblock %}
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    {% if data['languagePreference'] == "en" %}
+      <h1 class="govuk-heading-xl">Asking for an informal review </h1>
+
+      <p class="govuk-body">
+        You have told us that you’ve been responsible for paying Council Tax on your home for <strong>more than 6 months</strong>.
+      </p>
+
+      <p class="govuk-body">
+        This means that you can ask for an informal review of your Council Tax band. This is also known as a ‘Informal Challenge’ or ‘Band Review’.</p>
+
+      <div class="govuk-inset-text">
+        <p class="govuk-body">
+          You can change your selection if this option is not right for you.
+        </p>
+      </div>
+
+      <div class="govuk-button-group">
+  {{ govukButton({
+    text: "Continue",
+    href: "notice-alteration"
+  }) }}
+
+<p class="govuk-body">
+<a href="javascript:history.back()" class="govuk-link">Back</a>
+</p>
+</div>
+
+      <h2 class="govuk-heading-l">How an informal review works</h2>
+
+      <table class="govuk-table">
+
+        <tbody class="govuk-table__body">
+
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">
+              What it is
+            </th>
+            <td class="govuk-table__cell">
+              You can ask the Valuation Office Agency (VOA) to review the Council Tax band your home is in.
+            </td>
+          </tr>
+
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">
+              What it's for
+            </th>
+            <td class="govuk-table__cell">
+              You can ask for an informal review if you think that your home is in the wrong Council Tax band.
+            </td>
+          </tr>
+            <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">
+              When you can ask for an informal review
+            </th>
+            <td class="govuk-table__cell">
+              You can ask for a band review at any time.
+             </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">
+              How long it takes
+            </th>
+            <td class="govuk-table__cell">
+              Up to X weeks
+            </td>
+          </tr>
+
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">
+              Evidence required
+            </th>
+            <td class="govuk-table__cell">
+              The VOA will only review the band if you provide supporting evidence. </tr>
+
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">
+              Examples of evidence
+            </th>
+            <td class="govuk-table__cell">
+              <ul class="govuk-list govuk-list--bullet">
+                <li>addresses of up to 5 similar homes in a lower band than yours. The homes should be the same as your home in terms of type, size, age and style.</li>
+                <li>the homes can be either in the same street or estate, or in the same village or area.</li>
+                <li>the price that your home or similar homes sold for between 1 April 2001 and 31 March 2005</li>
+              </ul>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">
+              Decision
+            </th>
+            <td class="govuk-table__cell">
+              There are 3 possible decisions that can be made: 
+               <ul class="govuk-list govuk-list--bullet">
+                <li>your home stays in the same band</li>
+                <li>your home is moved into a lower band</li>
+                <li>your home is moved into a higher band</li>
+              </ul>
+            </td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">
+              After a decision has been made 
+            </th>
+            <td class="govuk-table__cell">
+The decision is final, and you cannot ask for another review.</td>
+          </tr>
+
+        </tbody>
+      </table>
+
+
+    {% else %}
+    <h1 class="govuk-heading-xl">Gofyn am adolygiad anffurfiol</h1>
+
+    <p class="govuk-body">
+      Rwyt ti wedi dweud wrthym dy fod ti wedi bod yn gyfrifol am dalu Treth Gyngor am dy gartref <strong>fwy na 6 mis</strong>.
+    </p>
+
+    <p class="govuk-body">
+      Mae hyn yn meddwl dy fod yn gallu gofyn am adolygiad anffurfiol o dy fand Treth Gyngor. Enw arall am hyn ydy ‘Her Anffurfiol’ neu ‘Adolygiad Band’.
+      <div class="govuk-inset-text">
+      <p class="govuk-body">
+        Rwyt ti’n gallu newid dy ddewis os dyw’r opsiwn yma ddim yn iawn i ti.
+      </p>
+    </div>
+
+    <div class="govuk-button-group">
+{{ govukButton({
+  text: "Parhau",
+  href: "notice-alteration"
+}) }}
+
+<p class="govuk-body">
+<a href="javascript:history.back()" class="govuk-link">Yn ôl</a>
+</p>
+</div>
+
+    <h2 class="govuk-heading-l">Sut mae adolygiad anffurfiol yn gweithio</h2>
+
+    <table class="govuk-table">
+
+      <tbody class="govuk-table__body">
+
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">
+            Beth yw e
+          </th>
+          <td class="govuk-table__cell">
+            Rwyt ti’n gallu gofyn i Asiantaeth y Swyddfa Brisio (VOA) i adolygu band Treth Gyngor dy gartref.
+          </td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">
+            Ar gyfer beth yw e
+          </th>
+          <td class="govuk-table__cell">
+            Rwyt ti’n gallu gofyn am adolygiad anffurfiol os wyt ti’n meddwl bod dy gartref yn y band Treth Gyngor anghywir.</td>
+        </tr>
+          <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">
+            Pryd rwyt ti’n gallu gofyn am adolygiad anffurfiol
+          </th>
+          <td class="govuk-table__cell">
+            Rwyt ti’n gallu gofyn am adolygiad band unrhyw bryd.</td>
+            </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">
+            Pa mor hir mae’n cymryd
+          </th>
+          <td class="govuk-table__cell">
+            Hyd at X wythnos
+          </td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">
+            Y tystiolaeth sydd angen
+          </th>
+          <td class="govuk-table__cell">
+            Bydd y VOA ond yn adolygu’r band os wyt ti’n rhoi tystiolaeth i’w gefnogi
+          </td>
+        </tr>
+
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">
+            Enghreifftiau o dystiolaeth
+          </th>
+          <td class="govuk-table__cell">
+            <ul class="govuk-list govuk-list--bullet">
+            <li>cyfeiriadau hyd at 5 cartref tebyg sydd mewn band is na dy fand di. Dylai’r cartrefi fod yr un fath â dy gartref di o ran math, maint, oedran a steil.</li>
+<li>gall y cartrefi fod naill ai yn yr un stryd neu ystâd, neu yn yr un pentref neu ardal os wyt ti’n byw yng nghefn gwlad.</li>
+<li>y pris y gwerthwyd dy gartref neu gartrefi tebyg amdano rhwng 1 Ebrill 2001 a 31 Mawrth 2005</li>          
+</ul>
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">
+            Penderfyniad
+          </th>
+          <td class="govuk-table__cell">
+            Mae 3 phenderfyniad posib:
+             <ul class="govuk-list govuk-list--bullet">
+              <li>mae dy gartref yn aros yn yr un band</li>
+              <li>mae dy gartref yn symud i fand is</li>
+              <li>mae dy gartref yn symud i fand uwch</li>
+            </ul>
+          </td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">
+            Ar ôl y penderfyniad
+          </th>
+          <td class="govuk-table__cell">
+            Mae’r penderfyniad yn derfynol, a dwyt ti ddim yn gallu gofyn am adolygiad arall.</td>
+        </tr>
+
+      </tbody>
+    </table>
+
+  </div>
+
+</div>
+{% endif %}
+
+<script>
+  // Handle language switching without creating new history entries
+  document.addEventListener('DOMContentLoaded', function() {
+    var langLinks = document.querySelectorAll('.hmrc-language-select__list-item a');
+
+    langLinks.forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        var newUrl = this.href;
+        // Replace current history state instead of pushing new one
+        history.replaceState(null, '', newUrl);
+        // Reload page to show new language
+        window.location.reload();
+      });
+    });
+  });
+</script>
+{% endblock %}

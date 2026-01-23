@@ -1,0 +1,151 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+{% if data['languagePreference'] == "en" %}
+ Why do you think the Council Tax band is wrong? – GOV.UK Prototype Kit
+ {% else %}
+Pam wyt ti'n meddwl bod y band Treth Gyngor yn anghywir? – GOV.UK Prototype Kit
+ {% endif %}
+{% endblock %}
+
+{% block header %}
+{% if data['languagePreference'] == "en" %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-7-1/start?languagePreference=en",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+
+{% else %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-7-1/start?languagePreference=cy",
+    language : "cy",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+
+{{
+
+  hmrcLanguageSelect({
+
+      language: 'cy' if data['languagePreference'] == 'cy' else 'en',
+
+      en: { href: '?languagePreference=en' },
+
+      cy: { href: '?languagePreference=cy' }
+
+  })
+
+}}
+
+{% if data['languagePreference'] == "en" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:history.back()"
+}) }}
+{% else %}
+{{ govukBackLink({
+  text: "Yn ôl",
+  href: "javascript:history.back()"
+}) }}
+{% endif %}
+
+{% endblock %}
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+<form action="evidence-upload-choice" method="post">
+{% if data['languagePreference'] == "en" %}
+  <h1 class="govuk-heading-l">Tell us why you think the Council Tax band is wrong?</h1>
+
+    {{ govukInsetText({
+    text: "Your band will only be reviewed if you provide supporting evidence"
+  }) }}
+
+  <p class="govuk-body">The evidence you provide will be looked at before a case is opened. You should give as much detail as possible. </p>
+
+
+<details class="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      What evidence can you include?
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+     <p class="govuk-body">Evidence can include:</p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>addresses of up to 5 homes, similar to yours in terms of type, size, age, layout and style, that are in a lower band. The homes should be in the same street or estate, or in the same village or area.</li>
+    <li>the price that your home or similar homes sold for between 1 April 2001 and 31 March 2005 </li>
+  </ul>
+  </div>
+</details>
+
+<h2 class="govuk-heading-m">How to provide your evidence</h2>
+<p class="govuk-body">You can type your evidence in the text box. You can use up to 1,000 characters. You can also upload up to 5 files including PDFs, documents and photos on the next page. </p>
+
+  {{ govukCharacterCount({
+    id: "reason",
+    name: "reason",
+    maxlength: 1000
+  }) }}
+  <button class="govuk-button" data-module="govuk-button">Continue</button>
+{% else %}
+  <h1 class="govuk-heading-l">Pam wyt ti'n meddwl bod y band Treth Gyngor yn anghywir?</h1>
+
+  <p class="govuk-body">Dwed wrthym pam wyt ti'n meddwl bod dy fand Treth Gyngor yn anghywir. Rho gymaint o fanylion â phosib.</p>
+
+  {{ govukInsetText({
+    text: "Your band will only be reviewed if you provide supporting evidence"
+  }) }}
+<details class="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      What evidence can you include?
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+     <p class="govuk-body">Evidence can include:</p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>addresses of up to 5 similar homes in a lower band than yours. The homes should be the same as your home in terms of type, size, age and style. The homes should be in the same street or estate, or in the same village or area.</li>
+    <li>the price that your home or similar homes sold for between 1 April 2001 and 31 March 2005</li>
+  </ul>
+  </div>
+</details>
+
+
+  {{ govukCharacterCount({
+    id: "reason",
+    name: "reason",
+    maxlength: 1000,
+    label: {
+      text: "Pam wyt ti'n meddwl bod y band Treth Gyngor yn anghywir?"
+    }
+  }) }}
+  <button class="govuk-button" data-module="govuk-button">Parhau</button>
+{% endif %}
+</form>
+</div>
+</div>
+
+<script>
+  // Handle language switching without creating new history entries
+  document.addEventListener('DOMContentLoaded', function() {
+    var langLinks = document.querySelectorAll('.hmrc-language-select__list-item a');
+
+    langLinks.forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        var newUrl = this.href;
+        // Replace current history state instead of pushing new one
+        history.replaceState(null, '', newUrl);
+        // Reload page to show new language
+        window.location.reload();
+      });
+    });
+  });
+</script>
+{% endblock %}

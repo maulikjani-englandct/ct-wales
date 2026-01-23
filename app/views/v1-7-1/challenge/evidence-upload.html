@@ -1,0 +1,155 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+{% if data['languagePreference'] == "en" %}
+Upload evidence – GOV.UK Prototype Kit
+{% else %}
+Upload evidence – GOV.UK Prototype Kit
+{% endif %}
+{% endblock %}
+
+{% block header %}
+{% if data['languagePreference'] == "en" %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-7-1/start?languagePreference=en",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+
+{% else %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-7-1/start?languagePreference=cy",
+    language : "cy",
+    signOutHref : "?sign-out",
+    useTudorCrown: "true"
+  }) }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+
+{{
+
+  hmrcLanguageSelect({
+
+      language: 'cy' if data['languagePreference'] === 'cy' else 'en',
+
+      en: { href: '?languagePreference=en' },
+
+      cy: { href: '?languagePreference=cy' }
+
+  })
+
+}}
+
+{% if data['languagePreference'] == "en" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:history.back()"
+}) }}
+{% else %}
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:history.back()"
+}) }}
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if data['languagePreference'] == "en" %}
+
+      <form class="form" action="which-band" method="post">
+
+        <div class="govuk-form-group">
+          <h1 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--l" for="file-upload-1">
+              Upload evidence
+            </label>
+          </h1>
+
+          <p class="govuk-body">Upload documents that show why your Council Tax band should be reviewed. You can upload up to 5 files.</p>
+
+          <div class="govuk-!-margin-bottom-4">
+            <p class="govuk-body">Evidence can include:</p>
+            <ul class="govuk-list govuk-list--bullet govuk-!-margin-top-2">
+              <li>Addresses of up to 5 similar homes in a lower band than yours (same type, size, age and style, in the same street/estate or village/area)</li>
+              <li>The price your home or similar homes sold for between 1 April 2001 and 31 March 2005</li>
+            </ul>
+          </div>
+
+          <div id="file-upload-1-hint" class="govuk-hint">
+            You can upload JPG, PNG or PDF files. Each file must be smaller than 10MB.
+          </div>
+          <div class="govuk-drop-zone" data-module="govuk-file-upload">
+            <input class="govuk-file-upload" id="file-upload-1" name="file-upload-1" type="file" aria-describedby="file-upload-1-hint">
+          </div>
+        </div>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+      {% else %}
+
+      <form class="form" action="which-band" method="post">
+
+        <div class="govuk-form-group">
+          <h1 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--l" for="file-upload-1">
+              Upload evidence
+            </label>
+          </h1>
+
+          <p class="govuk-body">Upload documents that show why your Council Tax band should be reviewed. You can upload up to 5 files.</p>
+
+          <div class="govuk-!-margin-bottom-4">
+            <p class="govuk-body">Evidence can include:</p>
+            <ul class="govuk-list govuk-list--bullet govuk-!-margin-top-2">
+              <li>Addresses of up to 5 similar homes in a lower band than yours (same type, size, age and style, in the same street/estate or village/area)</li>
+              <li>The price your home or similar homes sold for between 1 April 2001 and 31 March 2005</li>
+            </ul>
+          </div>
+
+          <div id="file-upload-1-hint" class="govuk-hint">
+            You can upload JPG, PNG or PDF files. Each file must be smaller than 10MB.
+          </div>
+          <div class="govuk-drop-zone" data-module="govuk-file-upload">
+            <input class="govuk-file-upload" id="file-upload-1" name="file-upload-1" type="file" aria-describedby="file-upload-1-hint">
+          </div>
+        </div>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+      {% endif %}
+
+    </div>
+  </div>
+
+<script>
+  // Handle language switching without creating new history entries
+  document.addEventListener('DOMContentLoaded', function() {
+    var langLinks = document.querySelectorAll('.hmrc-language-select__list-item a');
+
+    langLinks.forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        var newUrl = this.href;
+        // Replace current history state instead of pushing new one
+        history.replaceState(null, '', newUrl);
+        // Reload page to show new language
+        window.location.reload();
+      });
+    });
+  });
+</script>
+{% endblock %}

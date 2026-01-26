@@ -99,7 +99,7 @@ Dyma'r wybodaeth ar gyfer: 19, St David's Crescent, Cardiff, CF5 4GP – GOV.UK 
       <th scope='row' class='govuk-table__header'>C</th>
       <td class='govuk-table__cell'>£65,001 to £91,000</td>
     </tr>
-    <tr class='govuk-table__row'>
+    <tr class='govuk-table__row' style='background-color:#f3f2f1'>
       <th scope='row' class='govuk-table__header'>D</th>
       <td class='govuk-table__cell'>£91,001 to £123,000</td>
     </tr>
@@ -445,7 +445,7 @@ payments</th>
                 ],
                 [
                   {
-                    html: "Cyngor Lleol<br><span class='govuk-hint'>Y Cyngor Lleol sy'n gosod swm y Dreth Gyngor yr wyt yn ei dalu bob blwyddyn, yn seiliedig ar y band.</span>",
+                    html: "Cyngor Lleol<br><span class='govuk-hint'>Y Cyngor Lleol sy'n gosod swm y Dreth Gyngor yr ydych yn ei dalu bob blwyddyn, yn seiliedig ar y band.</span>",
                     attributes: {
                       style: "width: 30%"
                     }
@@ -538,7 +538,7 @@ payments</th>
                     }
                   },
                   {
-                    html: "£1926.18 per year",
+                    html: "£1926.18 y flwyddyn",
                     attributes: {
                       style: "width: 30%"
                     }
@@ -566,7 +566,7 @@ payments</th>
                     }
                   },
                   {
-                    html: "Ydw (<a href='pending-updates?languagePreference=cy' class='govuk-link'>view pending updates</a>)",
+                    html: "Oes",
                     attributes: {
                       style: "width: 30%"
                     }
@@ -580,7 +580,7 @@ payments</th>
                     }
                   },
                   {
-                    text: "Nac oes",
+                    text: "Na",
                     attributes: {
                       style: "width: 30%"
                     }
@@ -588,7 +588,17 @@ payments</th>
                 ],
                 [
                   {
-                    html: "Cod y Llys<br><span class='govuk-hint'>Os yw'r band Treth Gyngor wedi ei adolygu gan Dribiwnlys Prisio neu Uchel Lys, dangosir cod y llys. Dyma'r codau: V - Penderfyniad gan Dribiwnlys Prisio, C - Cadarnhad gan Dribiwnlys Prisio, R - Ail benderfyniad y Tribiwnlys Prisio yn dilyn atgyfeiriad gan yr Uchel Lys, D - Penderfyniad gan Uchel Lys, H - Cadarnhad gan Uchel Lys, E - Gorchymyn cydsynio'r Uchel Lys.</span>",
+                    html: "Cod y Llys<br><span class='govuk-hint'>Os yw'r band Treth Gyngor wedi ei adolygu gan Dribiwnlys Prisio neu Uchel Lys, dangosir cod y llys.<br><br>
+                      <details class='govuk-details'><summary class='govuk-details__summary'><span class='govuk-details__summary-text'>Dyma'r codau</span></summary>
+                        <div class='govuk-details__text'>
+                V - Penderfyniad gan Dribiwnlys Prisio<br>
+                C - Cadarnhad gan Dribiwnlys Prisio<br>
+                R - Ail benderfyniad y Tribiwnlys Prisio yn dilyn atgyfeiriad gan yr Uchel Lys<br>
+                D - Penderfyniad gan Uchel Lys<br>
+                H - Cadarnhad gan Uchel Lys<br>
+                E - Gorchymyn cydsynio'r Uchel Lys
+              </div></details>
+                      </span>",
                     attributes: {
                       style: "width: 30%"
                     }
@@ -603,9 +613,10 @@ payments</th>
               ]
             }) }}
       
-      <p>Os wyt ti'n talu'r Dreth Gyngor am yr eiddo yma, neu os wyt ti wedi cael caniatâd gan y person hwnnw, fyddi di'n gallu gweld mwy o fanylion eiddo.</p>
-      <p>Rwyt ti hefyd yn gallu dweud wrthym os wyt ti'n meddwl bod y manylion am yr eiddo neu'r band Treth Gyngor yn anghywir.</p>
-      <p>Bydd angen cyfrif Porth y Llywodraeth arnat i fewngofnodi, gan fod manylion eiddo yn cael eu trin fel data personol.</p>
+      <p>Os ydych yn talu'r Dreth Gyngor am yr eiddo yma, neu os ydych wedi cael caniatâd gan y person hwnnw, byddwch chi’n gallu gweld mwy o fanylion eiddo.</p>
+      <p>Rydych hefyd yn gallu dweud wrthym os ydych chi'n meddwl bod y manylion am yr eiddo neu'r band Treth Gyngor yn anghywir.</p>
+      <p>Bydd angen cyfrif Porth y Llywodraeth arnoch i fewngofnodi, gan fod manylion eiddo yn cael eu trin fel data personol.</p>
+
       {{ govukButton({
         text: "Parhau",
         classes: "govuk-button--primary",

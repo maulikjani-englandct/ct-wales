@@ -199,7 +199,7 @@ Dyma'r wybodaeth ar gyfer: 19, St David's Crescent, Cardiff, CF5 4GP – GOV.UK 
                     }
                   },
                   {
-                    text: "Street or public parking",
+                    text: "Public parking",
                     attributes: {
                       style: "width: 30%"
                     }
@@ -276,7 +276,7 @@ Dyma'r wybodaeth ar gyfer: 19, St David's Crescent, Cardiff, CF5 4GP – GOV.UK 
       <th scope="row" class="govuk-table__header">C</th>
       <td class="govuk-table__cell">£65,001 to £91,000</td>
     </tr>
-    <tr class="govuk-table__row">
+    <tr class="govuk-table__row"  style="background-color:#f3f2f1">
       <th scope="row" class="govuk-table__header">D</th>
       <td class="govuk-table__cell">£91,001 to £123,000</td>
     </tr>
@@ -540,12 +540,22 @@ payments</th>
         <span class="govuk-caption-l">Dyma'r wybodaeth ar gyfer:</span>
         19, St David's Crescent, Cardiff, CF5 4GP
       </h1>
+      
 
-      {{ govukNotificationBanner({
-        html: '<h3 class="govuk-notification-banner__heading">Gwybodaeth newydd sydd gennym am eich eiddo</h3>
-        <p class="govuk-body">Yn ôl ein cofnodion, mae newidiadau wedi’u gwneud i’ch eiddo.</p>
-        <p class="govuk-body"><a class="govuk-notification-banner__link" href="pending-updates?languagePreference=cy">Gweld newidiadau i’ch eiddo </a></p>'
-      }) }}
+      <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner" data-govuk-notification-banner-init="">
+  <div class="govuk-notification-banner__header">
+    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+      Pwysig
+    </h2>
+  </div>
+  <div class="govuk-notification-banner__content">
+  
+    <h3 class="govuk-notification-banner__heading">Gwybodaeth newydd sydd gennym am eich eiddo</h3>
+            <p class="govuk-body">Yn ôl ein cofnodion, mae newidiadau wedi’u gwneud i’ch eiddo.</p>
+            <p class="govuk-body"><a class="govuk-notification-banner__link" href="pending-updates?languagePreference=cy">Gweld newidiadau i’ch eiddo </a></p>
+  
+  </div>
+</div>
 
       <div class="govuk-accordion" data-module="govuk-accordion" id="property-details-accordion-cy">
 
@@ -554,11 +564,11 @@ payments</th>
           <div class="govuk-accordion__section-header">
             <h2 class="govuk-accordion__section-heading">
               <span class="govuk-accordion__section-button" id="property-details-heading-cy-1">
-                Manylion dy eiddo
+                Manylion eich eiddo
               </span>
             </h2>
             <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-1">
-              Dim ond ti sy'n gallu gweld yr wybodaeth hon.
+              Dim ond chi sy'n gallu gweld yr wybodaeth hon.
             </div>
           </div>
           <div id="property-details-content-cy-1" class="govuk-accordion__section-content" aria-labelledby="property-details-heading-cy-1">
@@ -596,13 +606,48 @@ payments</th>
                 ],
                 [
                   {
-                    html: "Lloriau<br><span class='govuk-hint'>Nifer y lloriau yn dy gartref, er enghraifft 2.</span>",
+                    html: "Lloriau<br><span class='govuk-hint'>Nifer y lloriau yn eich cartref, er enghraifft 2.</span>",
                     attributes: {
                       style: "width: 30%"
                     }
                   },
                   {
                     text: "2",
+                    attributes: {
+                      style: "width: 30%"
+                    }
+                  }
+                ],
+                [
+                  {
+                    html: "Cyfanswm nifer yr ystafelloedd<br><span class='govuk-hint'>Pob ystafell yn dy gartref. Mae hyn yn cynnwys ystafelloedd byw ac ystafelloedd gwely, ond nid yw'n cynnwys ystafelloedd ymolchi, ceginau, ystafelloedd aml-bwrpas nac ystafelloedd gwydr.</span>
+                    <br><br><details class='govuk-details'>
+                      <summary class='govuk-details__summary'><span class='govuk-details__summary-text'>Cyfanswm nifer yr ystafelloedd </span></summary>
+                      <div class='govuk-details__text'>
+
+                      <h3 class='govuk-heading-s govuk-!-margin-bottom-1'>Yn cael eu cynnwys fel ystafelloedd: </h3>
+                      <p>Ystafelloedd gwely, ystafell fyw/lolfa, ystafell fwyta, ystafell chwarae, stydi neu swyddfa. </p>
+
+                      <h3 class='govuk-heading-s govuk-!-margin-bottom-1'>Ddim yn cael eu cynnwys fel ystafelloedd: </h3>
+                      <p>Cegin, cegin fwyta, ystafell gotiau, tŷ bach, ystafell gawod, ystafell ymolchi, ensuite, heulfan </p>
+
+                      <h3 class='govuk-heading-s govuk-!-margin-bottom-1'>Ardaloedd ar gynllun agored: </h3>
+                      <p>Byddai ardal ar gynllun cwbl agored, er enghraifft cegin ac ardal fyw, yn cyfrif fel un ystafell sengl. </p>
+
+                      <h3 class='govuk-heading-s govuk-!-margin-bottom-1'>Ystafelloedd allanol a’r gardd: </h3>
+                      <p>Nid yw ystafelloedd fel podiau gardd, cabanau allanol, swyddfeydd neu siediau a ddefnyddir fel mannau gwaith neu chwarae yn cael eu cynnwys yn 'Cyfanswm nifer yr ystafelloedd'.</p>
+
+                      <h3 class='govuk-heading-s govuk-!-margin-bottom-1'>Ystafelloedd gwely: </h3>
+                      <p>Ystafelloedd gwely gan gynnwys unrhyw rai a ddefnyddir at ddiben arall, fel swyddfa gartref.</p> 
+
+
+</div></details>",
+                    attributes: {
+                      style: "width: 30%"
+                    }
+                  },
+                  {
+                    text: "4",
                     attributes: {
                       style: "width: 30%"
                     }
@@ -638,41 +683,6 @@ payments</th>
                 ],
                 [
                   {
-                    html: "Pob ystafell<br><span class='govuk-hint'>Pob ystafell yn dy gartref. Mae hyn yn cynnwys ystafelloedd byw ac ystafelloedd gwely, ond nid yw'n cynnwys ystafelloedd ymolchi, ceginau, ystafelloedd aml-bwrpas nac ystafelloedd gwydr.</span>
-                    <br><br><details class='govuk-details'>
-                      <summary class='govuk-details__summary'><span class='govuk-details__summary-text'>Cyfanswm nifer yr ystafelloedd </span></summary>
-                      <div class='govuk-details__text'>
-
-                      <h3 class='govuk-heading-s govuk-!-margin-bottom-1'>Yn cael eu cynnwys fel ystafelloedd: </h3>
-                      <p>Ystafelloedd gwely, ystafell fyw/lolfa, ystafell fwyta, ystafell chwarae, stydi neu swyddfa. </p>
-
-                      <h3 class='govuk-heading-s govuk-!-margin-bottom-1'>Ddim yn cael eu cynnwys fel ystafelloedd: </h3>
-                      <p>Cegin, cegin fwyta, ystafell gotiau, tŷ bach, ystafell gawod, ystafell ymolchi, ensuite, heulfan </p>
-
-                      <h3 class='govuk-heading-s govuk-!-margin-bottom-1'>Ardaloedd ar gynllun agored: </h3>
-                      <p>Byddai ardal ar gynllun cwbl agored, er enghraifft cegin ac ardal fyw, yn cyfrif fel un ystafell sengl. </p>
-
-                      <h3 class='govuk-heading-s govuk-!-margin-bottom-1'>Ystafelloedd allanol a’r gardd: </h3>
-                      <p>Nid yw ystafelloedd fel podiau gardd, cabanau allanol, swyddfeydd neu siediau a ddefnyddir fel mannau gwaith neu chwarae yn cael eu cynnwys yn 'Cyfanswm yr ystafelloedd'.</p>
-
-                      <h3 class='govuk-heading-s govuk-!-margin-bottom-1'>Ystafelloedd gwely: </h3>
-                      <p>Ystafelloedd gwely gan gynnwys unrhyw rai a ddefnyddir at ddiben arall, fel swyddfa gartref.</p> 
-
-
-</div></details>",
-                    attributes: {
-                      style: "width: 30%"
-                    }
-                  },
-                  {
-                    text: "4",
-                    attributes: {
-                      style: "width: 30%"
-                    }
-                  }
-                ],
-                [
-                  {
                     html: "Parcio<br><span class='govuk-hint'>Er enghraifft, garej sengl neu parcio ar y dreif.</span>",
                     attributes: {
                       style: "width: 30%"
@@ -693,7 +703,7 @@ payments</th>
                     }
                   },
                   {
-                    text: "Yr olygfa",
+                    text: "Golygfa o’r môr",
                     attributes: {
                       style: "width: 30%"
                     }
@@ -948,7 +958,17 @@ payments</th>
                 ],
                 [
                   {
-                    html: "Cod y Llys<br><span class='govuk-hint'>Os yw'r band Treth Gyngor wedi ei adolygu gan Dribiwnlys Prisio neu Uchel Lys, dangosir cod y llys. Dyma'r codau: V - Penderfyniad gan Dribiwnlys Prisio, C - Cadarnhad gan Dribiwnlys Prisio, R - Ail benderfyniad y Tribiwnlys Prisio yn dilyn atgyfeiriad gan yr Uchel Lys, D - Penderfyniad gan Uchel Lys, H - Cadarnhad gan Uchel Lys, E - Gorchymyn cydsynio'r Uchel Lys.</span>",
+                    html: "Cod y Llys<br><span class='govuk-hint'>Os yw'r band Treth Gyngor wedi ei adolygu gan Dribiwnlys Prisio neu Uchel Lys, dangosir cod y llys.<br><br>
+                      <details class='govuk-details'><summary class='govuk-details__summary'><span class='govuk-details__summary-text'>Dyma'r codau</span></summary>
+                        <div class='govuk-details__text'>
+                V - Penderfyniad gan Dribiwnlys Prisio<br>
+                C - Cadarnhad gan Dribiwnlys Prisio<br>
+                R - Ail benderfyniad y Tribiwnlys Prisio yn dilyn atgyfeiriad gan yr Uchel Lys<br>
+                D - Penderfyniad gan Uchel Lys<br>
+                H - Cadarnhad gan Uchel Lys<br>
+                E - Gorchymyn cydsynio'r Uchel Lys
+              </div></details>
+                      </span>",
                     attributes: {
                       style: "width: 30%"
                     }
@@ -967,8 +987,8 @@ payments</th>
       </div>
 
       <h2 class="govuk-heading-m">Ydy'r manylion hyn yn gywir?</h2>
-      <p>Rho wybod i ni os wyt ti'n meddwl bod unrhywbeth am yr wybodaeth gyhoeddus neu fanylion dy eiddo yn anghywir.</p>
-      <p>Ar ôl gwirio manylion dy eiddo, bydd cyfle i ti adolygu dy Fand Treth Gyngor.</p>
+      <p>Rhowch wybod i ni os ydych chi'n meddwl bod unrhyw beth am yr wybodaeth gyhoeddus neu fanylion eich eiddo yn anghywir.</p>
+      <p>Ar ôl gwirio manylion eich eiddo, bydd cyfle i chi adolygu eich Band Treth Gyngor.</p>
 
       {{ govukButton({
         text: "Gwirio'r manylion",

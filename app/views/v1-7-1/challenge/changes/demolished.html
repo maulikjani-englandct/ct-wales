@@ -4,7 +4,7 @@
 {% if data['languagePreference'] == "en" %}
 Tell us why your home has been demolished or cannot be lived in – GOV.UK Prototype Kit
 {% else %}
-Dywed wrthym pam fod dy gartref wedi'i ddymchwel neu pam fod neb yn gallu byw ynddo – GOV.UK Prototype Kit
+Dywedwch wrthym pam fod eich cartref wedi'i ddymchwel neu pam fod neb yn gallu byw ynddo – GOV.UK Prototype Kit
 {% endif %}
 {% endblock %}
 
@@ -70,12 +70,12 @@ Dywed wrthym pam fod dy gartref wedi'i ddymchwel neu pam fod neb yn gallu byw yn
   }) }}
   <button class="govuk-button" data-module="govuk-button">Continue</button>
 {% else %}
-  <h1 class="govuk-heading-l">Dywed wrthym pam fod dy gartref wedi'i ddymchwel neu pam fod neb yn gallu byw ynddo</h1>
+  <h1 class="govuk-heading-l">Dywedwch wrthym pam fod eich cartref wedi'i ddymchwel neu pam fod neb yn gallu byw ynddo</h1>
   {{ govukTextarea({
     id: "demolished-reason",
     name: "demolished-reason",
     hint: {
-      text: "Er enghraifft, rwyt ti wedi dymchwel dy gartref yn llwyr er mwyn adeiladu un newydd, neu dyw’r cartref ddim wedi’i warchod rhag y gwynt a’r glaw a does neb yn gallu byw ynddo."
+      text: "Er enghraifft, rydych wedi dymchwel eich cartref yn llwyr er mwyn adeiladu un newydd, neu dyw’r cartref ddim wedi’i warchod rhag y gwynt a’r glaw a does neb yn gallu byw ynddo."
     }
   }) }}
   <button class="govuk-button" data-module="govuk-button">Parhau</button>

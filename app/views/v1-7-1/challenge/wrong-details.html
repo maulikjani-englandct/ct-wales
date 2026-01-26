@@ -95,7 +95,7 @@ Pam wyt ti'n meddwl bod y band Treth Gyngor yn anghywir? – GOV.UK Prototype Ki
   <button class="govuk-button" data-module="govuk-button">Continue</button>
 
 {% else %}
-  <h1 class="govuk-heading-l">Dywedwch wrthym pam yr ydych yn meddwl bod y band Treth Gyngor yn anghywir </h1>
+  <h1 class="govuk-heading-l">Dywedwch wrthym pam rydych yn meddwl bod y band Treth Gyngor yn anghywir</h1>
 
     {{ govukInsetText({
     text: "Bydd eich band ond yn cael adolygiad ffurfiol os ydych yn rhoi tystiolaeth i gefnogi hyn. "
@@ -107,7 +107,7 @@ Pam wyt ti'n meddwl bod y band Treth Gyngor yn anghywir? – GOV.UK Prototype Ki
 <details class="govuk-details">
   <summary class="govuk-details__summary">
     <span class="govuk-details__summary-text">
-      What evidence can you include?
+      Pa dystiolaeth y gallwch ei chynnwys?
     </span>
   </summary>
   <div class="govuk-details__text">
@@ -122,11 +122,16 @@ Pam wyt ti'n meddwl bod y band Treth Gyngor yn anghywir? – GOV.UK Prototype Ki
 <h2 class="govuk-heading-m">Sut i roi eich tystiolaeth </h2>
 <p class="govuk-body">Rydych yn gallu teipio eich tystiolaeth yn y blwch testun. Mae gennych hyd at 1,000 o gymeriadau. Rydych yn gallu uwchlwytho hyd at 5 ffeil, gan gynnwys dogfennau PDF, dogfennau Word, a ffotograffau, ar y dudalen nesaf. </p>
 
-  {{ govukCharacterCount({
-    id: "reason",
-    name: "reason",
-    maxlength: 1000
-  }) }}
+  <div class="govuk-form-group govuk-character-count" data-module="govuk-character-count" data-maxlength="1000" data-govuk-character-count-init="">
+  
+  <textarea class="govuk-textarea govuk-js-character-count" id="reason" name="reason" rows="5" aria-describedby="reason-info"></textarea><div id="reason-info" class="govuk-hint govuk-character-count__message govuk-visually-hidden">
+    Mae gennych 1000 cymeriad ar ôl
+  </div><div class="govuk-hint govuk-character-count__message govuk-character-count__status" aria-hidden="true">Mae gennych 1000 cymeriad ar ôl</div><div class="govuk-character-count__sr-status govuk-visually-hidden" aria-live="polite">Mae gennych 1000 cymeriad ar ôl</div>
+
+  
+
+</div>
+
   <button class="govuk-button" data-module="govuk-button">Parhau</button>  
 
 {% endif %}

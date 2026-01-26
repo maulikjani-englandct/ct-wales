@@ -68,27 +68,6 @@ Diweddariadau eiddo ar y gweill – GOV.UK Prototype Kit
         New information we have about your property 
       </h1>
 
-      <!-- {{ govukSummaryList({
-        rows: [
-          {
-            key: {
-              text: "Status"
-            },
-            value: {
-              text: "Under review"
-            }
-          },
-          {
-            key: {
-              text: "Submitted"
-            },
-            value: {
-              text: "15 December 2025"
-            }
-          }
-        ]
-      }) }} -->
-
       <div class="govuk-summary-card">
         <div class="govuk-summary-card__title-wrapper">
           <h2 class="govuk-summary-card__title">Changes to your property</h2>
@@ -143,36 +122,16 @@ Diweddariadau eiddo ar y gweill – GOV.UK Prototype Kit
 
       <h1 class="govuk-heading-l">
         <span class="govuk-caption-l">19, St David's Crescent, Cardiff, CF5 4GP</span>
-        Pending property updates
+        Gwybodaeth newydd sydd gennym am eich eiddo 
       </h1>
-
-      {{ govukSummaryList({
-        rows: [
-          {
-            key: {
-              text: "Status"
-            },
-            value: {
-              text: "Under review"
-            }
-          },
-          {
-            key: {
-              text: "Submitted"
-            },
-            value: {
-              text: "15 December 2025"
-            }
-          }
-        ]
-      }) }}
 
       <div class="govuk-summary-card">
         <div class="govuk-summary-card__title-wrapper">
-          <h2 class="govuk-summary-card__title">Submitted changes</h2>
+          <h2 class="govuk-summary-card__title">Newidiadau i’ch eiddo </h2>
         </div>
         <div class="govuk-summary-card__content">
-          <p class="govuk-body">If these changes are accepted, they may affect the Council Tax band.</p>
+          <p class="govuk-body">Yn ôl ein cofnodion, mae newidiadau wedi’u gwneud i’ch eiddo. Nid yw’r newidiadau hyn yn effeithio ar eich band Treth Gyngor presennol. </p>
+<p class="govuk-body">Byddant yn cael eu hadolygu pan fydd yr eiddo’n cael ei werthu neu pan fydd ailbrisiad. Gall hyn arwain at newid i’r band Treth Gyngor. </p>
 
           {{ govukTable({
             firstCellIsHeader: true,
@@ -181,44 +140,23 @@ Diweddariadau eiddo ar y gweill – GOV.UK Prototype Kit
                 text: ""
               },
               {
-                text: "Current"
+                text: "Presennol"
               },
               {
-                text: "Submitted"
+                text: "Yn y dyfodol"
               }
             ],
             rows: [
+
               [
                 {
-                  text: "Bedrooms"
+                  text: "Maint y cartref"
                 },
                 {
-                  text: "2"
+                  text: "90 m² (969 tr²)"
                 },
                 {
-                  text: "5"
-                }
-              ],
-              [
-                {
-                  text: "Bathrooms"
-                },
-                {
-                  text: "1"
-                },
-                {
-                  text: "2"
-                }
-              ],
-              [
-                {
-                  text: "Size of home"
-                },
-                {
-                  text: "90 m² (969 ft²)"
-                },
-                {
-                  text: "110 m² (1184 ft²)"
+                  text: "110 m² (1184 tr²)"
                 }
               ]
             ]
@@ -227,10 +165,12 @@ Diweddariadau eiddo ar y gweill – GOV.UK Prototype Kit
       </div>
 
       <p class="govuk-body">
-        <a href="property-details-extended?languagePreference=cy" class="govuk-link">Return to property details</a>
+        <a href="property-details-extended?languagePreference=en" class="govuk-link">Return to property details</a>
       </p>
 
     </div>
+
+    
   </div>
 
   {% endif %}

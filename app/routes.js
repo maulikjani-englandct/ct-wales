@@ -806,6 +806,7 @@ router.post('/1.7/challenge', function(req, res) {
 // ============================================================
 // VERSION 1.7.1 ROUTES
 // ============================================================
+router.post('/v1-7-1/challenge', function (req, res) { res.redirect('/v1-7-1/challenge'); });
 
 // Liability check route
 // Determines if user can access extended property details

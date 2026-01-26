@@ -359,109 +359,249 @@ payments</th>
       }) }}
       
       {{ govukTable({
-        firstCellIsHeader: true,
-        rows: [
-          [
-            {
-              html: "Cyngor Lleol<br><span class='govuk-hint'>Y Cyngor Lleol sy'n gosod swm y Treth Gyngor yr wyt yn ei dalu bob blwyddyn.</span>",
-              attributes: {
-                style: "width: 30%"
-              }
-            },
-            {
-              html: "<a href='https://www.cardiff.gov.uk/ENG/Pages/default.aspx'>Caerdydd</a>",
-              attributes: {
-                style: "width: 30%"
-              }
-            }
-          ],
-          [
-            {
-              html: "Cyfeirnod y Cyngor Lleol<br><span class='govuk-hint'>Cyfeirnod ar gyfer yr eiddo.</span>",
-              attributes: {
-                style: "width: 30%"
-              }
-            },
-            {
-              text: "1103 8000 8111 0001 00",
-              attributes: {
-                style: "width: 30%"
-              }
-            }
-          ],
-          [
-            {
-              html: "Band Treth Gyngor<br><span class='govuk-hint'>Y band y mae'r eiddo ynddo ar hyn o bryd. Sail hwn yw gwerth yr eiddo ar 1 Ebrill 2003.</span>",
-              attributes: {
-                style: "width: 30%"
-              }
-            },
-            {
-              text: "B",
-              attributes: {
-                style: "width: 30%"
-              }
-            }
-          ],
-          [
-            {
-              html: "Dyddiad dod i rym<br><span class='govuk-hint'>Y dyddiad wnaeth y band presennol ddechrau.</span>",
-              attributes: {
-                style: "width: 30%"
-              }
-            },
-            {
-              text: "9 Hydref 2008",
-              attributes: {
-                style: "width: 30%"
-              }
-            }
-          ],
-          [
-            {
-              html: "Dangosydd gwelliant<br><span class='govuk-hint'>Os yw'r eiddo wedi cael ei wella neu ei ymestyn ers iddo gael ei roi mewn band Treth Gyngor, dangosir 'Oes'. Mae hyn yn golygu bydd y band yn cael ei adolygu, a gall gynyddu ar ôl i'r eiddo gael ei werthu neu ar ôl ailbrisiad.</span>",
-              attributes: {
-                style: "width: 30%"
-              }
-            },
-            {
-              text: "Oes",
-              attributes: {
-                style: "width: 30%"
-              }
-            }
-          ],
-          [
-            {
-              html: "Eiddo defnydd cymysg<br><span class='govuk-hint'>Eiddo sy'n cael ei ddefnyddio fel cartref a busnes. Er enghraifft, fflat uwchben siop.</span>",
-              attributes: {
-                style: "width: 30%"
-              }
-            },
-            {
-              text: "Nac oes",
-              attributes: {
-                style: "width: 30%"
-              }
-            }
-            ],
-            [
-            {
-              html: "Cod y Llys<br><span class='govuk-hint'>Os yw'r band Treth Gyngor wedi ei adolygu gan Dribiwnlys Prisio neu Uchel Lys, dangosir cod y llys. Dyma'r codau:<br>V - Penderfyniad gan Dribiwnlys Prisio<br>C - Cadarnhad gan Dribiwnlys Prisio<br>R - Ail benderfyniad y Tribiwnlys Prisio yn dilyn atgyfeiriad gan yr Uchel Lys<br>D - Penderfyniad gan Uchel Lys<br>H - Cadarnhad gan Uchel Lys<br>E - Gorchymyn cydsynio'r Uchel Lys.</span>",
-              attributes: {
-                style: "width: 30%"
-              }
-            },
-            {
-              text: "Dim",
-              attributes: {
-                style: "width: 30%"
-              }
-            }
-            ]]
+              firstCellIsHeader: true,
+              rows: [
+                [
+                  {
+                    html: "Band Treth Gyngor<br><span class='govuk-hint'>Bandiau Treth Gyngor yng Nghymru (yn seiliedig ar werthoedd 1 Ebrill 2003) </span>
+                    
+                     <br><br>
+              <details class='govuk-details'><summary class='govuk-details__summary'><span class='govuk-details__summary-text'>Bandiau Treth Gyngor yng Nghymru</span></summary>
+                <div class='govuk-details__text'>
+                                  <table class='govuk-table'>
 
+  <thead class='govuk-table__head'>
+    <tr class='govuk-table__row'>
+      <th scope='col' class='govuk-table__header'>Band</th>
+      <th scope='col' class='govuk-table__header'>Gwerth ar 1 Ebrill 2003 </th>
+    </tr>
+  </thead>
+  <tbody class='govuk-table__body'>
+    <tr class='govuk-table__row'>
+      <th scope='row' class='govuk-table__header'>A</th>
+      <td class='govuk-table__cell'>hyd at £44,000</td>
+    </tr>
+    <tr class='govuk-table__row'>
+      <th scope='row' class='govuk-table__header'>B</th>
+      <td class='govuk-table__cell'>£44,001 i £65,000 </td>
+    </tr>
+    <tr class='govuk-table__row'>
+      <th scope='row' class='govuk-table__header'>C</th>
+      <td class='govuk-table__cell'>£65,001 i £91,000</td>
+    </tr>
+    <tr class='govuk-table__row' style='background-color:#f3f2f1'>
+      <th scope='row' class='govuk-table__header'>D</th>
+      <td class='govuk-table__cell'>£91,001 i £123,000 </td>
+    </tr>
+    <tr class='govuk-table__row'>
+      <th scope='row' class='govuk-table__header'>E</th>
+      <td class='govuk-table__cell'>£123,001 i £162,000 </td>
+    </tr>
+    <tr class='govuk-table__row'>
+      <th scope='row' class='govuk-table__header'>F</th>
+      <td class='govuk-table__cell'>£162,001 i £223,000 </td>
+    </tr>
+    <tr class='govuk-table__row'>
+      <th scope='row' class='govuk-table__header'>G</th>
+      <td class='govuk-table__cell'>£223,001 i £324,000 </td>
+    </tr>
+    <tr class='govuk-table__row'>
+      <th scope='row' class='govuk-table__header'>H</th>
+      <td class='govuk-table__cell'>£324,001 i £424,000</td>
+    </tr>
+    <tr class='govuk-table__row'>
+      <th scope='row' class='govuk-table__header'>I</th>
+      <td class='govuk-table__cell'>mwy na £424,000 </td>
+    </tr>
+  </tbody>
+</table>
+                </div></details>
+                    
+                    ",
+                    attributes: {
+                      style: "width: 70%"
+                    }
+                  },
+                  {
+                    text: "D",
+                    attributes: {
+                      style: "width: 30%"
+                    }
+                  }
+                ],
+                [
+                  {
+                    html: "Dyddiad dod i rym<br><span class='govuk-hint'>Y dyddiad wnaeth y band presennol ddechrau.</span>",
+                    attributes: {
+                      style: "width: 30%"
+                    }
+                  },
+                  {
+                    text: "9 Hydref 2008",
+                    attributes: {
+                      style: "width: 30%"
+                    }
+                  }
+                ],
+                [
+                  {
+                    html: "Cyngor Lleol<br><span class='govuk-hint'>Y Cyngor Lleol sy'n gosod swm y Dreth Gyngor yr wyt yn ei dalu bob blwyddyn, yn seiliedig ar y band.</span>",
+                    attributes: {
+                      style: "width: 30%"
+                    }
+                  },
+                  {
+                    html: "<a href='https://www.cardiff.gov.uk/ENG/Pages/default.aspx'>Caerdydd</a>",
+                    attributes: {
+                      style: "width: 30%"
+                    }
+                  }
+                ],
+                [
+                  {
+                    html: "Bil blynyddol y Dreth Gyngor <br><span class='govuk-hint'>Bil blynyddol cyfartalog y Dreth Gyngor ar gyfer eiddo band D yng Nghaerdydd</span>
+                    <br><br>
+              <details class='govuk-details'><summary class='govuk-details__summary'><span class='govuk-details__summary-text'>Cyngor Lleol Caerdydd </span></summary>
+                <div class='govuk-details__text'>
+                                  <table class='govuk-table'>
+<caption class='govuk-table__caption govuk-table__caption--s'>Taliadau’r Dreth Gyngor 2025–26 </caption>
+  <thead class='govuk-table__head'>
+    <tr class='govuk-table__row'>
+      <th scope='col' class='govuk-table__header'>Band</th>
+      <th scope='col' class='govuk-table__header'>Taliad blynyddol </th>
+      <th scope='col' class='govuk-table__header'>10 taliad misol </th>
+      <th scope='col' class='govuk-table__header'>12 taliad misol </th>
+    </tr>
+  </thead>
+  <tbody class='govuk-table__body'>
+    <tr class='govuk-table__row'>
+      <th scope='row' class='govuk-table__header'>A</th>
+      <td class='govuk-table__cell'>£1,284.12</td>
+      <td class='govuk-table__cell'>£128.41</td>
+      <td class='govuk-table__cell'>£107.01</td>
+    </tr>
+    <tr class='govuk-table__row'>
+      <th scope='row' class='govuk-table__header'>B</th>
+      <td class='govuk-table__cell'>£1,498.14</td>
+      <td class='govuk-table__cell'>£149.81</td>
+      <td class='govuk-table__cell'>£124.85</td>
+    </tr>
+    <tr class='govuk-table__row'>
+      <th scope='row' class='govuk-table__header'>C</th>
+      <td class='govuk-table__cell'>£1,712.16</td>
+      <td class='govuk-table__cell'>£171.22</td>
+      <td class='govuk-table__cell'>£142.68</td>
+    </tr>
+    <tr class='govuk-table__row' style='background-color:#f3f2f1'>
+      <th scope='row' class='govuk-table__header'>D</th>
+      <td class='govuk-table__cell'>£1,926.18</td>
+      <td class='govuk-table__cell'>£192.62</td>
+      <td class='govuk-table__cell'>£160.52</td>
+    </tr>
+    <tr class='govuk-table__row'>
+      <th scope='row' class='govuk-table__header'>E</th>
+      <td class='govuk-table__cell'>£2.354.22</td>
+      <td class='govuk-table__cell'>£235.42</td>
+      <td class='govuk-table__cell'>£196.19</td>
+    </tr>
+    <tr class='govuk-table__row'>
+      <th scope='row' class='govuk-table__header'>F</th>
+      <td class='govuk-table__cell'>£2,782.26</td>
+      <td class='govuk-table__cell'>£278.23</td>
+      <td class='govuk-table__cell'>£231.86</td>
+    </tr>
+    <tr class='govuk-table__row'>
+      <th scope='row' class='govuk-table__header'>G</th>
+      <td class='govuk-table__cell'>£3,210.30</td>
+      <td class='govuk-table__cell'>£321.03</td>
+      <td class='govuk-table__cell'>£267.53</td>
+    </tr>
+    <tr class='govuk-table__row'>
+      <th scope='row' class='govuk-table__header'>H</th>
+      <td class='govuk-table__cell'>£3,852.36</td>
+      <td class='govuk-table__cell'>£385.24</td>
+      <td class='govuk-table__cell'>£321.03</td>
+    </tr>
 
-      }) }}
+    <tr class='govuk-table__row'>
+      <th scope='row' class='govuk-table__header'>I</th>
+      <td class='govuk-table__cell'>£4,494.42
+</td>
+      <td class='govuk-table__cell'>£449.44</td>
+      <td class='govuk-table__cell'>£374.54</td>
+    </tr>
+  </tbody>
+</table>
+                </div></details>",
+                    attributes: {
+                      style: "width: 30%"
+                    }
+                  },
+                  {
+                    html: "£1926.18 per year",
+                    attributes: {
+                      style: "width: 30%"
+                    }
+                  }
+                ],
+                [
+                  {
+                    html: "Cyfeirnod y Cyngor Lleol<br><span class='govuk-hint'>Cyfeirnod ar gyfer yr eiddo.</span>",
+                    attributes: {
+                      style: "width: 30%"
+                    }
+                  },
+                  {
+                    text: "1103 8000 8111 0001 00",
+                    attributes: {
+                      style: "width: 30%"
+                    }
+                  }
+                ],
+                [
+                  {
+                    html: "Dangosydd gwelliant<br><span class='govuk-hint'>Os yw'r eiddo wedi cael ei wella neu ei ymestyn ers iddo gael ei roi mewn band Treth Gyngor, dangosir 'Oes'. Mae hyn yn golygu bydd y band yn cael ei adolygu, a gall gynyddu ar ôl i'r eiddo gael ei werthu.</span>",
+                    attributes: {
+                      style: "width: 30%"
+                    }
+                  },
+                  {
+                    html: "Ydw (<a href='pending-updates?languagePreference=cy' class='govuk-link'>view pending updates</a>)",
+                    attributes: {
+                      style: "width: 30%"
+                    }
+                  }
+                ],
+                [
+                  {
+                    html: "Eiddo defnydd cymysg<br><span class='govuk-hint'>Eiddo sy'n cael ei ddefnyddio fel cartref a busnes. Er enghraifft, fflat uwchben siop.</span>",
+                    attributes: {
+                      style: "width: 30%"
+                    }
+                  },
+                  {
+                    text: "Nac oes",
+                    attributes: {
+                      style: "width: 30%"
+                    }
+                  }
+                ],
+                [
+                  {
+                    html: "Cod y Llys<br><span class='govuk-hint'>Os yw'r band Treth Gyngor wedi ei adolygu gan Dribiwnlys Prisio neu Uchel Lys, dangosir cod y llys. Dyma'r codau: V - Penderfyniad gan Dribiwnlys Prisio, C - Cadarnhad gan Dribiwnlys Prisio, R - Ail benderfyniad y Tribiwnlys Prisio yn dilyn atgyfeiriad gan yr Uchel Lys, D - Penderfyniad gan Uchel Lys, H - Cadarnhad gan Uchel Lys, E - Gorchymyn cydsynio'r Uchel Lys.</span>",
+                    attributes: {
+                      style: "width: 30%"
+                    }
+                  },
+                  {
+                    text: "Dim",
+                    attributes: {
+                      style: "width: 30%"
+                    }
+                  }
+                ]
+              ]
+            }) }}
       
       <p>Os wyt ti'n talu'r Dreth Gyngor am yr eiddo yma, neu os wyt ti wedi cael caniatâd gan y person hwnnw, fyddi di'n gallu gweld mwy o fanylion eiddo.</p>
       <p>Rwyt ti hefyd yn gallu dweud wrthym os wyt ti'n meddwl bod y manylion am yr eiddo neu'r band Treth Gyngor yn anghywir.</p>

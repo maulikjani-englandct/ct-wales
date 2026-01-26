@@ -253,7 +253,7 @@ Dyma'r wybodaeth ar gyfer: 19, St David's Crescent, Cardiff, CF5 4GP – GOV.UK 
       
       <th scope="row" class="govuk-table__header" style="width: 70%">Council Tax band<br><span class="govuk-hint">The current band for the property. This is based on the property value on 01 April 2003.</span>
               <br><br>
-              <details class="govuk-details"><summary class="govuk-details__summary"><span class="govuk-details__summary-text">Council Tax bands Wales</span></summary>
+              <details class="govuk-details"><summary class="govuk-details__summary"><span class="govuk-details__summary-text">Council Tax bands in Wales</span></summary>
                 <div class="govuk-details__text">
                                   <table class="govuk-table">
 
@@ -542,9 +542,9 @@ payments</th>
       </h1>
 
       {{ govukNotificationBanner({
-        html: '<h3 class="govuk-notification-banner__heading">Pending property updates</h3>
-        <p class="govuk-body">Changes are under review.</p>
-        <p class="govuk-body"><a class="govuk-notification-banner__link" href="pending-updates?languagePreference=cy">View pending updates</a></p>'
+        html: '<h3 class="govuk-notification-banner__heading">Gwybodaeth newydd sydd gennym am eich eiddo</h3>
+        <p class="govuk-body">Yn ôl ein cofnodion, mae newidiadau wedi’u gwneud i’ch eiddo.</p>
+        <p class="govuk-body"><a class="govuk-notification-banner__link" href="pending-updates?languagePreference=cy">Gweld newidiadau i’ch eiddo </a></p>'
       }) }}
 
       <div class="govuk-accordion" data-module="govuk-accordion" id="property-details-accordion-cy">
@@ -570,7 +570,7 @@ payments</th>
                   {
                     html: "Math o gartref<br><span class='govuk-hint'>Er enghraifft, tŷ ar wahân, tŷ teras neu fflat.</span>",
                     attributes: {
-                      style: "width: 30%"
+                      style: "width: 70%"
                     }
                   },
                   {
@@ -638,7 +638,28 @@ payments</th>
                 ],
                 [
                   {
-                    html: "Pob ystafell<br><span class='govuk-hint'>Pob ystafell yn dy gartref. Mae hyn yn cynnwys ystafelloedd byw ac ystafelloedd gwely, ond nid yw'n cynnwys ystafelloedd ymolchi, ceginau, ystafelloedd aml-bwrpas nac ystafelloedd gwydr.</span>",
+                    html: "Pob ystafell<br><span class='govuk-hint'>Pob ystafell yn dy gartref. Mae hyn yn cynnwys ystafelloedd byw ac ystafelloedd gwely, ond nid yw'n cynnwys ystafelloedd ymolchi, ceginau, ystafelloedd aml-bwrpas nac ystafelloedd gwydr.</span>
+                    <br><br><details class='govuk-details'>
+                      <summary class='govuk-details__summary'><span class='govuk-details__summary-text'>Cyfanswm nifer yr ystafelloedd </span></summary>
+                      <div class='govuk-details__text'>
+
+                      <h3 class='govuk-heading-s govuk-!-margin-bottom-1'>Yn cael eu cynnwys fel ystafelloedd: </h3>
+                      <p>Ystafelloedd gwely, ystafell fyw/lolfa, ystafell fwyta, ystafell chwarae, stydi neu swyddfa. </p>
+
+                      <h3 class='govuk-heading-s govuk-!-margin-bottom-1'>Ddim yn cael eu cynnwys fel ystafelloedd: </h3>
+                      <p>Cegin, cegin fwyta, ystafell gotiau, tŷ bach, ystafell gawod, ystafell ymolchi, ensuite, heulfan </p>
+
+                      <h3 class='govuk-heading-s govuk-!-margin-bottom-1'>Ardaloedd ar gynllun agored: </h3>
+                      <p>Byddai ardal ar gynllun cwbl agored, er enghraifft cegin ac ardal fyw, yn cyfrif fel un ystafell sengl. </p>
+
+                      <h3 class='govuk-heading-s govuk-!-margin-bottom-1'>Ystafelloedd allanol a’r gardd: </h3>
+                      <p>Nid yw ystafelloedd fel podiau gardd, cabanau allanol, swyddfeydd neu siediau a ddefnyddir fel mannau gwaith neu chwarae yn cael eu cynnwys yn 'Cyfanswm yr ystafelloedd'.</p>
+
+                      <h3 class='govuk-heading-s govuk-!-margin-bottom-1'>Ystafelloedd gwely: </h3>
+                      <p>Ystafelloedd gwely gan gynnwys unrhyw rai a ddefnyddir at ddiben arall, fel swyddfa gartref.</p> 
+
+
+</div></details>",
                     attributes: {
                       style: "width: 30%"
                     }
@@ -702,9 +723,63 @@ payments</th>
               rows: [
                 [
                   {
-                    html: "Band Treth Gyngor<br><span class='govuk-hint'>Y band y mae'r eiddo ynddo ar hyn o bryd. Sail hwn yw gwerth yr eiddo ar 1 Ebrill 2003.</span>",
+                    html: "Band Treth Gyngor<br><span class='govuk-hint'>Bandiau Treth Gyngor yng Nghymru (yn seiliedig ar werthoedd 1 Ebrill 2003) </span>
+                    
+                     <br><br>
+              <details class='govuk-details'><summary class='govuk-details__summary'><span class='govuk-details__summary-text'>Bandiau Treth Gyngor yng Nghymru</span></summary>
+                <div class='govuk-details__text'>
+                                  <table class='govuk-table'>
+
+  <thead class='govuk-table__head'>
+    <tr class='govuk-table__row'>
+      <th scope='col' class='govuk-table__header'>Band</th>
+      <th scope='col' class='govuk-table__header'>Gwerth ar 1 Ebrill 2003 </th>
+    </tr>
+  </thead>
+  <tbody class='govuk-table__body'>
+    <tr class='govuk-table__row'>
+      <th scope='row' class='govuk-table__header'>A</th>
+      <td class='govuk-table__cell'>hyd at £44,000</td>
+    </tr>
+    <tr class='govuk-table__row'>
+      <th scope='row' class='govuk-table__header'>B</th>
+      <td class='govuk-table__cell'>£44,001 i £65,000 </td>
+    </tr>
+    <tr class='govuk-table__row'>
+      <th scope='row' class='govuk-table__header'>C</th>
+      <td class='govuk-table__cell'>£65,001 i £91,000</td>
+    </tr>
+    <tr class='govuk-table__row' style='background-color:#f3f2f1'>
+      <th scope='row' class='govuk-table__header'>D</th>
+      <td class='govuk-table__cell'>£91,001 i £123,000 </td>
+    </tr>
+    <tr class='govuk-table__row'>
+      <th scope='row' class='govuk-table__header'>E</th>
+      <td class='govuk-table__cell'>£123,001 i £162,000 </td>
+    </tr>
+    <tr class='govuk-table__row'>
+      <th scope='row' class='govuk-table__header'>F</th>
+      <td class='govuk-table__cell'>£162,001 i £223,000 </td>
+    </tr>
+    <tr class='govuk-table__row'>
+      <th scope='row' class='govuk-table__header'>G</th>
+      <td class='govuk-table__cell'>£223,001 i £324,000 </td>
+    </tr>
+    <tr class='govuk-table__row'>
+      <th scope='row' class='govuk-table__header'>H</th>
+      <td class='govuk-table__cell'>£324,001 i £424,000</td>
+    </tr>
+    <tr class='govuk-table__row'>
+      <th scope='row' class='govuk-table__header'>I</th>
+      <td class='govuk-table__cell'>mwy na £424,000 </td>
+    </tr>
+  </tbody>
+</table>
+                </div></details>
+                    
+                    ",
                     attributes: {
-                      style: "width: 30%"
+                      style: "width: 70%"
                     }
                   },
                   {
@@ -723,6 +798,93 @@ payments</th>
                   },
                   {
                     text: "9 Hydref 2008",
+                    attributes: {
+                      style: "width: 30%"
+                    }
+                  }
+                ],
+                [
+                  {
+                    html: "Bil blynyddol y Dreth Gyngor <br><span class='govuk-hint'>Bil blynyddol cyfartalog y Dreth Gyngor ar gyfer eiddo band D yng Nghaerdydd</span>
+                    <br><br>
+              <details class='govuk-details'><summary class='govuk-details__summary'><span class='govuk-details__summary-text'>Cyngor Lleol Caerdydd </span></summary>
+                <div class='govuk-details__text'>
+                                  <table class='govuk-table'>
+<caption class='govuk-table__caption govuk-table__caption--s'>Taliadau’r Dreth Gyngor 2025–26 </caption>
+  <thead class='govuk-table__head'>
+    <tr class='govuk-table__row'>
+      <th scope='col' class='govuk-table__header'>Band</th>
+      <th scope='col' class='govuk-table__header'>Taliad blynyddol </th>
+      <th scope='col' class='govuk-table__header'>10 taliad misol </th>
+      <th scope='col' class='govuk-table__header'>12 taliad misol </th>
+    </tr>
+  </thead>
+  <tbody class='govuk-table__body'>
+    <tr class='govuk-table__row'>
+      <th scope='row' class='govuk-table__header'>A</th>
+      <td class='govuk-table__cell'>£1,284.12</td>
+      <td class='govuk-table__cell'>£128.41</td>
+      <td class='govuk-table__cell'>£107.01</td>
+    </tr>
+    <tr class='govuk-table__row'>
+      <th scope='row' class='govuk-table__header'>B</th>
+      <td class='govuk-table__cell'>£1,498.14</td>
+      <td class='govuk-table__cell'>£149.81</td>
+      <td class='govuk-table__cell'>£124.85</td>
+    </tr>
+    <tr class='govuk-table__row'>
+      <th scope='row' class='govuk-table__header'>C</th>
+      <td class='govuk-table__cell'>£1,712.16</td>
+      <td class='govuk-table__cell'>£171.22</td>
+      <td class='govuk-table__cell'>£142.68</td>
+    </tr>
+    <tr class='govuk-table__row' style='background-color:#f3f2f1'>
+      <th scope='row' class='govuk-table__header'>D</th>
+      <td class='govuk-table__cell'>£1,926.18</td>
+      <td class='govuk-table__cell'>£192.62</td>
+      <td class='govuk-table__cell'>£160.52</td>
+    </tr>
+    <tr class='govuk-table__row'>
+      <th scope='row' class='govuk-table__header'>E</th>
+      <td class='govuk-table__cell'>£2.354.22</td>
+      <td class='govuk-table__cell'>£235.42</td>
+      <td class='govuk-table__cell'>£196.19</td>
+    </tr>
+    <tr class='govuk-table__row'>
+      <th scope='row' class='govuk-table__header'>F</th>
+      <td class='govuk-table__cell'>£2,782.26</td>
+      <td class='govuk-table__cell'>£278.23</td>
+      <td class='govuk-table__cell'>£231.86</td>
+    </tr>
+    <tr class='govuk-table__row'>
+      <th scope='row' class='govuk-table__header'>G</th>
+      <td class='govuk-table__cell'>£3,210.30</td>
+      <td class='govuk-table__cell'>£321.03</td>
+      <td class='govuk-table__cell'>£267.53</td>
+    </tr>
+    <tr class='govuk-table__row'>
+      <th scope='row' class='govuk-table__header'>H</th>
+      <td class='govuk-table__cell'>£3,852.36</td>
+      <td class='govuk-table__cell'>£385.24</td>
+      <td class='govuk-table__cell'>£321.03</td>
+    </tr>
+
+    <tr class='govuk-table__row'>
+      <th scope='row' class='govuk-table__header'>I</th>
+      <td class='govuk-table__cell'>£4,494.42
+</td>
+      <td class='govuk-table__cell'>£449.44</td>
+      <td class='govuk-table__cell'>£374.54</td>
+    </tr>
+  </tbody>
+</table>
+                </div></details>",
+                    attributes: {
+                      style: "width: 30%"
+                    }
+                  },
+                  {
+                    html: "£1926.18 per year",
                     attributes: {
                       style: "width: 30%"
                     }

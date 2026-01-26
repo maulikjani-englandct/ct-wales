@@ -93,14 +93,17 @@ Pam wyt ti'n meddwl bod y band Treth Gyngor yn anghywir? – GOV.UK Prototype Ki
     maxlength: 1000
   }) }}
   <button class="govuk-button" data-module="govuk-button">Continue</button>
+
 {% else %}
-  <h1 class="govuk-heading-l">Pam wyt ti'n meddwl bod y band Treth Gyngor yn anghywir?</h1>
+  <h1 class="govuk-heading-l">Dywedwch wrthym pam yr ydych yn meddwl bod y band Treth Gyngor yn anghywir </h1>
 
-  <p class="govuk-body">Dwed wrthym pam wyt ti'n meddwl bod dy fand Treth Gyngor yn anghywir. Rho gymaint o fanylion â phosib.</p>
-
-  {{ govukInsetText({
-    text: "Your band will only be reviewed if you provide supporting evidence"
+    {{ govukInsetText({
+    text: "Bydd eich band ond yn cael adolygiad ffurfiol os ydych yn rhoi tystiolaeth i gefnogi hyn. "
   }) }}
+
+  <p class="govuk-body">Bydd y dystiolaeth rydych yn ei roi yn cael ei gwirio cyn bod achos yn cael ei agor. Dylech roi cymaint o fanylion â phosib. </p>
+
+
 <details class="govuk-details">
   <summary class="govuk-details__summary">
     <span class="govuk-details__summary-text">
@@ -108,24 +111,24 @@ Pam wyt ti'n meddwl bod y band Treth Gyngor yn anghywir? – GOV.UK Prototype Ki
     </span>
   </summary>
   <div class="govuk-details__text">
-     <p class="govuk-body">Evidence can include:</p>
+     <p class="govuk-body">Gall tystiolaeth gynnwys: </p>
   <ul class="govuk-list govuk-list--bullet">
-    <li>addresses of up to 5 similar homes in a lower band than yours. The homes should be the same as your home in terms of type, size, age and style. The homes should be in the same street or estate, or in the same village or area.</li>
-    <li>the price that your home or similar homes sold for between 1 April 2001 and 31 March 2005</li>
+    <li>cyfeiriadau hyd at 5 cartref sy’n debyg i’ch cartref o ran math, maint, oedran, cynllun a steil, sydd mewn band is. Dylai’r cartrefi fod ar yr un stryd neu stad, neu yn yr un pentref neu ardal.</li>
+    <li>y pris y gwerthwyd eich cartref neu gartrefi tebyg rhwng 1 Ebrill 2001 a 31 Mawrth 2005. </li>
   </ul>
   </div>
 </details>
 
+<h2 class="govuk-heading-m">Sut i roi eich tystiolaeth </h2>
+<p class="govuk-body">Rydych yn gallu teipio eich tystiolaeth yn y blwch testun. Mae gennych hyd at 1,000 o gymeriadau. Rydych yn gallu uwchlwytho hyd at 5 ffeil, gan gynnwys dogfennau PDF, dogfennau Word, a ffotograffau, ar y dudalen nesaf. </p>
 
   {{ govukCharacterCount({
     id: "reason",
     name: "reason",
-    maxlength: 1000,
-    label: {
-      text: "Pam wyt ti'n meddwl bod y band Treth Gyngor yn anghywir?"
-    }
+    maxlength: 1000
   }) }}
-  <button class="govuk-button" data-module="govuk-button">Parhau</button>
+  <button class="govuk-button" data-module="govuk-button">Parhau</button>  
+
 {% endif %}
 </form>
 </div>

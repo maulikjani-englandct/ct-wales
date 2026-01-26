@@ -56,6 +56,10 @@ Diweddaru gwybodaeth am fy eiddo – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
+<style>
+  .govuk-summary-list__value {width:40%}
+  .govuk-summary-list__actions {width:20%}
+</style>
 {% if data['languagePreference'] == "en" %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
@@ -244,7 +248,18 @@ Any changes made could result in your property moving to a higher or lower  Coun
           }
         ]
       }) }}
+
+      
+      
+ 
+ 
+
       <h2 class="govuk-heading-m">Manylion dy eiddo</h2>
+      <div class="govuk-inset-text">
+        Rydych yn gallu gofyn am adolygiad o unrhyw fanylion eiddo sydd wedi’u rhestru isod.   <br><br>
+ 
+Gall unrhyw newidiadau a wneir arwain at eich eiddo symud i fand Treth Gyngor uwch neu is. 
+      </div>
       {{ govukSummaryList({
         rows: [
           {
@@ -258,7 +273,7 @@ Any changes made could result in your property moving to a higher or lower  Coun
               items: [
                 {
                   href: "correct/property-type",
-                  text: "Newid",
+                  text: "Gwirio manylion",
                   visuallyHiddenText: "math o gartref"
                 }
               ]
@@ -275,7 +290,7 @@ Any changes made could result in your property moving to a higher or lower  Coun
               items: [
                 {
                   href: "correct/area",
-                  text: "Newid",
+                  text: "Gwirio manylion",
                   visuallyHiddenText: "maint y cartref"
                 }
               ]
@@ -292,7 +307,7 @@ Any changes made could result in your property moving to a higher or lower  Coun
               items: [
                 {
                   href: "correct/floor-house",
-                  text: "Newid",
+                  text: "Gwirio manylion",
                   visuallyHiddenText: "lloriau"
                 }
               ]
@@ -309,7 +324,7 @@ Any changes made could result in your property moving to a higher or lower  Coun
               items: [
                 {
                   href: "correct/bedrooms",
-                  text: "Newid",
+                  text: "Gwirio manylion",
                   visuallyHiddenText: "ystafelloedd gwely"
                 }
               ]
@@ -326,7 +341,7 @@ Any changes made could result in your property moving to a higher or lower  Coun
               items: [
                 {
                   href: "correct/bathrooms",
-                  text: "Newid",
+                  text: "Gwirio manylion",
                   visuallyHiddenText: "ystafelloedd ymolchi"
                 }
               ]
@@ -343,7 +358,7 @@ Any changes made could result in your property moving to a higher or lower  Coun
               items: [
                 {
                   href: "correct/rooms",
-                  text: "Newid",
+                  text: "Gwirio manylion",
                   visuallyHiddenText: "pob ystafell"
                 }
               ]
@@ -360,7 +375,7 @@ Any changes made could result in your property moving to a higher or lower  Coun
               items: [
                 {
                   href: "correct/parking",
-                  text: "Newid",
+                  text: "Gwirio manylion",
                   visuallyHiddenText: "parcio"
                 }
               ]

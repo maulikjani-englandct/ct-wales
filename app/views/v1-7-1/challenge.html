@@ -4,7 +4,7 @@
 {% if data['languagePreference'] == "en" %}
  Do you want us to review your Council Tax band? – GOV.UK Prototype Kit
  {% else %}
- Wyt ti eisiau i ni adolygu dy fand Treth Gyngor? – GOV.UK Prototype Kit
+ Adolygiad Band Treth Cyngor  – GOV.UK Prototype Kit
  {% endif %}
 {% endblock %}
 
@@ -139,26 +139,51 @@ Your request for a band review will be rejected without this.
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
-                Wyt ti eisiau i ni adolygu dy fand Treth Gyngor?
+                Adolygiad Band Treth Cyngor 
               </h1>
-            </legend>
+                        </legend>
             <div id="challenge-hint" class="govuk-hint">
-                  Rwyt ti'n gallu gofyn i Asiantaeth y Swyddfa Brisio adolygu band Treth Gyngor dy gartref.
+              <p>Rydych yn gallu gofyn i’r VOA (Asiantaeth y Swyddfa Brisio) adolygu band Treth Gyngor eich cartref. Mae gofyn am adolygiad yn rhad ac am ddim.</p>
+              <p>Bydd angen i chi ddweud wrthym pam rydych yn meddwl y dylid adolygu’r band, ac efallai byddwn yn gofyn i chi am ragor o fanylion.</p>
 
-Bydd raid i ti ddweud wrthym y rheswm pam, ac efallai y byddwn yn gofyn i ti am ragor o fanylion.
+<p class="govuk-body">Rydych yn gallu gofyn i ni adolygu eich band Treth Gyngor os: </p>
+<ul class="govuk-list govuk-list--bullet">
+  <li>ydych wedi dod yn drethdalwr newydd o fewn y 6 mis diwethaf </li>
+  <li>mae’r band Treth Gyngor wedi newid yn ystod y 6 mis diwethaf</li>
+  <li>mae’r ardal leol wedi newid yn gorfforol</li>
+</ul>
+
+<p class="govuk-body">Rydych yn gallu hefyd ofyn am adolygiad os yw rhywbeth wedi newid. Er enghraifft, mae’r eiddo:</p>
+<ul class="govuk-list govuk-list--bullet">
+  <li>wedi’i ddymchwel</li>
+  <li>yn cael ei ddefnyddio’n rhannol ar gyfer busnes</li>
+  <li>wedi’i rannu’n sawl eiddo neu ei uno’n un</li>
+</ul>
+
+<p>Os byddwch yn gofyn am adolygiad am un o’r rhesymau hyn, ond dydych chi ddim yn cytuno â’r canlyniad, rydych yn gallu apelio yn erbyn y penderfyniad. </p> 
+ 
+<h3 class="govuk-heading-m">Adolygu’r band am unrhyw reswm arall </h3>
+<p>Os nad yw’r uchod yn berthnasol, byddwn ond yn adolygu eich band os byddwch yn darparu tystiolaeth ategol.  
+ </p>
+ <p>Bydd eich cais am adolygiad band yn cael ei wrthod heb hyn. </p>
+ <p>Ni fydd gennych unrhyw hawliau cyfreithiol i apelio yn erbyn canlyniad yr adolygiad. </p>
+
                 </div>
+                <h3 class="govuk-heading-m">Ydych chi eisiau i ni adolygu eich band Treth Gyngor? </h3>
             <div class="govuk-radios" data-module="govuk-radios">
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="yes" name="challenge" type="radio" value="yes">
                 <label class="govuk-label govuk-radios__label" for="yes">
-                  Ydw
+                  Ydw 
                 </label>
+
               </div>
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="no" name="challenge" type="radio" value="no">
                 <label class="govuk-label govuk-radios__label" for="no">
-                  Nac ydw
+                  Nac ydw 
                 </label>
+
               </div>
             </div>
           </fieldset>

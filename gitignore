@@ -1,0 +1,30 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# MacOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Logs
+logs
+*.log
+
+# Env / secrets (never commit)
+.env
+.env.*
+
+# Coverage / build artifacts
+coverage/
+dist/
+build/
+.sass-cache/
+
+# Editor folders
+.vscode/
+.idea/
+*.swp

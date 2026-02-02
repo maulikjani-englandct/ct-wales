@@ -3,7 +3,11 @@
 {% set pageName="Home" %}
 
 {% block content %}
-
+<style>
+  .hmrc-language-select, .govuk-back-link {
+    display: none !important;
+  }
+</style>
 <div class="govuk-grid-row no-site-page">
   <div class="govuk-grid-column-two-thirds">
 
@@ -12,14 +16,14 @@
       {{ serviceName }}
     </h1>
       <p>This is a prototype to view the Council Tax Wales Reform service - it is not a live service. It will only be used for testing purposes.</p>
-      <p>The most recent stable version with a complete journey is Version 1.5.2. You can launch it by clicking on the Start button below.</p>
-      <a href="v1-5-2/start?languagePreference=en" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
-  Start stable complete journey
+      <p>The most recent version is Version 1.7.1. You can launch it by clicking on the Start button below.</p>
+      <a href="v1-7-1/start" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
+  Start 
   <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
     <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
   </svg>
 </a>
-     <p><a href="design-history.html">View detailed design history and research findings</a></p>
+     <!-- <p><a href="design-history.html">View detailed design history and research findings</a></p> -->
       <h3 class="govuk-heading-m govuk-!-margin-top-6">Latest version</h3>
 <details class="govuk-details">
         <summary class="govuk-details__summary">
@@ -28,12 +32,12 @@
           </span>
         </summary>
         <div class="govuk-details__text">
-            <h4>Version creation date</h4>
-            <p>22 January 2026</p>
+            <h4>Version updated on</h4>
+            <p>2 February 2026</p>
           <h4>Changelog</h4>
-            <!-- <ul>
-              <li>Updated journey based on round 5 takeaways</li>
-              <ul>
+            <ul>
+              <li>Revised code to prevent language preference from being overridden by query parameters</li>
+              <!-- <ul>
                 <li>Added pending property updates page showing Current vs Submitted comparison table</li>
                 <li>Integrated evidence upload journey into challenge flow:
                   <ul>

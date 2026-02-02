@@ -1,29 +1,15 @@
 {% extends "layouts/main.html" %}
 
+<!-- Page title -->
 {% block pageTitle %}
-{% if data['languagePreference'] == "en" %}
-  Checking and updating the details of your home – GOV.UK Prototype Kit
-{% else %}
-  Gwirio a diweddaru manylion dy gartref – GOV.UK Prototype Kit
-{% endif %}
-{% endblock %}
+  {% if data['languagePreference'] == "en" %}
+    Check and review your Council Tax band – {{ data['govukTite'] }}
 
-{% block header %}
-{% if data['languagePreference'] == "en" %}
-{{ hmrcHeader({
-  homepageUrl : "/v1-7-1/start?languagePreference=en",
-
-    useTudorCrown: "true"
-  }) }}
-
-{% else %}
-{{ hmrcHeader({
-  homepageUrl : "/v1-7-1/start?languagePreference=cy",
-
-    useTudorCrown: "true"
-  }) }}
+  {% else %}
+    Gwirio ac adolygu dy fand Treth Gyngor – {{ data['govukTite'] }}
   {% endif %}
 {% endblock %}
+
 {% block beforeContent %}
 
 {% if data['languagePreference'] == "en" %}
@@ -61,6 +47,8 @@
 {% endif %}
 
 {% endblock %}
+
+<!-- Page content -->
 {% block content %}
 
   <div class="govuk-grid-row">
@@ -153,7 +141,8 @@
 
 <h3 class="govuk-heading-m">Why should I update the details of my home if I think they are wrong?</h3>
 <p>The VOA is responsible for keeping a fair and accurate list of all homes in Wales. If you tell us that you think the details of your home are wrong, it will help us to keep an accurate record for your home.</p>
-    {% else %}
+   
+{% else %}
       <h1 class="govuk-heading-xl">Gwirio ac adolygu dy fand Treth Gyngor</h1>
 
       <nav data-module="ga4-link-tracker" aria-label="Contents" class="gem-c-contents-list govuk-!-margin-bottom-4">

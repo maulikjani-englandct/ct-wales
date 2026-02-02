@@ -1,5 +1,4 @@
 module.exports = {
-
-  // Insert values here
-
+  govukTite: 'GOV.UK Prototype Kit',
+  languagePreference: 'en',
 }

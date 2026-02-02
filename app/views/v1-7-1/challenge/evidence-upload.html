@@ -1,62 +1,27 @@
 {% extends "layouts/main.html" %}
 
+<!-- Page title -->
 {% block pageTitle %}
-{% if data['languagePreference'] == "en" %}
-Upload evidence – GOV.UK Prototype Kit
-{% else %}
-Upload evidence – GOV.UK Prototype Kit
-{% endif %}
-{% endblock %}
+  {% if data['languagePreference'] == "en" %}
+    What date is on the Notice of Alteration? – {{ data['govukTite'] }}
 
-{% block header %}
-{% if data['languagePreference'] == "en" %}
-{{ hmrcHeader({
-  homepageUrl : "/v1-7-1/start?languagePreference=en",
-    signOutHref : "?sign-out",
-    useTudorCrown: "true"
-  }) }}
-
-{% else %}
-{{ hmrcHeader({
-  homepageUrl : "/v1-7-1/start?languagePreference=cy",
-    language : "cy",
-    signOutHref : "?sign-out",
-    useTudorCrown: "true"
-  }) }}
+  {% else %}
+    Pa ddyddiad sydd ar lythyr yr Hysbysiad o Newid? – {{ data['govukTite'] }}
   {% endif %}
 {% endblock %}
 
 {% block beforeContent %}
-
-{{
-
-  hmrcLanguageSelect({
-
-      language: 'cy' if data['languagePreference'] === 'cy' else 'en',
-
-      en: { href: '?languagePreference=en' },
-
-      cy: { href: '?languagePreference=cy' }
-
-  })
-
-}}
-
-{% if data['languagePreference'] == "en" %}
-{{ govukBackLink({
-  text: "Back",
-  href: "javascript:history.back()"
-}) }}
-{% else %}
-{{ govukBackLink({
-  text: "Back",
-  href: "javascript:history.back()"
-}) }}
-{% endif %}
-
+<div class="govuk-grid-row">
+  <!-- Language selector -->
+  {% include "v1-7-1/includes/_hmrcLanguageSelect.html" %}
+  <!-- Back link -->
+  {% include "v1-7-1/includes/_backLink.html" %}
+</div>
 {% endblock %}
 
+<!-- Page content -->
 {% block content %}
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
@@ -104,7 +69,7 @@ Upload evidence – GOV.UK Prototype Kit
             <label class="govuk-label govuk-label--l" for="file-upload-1">
               Uwchlwytho tystiolaeth
             </label>
-          </h1>Dim ffeil wedi’i dewis, Dewiswch ffeil
+          </h1>
 
           <p class="govuk-body">Uwchlwythwch ddogfennau sy’n dangos pam y dylid adolygu eich band Treth Gyngor. Gallwch uwchlwytho hyd at 5 ffeil.</p>
 
@@ -139,21 +104,5 @@ Upload evidence – GOV.UK Prototype Kit
     </div>
   </div>
 
-<script>
-  // Handle language switching without creating new history entries
-  document.addEventListener('DOMContentLoaded', function() {
-    var langLinks = document.querySelectorAll('.hmrc-language-select__list-item a');
 
-    langLinks.forEach(function(link) {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        var newUrl = this.href;
-        // Replace current history state instead of pushing new one
-        history.replaceState(null, '', newUrl);
-        // Reload page to show new language
-        window.location.reload();
-      });
-    });
-  });
-</script>
 {% endblock %}

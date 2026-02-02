@@ -1,59 +1,27 @@
 {% extends "layouts/main.html" %}
-{% block header %}
-{% if data['languagePreference'] == "en" %}
-{{ hmrcHeader({
-    serviceUrl : "/v1-7-1/start?languagePreference=en",
-    signOutHref : "?sign-out",
-    useTudorCrown: "true"
-  }) }}
+
+<!-- Page title -->
+{% block pageTitle %}
+  {% if data['languagePreference'] == "en" %}
+    Review your changes – {{ data['govukTite'] }}
 
   {% else %}
-  {{ hmrcHeader({
-    homepageUrl : "/v1-7-1/start?languagePreference=cy",
-language : "cy",
-    signOutHref : "?sign-out",
-    useTudorCrown: true
-  }) }}
-{% endif %}
-{% endblock %}
-{% block pageTitle %}
-{% if data['languagePreference'] == "en" %}
-Review your changes – GOV.UK Prototype Kit
-{% else %}
-Adolygu dy newidiadau – GOV.UK Prototype Kit
-{% endif %}
+    Adolygu dy newidiadau – {{ data['govukTite'] }}
+  {% endif %}
 {% endblock %}
 
 {% block beforeContent %}
-
-{{
-
-  hmrcLanguageSelect({
-
-      language: 'cy' if data['languagePreference'] === 'cy' else 'en',
-
-      en: { href: '?languagePreference=en' },
-
-      cy: { href: '?languagePreference=cy' }
-
-  })
-
-}}
-{% if data['languagePreference'] == "en" %}
-{{ govukBackLink({
-  text: "Back",
-  href: "javascript:history.back()"
-}) }}
-{% else %}
-{{ govukBackLink({
-  text: "Yn ôl",
-  href: "javascript:history.back()"
-}) }}
-
-{% endif %}
+<div class="govuk-grid-row">
+  <!-- Language selector -->
+  {% include "v1-7-1/includes/_hmrcLanguageSelect.html" %}
+  <!-- Back link -->
+  {% include "v1-7-1/includes/_backLink.html" %}
+</div>
 {% endblock %}
 
+<!-- Page content -->
 {% block content %}
+
 {% if data['languagePreference'] == "en" %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
@@ -61,7 +29,7 @@ Adolygu dy newidiadau – GOV.UK Prototype Kit
       <h1 class="govuk-heading-xl">
         Review your changes
       </h1>
-<p>These are the changes you have asked us to look at.</p>
+      <p>These are the changes you have asked us to look at.</p>
       <h2 class="govuk-heading-m">Property details</h2>
       {{ govukSummaryList({
         rows: [
@@ -140,7 +108,7 @@ Adolygu dy newidiadau – GOV.UK Prototype Kit
 
         ]
       }) }}
-<h2 class="govuk-heading-m">
+      <h2 class="govuk-heading-m">
         Contact details
       </h2>
             {{ govukSummaryList({
@@ -250,7 +218,7 @@ Adolygu dy newidiadau – GOV.UK Prototype Kit
       <h1 class="govuk-heading-xl">
         Adolygu dy newidiadau
       </h1>
-<p>Dyma'r newidiadau rwyt ti wedi gofyn i ni edrych arnynt.</p>
+      <p>Dyma'r newidiadau rwyt ti wedi gofyn i ni edrych arnynt.</p>
       <h2 class="govuk-heading-m">Manylion dy eiddo</h2>
       {{ govukSummaryList({
         rows: [
@@ -329,7 +297,7 @@ Adolygu dy newidiadau – GOV.UK Prototype Kit
 
         ]
       }) }}
-<h2 class="govuk-heading-m">
+      <h2 class="govuk-heading-m">
         Contact details
       </h2>
             {{ govukSummaryList({
@@ -433,21 +401,5 @@ Adolygu dy newidiadau – GOV.UK Prototype Kit
   </div>
   {% endif %}
 
-<script>
-  // Handle language switching without creating new history entries
-  document.addEventListener('DOMContentLoaded', function() {
-    var langLinks = document.querySelectorAll('.hmrc-language-select__list-item a');
 
-    langLinks.forEach(function(link) {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        var newUrl = this.href;
-        // Replace current history state instead of pushing new one
-        history.replaceState(null, '', newUrl);
-        // Reload page to show new language
-        window.location.reload();
-      });
-    });
-  });
-</script>
 {% endblock %}

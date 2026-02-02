@@ -1,139 +1,92 @@
 {% extends "layouts/main.html" %}
 
+<!-- Page title -->
 {% block pageTitle %}
   {% if data['languagePreference'] == "en" %}
-    When did these permanent changes take place? – GOV.UK Prototype Kit
+    When did these permanent changes take place? – {{ data['govukTite'] }}
+
   {% else %}
-    Pryd wnaeth y newidiadau parhaol hyn ddigwydd? – GOV.UK Prototype Kit
-  {% endif %}
-{% endblock %}
-
-{% block header %}
-{% if data['languagePreference'] == "en" %}
-{{ hmrcHeader({
-  homepageUrl : "/v1-7-1/start?languagePreference=en",
-    signOutHref : "?sign-out",
-    useTudorCrown: "true"
-  }) }}
-
-{% else %}
-{{ hmrcHeader({
-  homepageUrl : "/v1-7-1/start?languagePreference=cy",
-    language : "cy",
-    signOutHref : "?sign-out",
-    useTudorCrown: "true"
-  }) }}
+    Pryd wnaeth y newidiadau parhaol hyn ddigwydd? – {{ data['govukTite'] }}
   {% endif %}
 {% endblock %}
 
 {% block beforeContent %}
-
-{{
-
-  hmrcLanguageSelect({
-
-      language: 'cy' if data['languagePreference'] === 'cy' else 'en',
-
-      en: { href: '?languagePreference=en' },
-
-      cy: { href: '?languagePreference=cy' }
-
-  })
-
-}}
-{% if data['languagePreference'] == "en" %}
-{{ govukBackLink({
-  text: "Back",
-  href: "local-area?languagePreference=en"
-}) }}
-{% else %}
-{{ govukBackLink({
-  text: "Yn ôl",
-  href: "local-area?languagePreference=cy"
-}) }}
-
-{% endif %}
-{% endblock %}
-{% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds-from-desktop">
-<form action="../contact-details" method="post">
-{% if data['languagePreference'] == "en" %}
-  {{ govukDateInput({
-    id: "local-area-start",
-    namePrefix: "local-area-start",
-    fieldset: {
-      legend: {
-        text: "When did these permanent changes take place?",
-        isPageHeading: true,
-        classes: "govuk-fieldset__legend--l"
-      }
-    },
-    hint: {
-      text: "For example, if the changes in your local area happened on 27 April 2025, enter 27 4 2025."
-    }
-  }) }}
-  <button class="govuk-button" data-module="govuk-button">Continue</button>
-{% else %}
-<div class="govuk-form-group">
-  <fieldset class="govuk-fieldset" role="group" aria-describedby="domestic-use-hint">
-    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-      <h1 class="govuk-fieldset__heading">
-       Pryd wnaeth y newidiadau parhaol hyn ddigwydd?
-      </h1>
-    </legend>
-    <div id="domestic-use-hint" class="govuk-hint">
-      Er enghraifft, os wnaeth y newidiadau hyn ddigwydd ar 27 Ebrill 2025, rhowch 27 4 2025.
-    </div>
-    <div class="govuk-date-input" id="domestic-use">
-      <div class="govuk-date-input__item">
-        <div class="govuk-form-group">
-          <label class="govuk-label govuk-date-input__label" for="domestic-use-day">
-            Dydd
-          </label>
-          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="domestic-use-day" name="domestic-use-day" type="text" inputmode="numeric">
-        </div>
-      </div>
-      <div class="govuk-date-input__item">
-        <div class="govuk-form-group">
-          <label class="govuk-label govuk-date-input__label" for="domestic-use-month">
-            Mis
-          </label>
-          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="domestic-use-month" name="domestic-use-month" type="text" inputmode="numeric">
-        </div>
-      </div>
-      <div class="govuk-date-input__item">
-        <div class="govuk-form-group">
-          <label class="govuk-label govuk-date-input__label" for="domestic-use-year">
-            Blwyddyn
-          </label>
-          <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="domestic-use-year" name="domestic-use-year" type="text" inputmode="numeric">
-        </div>
-      </div>
-    </div>
-  </fieldset>
+<div class="govuk-grid-row">
+  <!-- Language selector -->
+  {% include "v1-7-1/includes/_hmrcLanguageSelect.html" %}
+  <!-- Back link -->
+  {% include "v1-7-1/includes/_backLink.html" %}
 </div>
-  <button class="govuk-button" data-module="govuk-button">Parhau</button>
-{% endif %}
-</form>
-    </div>
-    </div>
+{% endblock %}
 
-<script>
-  // Handle language switching without creating new history entries
-  document.addEventListener('DOMContentLoaded', function() {
-    var langLinks = document.querySelectorAll('.hmrc-language-select__list-item a');
+<!-- Page content -->
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+    <form action="../contact-details" method="post">
+      {% if data['languagePreference'] == "en" %}
+      {{ govukDateInput({
+        id: "local-area-start",
+        namePrefix: "local-area-start",
+        fieldset: {
+          legend: {
+            text: "When did these permanent changes take place?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        hint: {
+         text: "For example, if the changes in your local area happened on 27 April 2025, enter 27 4 2025."
+        }
+      }) }}
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
 
-    langLinks.forEach(function(link) {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        var newUrl = this.href;
-        // Replace current history state instead of pushing new one
-        history.replaceState(null, '', newUrl);
-        // Reload page to show new language
-        window.location.reload();
-      });
-    });
-  });
-</script>
+      {% else %}
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" role="group" aria-describedby="domestic-use-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Pryd wnaeth y newidiadau parhaol hyn ddigwydd?
+            </h1>
+          </legend>
+          <div id="domestic-use-hint" class="govuk-hint">
+            Er enghraifft, os wnaeth y newidiadau hyn ddigwydd ar 27 Ebrill 2025, rhowch 27 4 2025.
+          </div>
+          <div class="govuk-date-input" id="domestic-use">
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="domestic-use-day">
+                  Dydd
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="domestic-use-day"
+                  name="domestic-use-day" type="text" inputmode="numeric">
+              </div>
+            </div>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="domestic-use-month">
+                  Mis
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="domestic-use-month"
+                  name="domestic-use-month" type="text" inputmode="numeric">
+              </div>
+            </div>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="domestic-use-year">
+                  Blwyddyn
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="domestic-use-year"
+                  name="domestic-use-year" type="text" inputmode="numeric">
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <button class="govuk-button" data-module="govuk-button">Parhau</button>
+      {% endif %}
+    </form>
+  </div>
+</div>
+
 {% endblock %}

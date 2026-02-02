@@ -1,43 +1,23 @@
 {% extends "layouts/main.html" %}
 
+<!-- Page title -->
 {% block pageTitle %}
-{% if data['languagePreference'] == "en" %}
-You do not have permission to view more details - GOV.UK Prototype Kit
- {% else %}
- Does gen ti ddim caniatâd i weld rhagor o fanylion – GOV.UK Prototype Kit
- {% endif %}
-{% endblock %}
-{% block header %}
-{% if data['languagePreference'] == "en" %}
-{{ hmrcHeader({
-  homepageUrl : "/v1-7-1/start?languagePreference=en",
-    useTudorCrown: "true"
-  }) }}
+  {% if data['languagePreference'] == "en" %}
+    You do not have permission to view more details – {{ data['govukTite'] }}
 
-{% else %}
-{{ hmrcHeader({
-  homepageUrl : "/v1-7-1/start?languagePreference=cy",
-    useTudorCrown: "true"
-  }) }}
+  {% else %}
+    Does gen ti ddim caniatâd i weld rhagor o fanylion – {{ data['govukTite'] }}
   {% endif %}
 {% endblock %}
+
 {% block beforeContent %}
-
-{{
-
-  hmrcLanguageSelect({
-
-      language: 'cy' if data['languagePreference'] === 'cy' else 'en',
-
-      en: { href: '?languagePreference=en' },
-
-      cy: { href: '?languagePreference=cy' }
-
-  })
-
-}}
-
+<div class="govuk-grid-row">
+  <!-- Language selector -->
+  {% include "v1-7-1/includes/_hmrcLanguageSelect.html" %}
+</div>
 {% endblock %}
+
+<!-- Page content -->
 {% block content %}
 {% if data['languagePreference'] == "en" %}
 <div class="govuk-width-container">
@@ -71,21 +51,5 @@ You do not have permission to view more details - GOV.UK Prototype Kit
 </div>
 {% endif %}
 
-<script>
-  // Handle language switching without creating new history entries
-  document.addEventListener('DOMContentLoaded', function() {
-    var langLinks = document.querySelectorAll('.hmrc-language-select__list-item a');
 
-    langLinks.forEach(function(link) {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        var newUrl = this.href;
-        // Replace current history state instead of pushing new one
-        history.replaceState(null, '', newUrl);
-        // Reload page to show new language
-        window.location.reload();
-      });
-    });
-  });
-</script>
 {% endblock %}

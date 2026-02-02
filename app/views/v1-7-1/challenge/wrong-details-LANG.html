@@ -1,27 +1,54 @@
 {% extends "layouts/main.html" %}
 
-<!-- Page title -->
 {% block pageTitle %}
-  {% if data['languagePreference'] == "en" %}
-    Tell us why you think the Council Tax band is wrong – {{ data['govukTite'] }}
+{% if data['languagePreference'] == "en" %}
+ Why do you think the Council Tax band is wrong? – {{ data['govukTite'] }}
+ {% else %}
+Pam wyt ti'n meddwl bod y band Treth Gyngor yn anghywir? – {{ data['govukTite'] }}
+ {% endif %}
+{% endblock %}
 
-  {% else %}
-    Dywedwch wrthym pam rydych yn meddwl bod y band Treth Gyngor yn anghywir – {{ data['govukTite'] }}
-  {% endif %}
+{% block header %}
+{% if data['languagePreference'] == "en" %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-7-1/start?languagePreference=en",
+  signOutHref : "?sign-out",
+  useTudorCrown: "true"
+}) }}
+{% else %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-7-1/start?languagePreference=cy",
+  language : "cy",
+  signOutHref : "?sign-out",
+  useTudorCrown: "true"
+}) }}
+{% endif %}
 {% endblock %}
 
 {% block beforeContent %}
-<div class="govuk-grid-row">
-  <!-- Language selector -->
-  {% include "v1-7-1/includes/_hmrcLanguageSelect.html" %}
-  <!-- Back link -->
-  {% include "v1-7-1/includes/_backLink.html" %}
-</div>
+
+{{
+  hmrcLanguageSelect({
+    language: 'cy' if data['languagePreference'] == 'cy' else 'en',
+    en: { href: '/v1-7-1/challenge/wrong-details?languagePreference=en' },
+    cy: { href: '/v1-7-1/challenge/wrong-details?languagePreference=cy' }
+  })
+}}
+
+{% if data['languagePreference'] == "en" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:history.back()"
+}) }}
+{% else %}
+{{ govukBackLink({
+  text: "Yn ôl",
+  href: "javascript:history.back()"
+}) }}
+{% endif %}
+
 {% endblock %}
-
-<!-- Page content -->
 {% block content %}
-
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
 <form action="evidence-upload-choice" method="post">
@@ -64,7 +91,7 @@
   <h1 class="govuk-heading-l">Dywedwch wrthym pam rydych yn meddwl bod y band Treth Gyngor yn anghywir</h1>
 
     {{ govukInsetText({
-    text: "Bydd eich band ond yn cael adolygiad os ydych yn rhoi tystiolaeth i gefnogi hyn. "
+    text: "Bydd eich band ond yn cael adolygiad ffurfiol os ydych yn rhoi tystiolaeth i gefnogi hyn. "
   }) }}
 
   <p class="govuk-body">Bydd y dystiolaeth rydych yn ei roi yn cael ei gwirio cyn bod achos yn cael ei agor. Dylech roi cymaint o fanylion â phosib. </p>
@@ -105,5 +132,5 @@
 </div>
 </div>
 
-
+{# Removed inline JS: language links are normal anchors so server can set language and respond without client-side history manipulation #}
 {% endblock %}

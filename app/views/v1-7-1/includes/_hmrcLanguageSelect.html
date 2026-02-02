@@ -1,0 +1,7 @@
+{{ hmrcLanguageSelect
+  ({
+      language: 'cy' if data['languagePreference'] === 'cy' else 'en',
+      en: { href: '?languagePreference=en' },
+      cy: { href: '?languagePreference=cy' }
+  })
+}}

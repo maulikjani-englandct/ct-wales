@@ -1,11 +1,22 @@
 {% extends "layouts/main.html" %}
 
+<!-- Page title -->
 {% block pageTitle %}
-List of pages – GOV.UK Prototype Kit
+  Version 1.7.1 - List of pages
 {% endblock %}
 
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <!-- Language selector -->
+  {% include "v1-7-1/includes/_hmrcLanguageSelect.html" %}
+  <!-- Back link -->
+  {% include "v1-7-1/includes/_backLink.html" %}
+</div>
+{% endblock %}
+
+<!-- Page content -->
 {% block content %}
-<h2 class="govuk-heading-xl">Version 1.7 - List of pages</h2>
+<h2 class="govuk-heading-xl">Version 1.7.1 - List of pages</h2>
 
 <div class="govuk-inset-text">
   <p><strong>Total pages: 74</strong></p>

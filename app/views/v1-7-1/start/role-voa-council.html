@@ -1,29 +1,15 @@
 {% extends "layouts/main.html" %}
 
+<!-- Page title -->
 {% block pageTitle %}
-{% if data['languagePreference'] == "en" %}
-What the VOA and your local council do – GOV.UK Prototype Kit
-{% else %}
-Beth mae'r VOA a'r cyngor lleol yn ei wneud – GOV.UK Prototype Kit
-{% endif %}
-{% endblock %}
+  {% if data['languagePreference'] == "en" %}
+    What details are used to decide a band – {{ data['govukTite'] }}
 
-{% block header %}
-{% if data['languagePreference'] == "en" %}
-{{ hmrcHeader({
-  homepageUrl : "/v1-7-1/start?languagePreference=en",
-
-    useTudorCrown: "true"
-  }) }}
-
-{% else %}
-{{ hmrcHeader({
-  homepageUrl : "/v1-7-1/start?languagePreference=cy",
-
-    useTudorCrown: "true"
-  }) }}
+  {% else %}
+    Pa fanylion sy'n cael eu defnyddio i benderfynu band – {{ data['govukTite'] }}
   {% endif %}
 {% endblock %}
+
 {% block beforeContent %}
 
 {% if data['languagePreference'] == "en" %}

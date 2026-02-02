@@ -5,6 +5,16 @@
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 
+// ===================================================================
+// HMRC language select component - set language value in session data
+// ===================================================================
+router.use((req, res, next) => {
+  if (req.query.languagePreference) {
+    req.session.data['languagePreference'] = req.query.languagePreference
+  }
+  next()
+})
+
 // ============================================================
 // VERSION 1.1 ROUTES
 // ============================================================
@@ -806,6 +816,9 @@ router.post('/1.7/challenge', function(req, res) {
 // ============================================================
 // VERSION 1.7.1 ROUTES
 // ============================================================
+
+
+// Double check why this is here if has route below??
 router.post('/v1-7-1/challenge', function (req, res) { res.redirect('/v1-7-1/challenge'); });
 
 // Liability check route
@@ -991,21 +1004,24 @@ router.post('/v1-7-1/change-reason', function(req, res) {
 // option4 = Property or local area changes
 router.post('/v1-7-1/challenge/scenario-router', function(req, res) {
     const answer = req.session.data['challenge-type']
-    const languagePreference = req.session.data['languagePreference'] || 'en'
 
     if (answer === 'option1') {
         // Formal review - less than 6 months
-        res.redirect(`/v1-7-1/challenge/option1?languagePreference=${languagePreference}`)
-    } else if (answer === 'option2') {
+        res.redirect('/v1-7-1/challenge/option1')
+    } 
+    else if (answer === 'option2') {
         // Informal review - more than 6 months
-        res.redirect(`/v1-7-1/challenge/option2?languagePreference=${languagePreference}`)
-    } else if (answer === 'option3') {
+        res.redirect('/v1-7-1/challenge/option2')
+    }
+    else if (answer === 'option3') {
         // Formal review - band changed recently
-        res.redirect(`/v1-7-1/challenge/option3?languagePreference=${languagePreference}`)
-    } else if (answer === 'option4') {
+        res.redirect('/v1-7-1/challenge/option3')
+    }
+    else if (answer === 'option4') {
         // Property changes path
-        res.redirect(`/v1-7-1/challenge/option4?languagePreference=${languagePreference}`)
-    } else {
+        res.redirect('/v1-7-1/challenge/option4')
+    }
+    else {
         res.redirect('back')
     }
 })

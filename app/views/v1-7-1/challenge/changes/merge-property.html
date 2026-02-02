@@ -1,104 +1,54 @@
 {% extends "layouts/main.html" %}
 
+<!-- Page title -->
 {% block pageTitle %}
-{% if data['languagePreference'] == "en" %}
-How have your properties been merged? – GOV.UK Prototype Kit
- {% else %}
-Sut mae dy gartref wedi eu cyfuno? – GOV.UK Prototype Kit
- {% endif %}
-{% endblock %}
+  {% if data['languagePreference'] == "en" %}
+    How have your properties been merged? – {{ data['govukTite'] }}
 
-{% block header %}
-{% if data['languagePreference'] == "en" %}
-{{ hmrcHeader({
-  homepageUrl : "/v1-7-1/start?languagePreference=en",
-    signOutHref : "?sign-out",
-    useTudorCrown: "true"
-  }) }}
-
-{% else %}
-{{ hmrcHeader({
-  homepageUrl : "/v1-7-1/start?languagePreference=cy",
-    language : "cy",
-    signOutHref : "?sign-out",
-    useTudorCrown: "true"
-  }) }}
+  {% else %}
+    Sut mae dy gartref wedi eu cyfuno? – {{ data['govukTite'] }}
   {% endif %}
 {% endblock %}
 
 {% block beforeContent %}
-
-{{
-
-  hmrcLanguageSelect({
-
-      language: 'cy' if data['languagePreference'] === 'cy' else 'en',
-
-      en: { href: '?languagePreference=en' },
-
-      cy: { href: '?languagePreference=cy' }
-
-  })
-
-}}
-{% if data['languagePreference'] == "en" %}
-{{ govukBackLink({
-  text: "Back",
-  href: "../changes?languagePreference=en"
-}) }}
-{% else %}
-{{ govukBackLink({
-  text: "Yn ôl",
-  href: "../changes?languagePreference=cy"
-}) }}
-
-{% endif %}
+<div class="govuk-grid-row">
+  <!-- Language selector -->
+  {% include "v1-7-1/includes/_hmrcLanguageSelect.html" %}
+  <!-- Back link -->
+  {% include "v1-7-1/includes/_backLink.html" %}
+</div>
 {% endblock %}
+
+<!-- Page content -->
 {% block content %}
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
-<form action="merge-property-when" method="post">
-{% if data['languagePreference'] == "en" %}
-  <h1 class="govuk-heading-l">How have your properties been merged?</h1>
-  {{ govukTextarea({
-    id: "merged-property-reason",
-    name: "merged-property-reason",
-
-    hint: {
-      text: "For example, two flats have been merged into a single home. Provide as much detail as possible."
-    }
-  }) }}
-  <button class="govuk-button" data-module="govuk-button">Continue</button>
-{% else %}
-  <h1 class="govuk-heading-l">Sut mae dy gartref wedi eu cyfuno?</h1>
-  {{ govukTextarea({
-    id: "merged-property-reason",
-    name: "merged-property-reason",
-    hint: {
-      text: "Er enghraifft, mae dau fflat wedi eu cyfuno'n un cartref. Rho gymaint o wybodaeth â phosibl."
-    }
-  }) }}
-  <button class="govuk-button" data-module="govuk-button">Parhau</button>
-{% endif %}
-</form>
+      <form action="merge-property-when" method="post">
+        {% if data['languagePreference'] == "en" %}
+        <h1 class="govuk-heading-l">How have your properties been merged?</h1>
+        {{ govukTextarea({
+          id: "merged-property-reason",
+          name: "merged-property-reason",
+          hint: {
+            text: "For example, two flats have been merged into a single home. Provide as much detail as possible."
+          }
+        }) }}
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+        
+        {% else %}
+        <h1 class="govuk-heading-l">Sut mae dy gartref wedi eu cyfuno?</h1>
+        {{ govukTextarea({
+          id: "merged-property-reason",
+          name: "merged-property-reason",
+          hint: {
+            text: "Er enghraifft, mae dau fflat wedi eu cyfuno'n un cartref. Rho gymaint o wybodaeth â phosibl."
+          }
+        }) }}
+        <button class="govuk-button" data-module="govuk-button">Parhau</button>
+        {% endif %}
+      </form>
     </div>
-    </div>
+  </div>
 
-<script>
-  // Handle language switching without creating new history entries
-  document.addEventListener('DOMContentLoaded', function() {
-    var langLinks = document.querySelectorAll('.hmrc-language-select__list-item a');
-
-    langLinks.forEach(function(link) {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        var newUrl = this.href;
-        // Replace current history state instead of pushing new one
-        history.replaceState(null, '', newUrl);
-        // Reload page to show new language
-        window.location.reload();
-      });
-    });
-  });
-</script>
 {% endblock %}

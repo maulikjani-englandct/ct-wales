@@ -1,56 +1,25 @@
 {% extends "layouts/main.html" %}
 
+<!-- Page title -->
 {% block pageTitle %}
-{% if data['languagePreference'] == "en" %}
-Information for: 19, St David's Crescent, Cardiff, CF5 4GP – GOV.UK Prototype Kit
-{% else %}
-Dyma'r wybodaeth ar gyfer: 19, St David's Crescent, Cardiff, CF5 4GP – GOV.UK Prototype Kit
-{% endif %}
-{% endblock %}
+  {% if data['languagePreference'] == "en" %}
+    Information for: 19, St David's Crescent, Cardiff, CF5 4GP – {{ data['govukTite'] }}
 
-{% block header %}
-{% if data['languagePreference'] == "en" %}
-{{ hmrcHeader({
-  homepageUrl : "/v1-7-1/start?languagePreference=en",
-    useTudorCrown: "true"
-  }) }}
-
-{% else %}
-{{ hmrcHeader({
-  homepageUrl : "/v1-7-1/start?languagePreference=cy",
-    useTudorCrown: "true"
-  }) }}
+  {% else %}
+    Dyma'r wybodaeth ar gyfer: 19, St David's Crescent, Cardiff, CF5 4GP – {{ data['govukTite'] }}
   {% endif %}
 {% endblock %}
 
 {% block beforeContent %}
-
-{{
-
-  hmrcLanguageSelect({
-
-      language: 'cy' if data['languagePreference'] === 'cy' else 'en',
-
-      en: { href: '?languagePreference=en' },
-
-      cy: { href: '?languagePreference=cy' }
-
-  })
-
-}}
-{% if data['languagePreference'] == "en" %}
-{{ govukBackLink({
-  text: "Back",
-  href: "search-results?languagePreference=en"
-}) }}
-{% else %}
-{{ govukBackLink({
-  text: "Yn ôl",
-  href: "search-results?languagePreference=cy"
-}) }}
-
-{% endif %}
+<div class="govuk-grid-row">
+  <!-- Language selector -->
+  {% include "v1-7-1/includes/_hmrcLanguageSelect.html" %}
+  <!-- Back link -->
+  {% include "v1-7-1/includes/_backLink.html" %}
+</div>
 {% endblock %}
+
+<!-- Page content -->
 {% block content %}
 
 {% if data['languagePreference'] == "en" %}
@@ -78,54 +47,55 @@ Dyma'r wybodaeth ar gyfer: 19, St David's Crescent, Cardiff, CF5 4GP – GOV.UK 
               <br><br>
               <details class='govuk-details'><summary class='govuk-details__summary'><span class='govuk-details__summary-text'>Council Tax bands Wales</span></summary>
                 <div class='govuk-details__text'>
-                                  <table class='govuk-table'>
-
-  <thead class='govuk-table__head'>
-    <tr class='govuk-table__row'>
-      <th scope='col' class='govuk-table__header'>Band</th>
-      <th scope='col' class='govuk-table__header'>Property value at 1 April 2003 </th>
-    </tr>
-  </thead>
-  <tbody class='govuk-table__body'>
-    <tr class='govuk-table__row'>
-      <th scope='row' class='govuk-table__header'>A</th>
-      <td class='govuk-table__cell'>up to £44,000</td>
-    </tr>
-    <tr class='govuk-table__row'>
-      <th scope='row' class='govuk-table__header'>B</th>
-      <td class='govuk-table__cell'>£44,001 to £65,000 </td>
-    </tr>
-    <tr class='govuk-table__row'>
-      <th scope='row' class='govuk-table__header'>C</th>
-      <td class='govuk-table__cell'>£65,001 to £91,000</td>
-    </tr>
-    <tr class='govuk-table__row' style='background-color:#f3f2f1'>
-      <th scope='row' class='govuk-table__header'>D</th>
-      <td class='govuk-table__cell'>£91,001 to £123,000</td>
-    </tr>
-    <tr class='govuk-table__row'>
-      <th scope='row' class='govuk-table__header'>E</th>
-      <td class='govuk-table__cell'>£123,001 to £162,000</td>
-    </tr>
-    <tr class='govuk-table__row'>
-      <th scope='row' class='govuk-table__header'>F</th>
-      <td class='govuk-table__cell'>£162,001 to £223,000</td>
-    </tr>
-    <tr class='govuk-table__row'>
-      <th scope='row' class='govuk-table__header'>G</th>
-      <td class='govuk-table__cell'> £223,001 to £324,000</td>
-    </tr>
-    <tr class='govuk-table__row'>
-      <th scope='row' class='govuk-table__header'>H</th>
-      <td class='govuk-table__cell'>£324,001 to £424,000 </td>
-    </tr>
-    <tr class='govuk-table__row'>
-      <th scope='row' class='govuk-table__header'>I</th>
-      <td class='govuk-table__cell'>more than £424,000</td>
-    </tr>
-  </tbody>
-</table>
-                </div></details>",
+                  <table class='govuk-table'>
+                
+                    <thead class='govuk-table__head'>
+                      <tr class='govuk-table__row'>
+                        <th scope='col' class='govuk-table__header'>Band</th>
+                        <th scope='col' class='govuk-table__header'>Property value at 1 April 2003 </th>
+                      </tr>
+                    </thead>
+                    <tbody class='govuk-table__body'>
+                      <tr class='govuk-table__row'>
+                        <th scope='row' class='govuk-table__header'>A</th>
+                        <td class='govuk-table__cell'>up to £44,000</td>
+                      </tr>
+                      <tr class='govuk-table__row'>
+                        <th scope='row' class='govuk-table__header'>B</th>
+                        <td class='govuk-table__cell'>£44,001 to £65,000 </td>
+                      </tr>
+                      <tr class='govuk-table__row'>
+                        <th scope='row' class='govuk-table__header'>C</th>
+                        <td class='govuk-table__cell'>£65,001 to £91,000</td>
+                      </tr>
+                      <tr class='govuk-table__row' style='background-color:#f3f2f1'>
+                        <th scope='row' class='govuk-table__header'>D</th>
+                        <td class='govuk-table__cell'>£91,001 to £123,000</td>
+                      </tr>
+                      <tr class='govuk-table__row'>
+                        <th scope='row' class='govuk-table__header'>E</th>
+                        <td class='govuk-table__cell'>£123,001 to £162,000</td>
+                      </tr>
+                      <tr class='govuk-table__row'>
+                        <th scope='row' class='govuk-table__header'>F</th>
+                        <td class='govuk-table__cell'>£162,001 to £223,000</td>
+                      </tr>
+                      <tr class='govuk-table__row'>
+                        <th scope='row' class='govuk-table__header'>G</th>
+                        <td class='govuk-table__cell'> £223,001 to £324,000</td>
+                      </tr>
+                      <tr class='govuk-table__row'>
+                        <th scope='row' class='govuk-table__header'>H</th>
+                        <td class='govuk-table__cell'>£324,001 to £424,000 </td>
+                      </tr>
+                      <tr class='govuk-table__row'>
+                        <th scope='row' class='govuk-table__header'>I</th>
+                        <td class='govuk-table__cell'>more than £424,000</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                </details>",
               attributes: {
                 style: "width: 70%"
               }
@@ -171,77 +141,78 @@ Dyma'r wybodaeth ar gyfer: 19, St David's Crescent, Cardiff, CF5 4GP – GOV.UK 
               <br><br>
               <details class='govuk-details'><summary class='govuk-details__summary'><span class='govuk-details__summary-text'>Cardiff Council Tax charges</span></summary>
                 <div class='govuk-details__text'>
-                                  <table class='govuk-table'>
-<caption class='govuk-table__caption govuk-table__caption--s'>Council Tax charges 2025-26</caption>
-  <thead class='govuk-table__head'>
-    <tr class='govuk-table__row'>
-      <th scope='col' class='govuk-table__header'>Band</th>
-      <th scope='col' class='govuk-table__header'>Annual payment</th>
-      <th scope='col' class='govuk-table__header'>10 monthly
-payments</th>
-      <th scope='col' class='govuk-table__header'>12 monthly payments</th>
-    </tr>
-  </thead>
-  <tbody class='govuk-table__body'>
-    <tr class='govuk-table__row'>
-      <th scope='row' class='govuk-table__header'>A</th>
-      <td class='govuk-table__cell'>£1,284.12</td>
-      <td class='govuk-table__cell'>£128.41</td>
-      <td class='govuk-table__cell'>£107.01</td>
-    </tr>
-    <tr class='govuk-table__row'>
-      <th scope='row' class='govuk-table__header'>B</th>
-      <td class='govuk-table__cell'>£1,498.14</td>
-      <td class='govuk-table__cell'>£149.81</td>
-      <td class='govuk-table__cell'>£124.85</td>
-    </tr>
-    <tr class='govuk-table__row'>
-      <th scope='row' class='govuk-table__header'>C</th>
-      <td class='govuk-table__cell'>£1,712.16</td>
-      <td class='govuk-table__cell'>£171.22</td>
-      <td class='govuk-table__cell'>£142.68</td>
-    </tr>
-    <tr class='govuk-table__row' style='background-color:#f3f2f1'>
-      <th scope='row' class='govuk-table__header'>D</th>
-      <td class='govuk-table__cell'>£1,926.18</td>
-      <td class='govuk-table__cell'>£192.62</td>
-      <td class='govuk-table__cell'>£160.52</td>
-    </tr>
-    <tr class='govuk-table__row'>
-      <th scope='row' class='govuk-table__header'>E</th>
-      <td class='govuk-table__cell'>£2.354.22</td>
-      <td class='govuk-table__cell'>£235.42</td>
-      <td class='govuk-table__cell'>£196.19</td>
-    </tr>
-    <tr class='govuk-table__row'>
-      <th scope='row' class='govuk-table__header'>F</th>
-      <td class='govuk-table__cell'>£2,782.26</td>
-      <td class='govuk-table__cell'>£278.23</td>
-      <td class='govuk-table__cell'>£231.86</td>
-    </tr>
-    <tr class='govuk-table__row'>
-      <th scope='row' class='govuk-table__header'>G</th>
-      <td class='govuk-table__cell'>£3,210.30</td>
-      <td class='govuk-table__cell'>£321.03</td>
-      <td class='govuk-table__cell'>£267.53</td>
-    </tr>
-    <tr class='govuk-table__row'>
-      <th scope='row' class='govuk-table__header'>H</th>
-      <td class='govuk-table__cell'>£3,852.36</td>
-      <td class='govuk-table__cell'>£385.24</td>
-      <td class='govuk-table__cell'>£321.03</td>
-    </tr>
-
-    <tr class='govuk-table__row'>
-      <th scope='row' class='govuk-table__header'>I</th>
-      <td class='govuk-table__cell'>£4,494.42
-</td>
-      <td class='govuk-table__cell'>£449.44</td>
-      <td class='govuk-table__cell'>£374.54</td>
-    </tr>
-  </tbody>
-</table>
-                </div></details>
+                  <table class='govuk-table'>
+                    <caption class='govuk-table__caption govuk-table__caption--s'>Council Tax charges 2025-26</caption>
+                    <thead class='govuk-table__head'>
+                      <tr class='govuk-table__row'>
+                        <th scope='col' class='govuk-table__header'>Band</th>
+                        <th scope='col' class='govuk-table__header'>Annual payment</th>
+                        <th scope='col' class='govuk-table__header'>10 monthly
+                          payments</th>
+                        <th scope='col' class='govuk-table__header'>12 monthly payments</th>
+                      </tr>
+                    </thead>
+                    <tbody class='govuk-table__body'>
+                      <tr class='govuk-table__row'>
+                        <th scope='row' class='govuk-table__header'>A</th>
+                        <td class='govuk-table__cell'>£1,284.12</td>
+                        <td class='govuk-table__cell'>£128.41</td>
+                        <td class='govuk-table__cell'>£107.01</td>
+                      </tr>
+                      <tr class='govuk-table__row'>
+                        <th scope='row' class='govuk-table__header'>B</th>
+                        <td class='govuk-table__cell'>£1,498.14</td>
+                        <td class='govuk-table__cell'>£149.81</td>
+                        <td class='govuk-table__cell'>£124.85</td>
+                      </tr>
+                      <tr class='govuk-table__row'>
+                        <th scope='row' class='govuk-table__header'>C</th>
+                        <td class='govuk-table__cell'>£1,712.16</td>
+                        <td class='govuk-table__cell'>£171.22</td>
+                        <td class='govuk-table__cell'>£142.68</td>
+                      </tr>
+                      <tr class='govuk-table__row' style='background-color:#f3f2f1'>
+                        <th scope='row' class='govuk-table__header'>D</th>
+                        <td class='govuk-table__cell'>£1,926.18</td>
+                        <td class='govuk-table__cell'>£192.62</td>
+                        <td class='govuk-table__cell'>£160.52</td>
+                      </tr>
+                      <tr class='govuk-table__row'>
+                        <th scope='row' class='govuk-table__header'>E</th>
+                        <td class='govuk-table__cell'>£2.354.22</td>
+                        <td class='govuk-table__cell'>£235.42</td>
+                        <td class='govuk-table__cell'>£196.19</td>
+                      </tr>
+                      <tr class='govuk-table__row'>
+                        <th scope='row' class='govuk-table__header'>F</th>
+                        <td class='govuk-table__cell'>£2,782.26</td>
+                        <td class='govuk-table__cell'>£278.23</td>
+                        <td class='govuk-table__cell'>£231.86</td>
+                      </tr>
+                      <tr class='govuk-table__row'>
+                        <th scope='row' class='govuk-table__header'>G</th>
+                        <td class='govuk-table__cell'>£3,210.30</td>
+                        <td class='govuk-table__cell'>£321.03</td>
+                        <td class='govuk-table__cell'>£267.53</td>
+                      </tr>
+                      <tr class='govuk-table__row'>
+                        <th scope='row' class='govuk-table__header'>H</th>
+                        <td class='govuk-table__cell'>£3,852.36</td>
+                        <td class='govuk-table__cell'>£385.24</td>
+                        <td class='govuk-table__cell'>£321.03</td>
+                      </tr>
+                
+                      <tr class='govuk-table__row'>
+                        <th scope='row' class='govuk-table__header'>I</th>
+                        <td class='govuk-table__cell'>£4,494.42
+                        </td>
+                        <td class='govuk-table__cell'>£449.44</td>
+                        <td class='govuk-table__cell'>£374.54</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                </details>
               ",
               attributes: {
                 style: "width: 30%"
@@ -317,11 +288,8 @@ payments</th>
               }
             }
             ]]
-
-
       }) }}
-      
-      
+
       
       <p>If you are the Council Tax payer or have permission from the Council Tax payer, you can view more property details.</p>
       <p> You can also let us know if these details or Council Tax band are wrong.</p>
@@ -329,7 +297,7 @@ payments</th>
       {{ govukButton({
         text: "Continue",
         classes: "govuk-button--primary",
-        href: "self-cert?languagePreference=en"
+        href: "self-cert"
       }) }}
       
       <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
@@ -337,7 +305,7 @@ payments</th>
       {{ govukButton({
         text: "Search for another property",
         classes: "govuk-button--secondary",
-        href: "search?languagePreference=en"
+        href: "search"
       }) }}
       
       </div>
@@ -463,76 +431,77 @@ payments</th>
                     <br><br>
               <details class='govuk-details'><summary class='govuk-details__summary'><span class='govuk-details__summary-text'>Cyngor Lleol Caerdydd </span></summary>
                 <div class='govuk-details__text'>
-                                  <table class='govuk-table'>
-<caption class='govuk-table__caption govuk-table__caption--s'>Taliadau’r Dreth Gyngor 2025–26 </caption>
-  <thead class='govuk-table__head'>
-    <tr class='govuk-table__row'>
-      <th scope='col' class='govuk-table__header'>Band</th>
-      <th scope='col' class='govuk-table__header'>Taliad blynyddol </th>
-      <th scope='col' class='govuk-table__header'>10 taliad misol </th>
-      <th scope='col' class='govuk-table__header'>12 taliad misol </th>
-    </tr>
-  </thead>
-  <tbody class='govuk-table__body'>
-    <tr class='govuk-table__row'>
-      <th scope='row' class='govuk-table__header'>A</th>
-      <td class='govuk-table__cell'>£1,284.12</td>
-      <td class='govuk-table__cell'>£128.41</td>
-      <td class='govuk-table__cell'>£107.01</td>
-    </tr>
-    <tr class='govuk-table__row'>
-      <th scope='row' class='govuk-table__header'>B</th>
-      <td class='govuk-table__cell'>£1,498.14</td>
-      <td class='govuk-table__cell'>£149.81</td>
-      <td class='govuk-table__cell'>£124.85</td>
-    </tr>
-    <tr class='govuk-table__row'>
-      <th scope='row' class='govuk-table__header'>C</th>
-      <td class='govuk-table__cell'>£1,712.16</td>
-      <td class='govuk-table__cell'>£171.22</td>
-      <td class='govuk-table__cell'>£142.68</td>
-    </tr>
-    <tr class='govuk-table__row' style='background-color:#f3f2f1'>
-      <th scope='row' class='govuk-table__header'>D</th>
-      <td class='govuk-table__cell'>£1,926.18</td>
-      <td class='govuk-table__cell'>£192.62</td>
-      <td class='govuk-table__cell'>£160.52</td>
-    </tr>
-    <tr class='govuk-table__row'>
-      <th scope='row' class='govuk-table__header'>E</th>
-      <td class='govuk-table__cell'>£2.354.22</td>
-      <td class='govuk-table__cell'>£235.42</td>
-      <td class='govuk-table__cell'>£196.19</td>
-    </tr>
-    <tr class='govuk-table__row'>
-      <th scope='row' class='govuk-table__header'>F</th>
-      <td class='govuk-table__cell'>£2,782.26</td>
-      <td class='govuk-table__cell'>£278.23</td>
-      <td class='govuk-table__cell'>£231.86</td>
-    </tr>
-    <tr class='govuk-table__row'>
-      <th scope='row' class='govuk-table__header'>G</th>
-      <td class='govuk-table__cell'>£3,210.30</td>
-      <td class='govuk-table__cell'>£321.03</td>
-      <td class='govuk-table__cell'>£267.53</td>
-    </tr>
-    <tr class='govuk-table__row'>
-      <th scope='row' class='govuk-table__header'>H</th>
-      <td class='govuk-table__cell'>£3,852.36</td>
-      <td class='govuk-table__cell'>£385.24</td>
-      <td class='govuk-table__cell'>£321.03</td>
-    </tr>
-
-    <tr class='govuk-table__row'>
-      <th scope='row' class='govuk-table__header'>I</th>
-      <td class='govuk-table__cell'>£4,494.42
-</td>
-      <td class='govuk-table__cell'>£449.44</td>
-      <td class='govuk-table__cell'>£374.54</td>
-    </tr>
-  </tbody>
-</table>
-                </div></details>",
+                  <table class='govuk-table'>
+                    <caption class='govuk-table__caption govuk-table__caption--s'>Taliadau’r Dreth Gyngor 2025–26 </caption>
+                    <thead class='govuk-table__head'>
+                      <tr class='govuk-table__row'>
+                        <th scope='col' class='govuk-table__header'>Band</th>
+                        <th scope='col' class='govuk-table__header'>Taliad blynyddol </th>
+                        <th scope='col' class='govuk-table__header'>10 taliad misol </th>
+                        <th scope='col' class='govuk-table__header'>12 taliad misol </th>
+                      </tr>
+                    </thead>
+                    <tbody class='govuk-table__body'>
+                      <tr class='govuk-table__row'>
+                        <th scope='row' class='govuk-table__header'>A</th>
+                        <td class='govuk-table__cell'>£1,284.12</td>
+                        <td class='govuk-table__cell'>£128.41</td>
+                        <td class='govuk-table__cell'>£107.01</td>
+                      </tr>
+                      <tr class='govuk-table__row'>
+                        <th scope='row' class='govuk-table__header'>B</th>
+                        <td class='govuk-table__cell'>£1,498.14</td>
+                        <td class='govuk-table__cell'>£149.81</td>
+                        <td class='govuk-table__cell'>£124.85</td>
+                      </tr>
+                      <tr class='govuk-table__row'>
+                        <th scope='row' class='govuk-table__header'>C</th>
+                        <td class='govuk-table__cell'>£1,712.16</td>
+                        <td class='govuk-table__cell'>£171.22</td>
+                        <td class='govuk-table__cell'>£142.68</td>
+                      </tr>
+                      <tr class='govuk-table__row' style='background-color:#f3f2f1'>
+                        <th scope='row' class='govuk-table__header'>D</th>
+                        <td class='govuk-table__cell'>£1,926.18</td>
+                        <td class='govuk-table__cell'>£192.62</td>
+                        <td class='govuk-table__cell'>£160.52</td>
+                      </tr>
+                      <tr class='govuk-table__row'>
+                        <th scope='row' class='govuk-table__header'>E</th>
+                        <td class='govuk-table__cell'>£2.354.22</td>
+                        <td class='govuk-table__cell'>£235.42</td>
+                        <td class='govuk-table__cell'>£196.19</td>
+                      </tr>
+                      <tr class='govuk-table__row'>
+                        <th scope='row' class='govuk-table__header'>F</th>
+                        <td class='govuk-table__cell'>£2,782.26</td>
+                        <td class='govuk-table__cell'>£278.23</td>
+                        <td class='govuk-table__cell'>£231.86</td>
+                      </tr>
+                      <tr class='govuk-table__row'>
+                        <th scope='row' class='govuk-table__header'>G</th>
+                        <td class='govuk-table__cell'>£3,210.30</td>
+                        <td class='govuk-table__cell'>£321.03</td>
+                        <td class='govuk-table__cell'>£267.53</td>
+                      </tr>
+                      <tr class='govuk-table__row'>
+                        <th scope='row' class='govuk-table__header'>H</th>
+                        <td class='govuk-table__cell'>£3,852.36</td>
+                        <td class='govuk-table__cell'>£385.24</td>
+                        <td class='govuk-table__cell'>£321.03</td>
+                      </tr>
+                
+                      <tr class='govuk-table__row'>
+                        <th scope='row' class='govuk-table__header'>I</th>
+                        <td class='govuk-table__cell'>£4,494.42
+                        </td>
+                        <td class='govuk-table__cell'>£449.44</td>
+                        <td class='govuk-table__cell'>£374.54</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                </details>",
                     attributes: {
                       style: "width: 30%"
                     }
@@ -591,14 +560,15 @@ payments</th>
                     html: "Cod y Llys<br><span class='govuk-hint'>Os yw'r band Treth Gyngor wedi ei adolygu gan Dribiwnlys Prisio neu Uchel Lys, dangosir cod y llys.<br><br>
                       <details class='govuk-details'><summary class='govuk-details__summary'><span class='govuk-details__summary-text'>Dyma'r codau</span></summary>
                         <div class='govuk-details__text'>
-                V - Penderfyniad gan Dribiwnlys Prisio<br>
-                C - Cadarnhad gan Dribiwnlys Prisio<br>
-                R - Ail benderfyniad y Tribiwnlys Prisio yn dilyn atgyfeiriad gan yr Uchel Lys<br>
-                D - Penderfyniad gan Uchel Lys<br>
-                H - Cadarnhad gan Uchel Lys<br>
-                E - Gorchymyn cydsynio'r Uchel Lys
-              </div></details>
-                      </span>",
+                          V - Penderfyniad gan Dribiwnlys Prisio<br>
+                          C - Cadarnhad gan Dribiwnlys Prisio<br>
+                          R - Ail benderfyniad y Tribiwnlys Prisio yn dilyn atgyfeiriad gan yr Uchel Lys<br>
+                          D - Penderfyniad gan Uchel Lys<br>
+                          H - Cadarnhad gan Uchel Lys<br>
+                          E - Gorchymyn cydsynio'r Uchel Lys
+                        </div>
+                        </details>
+                        </span>",
                     attributes: {
                       style: "width: 30%"
                     }
@@ -620,7 +590,7 @@ payments</th>
       {{ govukButton({
         text: "Parhau",
         classes: "govuk-button--primary",
-        href: "self-cert?languagePreference=cy"
+        href: "self-cert"
       }) }}
       <p class="govuk-body">
         <a href="#" class="govuk-link">Creu cyfrif Porth y Llywodraeth</a>
@@ -629,30 +599,11 @@ payments</th>
        {{ govukButton({
         text: "Chwilio am eiddo arall",
         classes: "govuk-button--secondary",
-        href: "search?languagePreference=cy"
+        href: "search"
       }) }}
      
     </div>
   </div>
-
-
   {% endif %}
 
-<script>
-  // Handle language switching without creating new history entries
-  document.addEventListener('DOMContentLoaded', function() {
-    var langLinks = document.querySelectorAll('.hmrc-language-select__list-item a');
-
-    langLinks.forEach(function(link) {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        var newUrl = this.href;
-        // Replace current history state instead of pushing new one
-        history.replaceState(null, '', newUrl);
-        // Reload page to show new language
-        window.location.reload();
-      });
-    });
-  });
-</script>
 {% endblock %}

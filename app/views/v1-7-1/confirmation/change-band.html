@@ -1,208 +1,160 @@
 {% extends "layouts/main.html" %}
 
-{% block header %}
-{% if data['languagePreference'] == "en" %}
-{{ hmrcHeader({
-  homepageUrl : "/v1-7-1/start?languagePreference=en",
-    signOutHref : "?sign-out",
-    useTudorCrown: "true"
-  }) }}
-
-{% else %}
-{{ hmrcHeader({
-  homepageUrl : "/v1-7-1/start?languagePreference=cy",
-    language : "cy",
-    signOutHref : "?sign-out",
-    useTudorCrown: "true"
-  }) }}
-  {% endif %}
-{% endblock %}
-
+<!-- Page title -->
 {% block pageTitle %}
-{% if data['languagePreference'] == "en" %}
-  {% if data['challenge'] == "yes" %}
-    Your request has been sent – GOV.UK Prototype Kit
+  {% if data['languagePreference'] == "en" %}
+    Your request has been sent  – {{ data['govukTite'] }}
+
   {% else %}
-    Changes sent for review – GOV.UK Prototype Kit
+    Newidiadau wedi’u hanfon i’w hadolygu – {{ data['govukTite'] }}
   {% endif %}
-{% else %}
-  {% if data['challenge'] == "yes" %}
-    Mae eich cais wedi'i anfon – GOV.UK Prototype Kit
-  {% else %}
-    Newidiadau wedi’u hanfon i’w hadolygu – GOV.UK Prototype Kit
-  {% endif %}
-{% endif %}
 {% endblock %}
 
 {% block beforeContent %}
-
-{{
-
-  hmrcLanguageSelect({
-
-      language: 'cy' if data['languagePreference'] == 'cy' else 'en',
-
-      en: { href: '?languagePreference=en' },
-
-      cy: { href: '?languagePreference=cy' }
-
-  })
-
-}}
-
+<div class="govuk-grid-row">
+  <!-- Language selector -->
+  {% include "v1-7-1/includes/_hmrcLanguageSelect.html" %}
+</div>
 {% endblock %}
 
+<!-- Page content -->
 {% block content %}
+
 {% if data['languagePreference'] == "en" %}
+
 {% if data['challenge'] == "yes" %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-      {{ govukPanel({
-        titleText: "Your request has been sent"
-      }) }}
- <p>
-        We have sent you an email to confirm that we have received your request for a review.
+    {{ govukPanel({
+    titleText: "Your request has been sent"
+    }) }}
+    <p>
+      We have sent you an email to confirm that we have received your request for a review.
 
-      </p>
+    </p>
 
-      <h2 class="govuk-heading-m">
-        What happens next
-      </h2>
+    <h2 class="govuk-heading-m">
+      What happens next
+    </h2>
 
-      <p>Your request has been sent to the Valuation Office Agency.</p>
-      <p>When your request has been registered, you will receive an email with a unique case reference number within X days.</p>
-      <p>If we require additional information we will contact you.</p>
-      <p>We will contact you by [letter/email] within X weeks with a decision about your request.</p>
+    <p>Your request has been sent to the Valuation Office Agency.</p>
+    <p>When your request has been registered, you will receive an email with a unique case reference number within X
+      days.</p>
+    <p>If we require additional information we will contact you.</p>
+    <p>We will contact you by [letter/email] within X weeks with a decision about your request.</p>
 
-      <hr>
-      <p>
-        <a href="#">
-          What did you think of this service?
-        </a> (takes 30 seconds)
-      </p>
+    <hr>
+    <p>
+      <a href="#">
+        What did you think of this service?
+      </a> (takes 30 seconds)
+    </p>
 
-    </div>
   </div>
-   {% else %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+</div>
+{% else %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-      {{ govukPanel({
-        titleText: "Changes sent for review"
-      }) }}
+    {{ govukPanel({
+    titleText: "Changes sent for review"
+    }) }}
 
-      <p>
-        We have sent you a confirmation email.
+    <p>
+      We have sent you a confirmation email.
 
-      </p>
+    </p>
 
-      <h2 class="govuk-heading-m">
-        What happens next
-      </h2>
+    <h2 class="govuk-heading-m">
+      What happens next
+    </h2>
 
-      <p>
-        Your request has been passed to the Valuation Office Agency.
-      </p>
+    <p>
+      Your request has been passed to the Valuation Office Agency.
+    </p>
 
-      <p>
-        We will write to you within X days.
-      </p>
-      <p>
-        <a href="#">
-          What did you think of this service?
-        </a> (takes 30 seconds)
-      </p>
+    <p>
+      We will write to you within X days.
+    </p>
+    <p>
+      <a href="#">
+        What did you think of this service?
+      </a> (takes 30 seconds)
+    </p>
 
 
-    </div>
   </div>
-    {% endif %}
-  {% else %}
-  {% if data['challenge'] == "yes" %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+</div>
+{% endif %}
+{% else %}
+{% if data['challenge'] == "yes" %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-      {{ govukPanel({
-        titleText: "Mae eich cais wedi'i anfon"
-      }) }}
+    {{ govukPanel({
+      titleText: "Mae eich cais wedi'i anfon"
+    }) }}
 
-      <p>
-        Rydym wedi anfon e-bost atat i gadarnhau ein bod wedi derbyn dy gais am adolygiad.
+    <p>
+      Rydym wedi anfon e-bost atat i gadarnhau ein bod wedi derbyn dy gais am adolygiad.
 
-      </p>
+    </p>
 
-      <h2 class="govuk-heading-m">
-        Yr hyn sy'n digwydd nesaf
-      </h2>
+    <h2 class="govuk-heading-m">
+      Yr hyn sy'n digwydd nesaf
+    </h2>
 
-      <p>Mae eich cais wedi’i anfon i Asiantaeth y Swyddfa Brisio. </p>
-      <p>Pan fydd dy gais wedi’i gofrestru, byddi di’n derbyn e-bost gyda chyfeirnod achos unigryw o fewn X diwrnod. </p>
-      <p>Os bydd angen mwy o wybodaeth arnom byddwn yn cysylltu â chi. </p>
-      <p>Byddwn yn cysylltu â chi drwy [lythyr/e-bost] o fewn X wythnos gyda phenderfyniad ynghylch eich cais. </p>
+    <p>Mae eich cais wedi’i anfon i Asiantaeth y Swyddfa Brisio. </p>
+    <p>Pan fydd dy gais wedi’i gofrestru, byddi di’n derbyn e-bost gyda chyfeirnod achos unigryw o fewn X diwrnod. </p>
+    <p>Os bydd angen mwy o wybodaeth arnom byddwn yn cysylltu â chi. </p>
+    <p>Byddwn yn cysylltu â chi drwy [lythyr/e-bost] o fewn X wythnos gyda phenderfyniad ynghylch eich cais. </p>
 
-      <hr>
+    <hr>
 
-      <p>
-        <a href="#">
-          Beth oedd eich barn am y gwasanaeth?
-        </a> (mae’n cymryd 30 eiliad)
-      </p>
+    <p>
+      <a href="#">
+        Beth oedd eich barn am y gwasanaeth?
+      </a> (mae’n cymryd 30 eiliad)
+    </p>
 
 
-    </div>
   </div>
-    {% else %}
-      <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
+</div>
+{% else %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
 
-      {{ govukPanel({
-        titleText: "Newidiadau wedi’u hanfon i’w hadolygu"
-      }) }}
+    {{ govukPanel({
+      titleText: "Newidiadau wedi’u hanfon i’w hadolygu"
+    }) }}
 
-      <p>
-        Rydym wedi anfon cadarnhad drwy e-bost atoch.
+    <p>
+      Rydym wedi anfon cadarnhad drwy e-bost atoch.
 
-      </p>
+    </p>
 
-      <h2 class="govuk-heading-m">
-        Yr hyn sy'n digwydd nesaf
-      </h2>
+    <h2 class="govuk-heading-m">
+      Yr hyn sy'n digwydd nesaf
+    </h2>
 
-      <p>
-        Mae eich cais wedi’i basio ymlaen i Asiantaeth y Swyddfa Brisio.
-      </p>
+    <p>
+      Mae eich cais wedi’i basio ymlaen i Asiantaeth y Swyddfa Brisio.
+    </p>
 
-      <p>
-        Byddwn yn ysgrifennu atoch o fewn X diwrnod.
-      </p>
-      <p>
-        <a href="#">
-          Beth oedd eich barn am y gwasanaeth?
-        </a> (mae’n cymryd 30 eiliad)
-      </p>
+    <p>
+      Byddwn yn ysgrifennu atoch o fewn X diwrnod.
+    </p>
+    <p>
+      <a href="#">
+        Beth oedd eich barn am y gwasanaeth?
+      </a> (mae’n cymryd 30 eiliad)
+    </p>
 
-
-    </div>
   </div>
-     {% endif %}
-  {% endif %}
+</div>
+{% endif %}
+{% endif %}
 
-<script>
-  // Handle language switching without creating new history entries
-  document.addEventListener('DOMContentLoaded', function() {
-    var langLinks = document.querySelectorAll('.hmrc-language-select__list-item a');
 
-    langLinks.forEach(function(link) {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        var newUrl = this.href;
-        // Replace current history state instead of pushing new one
-        history.replaceState(null, '', newUrl);
-        // Reload page to show new language
-        window.location.reload();
-      });
-    });
-  });
-</script>
 {% endblock %}

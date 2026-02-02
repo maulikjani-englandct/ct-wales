@@ -1,75 +1,42 @@
 {% extends "layouts/main.html" %}
 
+<!-- Page title -->
 {% block pageTitle %}
-{% if data['languagePreference'] == "en" %}
-Are you responsible for the Council Tax on this property? – GOV.UK Prototype Kit
-
-{% else %}
-Wyt ti'n gyfrifol am y Dreth Gyngor ar yr eiddo hwn?
-
-{% endif %}
-{% endblock %}
-{% block header %}
-{% if data['languagePreference'] == "en" %}
-{{ hmrcHeader({
-    homepageUrl : "/v1-7-1/start?languagePreference=en",
-    signOutHref : "?sign-out",
-    useTudorCrown: "true"
-  }) }}
+  {% if data['languagePreference'] == "en" %}
+    Are you responsible for the Council Tax on this property? – {{ data['govukTite'] }}
 
   {% else %}
-  {{ hmrcHeader({
-    homepageUrl : "/v1-7-1/start?languagePreference=cy",
-language : "cy",
-    signOutHref : "?sign-out",
-    useTudorCrown: true
-  }) }}
-{% endif %}
+    Ydych chi'n gyfrifol am y Dreth Gyngor ar yr eiddo hwn? – {{ data['govukTite'] }}
+  {% endif %}
 {% endblock %}
+
 {% block beforeContent %}
-
-{{
-
-  hmrcLanguageSelect({
-
-      language: 'cy' if data['languagePreference'] == 'cy' else 'en',
-
-      en: { href: '?languagePreference=en' },
-
-      cy: { href: '?languagePreference=cy' }
-
-  })
-
-}}
-{% if data['languagePreference'] == "en" %}
-{{ govukBackLink({
-  text: "Back",
-  href: "javascript:history.back()"
-}) }}
-{% else %}
-{{ govukBackLink({
-  text: "Yn ôl",
-  href: "javascript:history.back()"
-}) }}
-{% endif %}
+<div class="govuk-grid-row">
+  <!-- Language selector -->
+  {% include "v1-7-1/includes/_hmrcLanguageSelect.html" %}
+  <!-- Back link -->
+  {% include "v1-7-1/includes/_backLink.html" %}
+</div>
 {% endblock %}
 
+<!-- Page content -->
 {% block content %}
 
 {% if data['languagePreference'] == "en" %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
-<form class="form" action="/v1-7-1/liable-check" method="post">
-  <span class="govuk-caption-l">19, St David's Crescent, Cardiff, CF5 4GP</span>
-<h1 class="govuk-heading-l">Are you responsible for the Council Tax on this property?</h1>
+      <form class="form" action="/v1-7-1/liable-check" method="post">
+        <span class="govuk-caption-l">19, St David's Crescent, Cardiff, CF5 4GP</span>
+        <h1 class="govuk-heading-l">Are you responsible for the Council Tax on this property?</h1>
+  
+        <p class="govuk-body">Only people who are responsible for the Council Tax on this property have permission to view
+          more details. This includes people acting for someone who is responsible.</p>
 
-<p class="govuk-body">Only people who are responsible for the Council Tax on this property have permission to view more details. This includes people acting for someone who is responsible.</p>
-
-{{ govukWarningText({
-  text: "If you are not responsible for the Council Tax on this property, you should not continue with this service.",
-  iconFallbackText: "Warning"
-}) }}
+        {{ govukWarningText({
+          text: "If you are not responsible for the Council Tax on this property, you should not continue with this service.",
+          iconFallbackText: "Warning"
+        }) }}
 
        {{ govukRadios({
         name: "liability",
@@ -99,56 +66,58 @@ language : "cy",
         ]
       }) }}
 
-        {{ govukButton({
-          text: "Continue",
-          type: "submit"
-        }) }}
+      {{ govukButton({
+        text: "Continue",
+        type: "submit"
+      }) }}
 
       </form>
 
     </div>
   </div>
+
   {% else %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
-<form class="form" action="/v1-7-1/liable-check" method="post">
-    <span class="govuk-caption-l">19, St David's Crescent, Cardiff, CF5 4GP</span>
-<h1 class="govuk-heading-l">Ydych chi'n gyfrifol am y Dreth Gyngor ar yr eiddo hwn?</h1>
+      <form class="form" action="/v1-7-1/liable-check" method="post">
+        <span class="govuk-caption-l">19, St David's Crescent, Cardiff, CF5 4GP</span>
+        <h1 class="govuk-heading-l">Ydych chi'n gyfrifol am y Dreth Gyngor ar yr eiddo hwn?</h1>
+  
+        <p class="govuk-body">Dim ond pobl sy'n gyfrifol am y Dreth Gyngor ar eiddo sydd â chaniatâd i weld rhagor o
+          fanylion. Mae hyn yn cynnwys pobl sy'n gweithredu dros rywun sydd yn gyfrifol.</p>
 
-<p class="govuk-body">Dim ond pobl sy'n gyfrifol am y Dreth Gyngor ar eiddo sydd â chaniatâd i weld rhagor o fanylion. Mae hyn yn cynnwys pobl sy'n gweithredu dros rywun sydd yn gyfrifol.</p>
+          {{ govukWarningText({
+            text: "Os nad ydych chi'n gyfrifol am y Dreth Gyngor ar yr eiddo hwn, dylech chi ddim barhau gyda'r gwasanaeth hwn.",
+            iconFallbackText: "Rhybudd"
+          }) }}
 
-{{ govukWarningText({
-  text: "Os nad ydych chi'n gyfrifol am y Dreth Gyngor ar yr eiddo hwn, dylech chi ddim barhau gyda'r gwasanaeth hwn.",
-  iconFallbackText: "Rhybudd"
-}) }}
-
-       {{ govukRadios({
-        name: "liability",
-        fieldset: {
-          legend: {
-            text: "Wyt ti'n gyfrifol am y Dreth Gyngor ar yr eiddo hwn?",
-            classes: "govuk-visually-hidden"
-          }
-        },
-        items: [
-          {
-            value: "yes",
-            text: "Ydw"
-            
-          },
-          {
-            value: "no",
-            text: "Nac ydw"
-          },
-          {
-            value: "proxy",
-            text: "Rydw i'n gweithredu dros rywun sy'n gyfrifol",
-            hint: {
-              text: "Bydd angen i chi gael eu caniatâd ysgrifenedig"
-            }
-          }
-        ]
-      }) }}
+          {{ govukRadios({
+            name: "liability",
+            fieldset: {
+              legend: {
+                text: "Wyt ti'n gyfrifol am y Dreth Gyngor ar yr eiddo hwn?",
+                classes: "govuk-visually-hidden"
+              }
+            },
+            items: [
+              {
+                value: "yes",
+                text: "Ydw"
+                
+              },
+              {
+                value: "no",
+                text: "Nac ydw"
+              },
+              {
+                value: "proxy",
+                text: "Rydw i'n gweithredu dros rywun sy'n gyfrifol",
+                hint: {
+                  text: "Bydd angen i chi gael eu caniatâd ysgrifenedig"
+                }
+              }
+            ]
+          }) }}
 
         {{ govukButton({
           text: "Parhau",
@@ -162,21 +131,5 @@ language : "cy",
 
   {% endif %}
 
-<script>
-  // Handle language switching without creating new history entries
-  document.addEventListener('DOMContentLoaded', function() {
-    var langLinks = document.querySelectorAll('.hmrc-language-select__list-item a');
 
-    langLinks.forEach(function(link) {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        var newUrl = this.href;
-        // Replace current history state instead of pushing new one
-        history.replaceState(null, '', newUrl);
-        // Reload page to show new language
-        window.location.reload();
-      });
-    });
-  });
-</script>
 {% endblock %}

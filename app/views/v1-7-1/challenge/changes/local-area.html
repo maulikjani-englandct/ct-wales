@@ -1,104 +1,56 @@
 {% extends "layouts/main.html" %}
 
+<!-- Page title -->
 {% block pageTitle %}
   {% if data['languagePreference'] == "en" %}
-    What permanent changes have taken place in your local area? – GOV.UK Prototype Kit
+    What permanent changes have taken place in your local area? – {{ data['govukTite'] }}
+
   {% else %}
-    Pa newidiadau parhaol sydd wedi digwydd yn dy ardal lleol? – GOV.UK Prototype Kit
-  {% endif %}
-{% endblock %}
-
-{% block header %}
-{% if data['languagePreference'] == "en" %}
-{{ hmrcHeader({
-  homepageUrl : "/v1-7-1/start?languagePreference=en",
-    signOutHref : "?sign-out",
-    useTudorCrown: "true"
-  }) }}
-
-{% else %}
-{{ hmrcHeader({
-  homepageUrl : "/v1-7-1/start?languagePreference=cy",
-    language : "cy",
-    signOutHref : "?sign-out",
-    useTudorCrown: "true"
-  }) }}
+    Pa newidiadau parhaol sydd wedi digwydd yn dy ardal lleol? – {{ data['govukTite'] }}
   {% endif %}
 {% endblock %}
 
 {% block beforeContent %}
-
-{{
-
-  hmrcLanguageSelect({
-
-      language: 'cy' if data['languagePreference'] === 'cy' else 'en',
-
-      en: { href: '?languagePreference=en' },
-
-      cy: { href: '?languagePreference=cy' }
-
-  })
-
-}}
-{% if data['languagePreference'] == "en" %}
-{{ govukBackLink({
-  text: "Back",
-  href: "../changes?languagePreference=en"
-}) }}
-{% else %}
-{{ govukBackLink({
-  text: "Yn ôl",
-  href: "../changes?languagePreference=cy"
-}) }}
-
-{% endif %}
+<div class="govuk-grid-row">
+  <!-- Language selector -->
+  {% include "v1-7-1/includes/_hmrcLanguageSelect.html" %}
+  <!-- Back link -->
+  {% include "v1-7-1/includes/_backLink.html" %}
+</div>
 {% endblock %}
+
+<!-- Page content -->
 {% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds-from-desktop">
-<form action="local-area-when" method="post">
-{% if data['languagePreference'] == "en" %}
-  <h1 class="govuk-heading-l">What permanent changes have taken place in your local area?</h1>
-  {{ govukTextarea({
-    id: "local-area-reason",
-    name: "local-area-reason",
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+    <form action="local-area-when" method="post">
+      {% if data['languagePreference'] == "en" %}
+      <h1 class="govuk-heading-l">What permanent changes have taken place in your local area?</h1>
+      {{ govukTextarea({
+        id: "local-area-reason",
+        name: "local-area-reason",
 
-    hint: {
-      text: "For example, a new supermarket or motorway has been built that you believe has affected the value of your home. Provide as much detail as possible."
-    }
-  }) }}
-  <button class="govuk-button" data-module="govuk-button">Continue</button>
-{% else %}
-  <h1 class="govuk-heading-l">Pa newidiadau parhaol sydd wedi digwydd yn dy ardal lleol?</h1>
-  {{ govukTextarea({
-    id: "local-area-reason",
-    name: "local-area-reason",
-    hint: {
-      text: "Er enghraifft, mae archfarchnad newydd neu draffordd  wedi'i adeiladu, ac rwyt ti’n credu ei bod wedi effeithio ar werth dy gartref. Rho gymaint o wybodaeth â phosibl."
-    }
-  }) }}
-  <button class="govuk-button" data-module="govuk-button">Parhau</button>
-{% endif %}
-</form>
-    </div>
-    </div>
+        hint: {
+          text: "For example, a new supermarket or motorway has been built that you believe has affected the value of your
+          home. Provide as much detail as possible."
+      }
+      }) }}
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+      
+      {% else %}
+      <h1 class="govuk-heading-l">Pa newidiadau parhaol sydd wedi digwydd yn dy ardal lleol?</h1>
+      {{ govukTextarea({
+        id: "local-area-reason",
+        name: "local-area-reason",
+        hint: {
+          text: "Er enghraifft, mae archfarchnad newydd neu draffordd wedi'i adeiladu, ac rwyt ti’n credu ei bod wedi
+          effeithio ar werth dy gartref. Rho gymaint o wybodaeth â phosibl."
+        }
+      }) }}
+      <button class="govuk-button" data-module="govuk-button">Parhau</button>
+      {% endif %}
+    </form>
+  </div>
+</div>
 
-<script>
-  // Handle language switching without creating new history entries
-  document.addEventListener('DOMContentLoaded', function() {
-    var langLinks = document.querySelectorAll('.hmrc-language-select__list-item a');
-
-    langLinks.forEach(function(link) {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        var newUrl = this.href;
-        // Replace current history state instead of pushing new one
-        history.replaceState(null, '', newUrl);
-        // Reload page to show new language
-        window.location.reload();
-      });
-    });
-  });
-</script>
 {% endblock %}

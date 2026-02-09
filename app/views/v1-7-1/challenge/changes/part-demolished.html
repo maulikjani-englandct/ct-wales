@@ -2,7 +2,7 @@
 
 <!-- Page title -->
 {% block pageTitle %}
-  {% if data['languagePreference'] == "en" %}
+  {% if languagePreference == "en" %}
     Which parts of your home have been demolished? – {{ data['govukTite'] }}
 
   {% else %}
@@ -24,7 +24,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds-from-desktop">
     <form action="part-demolished-when" method="post">
-      {% if data['languagePreference'] == "en" %}
+      {% if languagePreference == "en" %}
       <h1 class="govuk-heading-l">Which parts of your home have been demolished?</h1>
       {{ govukTextarea({
       id: "part-demolished-reason",

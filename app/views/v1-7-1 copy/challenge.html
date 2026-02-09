@@ -1,0 +1,171 @@
+{% extends "layouts/main.html" %}
+
+<!-- Page title -->
+{% block pageTitle %}
+  {% if data['languagePreference'] == "en" %}
+    Council Tax band review  – {{ data['govukTite'] }}
+
+  {% else %}
+    Adolygiad band Treth Gyngor – {{ data['govukTite'] }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <!-- Language selector -->
+  {% include "v1-7-1/includes/_hmrcLanguageSelect.html" %}
+  <!-- Back link -->
+  {% include "v1-7-1/includes/_backLink.html" %}
+</div>
+{% endblock %}
+
+<!-- Page content -->
+{% block content %}
+
+{% if data['languagePreference'] == "en" %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="/v1-7-1/challenge-router" method="post">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Council Tax band review
+
+            </h1>
+          </legend>
+          <div id="challenge-hint" class="govuk-hint">
+            <p>You can ask the VOA (Valuation Office Agency) to review the Council Tax band of your home. It is free of
+              charge to ask for a review.</p>
+
+            <p>You will need to tell us why you think the band should be reviewed, and we may ask you for more details.
+            </p>
+
+            <p class="govuk-body">You can request a review of your Council Tax band if: </p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>you became the new taxpayer within the last 6 months </li>
+              <li>the council tax band has changed in the last 6 months </li>
+              <li>the local area has physically changed </li>
+            </ul>
+
+            <p class="govuk-body">You can also request a review if something has changed. For example the property; </p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>has been demolished </li>
+              <li>is partly used for business </li>
+              <li>has been split into multiple properties or merged into one </li>
+            </ul>
+
+            <p>If you request a review for one of these reasons, but don't agree with the outcome, you can appeal the
+              decision.</p>
+
+            <h3 class="govuk-heading-m">Reviewing the band for any other reason</h3>
+            <p>If none of the above apply, we will only review your band if you provide supporting evidence.
+              Your request for a band review will be rejected without this.
+            </p>
+            <p>You won't have any legal rights to appeal the outcome of a review. </p>
+
+          </div>
+          <h3 class="govuk-heading-m">Do you want us to review your Council Tax band? </h3>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="yes" name="challenge" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="yes">
+                Yes
+              </label>
+
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="no" name="challenge" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="no">
+                No
+              </label>
+
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      {{ govukButton({
+      text: "Continue"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% else %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form class="form" action="/v1-7-1/challenge-router" method="post">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Adolygiad band Treth Gyngor
+            </h1>
+          </legend>
+          <div id="challenge-hint" class="govuk-hint">
+            <p>Rydych yn gallu gofyn i’r VOA (Asiantaeth y Swyddfa Brisio) adolygu band Treth Gyngor eich cartref. Mae
+              gofyn am adolygiad yn rhad ac am ddim.</p>
+            <p>Bydd angen i chi ddweud wrthym pam rydych yn meddwl y dylid adolygu’r band, ac efallai byddwn yn gofyn i
+              chi am ragor o fanylion.</p>
+
+            <p class="govuk-body">Rydych yn gallu gofyn i ni adolygu eich band Treth Gyngor os: </p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>ydych wedi dod yn drethdalwr newydd o fewn y 6 mis diwethaf </li>
+              <li>mae’r band Treth Gyngor wedi newid yn ystod y 6 mis diwethaf</li>
+              <li>mae’r ardal leol wedi newid yn gorfforol</li>
+            </ul>
+
+            <p class="govuk-body">Rydych yn gallu hefyd ofyn am adolygiad os yw rhywbeth wedi newid. Er enghraifft,
+              mae’r eiddo:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>wedi’i ddymchwel</li>
+              <li>yn cael ei ddefnyddio’n rhannol ar gyfer busnes</li>
+              <li>wedi’i rannu’n sawl eiddo neu ei uno’n un</li>
+            </ul>
+
+            <p>Os byddwch yn gofyn am adolygiad am un o’r rhesymau hyn, ond dydych chi ddim yn cytuno â’r canlyniad,
+              rydych yn gallu apelio yn erbyn y penderfyniad. </p>
+
+            <h3 class="govuk-heading-m">Adolygu’r band am unrhyw reswm arall </h3>
+            <p>Os nad yw’r uchod yn berthnasol, byddwn ond yn adolygu eich band os byddwch yn darparu tystiolaeth
+              ategol.
+            </p>
+            <p>Bydd eich cais am adolygiad band yn cael ei wrthod heb hyn. </p>
+            <p>Ni fydd gennych unrhyw hawliau cyfreithiol i apelio yn erbyn canlyniad yr adolygiad. </p>
+
+          </div>
+          <h3 class="govuk-heading-m">Ydych chi eisiau i ni adolygu eich band Treth Gyngor? </h3>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="yes" name="challenge" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="yes">
+                Ydw
+              </label>
+
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="no" name="challenge" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="no">
+                Nac ydw
+              </label>
+
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      {{ govukButton({
+        text: "Parhau"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+{% endif %}
+
+{% endblock %}

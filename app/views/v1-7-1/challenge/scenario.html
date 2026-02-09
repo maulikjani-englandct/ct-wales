@@ -2,7 +2,7 @@
 
 <!-- Page title -->
 {% block pageTitle %}
-  {% if data['languagePreference'] == "en" %}
+  {% if languagePreference == "en" %}
     Choose which applies to you – {{ data['govukTite'] }}
 
   {% else %}
@@ -24,7 +24,7 @@
 
   <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    {% if data['languagePreference'] == "en" %}
+    {% if languagePreference == "en" %}
     <form action="scenario-router" method="post">
       {{ govukRadios({
         name: "challenge-type",

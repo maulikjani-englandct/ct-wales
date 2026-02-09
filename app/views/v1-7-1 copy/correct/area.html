@@ -1,0 +1,103 @@
+{% extends "layouts/main.html" %}
+
+<!-- Page title -->
+{% block pageTitle %}
+  {% if data['languagePreference'] == "en" %}
+    What is the size of your home? – {{ data['govukTite'] }}
+
+  {% else %}
+    Beth yw maint dy gartref? – {{ data['govukTite'] }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <!-- Language selector -->
+  {% include "v1-7-1/includes/_hmrcLanguageSelect.html" %}
+  <!-- Back link -->
+  {% include "v1-7-1/includes/_backLink.html" %}
+</div>
+{% endblock %}
+
+<!-- Page content -->
+{% block content %}
+
+{% if data['languagePreference'] == "en" %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="../incorrect-info-change" method="post">
+        <h1 class="govuk-heading-l">What is the size of your home?</h1>
+        <p>Enter the size of your home in square metres. For houses and bungalows, we use external measurements. For flats, we use internal measurements.</p>
+        {{ govukInput({
+          classes: "govuk-input--width-10",
+          hint: {
+              html: "For example, 95" 
+          },
+          id: "bathroom",
+          name: "bathroom",
+          inputmode: "numeric",
+          spellcheck: false,
+          suffix: {
+            text: "m2"
+          }
+        }) }}
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Continue",
+            type: "submit"
+          }) }}
+
+          {{ govukButton({
+            text: "Cancel",
+            classes: "govuk-button--secondary"
+          }) }}
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+  {% else %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="../incorrect-info-change" method="post">
+        
+        <h1 class="govuk-heading-l">Beth yw maint dy gartref?</h1>
+        <p>Rho faint dy gartref mewn metrau sgwâr. Ar gyfer tai a byngalos, rydym yn defnyddio mesuriadau allanol. Ar gyfer fflatiau, rydym yn defnyddio mesuriadau mewnol.</p>
+        {{ govukInput({
+          classes: "govuk-input--width-10",
+          hint: {
+              html: "Er enghraifft, 95"          
+          },
+          id: "area",
+          name: "area",
+          inputmode: "numeric",
+          spellcheck: false,
+          suffix: {
+            text: "m2"
+          }
+        }) }}
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Parhau",
+            type: "submit"
+          }) }}
+
+          {{ govukButton({
+            text: "Canslo",
+            classes: "govuk-button--secondary"
+          }) }}
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+  {% endif %}
+
+
+{% endblock %}

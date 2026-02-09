@@ -1,0 +1,132 @@
+{% extends "layouts/main.html" %}
+
+<!-- Page title -->
+{% block pageTitle %}
+  {% if data['languagePreference'] == "en" %}
+    What type of house is your home? – {{ data['govukTite'] }}
+
+  {% else %}
+    Pa fath o dŷ yw dy gartref? – {{ data['govukTite'] }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <!-- Language selector -->
+  {% include "v1-7-1/includes/_hmrcLanguageSelect.html" %}
+  <!-- Back link -->
+  {% include "v1-7-1/includes/_backLink.html" %}
+</div>
+{% endblock %}
+
+<!-- Page content -->
+{% block content %}
+
+{% if data['languagePreference'] == "en" %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="../../incorrect-info-change" method="post">
+        {{ govukRadios({
+          name: "signIn",
+          fieldset: {
+            legend: {
+              text: "What type of house is your home?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+
+          {
+            value: "d-house",
+            text: "Detached house"
+          },
+          {
+            value: "semi",
+            text: "Semi-detached house"
+          },
+          {
+            value: "mid",
+            text: "Mid-terraced house"
+            
+          },
+          {
+            value: "eot",
+            text: "End-of-terrace house"
+            
+          }
+          ]
+        }) }}
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Continue",
+            type: "submit"
+          }) }}
+
+          {{ govukButton({
+            text: "Cancel",
+            classes: "govuk-button--secondary"
+          }) }}
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+  {% else %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="../../incorrect-info-change" method="post">
+        {{ govukRadios({
+          name: "signIn",
+          fieldset: {
+            legend: {
+              text: "Pa fath o dŷ yw dy gartref?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          items: [
+
+          {
+            value: "d-house",
+            text: "Tŷ ar wahân"
+          },
+          {
+            value: "semi",
+            text: "Tŷ pâr"
+          },
+          {
+            value: "mid",
+            text: "Tŷ canol teras"
+            
+          },
+          {
+            value: "eot",
+            text: "Tŷ pen teras"
+            
+          }
+          ]
+        }) }}
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Parhau",
+            type: "submit"
+          }) }}
+
+          {{ govukButton({
+            text: "Canslo",
+            classes: "govuk-button--secondary"
+          }) }}
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+  {% endif %}
+
+
+{% endblock %}

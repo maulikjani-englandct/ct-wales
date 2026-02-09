@@ -1,0 +1,118 @@
+{% extends "layouts/main.html" %}
+
+<!-- Page title -->
+{% block pageTitle %}
+  {% if data['languagePreference'] == "en" %}
+    How many parking spaces are there? – {{ data['govukTite'] }}
+
+  {% else %}
+    Sawl man parcio sydd yno? – {{ data['govukTite'] }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <!-- Language selector -->
+  {% include "v1-7-1/includes/_hmrcLanguageSelect.html" %}
+  <!-- Back link -->
+  {% include "v1-7-1/includes/_backLink.html" %}
+</div>
+{% endblock %}
+
+<!-- Page content -->
+{% block content %}
+
+{% if data['languagePreference'] == "en" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="../incorrect-info-change" method="post">
+        {{ govukRadios({
+          name: "parking-spot",
+          fieldset: {
+            legend: {
+              text: "How many parking spaces are there?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+         
+          items: [
+          {
+            value: "one-eight",
+            text: "1-8 parking spaces"
+            
+          },
+          {
+            value: "nine-plus",
+            text: "9 or more parking spaces"
+            
+          }
+          ]
+        }) }}
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Continue",
+            type: "submit"
+          }) }}
+
+          {{ govukButton({
+            text: "Cancel",
+            classes: "govuk-button--secondary"
+          }) }}
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+  
+  {% else %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="../incorrect-info-change" method="post">
+        {{ govukRadios({
+          name: "parking-spot",
+          fieldset: {
+            legend: {
+              text: "Sawl man parcio sydd yno?",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+         
+          items: [
+          {
+            value: "one-eight",
+            text: "1-8 man parcio"
+            
+          },
+          {
+            value: "nine-plus",
+            text: "9 neu fwy man parcio"
+            
+          }
+          ]
+        }) }}
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Parhau",
+            type: "submit"
+          }) }}
+
+          {{ govukButton({
+            text: "Canslo",
+            classes: "govuk-button--secondary"
+          }) }}
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+  {% endif %}
+
+
+{% endblock %}

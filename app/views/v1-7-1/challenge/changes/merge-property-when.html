@@ -2,7 +2,7 @@
 
 <!-- Page title -->
 {% block pageTitle %}
-  {% if data['languagePreference'] == "en" %}
+  {% if languagePreference == "en" %}
     When was the work to merge your properties completed? – {{ data['govukTite'] }}
 
   {% else %}
@@ -25,7 +25,7 @@
    <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
       <form action="new-address" method="post">
-      {% if data['languagePreference'] == "en" %}
+      {% if languagePreference == "en" %}
         {{ govukDateInput({
           id: "merged-property-start",
           namePrefix: "merged-property-start",

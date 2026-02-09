@@ -1,0 +1,105 @@
+{% extends "layouts/main.html" %}
+
+<!-- Page title -->
+{% block pageTitle %}
+  {% if data['languagePreference'] == "en" %}
+    What date is on the Notice of Alteration? – {{ data['govukTite'] }}
+
+  {% else %}
+    Pa ddyddiad sydd ar lythyr yr Hysbysiad o Newid? – {{ data['govukTite'] }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <!-- Language selector -->
+  {% include "v1-7-1/includes/_hmrcLanguageSelect.html" %}
+  <!-- Back link -->
+  {% include "v1-7-1/includes/_backLink.html" %}
+</div>
+{% endblock %}
+
+<!-- Page content -->
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="/v1-7-1/challenge/evidence-upload-router" method="post">
+
+        {% if data['languagePreference'] == "en" %}
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Do you have documents to upload as evidence?
+              </h1>
+            </legend>
+            <div id="upload-hint" class="govuk-hint">
+              This could include screenshots of property listings, sale records, or other documents that support your request.
+            </div>
+
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="upload-yes" name="has-documents" type="radio" value="yes">
+                <label class="govuk-label govuk-radios__label" for="upload-yes">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="upload-no" name="has-documents" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="upload-no">
+                  No
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+        {% else %}
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Oes gennych chi ddogfennau i’w huwchlwytho fel tystiolaeth?
+              </h1>
+            </legend>
+            <div id="upload-hint" class="govuk-hint">
+              Gallai’r rhain gynnwys sgrinluniau o restrau eiddo, cofnodion gwerthiant, neu ddogfennau eraill sy’n cefnogi eich cais.
+            </div>
+
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="upload-yes" name="has-documents" type="radio" value="yes">
+                <label class="govuk-label govuk-radios__label" for="upload-yes">
+                  Oes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="upload-no" name="has-documents" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="upload-no">
+                  Nac oes
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        {{ govukButton({
+          text: "Parhau"
+        }) }}
+
+        {% endif %}
+
+      </form>
+
+    </div>
+  </div>
+
+
+{% endblock %}

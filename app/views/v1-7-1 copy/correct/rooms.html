@@ -1,0 +1,98 @@
+{% extends "layouts/main.html" %}
+
+<!-- Page title -->
+{% block pageTitle %}
+  {% if data['languagePreference'] == "en" %}
+    How many rooms are there in your home? – {{ data['govukTite'] }}
+
+  {% else %}
+    Sawl ystafell sydd yn dy gartref? – {{ data['govukTite'] }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <!-- Language selector -->
+  {% include "v1-7-1/includes/_hmrcLanguageSelect.html" %}
+  <!-- Back link -->
+  {% include "v1-7-1/includes/_backLink.html" %}
+</div>
+{% endblock %}
+
+<!-- Page content -->
+{% block content %}
+
+{% if data['languagePreference'] == "en" %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="../incorrect-info-change" method="post">
+        <h1 class="govuk-heading-l">How many rooms are there in your home?</h1>
+        <p>This includes all living rooms and bedrooms, but does not include bathrooms, kitchens, utility rooms and conservatories.</p>
+       
+        {{ govukInput({
+          label: {
+            text: "Enter total number of rooms, for example 5"
+          },
+          classes: "govuk-input--width-10",
+          id: "rooms",
+          name: "rooms",
+          inputmode: "numeric",
+          spellcheck: false
+        }) }}
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Continue",
+            type: "submit"
+          }) }}
+
+          {{ govukButton({
+            text: "Cancel",
+            classes: "govuk-button--secondary"
+          }) }}
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+  {% else %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="../incorrect-info-change" method="post">
+        <h1 class="govuk-heading-l">Sawl ystafell sydd yn dy gartref?</h1>
+       <p>Mae hyn yn cynnwys ystafelloedd byw ac ystafelloedd gwely, ond nid yw’n cynnwys ystafelloedd ymolchi, ceginau, ystafelloedd aml-bwrpas nac ystafelloedd gwydr (heulfanau).</p>
+        {{ govukInput({
+          label: {
+            text: "Rho nifer yr ystafelloedd, er enghraifft 5"
+          },
+          hint: {
+            text: ""
+          },
+          classes: "govuk-input--width-10",
+          id: "rooms",
+          name: "rooms",
+          inputmode: "numeric",
+          spellcheck: false
+        }) }}
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Parhau",
+            type: "submit"
+          }) }}
+
+          {{ govukButton({
+            text: "Canslo",
+            classes: "govuk-button--secondary"
+          }) }}
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+  {% endif %}
+
+
+{% endblock %}

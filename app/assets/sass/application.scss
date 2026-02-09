@@ -3,6 +3,9 @@
 // https://prototype-kit.service.gov.uk/docs/adding-css-javascript-and-images
 // 
 
+// HRMC Frontend is available as an npm package, so you can import it here and it will be compiled into application.css
+@import "node_modules/hmrc-frontend/hmrc/all";
+
 // Add extra styles here
 $govuk-new-organisation-colours: true;
 

@@ -1,0 +1,110 @@
+{% extends "layouts/main.html" %}
+
+<!-- Page title -->
+{% block pageTitle %}
+  {% if data['languagePreference'] == "en" %}
+    What do you want to do next? – {{ data['govukTite'] }}
+
+  {% else %}
+    Beth wyt ti eisiau ei wneud nesaf? – {{ data['govukTite'] }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <!-- Language selector -->
+  {% include "v1-7-1/includes/_hmrcLanguageSelect.html" %}
+  <!-- Back link -->
+  {% include "v1-7-1/includes/_backLink.html" %}
+</div>
+{% endblock %}
+
+<!-- Page content -->
+{% block content %}
+
+{% if data['languagePreference'] == "en" %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="/letusknow" method="post">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              What do you want to do next?
+            </h1>
+          </legend>
+
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="incorrect" name="help" type="radio" value="incorrect">
+              <label class="govuk-label govuk-radios__label" for="incorrect">
+                Update my property details
+              </label>
+
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="challenge" name="help" type="radio" value="challenge">
+              <label class="govuk-label govuk-radios__label" for="challenge">
+                Challenge my Council Tax band
+              </label>
+
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% else %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="/letusknow" method="post">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Beth wyt ti eisiau ei wneud nesaf?
+            </h1>
+          </legend>
+
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="incorrect" name="help" type="radio" value="incorrect">
+              <label class="govuk-label govuk-radios__label" for="incorrect">
+                Diweddaru gwybodaeth am fy eiddo
+              </label>
+
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="challenge" name="help" type="radio" value="challenge">
+              <label class="govuk-label govuk-radios__label" for="challenge">
+                Herio fy mand Treth Gyngor
+              </label>
+
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      {{ govukButton({
+        text: "Parhau"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "layouts/main.html" %}
+
+<!-- Page title -->
+{% block pageTitle %}
+  {% if data['languagePreference'] == "en" %}
+    Tell us why your home has been demolished or cannot be lived in – {{ data['govukTite'] }}
+
+  {% else %}
+    Dywedwch wrthym pam fod eich cartref wedi'i ddymchwel neu pam nad oes modd byw ynddo – {{ data['govukTite'] }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <!-- Language selector -->
+  {% include "v1-7-1/includes/_hmrcLanguageSelect.html" %}
+  <!-- Back link -->
+  {% include "v1-7-1/includes/_backLink.html" %}
+</div>
+{% endblock %}
+
+<!-- Page content -->
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      <form action="demolished-when" method="post">
+        {% if data['languagePreference'] == "en" %}
+        <h1 class="govuk-heading-l">Tell us why your home has been demolished or cannot be lived in</h1>
+        {{ govukTextarea({
+          id: "demolished-reason",
+          name: "demolished-reason",
+          hint: {
+            text: "For example, you have completely demolished your home to build a new one, or your home is not protected
+            from wind and rain and cannot be lived in."
+          }
+        }) }}
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+        {% else %}
+        <h1 class="govuk-heading-l">Dywedwch wrthym pam fod eich cartref wedi'i ddymchwel neu pam fod neb yn gallu byw
+          ynddo</h1>
+        {{ govukTextarea({
+          id: "demolished-reason",
+          name: "demolished-reason",
+          hint: {
+            text: "Er enghraifft, rydych wedi dymchwel eich cartref yn llwyr er mwyn adeiladu un newydd, neu dyw’r cartref
+            ddim wedi’i warchod rhag y gwynt a’r glaw a does neb yn gallu byw ynddo."
+          }
+        }) }}
+        <button class="govuk-button" data-module="govuk-button">Parhau</button>
+        {% endif %}
+      </form>
+    </div>
+  </div>
+{% endblock %}

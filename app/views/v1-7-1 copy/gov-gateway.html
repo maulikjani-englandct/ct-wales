@@ -1,0 +1,157 @@
+{% extends "layouts/main.html" %}
+
+<!-- Page title -->
+{% block pageTitle %}
+  {% if data['languagePreference'] == "en" %}
+    Sign in using Government Gateway – {{ data['govukTite'] }}
+
+  {% else %}
+    Mewngofnodi gan ddefnyddio Porth y Llywodraeth – {{ data['govukTite'] }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <!-- Language selector -->
+  {% include "v1-7-1/includes/_hmrcLanguageSelect.html" %}
+  <!-- Back link -->
+  {% include "v1-7-1/includes/_backLink.html" %}
+</div>
+{% endblock %}
+
+<!-- Page content -->
+{% block content %}
+
+{% if data['languagePreference'] == "en" %}
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title"
+      data-module="govuk-notification-banner">
+      <div class="govuk-notification-banner__header">
+        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+          Keeping your information secure
+        </h2>
+      </div>
+      <div class="govuk-notification-banner__content">
+        <p class="govuk-body">
+          Do not share your Government Gateway user ID and password with anyone else.
+        </p>
+      </div>
+    </div>
+    <h1 class="govuk-heading-xl">
+      Sign in using Government Gateway
+    </h1>
+    <form action="property-details-extended">
+      <div class="govuk-form-group">
+        <label for="user_id" class="govuk-label"> Government Gateway user ID </label>
+        <div class="govuk-hint" id="user_id-hint">
+          This could be up to 12 characters.
+        </div>
+        <input type="text" name="user_id" id="user_id" class="govuk-input govuk-!-width-one-half" value=""
+          aria-describedby="user_id-hint" autocomplete="username">
+      </div>
+      <div class="govuk-form-group govuk-password-input" data-module="govuk-password-input"
+        data-i18n.show-password="Show" data-i18n.hide-password="Hide"
+        data-i18n.show-password-aria-label="Show current password"
+        data-i18n.hide-password-aria-label="Hide current password"
+        data-i18n.password-shown-announcement="Your password is visible"
+        data-i18n.password-hidden-announcement="Your password is hidden" data-govuk-password-input-init="">
+        <label for="password" class="govuk-label"> Password </label>
+        <div class="govuk-input__wrapper govuk-password-input__wrapper">
+          <input type="password" name="password" id="password"
+            class="govuk-input govuk-password-input__input govuk-js-password-input-input" spellcheck="false"
+            autocapitalize="none" autocomplete="current-password">
+          <div class="govuk-password-input__sr-status govuk-visually-hidden" aria-live="polite"></div>
+          <button type="button"
+            class="govuk-button govuk-button--secondary govuk-password-input__toggle govuk-js-password-input-toggle"
+            data-module="govuk-button" aria-controls="password" aria-label="Show current password"
+            data-govuk-button-init="">Show</button>
+        </div>
+      </div>
+      <button type="submit" id="continue" class="govuk-button" formnovalidate="" data-module="govuk-button"
+        data-prevent-double-click="true" data-govuk-button-init="">Sign in</button>
+    </form>
+    <h2 class="govuk-heading-m">New users of Government Gateway</h2>
+    <div class="govuk-body">
+      <a class="govuk-link" id="no-account" href="/login/create-account">Create sign in details</a>
+    </div>
+    <h2 class="govuk-heading-m">Problems signing in</h2>
+    <ul class="govuk-list">
+      <li><a class="govuk-link" href="/login/forgot-password" id="forgotten-password">I have forgotten my password</a>
+      </li>
+      <li><a class="govuk-link" href="/login/forgot-userid" id="forgotten-user-id">I have forgotten my Government
+          Gateway user ID</a></li>
+      <li><a class="govuk-link" href="/login/forgot-userid-password" id="forgotten-user-id-password">I have forgotten my
+          Government Gateway user ID and password</a></li>
+    </ul>
+  </div>
+</div>
+
+{% else %}
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title"
+      data-module="govuk-notification-banner">
+      <div class="govuk-notification-banner__header">
+        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+          Cadw’ch gwybodaeth yn ddiogel
+        </h2>
+      </div>
+      <div class="govuk-notification-banner__content">
+        <p class="govuk-body">
+          Peidiwch â rhannu’ch Dynodydd Defnyddiwr (ID) a chyfrinair ar gyfer Porth y Llywodraeth gydag unrhyw un arall.
+        </p>
+      </div>
+    </div>
+    <h1 class="govuk-heading-xl">
+      Mewngofnodi gan ddefnyddio Porth y Llywodraeth
+    </h1>
+    <form action="property-details-extended">
+      <div class="govuk-form-group">
+        <label for="user_id" class="govuk-label"> Dynodydd Defnyddiwr (ID) Porth y Llywodraeth </label>
+        <div class="govuk-hint" id="user_id-hint">
+          Gallai hyn fod hyd at 12 o gymeriadau.
+        </div><input type="text" name="user_id" id="user_id" class="govuk-input govuk-!-width-one-half" value=""
+          aria-describedby="user_id-hint" autocomplete="username">
+      </div>
+      <div class="govuk-form-group govuk-password-input" data-module="govuk-password-input"
+        data-i18n.show-password="Show" data-i18n.hide-password="Hide"
+        data-i18n.show-password-aria-label="Show current password"
+        data-i18n.hide-password-aria-label="Hide current password"
+        data-i18n.password-shown-announcement="Your password is visible"
+        data-i18n.password-hidden-announcement="Your password is hidden" data-govuk-password-input-init="">
+        <label for="password" class="govuk-label"> Cyfrinair </label>
+        <div class="govuk-input__wrapper govuk-password-input__wrapper">
+          <input type="password" name="password" id="password"
+            class="govuk-input govuk-password-input__input govuk-js-password-input-input" spellcheck="false"
+            autocapitalize="none" autocomplete="current-password">
+          <div class="govuk-password-input__sr-status govuk-visually-hidden" aria-live="polite"></div>
+          <button type="button"
+            class="govuk-button govuk-button--secondary govuk-password-input__toggle govuk-js-password-input-toggle"
+            data-module="govuk-button" aria-controls="password" aria-label="Show current password"
+            data-govuk-button-init="">Dangos</button>
+        </div>
+      </div>
+      <button type="submit" id="continue" class="govuk-button" formnovalidate="" data-module="govuk-button"
+        data-prevent-double-click="true" data-govuk-button-init="">Mewngofnodi</button>
+    </form>
+    <h2 class="govuk-heading-m">Defnyddwyr sy’n newydd i Borth y Llywodraeth</h2>
+    <div class="govuk-body">
+      <a class="govuk-link" id="no-account" href="/login/create-account">Creu manylion mewngofnodi</a>
+    </div>
+    <h2 class="govuk-heading-m">Problemau wrth fewngofnodi</h2>
+    <ul class="govuk-list">
+      <li><a class="govuk-link" href="/login/forgot-password" id="forgotten-password">Rwyf wedi anghofio’m cyfrinair</a>
+      </li>
+      <li><a class="govuk-link" href="/login/forgot-userid" id="forgotten-user-id">Rwyf wedi anghofio’m Dynodydd
+          Defnyddiwr (ID) Porth y Llywodraeth</a></li>
+      <li><a class="govuk-link" href="/login/forgot-userid-password" id="forgotten-user-id-password">Rwyf wedi
+          anghofio’m Dynodydd Defnyddiwr (ID) Porth y Llywodraeth a’m cyfrinair</a></li>
+    </ul>
+  </div>
+</div>
+{% endif %}
+
+{% endblock %}

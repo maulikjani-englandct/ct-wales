@@ -1,0 +1,144 @@
+{% extends "layouts/main.html" %}
+
+<!-- Page title -->
+{% block pageTitle %}
+  {% if data['languagePreference'] == "en" %}
+    New information we have about your property – {{ data['govukTite'] }}
+
+  {% else %}
+    Gwybodaeth newydd sydd gennym am eich eiddo – {{ data['govukTite'] }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <!-- Language selector -->
+  {% include "v1-7-1/includes/_hmrcLanguageSelect.html" %}
+  <!-- Back link -->
+  {% include "v1-7-1/includes/_backLink.html" %}
+</div>
+{% endblock %}
+
+<!-- Page content -->
+{% block content %}
+
+{% if data['languagePreference'] == "en" %}
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">19, St David's Crescent, Cardiff, CF5 4GP</span>
+        New information we have about your property 
+      </h1>
+
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">Changes to your property</h2>
+        </div>
+        <div class="govuk-summary-card__content">
+          <p class="govuk-body">According to our records, there have been changes made to your property. These changes do not affect your current Council Tax band. </p>
+          <p class="govuk-body">They will be reviewed when the property is sold or there is a revaluation. This can result in a change to the Council Tax band.</p>
+
+          {{ govukTable({
+            firstCellIsHeader: true,
+            head: [
+              {
+                text: ""
+              },
+              {
+                text: "Current"
+              },
+              {
+                text: "Future"
+              }
+            ],
+            rows: [
+
+              [
+                {
+                  text: "Size of home"
+                },
+                {
+                  text: "90 m² (969 ft²)"
+                },
+                {
+                  text: "110 m² (1184 ft²)"
+                }
+              ]
+            ]
+          }) }}
+        </div>
+      </div>
+
+      <p class="govuk-body">
+        <a href="property-details-extended?languagePreference=en" class="govuk-link">Return to property details</a>
+      </p>
+
+    </div>
+  </div>
+
+
+  {% else %}
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">19, St David's Crescent, Cardiff, CF5 4GP</span>
+        Gwybodaeth newydd sydd gennym am eich eiddo 
+      </h1>
+
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">Newidiadau i’ch eiddo </h2>
+        </div>
+        <div class="govuk-summary-card__content">
+          <p class="govuk-body">Yn ôl ein cofnodion, mae newidiadau wedi’u gwneud i’ch eiddo. Nid yw’r newidiadau hyn yn effeithio ar eich band Treth Gyngor presennol. </p>
+          <p class="govuk-body">Byddant yn cael eu hadolygu pan fydd yr eiddo’n cael ei werthu neu pan fydd ailbrisiad. Gall hyn arwain at newid i’r band Treth Gyngor. </p>
+
+          {{ govukTable({
+            firstCellIsHeader: true,
+            head: [
+              {
+                text: ""
+              },
+              {
+                text: "Presennol"
+              },
+              {
+                text: "Yn y dyfodol"
+              }
+            ],
+            rows: [
+
+              [
+                {
+                  text: "Maint y cartref"
+                },
+                {
+                  text: "90 m² (969 tr²)"
+                },
+                {
+                  text: "110 m² (1184 tr²)"
+                }
+              ]
+            ]
+          }) }}
+        </div>
+      </div>
+
+      <p class="govuk-body">
+        <a href="property-details-extended?languagePreference=en" class="govuk-link">Return to property details</a>
+      </p>
+
+    </div>
+
+    
+  </div>
+
+  {% endif %}
+
+
+{% endblock %}

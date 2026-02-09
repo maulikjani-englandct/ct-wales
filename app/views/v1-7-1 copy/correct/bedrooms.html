@@ -1,0 +1,102 @@
+{% extends "layouts/main.html" %}
+
+<!-- Page title -->
+{% block pageTitle %}
+  {% if data['languagePreference'] == "en" %}
+    How many bedrooms are there in your home? – {{ data['govukTite'] }}
+
+  {% else %}
+    Sawl ystafell gwely sydd yn dy gartref? – {{ data['govukTite'] }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <!-- Language selector -->
+  {% include "v1-7-1/includes/_hmrcLanguageSelect.html" %}
+  <!-- Back link -->
+  {% include "v1-7-1/includes/_backLink.html" %}
+</div>
+{% endblock %}
+
+<!-- Page content -->
+{% block content %}
+
+{% if data['languagePreference'] == "en" %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="../incorrect-info-change" method="post">
+        <h1 class="govuk-heading-l">How many bedrooms are there in your home?</h1>
+        <p>This includes bedrooms used as a study, home office or playroom.</p>
+       
+        {{ govukInput({
+          label: {
+            text: "Enter total number of bedrooms, for example 2"
+        
+          },
+          hint: {
+            text: ""
+          },
+          classes: "govuk-input--width-10",
+          id: "bedroom",
+          name: "bedroom",
+          inputmode: "numeric",
+          spellcheck: false
+        }) }}
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Continue",
+            type: "submit"
+          }) }}
+
+          {{ govukButton({
+            text: "Cancel",
+            classes: "govuk-button--secondary"
+          }) }}
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+  {% else %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" action="../incorrect-info-change" method="post">
+        <h1 class="govuk-heading-l">Sawl ystafell gwely sydd yn dy gartref?</h1>
+       <p>Mae hyn yn cynnwys ystafelloedd sy'n cael eu defnyddio ar gyfer astudio/gweithio gartre neu ystafelloedd chwarae.</p>
+        {{ govukInput({
+          label: {
+            text: "Rho nifer yr ystafelloedd gwely, er enghraifft 2"
+          },
+          hint: {
+            text: ""
+          },
+          classes: "govuk-input--width-10",
+          id: "bedroom",
+          name: "bedroom",
+          inputmode: "numeric",
+          spellcheck: false
+        }) }}
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Parhau",
+            type: "submit"
+          }) }}
+
+          {{ govukButton({
+            text: "Canslo",
+            classes: "govuk-button--secondary"
+          }) }}
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+  {% endif %}
+
+
+{% endblock %}

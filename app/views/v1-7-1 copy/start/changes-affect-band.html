@@ -1,0 +1,279 @@
+{% extends "layouts/main.html" %}
+
+<!-- Page title -->
+{% block pageTitle %}
+  {% if data['languagePreference'] == "en" %}
+    Check and review your Council Tax band – {{ data['govukTite'] }}
+
+  {% else %}
+    Gwirio ac adolygu dy fand Treth Gyngor – {{ data['govukTite'] }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% if data['languagePreference'] == "en" %}
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Home",
+      href: "#"
+    },
+    {
+      text: "Housing and local services",
+      href: "#"
+    },
+    {
+      text: "Council Tax"
+    }
+  ]
+}) }}
+{% else %}
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Hafan",
+      href: "#"
+    },
+    {
+      text: "Tai a gwasanaethau lleol",
+      href: "#"
+    },
+    {
+      text: "Treth Gyngor"
+    }
+  ]
+}) }}
+{% endif %}
+
+{% endblock %}
+
+<!-- Page content -->
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    {% if data['languagePreference'] == "en" %}
+      <h1 class="govuk-heading-xl">Check and review your Council Tax band</h1>
+
+      <nav data-module="ga4-link-tracker" aria-label="Contents" class="gem-c-contents-list govuk-!-margin-bottom-4">
+        <h2 class="gem-c-contents-list__title">Contents</h2>
+        <ol class="gem-c-contents-list__list">
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a href="../start" class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline">
+              <span class="govuk-visually-hidden">Contents: </span>
+              Check your Council Tax band
+            </a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a href="how-bands-decided" class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline">
+              <span class="govuk-visually-hidden">Contents: </span>
+              How Council Tax bands are decided
+            </a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a href="property-details-used" class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline">
+              <span class="govuk-visually-hidden">Contents: </span>
+              What details are used to decide a band
+            </a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a href="check-update-property" class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline">
+              <span class="govuk-visually-hidden">Contents: </span>
+              Checking and updating the details of your home
+            </a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed gem-c-contents-list__list-item--active">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <span class="govuk-visually-hidden">Contents: </span>
+            What can affect the band a home is in
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a href="think-band-wrong" class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline">
+              <span class="govuk-visually-hidden">Contents: </span>
+              I think my Council Tax band is wrong
+            </a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a href="role-voa-council" class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline">
+              <span class="govuk-visually-hidden">Contents: </span>
+              What the VOA and your local council do
+            </a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a href="contact-voa" class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline">
+              <span class="govuk-visually-hidden">Contents: </span>
+              Contact the VOA
+            </a>
+          </li>
+        </ol>
+      </nav>
+
+      <h2 class="govuk-heading-l">What can affect the band a home is in</h2>
+      <div class="govuk-inset-text">
+        <p>This page is also available in <a href='?languagePreference=cy'>Welsh (Cymraeg)</a>.</p>
+      </div>
+
+      <p>There are various situations when the band a home is in might change. </p><p>These can include:</p>
+
+      <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+        <li>
+          <strong>Improving your home</strong><br>
+          If you extend or improve your home, your band might not change while you live there, but it may change after you sell it.
+        </li>
+        <li>
+          <strong>Buying an improved home</strong><br>
+          If you buy a home that was extended or improved by a previous owner, we may review the band after you buy it.
+        </li>
+        <li>
+          <strong>Splitting or merging properties</strong><br>
+          If a single property is split into multiple properties, we will delete the original band and create separate bands for each new property.<br>
+          If multiple properties are merged into a single property, their bands will be deleted, and a new single band will be created.
+        </li>
+        <li>
+          <strong>Significant local changes</strong><br>
+          A band may be reviewed if there has been a permanent change in the local area that affects the value of a home. For example, a new motorway is built near your home.
+        </li>
+        <li>
+          <strong>If a home is demolished</strong><br>
+          If a home is demolished, the band will be deleted.
+        </li>
+      </ul>
+
+      <h3 class="govuk-heading-m">Why your neighbour’s band has not changed</h3>
+      <p>If your neighbour has extended or improved their home, their band might not change until they sell it. The changes they have made may not be big enough to push the value into the next band range.</p>
+  
+      {% else %}
+      <h1 class="govuk-heading-xl">Gwirio ac adolygu dy fand Treth Gyngor</h1>
+
+      <nav data-module="ga4-link-tracker" aria-label="Contents" class="gem-c-contents-list govuk-!-margin-bottom-4">
+        <h2 class="gem-c-contents-list__title">Cynnwys</h2>
+        <ol class="gem-c-contents-list__list">
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a href="../start" class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline">
+              <span class="govuk-visually-hidden">Contents: </span>
+              Gwirio dy fand Treth Gyngor
+            </a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a href="how-bands-decided" class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline">
+              <span class="govuk-visually-hidden">Contents: </span>
+              Sut mae bandiau Treth Gyngor yn cael eu penderfynu
+            </a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a href="property-details-used" class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline">
+              <span class="govuk-visually-hidden">Contents: </span>
+              Pa fanylion sy'n cael eu defnyddio i benderfynu band
+            </a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a href="check-update-property" class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline">
+              <span class="govuk-visually-hidden">Contents: </span>
+              Gwirio a diweddaru manylion dy gartref
+            </a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed gem-c-contents-list__list-item--active">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <span class="govuk-visually-hidden">Contents: </span>
+            Beth sy'n gallu effeithio ar y band mae cartref ynddo
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a href="think-band-wrong" class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline">
+              <span class="govuk-visually-hidden">Contents: </span>
+              Rydw i'n meddwl bod fy mand Treth Gyngor yn anghywir
+            </a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a href="role-voa-council" class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline">
+              <span class="govuk-visually-hidden">Contents: </span>
+              Beth mae'r VOA a'r cyngor lleol yn ei wneud
+            </a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a href="contact-voa" class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline">
+              <span class="govuk-visually-hidden">Contents: </span>
+              Cysylltu â'r VOA
+            </a>
+          </li>
+        </ol>
+      </nav>
+
+      <h2 class="govuk-heading-l">Beth sy'n gallu effeithio ar y band mae cartref ynddo</h2>
+      <div class="govuk-inset-text">
+        <p>Mae'r dudalen hon hefyd ar gael yn <a href='?languagePreference=en'>Saesneg (English)</a>.</p>
+      </div>
+
+      <p>Mae sawl peth yn gallu achosi newid i fand Treth Gyngor cartref.</p>
+      <p>Mae'r rhain yn gallu cynnwys:</p>
+
+      <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+        <li>
+          <strong>Gwella dy gartref</strong><br>
+          Os wyt ti'n codi estyniad ar y cartref neu yn ei wella, efallai bydd y band ddim yn newid tra rwyt ti'n byw yno, ond bydd e'n gallu newid ar ôl i ti werthu dy gartref.
+        </li>
+        <li>
+          <strong>Prynu cartref sydd wedi'i wella</strong><br>
+          Os wyt ti'n prynu cartref sydd wedi cael ei ymestyn neu ei wella gan y perchennog blaenorol, efallai y bydd y VOA yn adolygu'r band ar ôl i ti ei brynu.
+        </li>
+        <li>
+          <strong>Rhannu neu uno cartrefi</strong><br>
+          Pan fydd un cartref yn cael ei rannu'n sawl cartref, bydd band newydd yn cael ei greu ar gyfer pob un cartref newydd.<br>
+          Pan fydd sawl cartref yn cael eu cyfuno yn un cartref, bydd un band newydd yn cael ei greu ar gyfer y cartref newydd.
+        </li>
+        <li>
+          <strong>Newidiadau mawr yn yr ardal leol</strong><br>
+          Weithiau, mae band yn cael ei adolygu pan fydd rhywbeth mawr yn newid yn yr ardal leol, er enghraifft adeiladu traffordd newydd ar bwys dy gartref.
+        </li>
+        <li>
+          <strong>Pan fydd cartref yn cael ei ddymchwel</strong><br>
+          Pan fydd cartref yn cael ei ddymchwel, bydd y band yn cael ei ddileu.
+        </li>
+      </ul>
+
+      <h3 class="govuk-heading-m">Pam nad yw band dy gymydog wedi newid</h3>
+      <p>Os yw dy gymydog wedi ymestyn neu wella ei gartref, efallai bydd ei fand ddim yn newid nes bydd e'n gwerthu'r cartref. Efallai bod y newidiadau ddim yn ddigon mawr i wneud i werth y cartref symud i'r band nesaf.</p>
+    {% endif %}
+  </div>
+
+  <div class="govuk-grid-column-one-third">
+    <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
+      <h2 class="govuk-heading-m" id="subsection-title">
+        {% if data['languagePreference'] == "en" %}
+          Related content
+        {% else %}
+          Cynnwys perthnasol
+        {% endif %}
+      </h2>
+      <nav role="navigation" aria-labelledby="subsection-title">
+        <ul class="govuk-list govuk-!-font-size-16">
+          {% if data['languagePreference'] == "en" %}
+            <li><a href="https://www.gov.uk/council-tax">How Council Tax works</a></li>
+            <li><a href="#">Council Tax in Wales</a></li>
+            <li><a href="https://www.gov.uk/guidance/understand-how-council-tax-bands-are-assessed">How domestic properties are assessed for Council Tax bands</a></li>
+          {% else %}
+            <li><a href="https://www.gov.uk/council-tax">Sut mae’r Dreth Gyngor yn gweithio</a></li>
+            <li><a href="#">Treth Gyngor yng Nghymru</a></li>
+            <li><a href="https://www.gov.uk/guidance/understand-how-council-tax-bands-are-assessed.cy">Sut y caiff eiddo domestig ei asesu ar gyfer bandiau Treth Gyngor</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+    </aside>
+  </div>
+</div>
+
+{% endblock %}

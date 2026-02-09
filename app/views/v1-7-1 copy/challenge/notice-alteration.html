@@ -1,0 +1,86 @@
+{% extends "layouts/main.html" %}
+
+<!-- Page title -->
+{% block pageTitle %}
+  {% if data['languagePreference'] == "en" %}
+    What date is on the Notice of Alteration? – {{ data['govukTite'] }}
+
+  {% else %}
+    Pa ddyddiad sydd ar lythyr yr Hysbysiad o Newid? – {{ data['govukTite'] }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <!-- Language selector -->
+  {% include "v1-7-1/includes/_hmrcLanguageSelect.html" %}
+  <!-- Back link -->
+  {% include "v1-7-1/includes/_backLink.html" %}
+</div>
+{% endblock %}
+
+<!-- Page content -->
+{% block content %}
+
+{% if data['languagePreference'] == "en" %}
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <form action="/v1-7-1/noticealt" method="post" novalidate>
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="noticeAlteration-hint">
+             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading">
+                          Have you received a Notice of Alteration within the last six months?
+                        </h1>
+                      </legend>
+              <div id="noticeAlteration-hint" class="govuk-hint">
+                A Notice of Alteration is a letter sent by the Valuation Office Agency (VOA) if any change to the valuation list has been made.
+              </div>
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="noticeAlteration-yes" name="noticeAlteration" type="radio" value="yes">
+                  <label class="govuk-label govuk-radios__label" for="noticeAlteration-yes">Yes</label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="noticeAlteration-no" name="noticeAlteration" type="radio" value="no">
+                  <label class="govuk-label govuk-radios__label" for="noticeAlteration-no">No</label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          
+          <button class="govuk-button" data-module="govuk-button" type="submit">Continue</button>
+          {% else %}
+              <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <form action="/v1-7-1/noticealt" method="post" novalidate>
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" aria-describedby="noticeAlteration-hint">
+             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading">
+                          Ydych chi wedi derbyn Hysbysiad o Newid yn ystod y chwe mis diwethaf?
+                        </h1>
+                      </legend>
+              <div id="noticeAlteration-hint" class="govuk-hint">
+                Mae Hysbysiad o Newid yn lythyr sy’n cael ei anfon gan Asiantaeth y Swyddfa Brisio os yw newid wedi bod i'r Rhestr Brisio. </div>
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="noticeAlteration-yes" name="noticeAlteration" type="radio" value="yes">
+                  <label class="govuk-label govuk-radios__label" for="noticeAlteration-yes">Ydw</label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="noticeAlteration-no" name="noticeAlteration" type="radio" value="no">
+                  <label class="govuk-label govuk-radios__label" for="noticeAlteration-no">Nac ydw</label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <button class="govuk-button" data-module="govuk-button" type="submit">Parhau</button>
+          {% endif %}
+        </form>
+      </div>
+    </div>
+
+
+
+{% endblock %}

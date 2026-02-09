@@ -1,0 +1,57 @@
+{% extends "layouts/main.html" %}
+
+<!-- Page title -->
+{% block pageTitle %}
+  {% if data['languagePreference'] == "en" %}
+    Which parts of your home have been demolished? – {{ data['govukTite'] }}
+
+  {% else %}
+    Pa rannau o dy gartref sydd wedi eu dymchwel? – {{ data['govukTite'] }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <!-- Language selector -->
+  {% include "v1-7-1/includes/_hmrcLanguageSelect.html" %}
+  <!-- Back link -->
+  {% include "v1-7-1/includes/_backLink.html" %}
+</div>
+{% endblock %}
+
+<!-- Page content -->
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+    <form action="part-demolished-when" method="post">
+      {% if data['languagePreference'] == "en" %}
+      <h1 class="govuk-heading-l">Which parts of your home have been demolished?</h1>
+      {{ govukTextarea({
+      id: "part-demolished-reason",
+      name: "part-demolished-reason",
+
+      hint: {
+        text: "For example, an extension, conservatory or another part of your home has been demolished. Provide as much
+      detail as possible."
+      }
+      }) }}
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+      
+      {% else %}
+      <h1 class="govuk-heading-l">Pa rannau o dy gartref sydd wedi eu dymchwel?</h1>
+      {{ govukTextarea({
+        id: "part-demolished-reason",
+        name: "part-demolished-reason",
+        hint: {
+          text: "Er enghraifft, mae estyniad, heulfan neu rhan arall o dy gartref wedi cael ei ddymchwel. Rho gymaint o
+          wybodaeth â phosibl."
+        }
+      }) }}
+      <button class="govuk-button" data-module="govuk-button">Parhau</button>
+      {% endif %}
+    </form>
+  </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,111 @@
+{% extends "layouts/main.html" %}
+
+<!-- Page title -->
+{% block pageTitle %}
+  {% if data['languagePreference'] == "en" %}
+    Why do you want us to review your Council Tax band? – {{ data['govukTite'] }}
+
+  {% else %}
+    Pam wyt ti eisiau i ni adolygu dy fand Treth Gyngor? – {{ data['govukTite'] }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <!-- Language selector -->
+  {% include "v1-7-1/includes/_hmrcLanguageSelect.html" %}
+  <!-- Back link -->
+  {% include "v1-7-1/includes/_backLink.html" %}
+</div>
+{% endblock %}
+
+<!-- Page content -->
+{% block content %}
+
+{% if data['languagePreference'] == "en" %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+    <form class="form" action="/v1-7-1/why-challenge" method="post">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Why do you want us to review your Council Tax band?
+            </h1>
+          </legend>
+
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="wrong" name="why-challenge" type="radio" value="wrong">
+              <label class="govuk-label govuk-radios__label" for="wrong">
+                I think my home is in the wrong band
+              </label>
+
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="changes" name="why-challenge" type="radio" value="changes">
+              <label class="govuk-label govuk-radios__label" for="changes">
+                There have been changes that affect my home
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      {{ govukButton({
+      text: "Continue"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+{% else %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+
+    <form class="form" action="/v1-7-1/why-challenge" method="post">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Pam wyt ti eisiau i ni adolygu dy fand Treth Gyngor?
+            </h1>
+          </legend>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="wrong" name="why-challenge" type="radio" value="wrong">
+              <label class="govuk-label govuk-radios__label" for="wrong">
+                Rwy’n credu bod fy nghartref yn y band anghywir
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="changes" name="why-challenge" type="radio" value="changes">
+              <label class="govuk-label govuk-radios__label" for="changes">
+                Mae newidiadau wedi bod sy’n effeithio ar fy nghartref
+              </label>
+
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      {{ govukButton({
+      text: "Parhau"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+
+{% endif %}
+
+{% endblock %}

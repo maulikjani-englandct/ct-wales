@@ -1,0 +1,136 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+{% if data['languagePreference'] == "en" %}
+ Why do you think the Council Tax band is wrong? – {{ data['govukTite'] }}
+ {% else %}
+Pam wyt ti'n meddwl bod y band Treth Gyngor yn anghywir? – {{ data['govukTite'] }}
+ {% endif %}
+{% endblock %}
+
+{% block header %}
+{% if data['languagePreference'] == "en" %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-7-1/start?languagePreference=en",
+  signOutHref : "?sign-out",
+  useTudorCrown: "true"
+}) }}
+{% else %}
+{{ hmrcHeader({
+  homepageUrl : "/v1-7-1/start?languagePreference=cy",
+  language : "cy",
+  signOutHref : "?sign-out",
+  useTudorCrown: "true"
+}) }}
+{% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+
+{{
+  hmrcLanguageSelect({
+    language: 'cy' if data['languagePreference'] == 'cy' else 'en',
+    en: { href: '/v1-7-1/challenge/wrong-details?languagePreference=en' },
+    cy: { href: '/v1-7-1/challenge/wrong-details?languagePreference=cy' }
+  })
+}}
+
+{% if data['languagePreference'] == "en" %}
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:history.back()"
+}) }}
+{% else %}
+{{ govukBackLink({
+  text: "Yn ôl",
+  href: "javascript:history.back()"
+}) }}
+{% endif %}
+
+{% endblock %}
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+<form action="evidence-upload-choice" method="post">
+{% if data['languagePreference'] == "en" %}
+  <h1 class="govuk-heading-l">Tell us why you think the Council Tax band is wrong?</h1>
+
+    {{ govukInsetText({
+    text: "Your band will only be reviewed if you provide supporting evidence"
+  }) }}
+
+  <p class="govuk-body">The evidence you provide will be looked at before a case is opened. You should give as much detail as possible. </p>
+
+
+<details class="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      What evidence can you include?
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+     <p class="govuk-body">Evidence can include:</p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>addresses of up to 5 homes, similar to yours in terms of type, size, age, layout and style, that are in a lower band. The homes should be in the same street or estate, or in the same village or area.</li>
+    <li>the price that your home or similar homes sold for between 1 April 2001 and 31 March 2005 </li>
+  </ul>
+  </div>
+</details>
+
+<h2 class="govuk-heading-m">How to provide your evidence</h2>
+<p class="govuk-body">You can type your evidence in the text box. You can use up to 1,000 characters. You can also upload up to 5 files including PDFs, documents and photos on the next page. </p>
+
+  {{ govukCharacterCount({
+    id: "reason",
+    name: "reason",
+    maxlength: 1000
+  }) }}
+  <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+{% else %}
+  <h1 class="govuk-heading-l">Dywedwch wrthym pam rydych yn meddwl bod y band Treth Gyngor yn anghywir</h1>
+
+    {{ govukInsetText({
+    text: "Bydd eich band ond yn cael adolygiad ffurfiol os ydych yn rhoi tystiolaeth i gefnogi hyn. "
+  }) }}
+
+  <p class="govuk-body">Bydd y dystiolaeth rydych yn ei roi yn cael ei gwirio cyn bod achos yn cael ei agor. Dylech roi cymaint o fanylion â phosib. </p>
+
+
+<details class="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      Pa dystiolaeth y gallwch ei chynnwys?
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+     <p class="govuk-body">Gall tystiolaeth gynnwys: </p>
+  <ul class="govuk-list govuk-list--bullet">
+    <li>cyfeiriadau hyd at 5 cartref sy’n debyg i’ch cartref o ran math, maint, oedran, cynllun a steil, sydd mewn band is. Dylai’r cartrefi fod ar yr un stryd neu stad, neu yn yr un pentref neu ardal.</li>
+    <li>y pris y gwerthwyd eich cartref neu gartrefi tebyg rhwng 1 Ebrill 2001 a 31 Mawrth 2005. </li>
+  </ul>
+  </div>
+</details>
+
+<h2 class="govuk-heading-m">Sut i roi eich tystiolaeth </h2>
+<p class="govuk-body">Rydych yn gallu teipio eich tystiolaeth yn y blwch testun. Mae gennych hyd at 1,000 o gymeriadau. Rydych yn gallu uwchlwytho hyd at 5 ffeil, gan gynnwys dogfennau PDF, dogfennau Word, a ffotograffau, ar y dudalen nesaf. </p>
+
+  <div class="govuk-form-group govuk-character-count" data-module="govuk-character-count" data-maxlength="1000" data-govuk-character-count-init="">
+  
+  <textarea class="govuk-textarea govuk-js-character-count" id="reason" name="reason" rows="5" aria-describedby="reason-info"></textarea><div id="reason-info" class="govuk-hint govuk-character-count__message govuk-visually-hidden">
+    Mae gennych 1000 cymeriad ar ôl
+  </div><div class="govuk-hint govuk-character-count__message govuk-character-count__status" aria-hidden="true">Mae gennych 1000 cymeriad ar ôl</div><div class="govuk-character-count__sr-status govuk-visually-hidden" aria-live="polite">Mae gennych 1000 cymeriad ar ôl</div>
+
+  
+
+</div>
+
+  <button class="govuk-button" data-module="govuk-button">Parhau</button>  
+
+{% endif %}
+</form>
+</div>
+</div>
+
+{# Removed inline JS: language links are normal anchors so server can set language and respond without client-side history manipulation #}
+{% endblock %}

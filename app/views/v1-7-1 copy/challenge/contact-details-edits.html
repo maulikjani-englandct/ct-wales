@@ -1,0 +1,107 @@
+{% extends "layouts/main.html" %}
+
+<!-- Page title -->
+{% block pageTitle %}
+  {% if data['languagePreference'] == "en" %}
+    What are your contact details? – {{ data['govukTite'] }}
+
+  {% else %}
+    Beth yw dy fanylion cyswllt? – {{ data['govukTite'] }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <!-- Language selector -->
+  {% include "v1-7-1/includes/_hmrcLanguageSelect.html" %}
+  <!-- Back link -->
+  {% include "v1-7-1/includes/_backLink.html" %}
+</div>
+{% endblock %}
+
+<!-- Page content -->
+{% block content %}
+{% if data['languagePreference'] == "en" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">What are your contact details?</h1>
+    <p>We will only use these details to contact you about your review.</p>
+    <form action="review-details" method="post">
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="first-name">
+          First name
+        </label>
+        <input class="govuk-input govuk-!-width-two-thirds" id="first-name" name="first-name" type="text" autocomplete="given-name">
+      </div>
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="last-name">
+          Last name
+        </label>
+        <input class="govuk-input govuk-!-width-two-thirds" id="last-name" name="last-name" type="text" autocomplete="family-name">
+      </div>
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="email-address">
+          Email address
+        </label>
+        <input class="govuk-input govuk-!-width-two-thirds" id="email-address" name="email-address" type="text" aria-describedby="email-address-hint" autocomplete="email">
+      </div>
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="telephone-number">
+          Telephone number
+        </label>
+        <div class="govuk-hint" id="telephone-number-hint">
+          Enter a phone number, like 01632 960 001, 07700 900 982 or +44 808 157 0192
+        </div>
+        <input class="govuk-input govuk-!-width-two-thirds" id="telephone-number" name="telephone-number" type="text" aria-describedby="telephone-number-hint" autocomplete="tel">
+      </div>
+      <button class="govuk-button" data-module="govuk-button" type="submit">
+        Continue
+      </button>
+    </form>
+  </div>
+</div>
+
+{% else %}
+<h1 class="govuk-heading-l">Beth yw dy fanylion cyswllt?</h1>
+<p>Byddwn ond yn defnyddio’r manylion hyn i gysylltu â ti am dy adolygiad.</p>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="review-details" method="post">
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="first-name">
+          Enw cyntaf
+        </label>
+        <input class="govuk-input govuk-!-width-two-thirds" id="first-name" name="first-name" type="text" autocomplete="given-name">
+      </div>
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="last-name">
+          Enw olaf
+        </label>
+        <input class="govuk-input govuk-!-width-two-thirds" id="last-name" name="last-name" type="text" autocomplete="family-name">
+      </div>
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="email-address">
+          Cyfeiriad e-bost
+        </label>
+        <input class="govuk-input govuk-!-width-two-thirds" id="email-address" name="email-address" type="text" aria-describedby="email-address-hint" autocomplete="email">
+      </div>
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="telephone-number">
+          Rhif ffôn
+        </label>
+        <div class="govuk-hint" id="telephone-number-hint">
+          Rho rhif ffôn, fel 01632 960 001, 07700 900 982 neu +44 808 157 0192
+        </div>
+        <input class="govuk-input govuk-!-width-two-thirds" id="telephone-number" name="telephone-number" type="text" aria-describedby="telephone-number-hint" autocomplete="tel">
+      </div>
+      <button class="govuk-button" data-module="govuk-button" type="submit">
+        Parhau
+      </button>
+    </form>
+  </div>
+</div>
+{% endif %}
+
+
+{% endblock %}

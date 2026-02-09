@@ -2,7 +2,7 @@
 
 <!-- Page title -->
 {% block pageTitle %}
-  {% if data['languagePreference'] == "en" %}
+  {% if languagePreference == "en" %}
     Asking for a formal review – {{ data['govukTite'] }}
 
   {% else %}
@@ -23,7 +23,7 @@
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
-    {% if data['languagePreference'] == "en" %}
+    {% if languagePreference == "en" %}
     <h1 class="govuk-heading-xl">Asking for a formal review </h1>
 
     <p class="govuk-body">

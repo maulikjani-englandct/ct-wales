@@ -2,7 +2,7 @@
 
 <!-- Page title -->
 {% block pageTitle %}
-  {% if data['languagePreference'] == "en" %}
+  {% if languagePreference == "en" %}
     How has your home been split? – {{ data['govukTite'] }}
 
   {% else %}
@@ -25,7 +25,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
       <form action="split-property-when" method="post">
-        {% if data['languagePreference'] == "en" %}
+        {% if languagePreference == "en" %}
         <h1 class="govuk-heading-l">How has your home been split?</h1>
         {{ govukTextarea({
           id: "split-property-reason",

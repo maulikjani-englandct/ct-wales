@@ -2,7 +2,7 @@
 
 <!-- Page title -->
 {% block pageTitle %}
-  {% if data['languagePreference'] == "en" %}
+  {% if languagePreference == "en" %}
     Check and review your Council Tax band – {{ data['govukTite'] }}
 
   {% else %}
@@ -11,7 +11,7 @@
 {% endblock %}
 
 {% block beforeContent %}
- {% if data['languagePreference'] == "en" %}
+ {% if languagePreference == "en" %}
     {{ govukBreadcrumbs({
       items: [
         {
@@ -54,8 +54,8 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <p>What is the Language: {{ data['languagePreference'] }}</p>
-      {% if data['languagePreference'] == "en" %}
+      <p>What is the Language: {{ languagePreference }}</p>
+      {% if languagePreference == "en" %}
         
       <h1 class="govuk-heading-xl">Check and review your Council Tax band</h1>
   
@@ -65,7 +65,7 @@
     </div>
     <div class="govuk-grid-column-two-thirds">
       <!-- English -------------------------------------------------------------- -->
-      {% if data['languagePreference'] == "en" %}
+      {% if languagePreference == "en" %}
   
       <p>Use this service to:</p>
       <ul class="govuk-list govuk-list--bullet">
@@ -191,7 +191,7 @@
         <nav class="gem-c-related-navigation__nav-section" aria-labelledby="related-nav-topics-fc0522a5"
           data-module="gem-toggle" data-gem-toggle-module-started="true">
   
-          {% if data['languagePreference'] == "en" %}
+          {% if languagePreference == "en" %}
           <h2 class="govuk-heading-s">Explore the topic</h2>
           <strong><a href="/browse/housing-local-services/council-tax">Council Tax</a></strong>
           {% else %}
@@ -206,7 +206,7 @@
     <div class="govuk-grid-column-one-third">
       <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
         <h2 class="govuk-heading-m" id="subsection-title">
-          {% if data['languagePreference'] == "en" %}
+          {% if languagePreference == "en" %}
           Related content
           {% else %}
           Cynnwys perthnasol
@@ -214,7 +214,7 @@
         </h2>
         <nav role="navigation" aria-labelledby="subsection-title">
           <ul class="govuk-list govuk-!-font-size-16">
-            {% if data['languagePreference'] == "en" %}
+            {% if languagePreference == "en" %}
             <!-- English -------------------------------------------------------------- -->
             <li><a href="#">How Council Tax works</a></li>
             <li><a href="#">Council Tax bands</a></li>

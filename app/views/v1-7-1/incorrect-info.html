@@ -2,7 +2,7 @@
 
 <!-- Page title -->
 {% block pageTitle %}
-  {% if data['languagePreference'] == "en" %}
+  {% if languagePreference == "en" %}
     Review my property details – {{ data['govukTite'] }}
 
   {% else %}
@@ -26,7 +26,7 @@
   .govuk-summary-list__actions {width:30%}
 </style>
 
-{% if data['languagePreference'] == "en" %}
+{% if languagePreference == "en" %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds-from-desktop">
 

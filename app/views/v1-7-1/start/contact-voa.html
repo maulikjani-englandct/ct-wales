@@ -2,7 +2,7 @@
 
 <!-- Page title -->
 {% block pageTitle %}
-  {% if data['languagePreference'] == "en" %}
+  {% if languagePreference == "en" %}
     Check and review your Council Tax band – {{ data['govukTite'] }}
 
   {% else %}
@@ -13,7 +13,7 @@
 
 {% block beforeContent %}
 
-{% if data['languagePreference'] == "en" %}
+{% if languagePreference == "en" %}
 {{ govukBreadcrumbs({
   items: [
     {
@@ -54,7 +54,7 @@
 
   <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    {% if data['languagePreference'] == "en" %}
+    {% if languagePreference == "en" %}
       <h1 class="govuk-heading-xl">Check and review your Council Tax band</h1>
       <nav data-module="ga4-link-tracker" aria-label="Contents" class="gem-c-contents-list govuk-!-margin-bottom-4">
         <h2 class="gem-c-contents-list__title">Contents</h2>
@@ -258,7 +258,7 @@
   <div class="govuk-grid-column-one-third">
     <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
       <h2 class="govuk-heading-m" id="subsection-title">
-        {% if data['languagePreference'] == "en" %}
+        {% if languagePreference == "en" %}
           Related content
         {% else %}
           Cynnwys perthnasol
@@ -266,7 +266,7 @@
       </h2>
       <nav role="navigation" aria-labelledby="subsection-title">
         <ul class="govuk-list govuk-!-font-size-16">
-          {% if data['languagePreference'] == "en" %}
+          {% if languagePreference == "en" %}
             <li><a href="https://www.gov.uk/council-tax">How Council Tax works</a></li>
             <li><a href="#">Council Tax in Wales</a></li>
             <li><a href="https://www.gov.uk/guidance/understand-how-council-tax-bands-are-assessed">How domestic properties are assessed for Council Tax bands</a></li>

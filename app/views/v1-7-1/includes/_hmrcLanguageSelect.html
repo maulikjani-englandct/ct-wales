@@ -1,6 +1,6 @@
 <!-- {{ hmrcLanguageSelect
   ({
-      language: 'cy' if data['languagePreference'] === 'cy' else 'en',
+      language: 'cy' if languagePreference === 'cy' else 'en',
       en: { href: '?languagePreference=en' },
       cy: { href: '?languagePreference=cy' }
   })
@@ -10,7 +10,7 @@
 {% from "hmrc/components/language-select/macro.njk" import hmrcLanguageSelect %}
 
 {{ hmrcLanguageSelect({
-  language: data['languagePreference'],
+  language: languagePreference,
   en: { href: '?languagePreference=en' },
   cy: { href: '?languagePreference=cy' }
 }) }}

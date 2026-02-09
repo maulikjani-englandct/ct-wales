@@ -16,14 +16,24 @@ const router = govukPrototypeKit.requests.setupRouter()
 // })
 
 const cookieParser = require('cookie-parser')
-app.use(cookieParser())
-router.use((req, res, next) => { 
+router.use(cookieParser())
+
+router.use((req, res, next) => {
     if (req.query.languagePreference) {
-        res.cookie('languagePreference', req.query.languagePreference,
-        { maxAge: 1000 * 60 * 60 * 24 * 365, httpOnly: false })
+        res.cookie('languagePreference', req.query.languagePreference, {
+            maxAge: 1000 * 60 * 60 * 24 * 365,
+            httpOnly: false
+        })
     }
-    res.locals.languagePreference = req.cookies.languagePreference || 'en' next()
+
+    res.locals.languagePreference = req.cookies.languagePreference || 'en'
+
+    next()
+
 })
+
+
+
 
 // ============================================================
 // VERSION 1.1 ROUTES

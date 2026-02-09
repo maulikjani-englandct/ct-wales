@@ -1,0 +1,54 @@
+{% extends "layouts/main.html" %}
+
+<!-- Page title -->
+{% block pageTitle %}
+  {% if data['languagePreference'] == "en" %}
+    What has changed? – {{ data['govukTite'] }}
+
+  {% else %}
+    Beth sydd wedi newid? – {{ data['govukTite'] }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <!-- Language selector -->
+  {% include "v1-7-1/includes/_hmrcLanguageSelect.html" %}
+  <!-- Back link -->
+  {% include "v1-7-1/includes/_backLink.html" %}
+</div>
+{% endblock %}
+
+<!-- Page content -->
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      <form action="somethingelse-when" method="post">
+        {% if data['languagePreference'] == "en" %}
+        <h1 class="govuk-heading-l">What has changed?</h1>
+        {{ govukTextarea({
+          id: "something-else-reason",
+          name: "something-else-reason",
+    
+          hint: {
+            text: "Provide as much detail as possible."
+          }
+        }) }}
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+        {% else %}
+        <h1 class="govuk-heading-l">Beth sydd wedi newid?</h1>
+        {{ govukTextarea({
+          id: "something-else-reason",
+          name: "something-else-reason",
+          hint: {
+            text: "Rho gymaint o wybodaeth â phosibl."
+          }
+        }) }}
+        <button class="govuk-button" data-module="govuk-button">Parhau</button>
+        {% endif %}
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

@@ -2,7 +2,7 @@
 
 <!-- Page title -->
 {% block pageTitle %}
-  {% if data['languagePreference'] == "en" %}
+  {% if languagePreference == "en" %}
     When did this change happen? – {{ data['govukTite'] }}
 
   {% else %}
@@ -24,7 +24,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds-from-desktop">
     <form action="../contact-details" method="post">
-      {% if data['languagePreference'] == "en" %}
+      {% if languagePreference == "en" %}
       {{ govukDateInput({
         id: "something-else-start",
         namePrefix: "something-else-start",

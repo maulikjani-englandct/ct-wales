@@ -1,0 +1,17 @@
+{% if data['languagePreference'] == "en" %}
+
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:history.back()",
+  classes: "govuk-!-margin-top-0"
+}) }}
+
+{% else %}
+
+{{ govukBackLink({
+  text: "Yn ôl",
+  href: "javascript:history.back()",
+  classes: "govuk-!-margin-top-0"
+}) }}
+
+{% endif %}

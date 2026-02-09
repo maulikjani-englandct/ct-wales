@@ -1,0 +1,96 @@
+{% extends "layouts/main.html" %}
+
+<!-- Page title -->
+{% block pageTitle %}
+  {% if data['languagePreference'] == "en" %}
+    What date is on the Notice of Alteration? – {{ data['govukTite'] }}
+
+  {% else %}
+    Pa ddyddiad sydd ar lythyr yr Hysbysiad o Newid? – {{ data['govukTite'] }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <!-- Language selector -->
+  {% include "v1-7-1/includes/_hmrcLanguageSelect.html" %}
+  <!-- Back link -->
+  {% include "v1-7-1/includes/_backLink.html" %}
+</div>
+{% endblock %}
+
+<!-- Page content -->
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+<form action="wrong-details" method="post">
+  {% if data['languagePreference'] == "en" %}
+    {{ govukDateInput({
+      id: "date-notice",
+      namePrefix: "date-notice",
+      fieldset: {
+        legend: {
+          text: "What date is on the Notice of Alteration?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      hint: {
+        text: "For example, if the Notice of Alteration letter is dated 27 April 2025, enter 27 4 2025."
+      }
+    }) }}
+    {{ govukButton({
+      text: "Continue"
+    }) }}
+
+  {% else %}
+    <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" role="group" aria-describedby="notice-issued-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+        Pa ddyddiad sydd ar lythyr yr Hysbysiad o Newid?
+      </h1>
+    </legend>
+    <div id="notice-issued-hint" class="govuk-hint">
+      Er enghraifft, os taw’r dyddiad ar lythyr yr Hysbysiad o Newid yw 27 Ebrill 2025, rhowch 27 4 2025.
+    </div>
+    <div class="govuk-date-input" id="notice-issued">
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="notice-issued-day">
+            Dydd
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="notice-issued-day" name="notice-issued-day" type="text" inputmode="numeric">
+        </div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="notice-issued-month">
+            Mis
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="notice-issued-month" name="notice-issued-month" type="text" inputmode="numeric">
+        </div>
+      </div>
+      <div class="govuk-date-input__item">
+        <div class="govuk-form-group">
+          <label class="govuk-label govuk-date-input__label" for="notice-issued-year">
+            Blwyddyn
+          </label>
+          <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="notice-issued-year" name="notice-issued-year" type="text" inputmode="numeric">
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
+
+    {{ govukButton({
+      text: "Parhau"
+    }) }}
+  {% endif %}
+</form>
+</div>
+</div>
+
+
+{% endblock %}

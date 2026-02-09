@@ -1,0 +1,54 @@
+{% extends "layouts/main.html" %}
+
+<!-- Page title -->
+{% block pageTitle %}
+  {% if data['languagePreference'] == "en" %}
+    Has the address of your home changed? – {{ data['govukTite'] }}
+
+  {% else %}
+    Ydy cyfeiriad dy gartref wedi newid? – {{ data['govukTite'] }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <!-- Language selector -->
+  {% include "v1-7-1/includes/_hmrcLanguageSelect.html" %}
+  <!-- Back link -->
+  {% include "v1-7-1/includes/_backLink.html" %}
+</div>
+{% endblock %}
+
+<!-- Page content -->
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+    <form action="../contact-details" method="post">
+      {% if data['languagePreference'] == "en" %}
+      <h1 class="govuk-heading-l">Has the address of your home changed?</h1>
+      {{ govukTextarea({
+        id: "new-address",
+        name: "new-address",
+
+        hint: {
+          text: "Provide details of any new addresses below."
+        }
+      }) }}
+      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+      {% else %}
+      <h1 class="govuk-heading-l">Ydy cyfeiriad dy gartref wedi newid?</h1>
+      {{ govukTextarea({
+        id: "new-address",
+        name: "new-address",
+        hint: {
+          text: "Rho fanylion am unrhyw gyfeiriadau newydd yn y blwch isod."
+        }
+      }) }}
+      <button class="govuk-button" data-module="govuk-button">Parhau</button>
+      {% endif %}
+    </form>
+  </div>
+</div>
+
+{% endblock %}

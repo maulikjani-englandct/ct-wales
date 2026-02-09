@@ -1,0 +1,366 @@
+{% extends "layouts/main.html" %}
+
+<!-- Page title -->
+{% block pageTitle %}
+  {% if data['languagePreference'] == "en" %}
+    Review my property details – {{ data['govukTite'] }}
+
+  {% else %}
+    Adolygu manylion fy eiddo – {{ data['govukTite'] }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <!-- Language selector -->
+  {% include "v1-7-1/includes/_hmrcLanguageSelect.html" %}
+  <!-- Back link -->
+  {% include "v1-7-1/includes/_backLink.html" %}
+</div>
+{% endblock %}
+
+<!-- Page content -->
+{% block content %}
+<style>
+  .govuk-summary-list__value {width:30%}
+  .govuk-summary-list__actions {width:30%}
+</style>
+
+{% if data['languagePreference'] == "en" %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+
+    <h1 class="govuk-heading-xl">
+      Review my property details
+    </h1>
+    {{ govukSummaryList({
+    rows: [
+      {
+        key: {
+          text: "Address"
+        },
+          value: {
+          text: "19, St David's Crescent, Cardiff, CF5 4GP"
+        }
+      }
+    ]
+    }) }}
+    <h2 class="govuk-heading-m">Property details</h2>
+    <div class="govuk-inset-text">
+      You can request a review of any property details that are listed below. <br><br>
+
+      Any changes made could result in your property moving to a higher or lower Council Tax band.
+    </div>
+
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+          text: "Type of home"
+        },
+        value: {
+        text: "Mid-terraced house"
+        },
+        actions: {
+        items: [
+        {
+        href: "correct/property-type",
+        text: "Request review",
+        visuallyHiddenText: "type of home"
+        }
+        ]
+        }
+        },
+      {
+      key: {
+      text: "Size of home"
+      },
+      value: {
+      text: "90 m² (969 ft²)"
+      },
+      actions: {
+      items: [
+      {
+      href: "correct/property-type",
+      text: "Request review",
+      visuallyHiddenText: "type of home"
+      }
+      ]
+      }
+      },
+      {
+      key: {
+      text: "Floors"
+      },
+      value: {
+      text: "2"
+      },
+      actions: {
+      items: [
+      {
+      href: "correct/floor-house",
+      text: "Request review",
+      visuallyHiddenText: "floors"
+      }
+      ]
+      }
+      },
+      {
+      key: {
+      text: "Bedrooms"
+      },
+      value: {
+      text: "2"
+      },
+      actions: {
+      items: [
+      {
+      href: "#",
+      text: "Request review",
+      visuallyHiddenText: "type of home"
+      }
+      ]
+      }
+      },
+      {
+      key: {
+      text: "Bathrooms"
+      },
+      value: {
+      text: "1"
+      },
+      actions: {
+      items: [
+      {
+      href: "#",
+      text: "Request review",
+      visuallyHiddenText: "type of home"
+      }
+      ]
+      }
+      },
+      {
+      key: {
+      text: "Total rooms"
+      },
+      value: {
+      text: "4"
+      },
+      actions: {
+      items: [
+      {
+      href: "#",
+      text: "Request review",
+      visuallyHiddenText: "type of home"
+      }
+      ]
+      }
+      },
+      {
+      key: {
+      text: "Parking"
+      },
+      value: {
+      text: "Public parking"
+      },
+      actions: {
+      items: [
+      {
+      href: "correct/parking",
+      text: "Request review",
+      visuallyHiddenText: "parking"
+      }
+      ]
+      }
+      }
+      ]
+    }) }}
+
+    <h2 class="govuk-heading-m">
+      Confirm details
+    </h2>
+
+    <p>
+      To the best of my knowledge, the details above are correct.
+    </p>
+
+    <form action="challenge" method="post" novalidate>
+      <input type="hidden" name="detailsChanged" value="false">
+      {{ govukButton({
+      text: "Continue"
+      }) }}
+    </form>
+
+  </div>
+</div>
+{% else %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+
+    <h1 class="govuk-heading-xl">
+      Adolygu manylion fy eiddo
+    </h1>
+
+    {{ govukSummaryList({
+    rows: [
+    {
+    key: {
+    text: "Cyfeiriad"
+    },
+    value: {
+    text: "19, St David's Crescent, Cardiff, CF5 4GP"
+    }
+    }
+    ]
+    }) }}
+
+    <h2 class="govuk-heading-m">Manylion yr eiddo</h2>
+    <div class="govuk-inset-text">
+      Rydych yn gallu gofyn am adolygiad o unrhyw fanylion eiddo sydd wedi’u rhestru isod. <br><br>
+
+      Gall unrhyw newidiadau a wneir arwain at eich eiddo symud i fand Treth Gyngor uwch neu is.
+    </div>
+    {{ govukSummaryList({
+    rows: [
+    {
+    key: {
+    text: "Math o gartref"
+    },
+    value: {
+    text: "Tŷ canol teras"
+    },
+    actions: {
+    items: [
+    {
+    href: "correct/property-type",
+    text: "Gofyn am adolygiad",
+    visuallyHiddenText: "math o gartref"
+    }
+    ]
+    }
+    },
+    {
+    key: {
+    text: "Maint y cartref"
+    },
+    value: {
+    text: "90 m² (969 ft²)"
+    },
+    actions: {
+    items: [
+    {
+    href: "correct/area",
+    text: "Gofyn am adolygiad",
+    visuallyHiddenText: "maint y cartref"
+    }
+    ]
+    }
+    },
+    {
+    key: {
+    text: "Lloriau"
+    },
+    value: {
+    text: "2"
+    },
+    actions: {
+    items: [
+    {
+    href: "correct/floor-house",
+    text: "Gofyn am adolygiad",
+    visuallyHiddenText: "lloriau"
+    }
+    ]
+    }
+    },
+    {
+    key: {
+    text: "Ystafelloedd gwely"
+    },
+    value: {
+    text: "2"
+    },
+    actions: {
+    items: [
+    {
+    href: "correct/bedrooms",
+    text: "Gofyn am adolygiad",
+    visuallyHiddenText: "ystafelloedd gwely"
+    }
+    ]
+    }
+    },
+    {
+    key: {
+    text: "Ystafelloedd ymolchi"
+    },
+    value: {
+    text: "1"
+    },
+    actions: {
+    items: [
+    {
+    href: "correct/bathrooms",
+    text: "Gofyn am adolygiad",
+    visuallyHiddenText: "ystafelloedd ymolchi"
+    }
+    ]
+    }
+    },
+    {
+    key: {
+    text: "Pob ystafell"
+    },
+    value: {
+    text: "4"
+    },
+    actions: {
+    items: [
+    {
+    href: "correct/rooms",
+    text: "Gofyn am adolygiad",
+    visuallyHiddenText: "pob ystafell"
+    }
+    ]
+    }
+    },
+    {
+    key: {
+    text: "Parcio"
+    },
+    value: {
+    text: "Parcio cyhoeddus"
+    },
+    actions: {
+    items: [
+    {
+    href: "correct/parking",
+    text: "Gofyn am adolygiad",
+    visuallyHiddenText: "parcio"
+    }
+    ]
+    }
+    }
+    ]
+    }) }}
+
+    <h2 class="govuk-heading-m">
+      Cadarnhau manylion
+    </h2>
+
+    <p>
+      Hyd eithaf fy ngwybodaeth, mae’r manylion uchod yn gywir.
+    </p>
+
+    <form action="challenge" method="post" novalidate>
+      <input type="hidden" name="detailsChanged" value="false">
+      {{ govukButton({
+      text: "Parhau"
+      }) }}
+    </form>
+
+  </div>
+</div>
+{% endif %}
+{% endblock %}

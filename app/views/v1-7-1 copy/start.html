@@ -1,0 +1,249 @@
+{% extends "layouts/main.html" %}
+
+<!-- Page title -->
+{% block pageTitle %}
+  {% if data['languagePreference'] == "en" %}
+    Check and review your Council Tax band – {{ data['govukTite'] }}
+
+  {% else %}
+    Gwirio ac adolygu eich band Treth Gyngor – {{ data['govukTite'] }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+ {% if data['languagePreference'] == "en" %}
+    {{ govukBreadcrumbs({
+      items: [
+        {
+          text: "Home",
+          href: "#"
+        },
+        {
+          text: "Housing and local services",
+          href: "#"
+        },
+        {
+          text: "Council Tax"
+        }
+      ]
+    }) }}
+
+    {% else %}
+    {{ govukBreadcrumbs({
+      items: [
+        {
+          text: "Hafan",
+          href: "#"
+        },
+        {
+          text: "Tai a gwasanaethau lleol",
+          href: "#"
+        },
+        {
+          text: "Treth Gyngor"
+        }
+      ]
+    }) }}
+  {% endif %}
+
+
+{% endblock %}
+
+<!-- Page content -->
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {% if data['languagePreference'] == "en" %}
+        
+      <h1 class="govuk-heading-xl">Check and review your Council Tax band</h1>
+  
+      {% else %}
+      <h1 class="govuk-heading-xl">Gwirio ac adolygu eich band Treth Gyngor </h1>
+      {% endif %}
+    </div>
+    <div class="govuk-grid-column-two-thirds">
+      <!-- English -------------------------------------------------------------- -->
+      {% if data['languagePreference'] == "en" %}
+  
+      <p>Use this service to:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>find out the Council Tax band of any home in Wales</li>
+        <li>check and update the information we have about your home</li>
+        <li>let us know if you think your Council Tax band is wrong</li>
+      </ul>
+  
+      <div class="govuk-inset-text">
+        <p>This page is also available in <a href='?languagePreference=cy'>Welsh (Cymraeg)</a>.</p>
+      </div>
+  
+      {{ govukButton({
+        text: "Start now",
+        href: "search",
+        isStartButton: true
+      }) }}
+  
+      <div class="gem-c-heading govuk-!-margin-bottom-4 govuk-!-margin-top-5">
+  
+        <h2 class="gem-c-heading__text govuk-heading-m">
+          More information
+        </h2>
+      </div>
+  
+      <div data-module="govspeak" class="gem-c-govspeak govuk-govspeak govuk-!-margin-bottom-0"
+        data-govspeak-module-started="true">
+        <style>
+          .contact {
+            border-left: 1px solid #b1b4b6;
+            padding-left: 15px;
+            margin: 0 0 30px 0;
+          }
+        </style>
+        <h3 class="govuk-heading-s"> Contact the Valuation Office Agency (VOA) </h3>
+        <p class="contact">Valuation Office Agency <br>
+          Wycliffe House <br>
+          Green Lane <br>
+          Durham <br>
+          DH1 3UW <br><br>
+          <a class="govuk-link" href="mailto:ctinbox@voa.gov.uk">ctinbox@voa.gov.uk </a>
+        </p>
+  
+        <p class="contact">Telephone (England): 03000 501 501 <br>
+          Telephone (Wales): 03000 505 505 <br>
+          Monday to Tuesday, 9am to 4:30pm <br>
+          Wednesday, 10am to 4:30pm <br>
+          Thursday to Friday, 9am to 4:30pm<br>
+          <a class="govuk-link" href="https://www.gov.uk/call-charges">Find out about call charges </a>
+        </p>
+  
+      </div>
+  
+      <div class="govuk-prototype-kit-common-templates-related-items" style="margin: 80px 0;">
+        <nav class="gem-c-related-navigation__nav-section" aria-labelledby="related-nav-topics-fc0522a5"
+          data-module="gem-toggle" data-gem-toggle-module-started="true">
+  
+          <h2 class="govuk-heading-s">Explore the topic</h2>
+  
+  
+          <strong><a href="/browse/housing-local-services/council-tax">Council Tax</a></strong>
+        </nav>
+      </div>
+  
+      <!-- Welsh -------------------------------------------------------------- -->
+      {% else %}
+      <p>Defnyddiwch y gwasanaeth hwn i: </p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>gwirio band Treth Gyngor unrhyw gartref yng Nghymru</li>
+        <li>edrych ar y manylion sydd gennym am eich cartref</li>
+        <li>rhoi gwybod i ni os ydych yn meddwl y dylai eich cartref fod mewn band Treth Gyngor gwahanol</li>
+      </ul>
+  
+      <div class="govuk-inset-text">
+        <p>Mae'r dudalen hon hefyd ar gael yn <a href='?languagePreference=en'>Saesneg (English)</a>.</p>
+      </div>
+  
+      {{ govukButton({
+        text: "Dechrau nawr",
+        href: "search",
+        isStartButton: true
+      }) }}
+  
+      <div class="gem-c-heading govuk-!-margin-bottom-4 govuk-!-margin-top-5">
+  
+        <h2 class="gem-c-heading__text govuk-heading-m">
+          Rhagor o wybodaeth
+        </h2>
+      </div>
+  
+      <div data-module="govspeak" class="gem-c-govspeak govuk-govspeak govuk-!-margin-bottom-0"
+        data-govspeak-module-started="true">
+        <style>
+          .contact {
+            border-left: 1px solid #b1b4b6;
+            padding-left: 15px;
+            margin: 0 0 30px 0;
+          }
+        </style>
+        <h3 class="govuk-heading-s">Cysylltu ag Asiantaeth y Swyddfa Brisio (VOA)</h3>
+  
+  
+        <p class="contact">Asiantaeth y Swyddfa Brisio (VOA)<br>
+          Wycliffe House <br>
+          Green Lane <br>
+          Durham <br>
+          DH1 3UW <br><br>
+          <a class="govuk-link" href="mailto:ctinbox@voa.gov.uk">ctinbox@voa.gov.uk </a>
+        </p>
+  
+  
+        <p class="contact"> Ffôn (Cymru): 03000 505 505 <br>
+          Ffôn (Lloegr): 03000 501 501 <br>
+          Dydd Llun i Ddydd Mawrth: 9am – 4:30pm <br>
+          Dydd Mercher: 10am – 4:30pm <br>
+          Dydd Iau i Ddydd Gwener: 9am – 4:30pm <br>
+          <a class="govuk-link" href="https://www.gov.uk/call-charges">Dysgwch fwy am gostau galwadau </a>
+        </p>
+  
+      </div>
+  
+      <div class="govuk-prototype-kit-common-templates-related-items" style="margin: 80px 0;">
+        <nav class="gem-c-related-navigation__nav-section" aria-labelledby="related-nav-topics-fc0522a5"
+          data-module="gem-toggle" data-gem-toggle-module-started="true">
+  
+          {% if data['languagePreference'] == "en" %}
+          <h2 class="govuk-heading-s">Explore the topic</h2>
+          <strong><a href="/browse/housing-local-services/council-tax">Council Tax</a></strong>
+          {% else %}
+          <h2 class="govuk-heading-s">Dysgwch fwy am y pwnc</h2>
+          <strong><a href="/browse/housing-local-services/council-tax">Treth Gyngor</a></strong>
+          {% endif %}
+        </nav>
+      </div>
+      {% endif %}
+    </div>
+  
+    <div class="govuk-grid-column-one-third">
+      <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
+        <h2 class="govuk-heading-m" id="subsection-title">
+          {% if data['languagePreference'] == "en" %}
+          Related content
+          {% else %}
+          Cynnwys perthnasol
+          {% endif %}
+        </h2>
+        <nav role="navigation" aria-labelledby="subsection-title">
+          <ul class="govuk-list govuk-!-font-size-16">
+            {% if data['languagePreference'] == "en" %}
+            <!-- English -------------------------------------------------------------- -->
+            <li><a href="#">How Council Tax works</a></li>
+            <li><a href="#">Council Tax bands</a></li>
+            <li><a href="#">How Council Tax bands are set</a></li>
+            <li><a href="#">Review your Council Tax band </a></li>
+            <li><a href="#">What Council Tax is spent on </a></li>
+            <li><a href="#">Who has to pay Council Tax </a></li>
+            <li><a href="#">Discounts for full time students</a></li>
+            <li><a href="#">Discounts for disabled people </a></li>
+            <li><a href="#">Second homes and empty properties </a></li>
+            <li><a href="#">Paying your Council Tax bill </a></li>
+  
+            <!-- Wales ---------------------------------------------------------------- -->
+            {% else %}
+            <li><a href="#">Sut mae’r Dreth Gyngor yn gweithio</a></li>
+            <li><a href="#">Bandiau Treth Gyngor </a></li>
+            <li><a href="#">Sut mae bandiau Treth Gyngor yn cael eu hasesu </a></li>
+            <li><a href="#">Adolygu eich band Treth Gyngor </a></li>
+            <li><a href="#">Ar beth mae’r Dreth Gyngor yn cael ei gwario </a></li>
+            <li><a href="#">Pwy sydd yn gorfod talu Treth Gyngor </a></li>
+            <li><a href="#">Gostyngiadau i fyfyrwyr amser llawn </a></li>
+            <li><a href="#">Gostyngiadau i bobl anabl </a></li>
+            <li><a href="#">Ail gartrefi ac eiddo gwag </a></li>
+            <li><a href="#">Talu eich bil Treth Gyngor </a></li>
+  
+            {% endif %}
+          </ul>
+        </nav>
+      </aside>
+    </div>
+  </div>
+
+{% endblock %}

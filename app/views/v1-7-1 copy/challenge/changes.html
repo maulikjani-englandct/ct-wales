@@ -1,0 +1,133 @@
+{% extends "layouts/main.html" %}
+
+<!-- Page title -->
+{% block pageTitle %}
+  {% if data['languagePreference'] == "en" %}
+    What has changed? – {{ data['govukTite'] }}
+
+  {% else %}
+    Beth sydd wedi newid? – {{ data['govukTite'] }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <!-- Language selector -->
+  {% include "v1-7-1/includes/_hmrcLanguageSelect.html" %}
+  <!-- Back link -->
+  {% include "v1-7-1/includes/_backLink.html" %}
+</div>
+{% endblock %}
+
+<!-- Page content -->
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      {% if data['languagePreference'] == "en" %}
+      <form action="/v1-7-1/change-reason" method="post">
+       {{ govukRadios({
+        name: "changes",
+        fieldset: {
+          legend: {
+            text: "What has changed?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+          {
+            value: "demolished_uninhabitable",
+            text: "My home has been demolished or cannot be lived in"
+          },
+          {
+            value: "part_demolished",
+            text: "Part of my home has been demolished"
+          },
+          {
+            value: "split",
+            text: "My home has been split into more than one property"
+          },
+          {
+            value: "merged",
+            text: "My home has been merged with other properties"
+          },
+          {
+            value: "business_use",
+            text: "Part or all of my home is now used for business"
+          },
+          {
+            value: "domestic_use",
+            text: "Part or all of my property is now my home"
+          },
+          {
+            value: "local_area_changes",
+            text: "Permanent changes in the local area have affected the value of my home"
+          },
+          {
+            value: "something_else",
+            text: "Something else"
+          }
+        ]
+      }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+      
+      {% else %}
+      <form action="/v1-7-1/change-reason" method="post">
+       {{ govukRadios({
+        name: "changes",
+        fieldset: {
+          legend: {
+            text: "Beth sydd wedi newid?",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        items: [
+          {
+            value: "demolished_uninhabitable",
+            text: "Mae fy nghartref wedi'i ddymchwel neu does neb yn gallu byw ynddo"
+          },
+          {
+            value: "part_demolished",
+            text: "Mae rhan o fy nghartref wedi ei ddymchwel"
+          },
+          {
+            value: "split",
+            text: "Mae fy nghartref wedi'i rannu'n fwy nag un eiddo"
+          },
+          {
+            value: "merged",
+            text: "Mae fy nghartref wedi'i gyfuno gydag un neu fwy eiddo arall"
+          },
+          {
+            value: "business_use",
+            text: "Mae fy nghartref cyfan, neu ran ohono, bellach yn cael ei ddefnyddio fel busnes"
+          },
+          {
+            value: "domestic_use",
+            text: "Mae fy nghartref cyfan, neu ran ohono, bellach yn cael ei ddefnyddio fel cartref"
+          },
+          {
+            value: "local_area_changes",
+            text: "Mae newidiadau parhaol yn yr ardal lleol wedi effeithio ar werth fy nghartref"
+          },
+          {
+            value: "something_else",
+            text: "Rhywbeth arall"
+          }
+        ]
+      }) }}
+
+        {{ govukButton({
+          text: "Parhau"
+        }) }}
+      </form>
+      {% endif %}
+    </div>
+  </div>
+
+{% endblock %}

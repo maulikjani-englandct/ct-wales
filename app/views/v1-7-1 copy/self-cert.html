@@ -1,0 +1,135 @@
+{% extends "layouts/main.html" %}
+
+<!-- Page title -->
+{% block pageTitle %}
+  {% if data['languagePreference'] == "en" %}
+    Are you responsible for the Council Tax on this property? – {{ data['govukTite'] }}
+
+  {% else %}
+    Ydych chi'n gyfrifol am y Dreth Gyngor ar yr eiddo hwn? – {{ data['govukTite'] }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <!-- Language selector -->
+  {% include "v1-7-1/includes/_hmrcLanguageSelect.html" %}
+  <!-- Back link -->
+  {% include "v1-7-1/includes/_backLink.html" %}
+</div>
+{% endblock %}
+
+<!-- Page content -->
+{% block content %}
+
+{% if data['languagePreference'] == "en" %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      <form class="form" action="/v1-7-1/liable-check" method="post">
+        <span class="govuk-caption-l">19, St David's Crescent, Cardiff, CF5 4GP</span>
+        <h1 class="govuk-heading-l">Are you responsible for the Council Tax on this property?</h1>
+  
+        <p class="govuk-body">Only people who are responsible for the Council Tax on this property have permission to view
+          more details. This includes people acting for someone who is responsible.</p>
+
+        {{ govukWarningText({
+          text: "If you are not responsible for the Council Tax on this property, you should not continue with this service.",
+          iconFallbackText: "Warning"
+        }) }}
+
+       {{ govukRadios({
+        name: "liability",
+        fieldset: {
+          legend: {
+            text: "Are you responsible for the Council Tax on this property?",
+            classes: "govuk-visually-hidden"
+          }
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes"
+            
+          },
+          {
+            value: "no",
+            text: "No"
+          },
+          {
+            value: "proxy",
+            text: "I am acting for someone who is responsible",
+            hint: {
+              text: "You will need their written permission"
+            }
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue",
+        type: "submit"
+      }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+  {% else %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      <form class="form" action="/v1-7-1/liable-check" method="post">
+        <span class="govuk-caption-l">19, St David's Crescent, Cardiff, CF5 4GP</span>
+        <h1 class="govuk-heading-l">Ydych chi'n gyfrifol am y Dreth Gyngor ar yr eiddo hwn?</h1>
+  
+        <p class="govuk-body">Dim ond pobl sy'n gyfrifol am y Dreth Gyngor ar eiddo sydd â chaniatâd i weld rhagor o
+          fanylion. Mae hyn yn cynnwys pobl sy'n gweithredu dros rywun sydd yn gyfrifol.</p>
+
+          {{ govukWarningText({
+            text: "Os nad ydych chi'n gyfrifol am y Dreth Gyngor ar yr eiddo hwn, dylech chi ddim barhau gyda'r gwasanaeth hwn.",
+            iconFallbackText: "Rhybudd"
+          }) }}
+
+          {{ govukRadios({
+            name: "liability",
+            fieldset: {
+              legend: {
+                text: "Wyt ti'n gyfrifol am y Dreth Gyngor ar yr eiddo hwn?",
+                classes: "govuk-visually-hidden"
+              }
+            },
+            items: [
+              {
+                value: "yes",
+                text: "Ydw"
+                
+              },
+              {
+                value: "no",
+                text: "Nac ydw"
+              },
+              {
+                value: "proxy",
+                text: "Rydw i'n gweithredu dros rywun sy'n gyfrifol",
+                hint: {
+                  text: "Bydd angen i chi gael eu caniatâd ysgrifenedig"
+                }
+              }
+            ]
+          }) }}
+
+        {{ govukButton({
+          text: "Parhau",
+          type: "submit"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+  {% endif %}
+
+
+{% endblock %}

@@ -2,7 +2,7 @@
 
 <!-- Page title -->
 {% block pageTitle %}
-  {% if data['languagePreference'] == "en" %}
+  {% if languagePreference == "en" %}
     What permanent changes have taken place in your local area? – {{ data['govukTite'] }}
 
   {% else %}
@@ -24,7 +24,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds-from-desktop">
     <form action="local-area-when" method="post">
-      {% if data['languagePreference'] == "en" %}
+      {% if languagePreference == "en" %}
       <h1 class="govuk-heading-l">What permanent changes have taken place in your local area?</h1>
       {{ govukTextarea({
         id: "local-area-reason",

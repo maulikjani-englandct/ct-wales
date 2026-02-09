@@ -1,0 +1,356 @@
+{% extends "layouts/main.html" %}
+
+<!-- Page title -->
+{% block pageTitle %}
+  {% if data['languagePreference'] == "en" %}
+    Sign in using Government Gateway – {{ data['govukTite'] }}
+
+  {% else %}
+    Mewngofnodi gan ddefnyddio Porth y Llywodraeth – {{ data['govukTite'] }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <!-- Language selector -->
+  {% include "v1-7-1/includes/_hmrcLanguageSelect.html" %}
+  <!-- Back link -->
+  {% include "v1-7-1/includes/_backLink.html" %}
+</div>
+{% endblock %}
+
+<!-- Page content -->
+{% block content %}
+
+{% if data['languagePreference'] == "en" %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-xl">
+        Review my property details
+      </h1>
+            <div class="govuk-inset-text">
+        Some property details are being reviewed and cannot be changed at the moment.
+      </div>
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Address"
+            },
+            value: {
+              text: "19, St David's Crescent, Cardiff, CF5 4GP"
+            }
+          }
+        ]
+      }) }}
+      <h2 class="govuk-heading-m">Property details</h2>
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Type of home"
+            },
+            value: {
+              text: "Mid-terraced house"
+            },
+            actions: {
+              items: [
+                {
+                  href: "correct/property-type",
+                  text: "Change",
+                  visuallyHiddenText: "type of home"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Size of home"
+            },
+            value: {
+              text: "90 m² (969 ft²)"
+            }
+          },
+          {
+            key: {
+              text: "Floors"
+            },
+            value: {
+              text: "2"
+            },
+            actions: {
+              items: [
+                {
+                  href: "correct/floor-house",
+                  text: "Change",
+                  visuallyHiddenText: "floors"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Bedrooms"
+            },
+            value: {
+              text: "2"
+            }
+          },
+          {
+            key: {
+              text: "Bathrooms"
+            },
+            value: {
+              text: "1"
+            }
+          },
+          {
+            key: {
+              text: "Total rooms"
+            },
+            value: {
+              text: "4"
+            }
+          },
+          {
+            key: {
+              text: "Parking"
+            },
+            value: {
+              text: "Street or public parking"
+            },
+            actions: {
+              items: [
+                {
+                  href: "correct/parking",
+                  text: "Change",
+                  visuallyHiddenText: "parking"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Features that may affect value"
+            },
+            value: {
+              text: "Sea view"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "features that may affect value"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        Review your changes
+      </h2>
+
+      <p>
+        To the best of your knowledge, the updated details you've provided are correct.
+      </p>
+
+      <form action="challenge" method="post" novalidate>
+        <input type="hidden" name="detailsChanged" value="true">
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+  {% else %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-xl">
+        Diweddaru gwybodaeth am fy eiddo
+      </h1>
+      <div class="govuk-inset-text">
+        Some property details are being reviewed and cannot be changed at the moment.
+      </div>
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Cyfeiriad"
+            },
+            value: {
+              text: "19, St David's Crescent, Cardiff, CF5 4GP"
+            }
+          }
+        ]
+      }) }}
+      <h2 class="govuk-heading-m">Manylion dy eiddo</h2>
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Math o gartref"
+            },
+            value: {
+              text: "Tŷ canol teras"
+            },
+            actions: {
+              items: [
+                {
+                  href: "correct/property-type",
+                  text: "Newid",
+                  visuallyHiddenText: "math o gartref"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Maint y cartref"
+            },
+            value: {
+              text: "90 m² (969 ft²)"
+            },
+            actions: {
+              items: [
+                {
+                  href: "correct/area",
+                  text: "Newid",
+                  visuallyHiddenText: "maint y cartref"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Lloriau"
+            },
+            value: {
+              text: "2"
+            },
+            actions: {
+              items: [
+                {
+                  href: "correct/floor-house",
+                  text: "Newid",
+                  visuallyHiddenText: "lloriau"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Ystafelloedd gwely"
+            },
+            value: {
+              text: "2"
+            },
+            actions: {
+              items: [
+                {
+                  href: "correct/bedrooms",
+                  text: "Newid",
+                  visuallyHiddenText: "ystafelloedd gwely"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Ystafelloedd ymolchi"
+            },
+            value: {
+              text: "1"
+            },
+            actions: {
+              items: [
+                {
+                  href: "correct/bathrooms",
+                  text: "Newid",
+                  visuallyHiddenText: "ystafelloedd ymolchi"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Pob ystafell"
+            },
+            value: {
+              text: "4"
+            },
+            actions: {
+              items: [
+                {
+                  href: "correct/rooms",
+                  text: "Newid",
+                  visuallyHiddenText: "pob ystafell"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Parcio"
+            },
+            value: {
+              text: "Parcio cyhoeddus"
+            },
+            actions: {
+              items: [
+                {
+                  href: "correct/parking",
+                  text: "Newid",
+                  visuallyHiddenText: "parcio"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Pethau sy'n gallu effeithio ar y gwerth"
+            },
+            value: {
+              text: "Yr olygfa"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Newid",
+                  visuallyHiddenText: "pethau sy'n gallu effeithio ar y gwerth"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        Adolygu dy newidiadau
+      </h2>
+
+      <p>
+        Hyd eithaf dy wybodaeth, mae'r manylion a ddiweddarwyd gen ti yn gywir.
+      </p>
+
+      <form action="challenge" method="post" novalidate>
+        <input type="hidden" name="detailsChanged" value="true">
+        {{ govukButton({
+          text: "Parhau"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+  {% endif %}
+
+
+{% endblock %}

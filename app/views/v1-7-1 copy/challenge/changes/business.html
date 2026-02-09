@@ -1,0 +1,55 @@
+{% extends "layouts/main.html" %}
+
+<!-- Page title -->
+{% block pageTitle %}
+  {% if data['languagePreference'] == "en" %}
+    Which parts of your home are being used for business? – {{ data['govukTite'] }}
+
+  {% else %}
+    Pa rannau o dy gartref sy'n cael eu defnyddio ar gyfer busnes? – {{ data['govukTite'] }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <!-- Language selector -->
+  {% include "v1-7-1/includes/_hmrcLanguageSelect.html" %}
+  <!-- Back link -->
+  {% include "v1-7-1/includes/_backLink.html" %}
+</div>
+{% endblock %}
+
+<!-- Page content -->
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      <form action="business-when" method="post">
+        {% if data['languagePreference'] == "en" %}
+        <h1 class="govuk-heading-l">Which parts of your home are being used for business?</h1>
+        {{ govukTextarea({
+          id: "business-reason",
+          name: "business-reason",
+          hint: {
+            text: "For example, you have converted part of the ground floor into a hairdressing salon or café, and you still
+            live in the rest of the home. Provide as much detail as possible."
+          }
+        }) }}
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+        {% else %}
+        <h1 class="govuk-heading-l">Pa rannau o dy gartref sy'n cael eu defnyddio ar gyfer busnes?</h1>
+        {{ govukTextarea({
+          id: "business-reason",
+          name: "business-reason",
+          hint: {
+            text: "Er enghraifft, rwyt ti wedi trosi rhan o'r llawr gwaelod yn salon trin gwallt neu gaffi, ac rwyt ti'n dal i
+            fyw yng ngweddill y cartref. Rho gymaint o wybodaeth â phosibl."
+          }
+        }) }}
+        <button class="govuk-button" data-module="govuk-button">Parhau</button>
+        {% endif %}
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

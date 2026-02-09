@@ -8,18 +8,28 @@ const router = govukPrototypeKit.requests.setupRouter()
 // ===================================================================
 // HMRC language select component - set language value in session data
 // ===================================================================
-router.use((req, res, next) => {
-  if (req.query.languagePreference) {
-    req.session.data['languagePreference'] = req.query.languagePreference
-  }
-  next()
+// router.use((req, res, next) => {
+//   if (req.query.languagePreference) {
+//     req.session.data['languagePreference'] = req.query.languagePreference
+//   }
+//   next()
+// })
+
+const cookieParser = require('cookie-parser')
+app.use(cookieParser())
+router.use((req, res, next) => { 
+    if (req.query.languagePreference) {
+        res.cookie('languagePreference', req.query.languagePreference,
+        { maxAge: 1000 * 60 * 60 * 24 * 365, httpOnly: false })
+    }
+    res.locals.languagePreference = req.cookies.languagePreference || 'en' next()
 })
 
 // ============================================================
 // VERSION 1.1 ROUTES
 // ============================================================
 
-router.post('/v1-1/letusknow', function(req, res) {
+router.post('/v1-1/letusknow', function (req, res) {
     const answer = req.session.data['help']
 
     if (answer === "incorrect") {
@@ -29,7 +39,7 @@ router.post('/v1-1/letusknow', function(req, res) {
     }
 })
 
-router.post('/v1-1/parking-check', function(req, res) {
+router.post('/v1-1/parking-check', function (req, res) {
     const answer = req.session.data['parking-type']
 
     if (answer === "garaging" || answer === "remote-garaging") {
@@ -45,7 +55,7 @@ router.post('/v1-1/parking-check', function(req, res) {
 // VERSION 1.2 ROUTES
 // ============================================================
 
-router.post('/v1-2/letusknow', function(req, res) {
+router.post('/v1-2/letusknow', function (req, res) {
     const answer = req.session.data['help']
 
     if (answer === "incorrect") {
@@ -55,7 +65,7 @@ router.post('/v1-2/letusknow', function(req, res) {
     }
 })
 
-router.post('/v1-2/parking-check', function(req, res) {
+router.post('/v1-2/parking-check', function (req, res) {
     const answer = req.session.data['parking-type']
 
     if (answer === "garaging" || answer === "remote-garaging") {
@@ -71,7 +81,7 @@ router.post('/v1-2/parking-check', function(req, res) {
 // VERSION 1.3 ROUTES
 // ============================================================
 
-router.post('/v1-3/liable-check', function(req, res) {
+router.post('/v1-3/liable-check', function (req, res) {
     const answer = req.session.data['liability']
 
     if (answer === "yes" || answer === "proxy") {
@@ -81,7 +91,7 @@ router.post('/v1-3/liable-check', function(req, res) {
     }
 })
 
-router.post('/v1-3/ata-check', function(req, res) {
+router.post('/v1-3/ata-check', function (req, res) {
     const answer = req.session.data['atacheck']
 
     if (answer === "yes") {
@@ -91,7 +101,7 @@ router.post('/v1-3/ata-check', function(req, res) {
     }
 })
 
-router.post('/v1-3/propertytype', function(req, res) {
+router.post('/v1-3/propertytype', function (req, res) {
     const answer = req.session.data['type']
 
     if (answer === "house") {
@@ -107,7 +117,7 @@ router.post('/v1-3/propertytype', function(req, res) {
     }
 })
 
-router.post('/v1-3/parking-check', function(req, res) {
+router.post('/v1-3/parking-check', function (req, res) {
     const answer = req.session.data['parking-type']
 
     if (answer === "garaging" || answer === "remote-garaging") {
@@ -119,7 +129,7 @@ router.post('/v1-3/parking-check', function(req, res) {
     }
 })
 
-router.post('/v1-3/letusknow', function(req, res) {
+router.post('/v1-3/letusknow', function (req, res) {
     const answer = req.session.data['help']
 
     if (answer === "incorrect") {
@@ -133,7 +143,7 @@ router.post('/v1-3/letusknow', function(req, res) {
 // VERSION 1.4 ROUTES
 // ============================================================
 
-router.post('/v1-4/liable-check', function(req, res) {
+router.post('/v1-4/liable-check', function (req, res) {
     const answer = req.session.data['liability']
 
     if (answer === "yes" || answer === "proxy") {
@@ -143,7 +153,7 @@ router.post('/v1-4/liable-check', function(req, res) {
     }
 })
 
-router.post('/v1-4/propertytype', function(req, res) {
+router.post('/v1-4/propertytype', function (req, res) {
     const answer = req.session.data['type']
 
     if (answer === "house") {
@@ -159,7 +169,7 @@ router.post('/v1-4/propertytype', function(req, res) {
     }
 })
 
-router.post('/v1-4/parking-check', function(req, res) {
+router.post('/v1-4/parking-check', function (req, res) {
     const answer = req.session.data['parking-type']
 
     if (answer === "garaging" || answer === "remote-garaging") {
@@ -171,7 +181,7 @@ router.post('/v1-4/parking-check', function(req, res) {
     }
 })
 
-router.post('/v1-4/letusknow', function(req, res) {
+router.post('/v1-4/letusknow', function (req, res) {
     const answer = req.session.data['help']
 
     if (answer === "incorrect") {
@@ -185,7 +195,7 @@ router.post('/v1-4/letusknow', function(req, res) {
 // VERSION 1.5 ROUTES
 // ============================================================
 
-router.post('/v1-5/liable-check', function(req, res) {
+router.post('/v1-5/liable-check', function (req, res) {
     const answer = req.session.data['liability']
 
     if (answer === "yes" || answer === "proxy") {
@@ -195,7 +205,7 @@ router.post('/v1-5/liable-check', function(req, res) {
     }
 })
 
-router.post('/v1-5/propertytype', function(req, res) {
+router.post('/v1-5/propertytype', function (req, res) {
     const answer = req.session.data['type']
 
     if (answer === "house") {
@@ -211,7 +221,7 @@ router.post('/v1-5/propertytype', function(req, res) {
     }
 })
 
-router.post('/v1-5/parking-check', function(req, res) {
+router.post('/v1-5/parking-check', function (req, res) {
     const answer = req.session.data['parking-type']
 
     if (answer === "garaging" || answer === "remote-garaging") {
@@ -225,7 +235,7 @@ router.post('/v1-5/parking-check', function(req, res) {
 
 // Challenge journey routes
 
-router.post('/challenge', function(req, res) {
+router.post('/challenge', function (req, res) {
     const answer = req.session.data['challenge'];
     const detailsChanged = req.session.data['detailsChanged'];
 
@@ -236,7 +246,7 @@ router.post('/challenge', function(req, res) {
     }
 })
 
-router.post('/why-challenge', function(req, res) {
+router.post('/why-challenge', function (req, res) {
     const answer = req.session.data['why-challenge']
 
     if (answer === "wrong") {
@@ -246,7 +256,7 @@ router.post('/why-challenge', function(req, res) {
     }
 })
 
-router.post('/howlonglived', function(req, res) {
+router.post('/howlonglived', function (req, res) {
     const answer = req.session.data['howLongLived']
 
     if (answer === "yes") {
@@ -256,7 +266,7 @@ router.post('/howlonglived', function(req, res) {
     }
 })
 
-router.post('/noticealt', function(req, res) {
+router.post('/noticealt', function (req, res) {
     const answer = req.session.data['noticeAlteration']
 
     if (answer === "yes") {
@@ -266,7 +276,7 @@ router.post('/noticealt', function(req, res) {
     }
 })
 
-router.post('/change-reason', function(req, res) {
+router.post('/change-reason', function (req, res) {
     const answer = req.session.data['changes'];
 
     if (answer === "demolished_uninhabitable") {
@@ -290,7 +300,7 @@ router.post('/change-reason', function(req, res) {
     }
 })
 
-router.post('/v1-5/letusknow', function(req, res) {
+router.post('/v1-5/letusknow', function (req, res) {
     const answer = req.session.data['help']
 
     if (answer === "incorrect") {
@@ -304,7 +314,7 @@ router.post('/v1-5/letusknow', function(req, res) {
 // VERSION 1.5.1 ROUTES
 // ============================================================
 
-router.post('/v1-5-1/liable-check', function(req, res) {
+router.post('/v1-5-1/liable-check', function (req, res) {
     const answer = req.session.data['liability']
 
     if (answer === "yes" || answer === "proxy") {
@@ -314,7 +324,7 @@ router.post('/v1-5-1/liable-check', function(req, res) {
     }
 })
 
-router.post('/v1-5-1/propertytype', function(req, res) {
+router.post('/v1-5-1/propertytype', function (req, res) {
     const answer = req.session.data['type']
 
     if (answer === "house") {
@@ -330,7 +340,7 @@ router.post('/v1-5-1/propertytype', function(req, res) {
     }
 })
 
-router.post('/v1-5-1/parking-check', function(req, res) {
+router.post('/v1-5-1/parking-check', function (req, res) {
     const answer = req.session.data['parking-type']
 
     if (answer === "garaging" || answer === "remote-garaging") {
@@ -344,7 +354,7 @@ router.post('/v1-5-1/parking-check', function(req, res) {
 
 // Challenge journey routes
 
-router.post('/challenge-alt', function(req, res) {
+router.post('/challenge-alt', function (req, res) {
     const answer = req.session.data['challenge'];
     const detailsChanged = req.session.data['detailsChanged'];
 
@@ -357,7 +367,7 @@ router.post('/challenge-alt', function(req, res) {
     }
 })
 
-router.post('/v1-5-1/why-challenge', function(req, res) {
+router.post('/v1-5-1/why-challenge', function (req, res) {
     const answer = req.session.data['why-challenge']
 
     if (answer === "wrong") {
@@ -367,7 +377,7 @@ router.post('/v1-5-1/why-challenge', function(req, res) {
     }
 })
 
-router.post('/v1-5-1/howlonglived', function(req, res) {
+router.post('/v1-5-1/howlonglived', function (req, res) {
     const answer = req.session.data['howLongLived']
 
     if (answer === "yes") {
@@ -377,7 +387,7 @@ router.post('/v1-5-1/howlonglived', function(req, res) {
     }
 })
 
-router.post('/v1-5-1/noticealt', function(req, res) {
+router.post('/v1-5-1/noticealt', function (req, res) {
     const answer = req.session.data['noticeAlteration']
 
     if (answer === "yes") {
@@ -387,7 +397,7 @@ router.post('/v1-5-1/noticealt', function(req, res) {
     }
 })
 
-router.post('/v1-5-1/change-reason', function(req, res) {
+router.post('/v1-5-1/change-reason', function (req, res) {
     const answer = req.session.data['changes'];
 
     if (answer === "demolished_uninhabitable") {
@@ -415,7 +425,7 @@ router.post('/v1-5-1/change-reason', function(req, res) {
 // VERSION 1.5.2 ROUTES
 // ============================================================
 
-router.post('/v1-5-2/liable-check', function(req, res) {
+router.post('/v1-5-2/liable-check', function (req, res) {
     const answer = req.session.data['liability']
 
     if (answer === "yes" || answer === "proxy") {
@@ -425,7 +435,7 @@ router.post('/v1-5-2/liable-check', function(req, res) {
     }
 })
 
-router.post('/v1-5-2/propertytype', function(req, res) {
+router.post('/v1-5-2/propertytype', function (req, res) {
     const answer = req.session.data['type']
 
     if (answer === "house") {
@@ -441,7 +451,7 @@ router.post('/v1-5-2/propertytype', function(req, res) {
     }
 })
 
-router.post('/v1-5-2/parking-check', function(req, res) {
+router.post('/v1-5-2/parking-check', function (req, res) {
     const answer = req.session.data['parking-type']
 
     if (answer === "garaging" || answer === "remote-garaging") {
@@ -455,7 +465,7 @@ router.post('/v1-5-2/parking-check', function(req, res) {
 
 // Challenge journey routes
 
-router.post('/challenge-alt2', function(req, res) {
+router.post('/challenge-alt2', function (req, res) {
     const answer = req.session.data['challenge'];
     const detailsChanged = req.session.data['detailsChanged'];
 
@@ -470,7 +480,7 @@ router.post('/challenge-alt2', function(req, res) {
     }
 });
 
-router.post('/v1-5-2/why-challenge', function(req, res) {
+router.post('/v1-5-2/why-challenge', function (req, res) {
     const answer = req.session.data['why-challenge']
 
     if (answer === "wrong") {
@@ -480,7 +490,7 @@ router.post('/v1-5-2/why-challenge', function(req, res) {
     }
 })
 
-router.post('/v1-5-2/howlonglived', function(req, res) {
+router.post('/v1-5-2/howlonglived', function (req, res) {
     const answer = req.session.data['howLongLived']
 
     if (answer === "yes") {
@@ -490,7 +500,7 @@ router.post('/v1-5-2/howlonglived', function(req, res) {
     }
 })
 
-router.post('/v1-5-2/noticealt', function(req, res) {
+router.post('/v1-5-2/noticealt', function (req, res) {
     const answer = req.session.data['noticeAlteration']
 
     if (answer === "yes") {
@@ -500,7 +510,7 @@ router.post('/v1-5-2/noticealt', function(req, res) {
     }
 })
 
-router.post('/v1-5-2/change-reason', function(req, res) {
+router.post('/v1-5-2/change-reason', function (req, res) {
     const answer = req.session.data['changes'];
 
     if (answer === "demolished_uninhabitable") {
@@ -528,7 +538,7 @@ router.post('/v1-5-2/change-reason', function(req, res) {
 // VERSION 1.6 ROUTES
 // ============================================================
 
-router.post('/v1-6/liable-check', function(req, res) {
+router.post('/v1-6/liable-check', function (req, res) {
     const answer = req.session.data['liability']
     const languagePreference = req.session.data['languagePreference'] || 'en'
 
@@ -540,7 +550,7 @@ router.post('/v1-6/liable-check', function(req, res) {
 })
 
 
-router.post('/v1-6/verification-method', function(req, res) {
+router.post('/v1-6/verification-method', function (req, res) {
     const answer = req.session.data['verification-method']
     const languagePreference = req.session.data['languagePreference'] || 'en'
 
@@ -553,7 +563,7 @@ router.post('/v1-6/verification-method', function(req, res) {
     }
 })
 
-router.post('/v1-6/formal-informal/scenario', function(req, res) {
+router.post('/v1-6/formal-informal/scenario', function (req, res) {
     const answer = req.session.data['challenge-type']
     const languagePreference = req.session.data['languagePreference'] || 'en'
 
@@ -575,7 +585,7 @@ router.post('/v1-6/formal-informal/scenario', function(req, res) {
 // ============================================================
 
 // Evidence journey - upload choice routing
-router.post('/v1-6-1/evidence-upload-router', function(req, res) {
+router.post('/v1-6-1/evidence-upload-router', function (req, res) {
     const answer = req.session.data['has-documents']
 
     if (answer === "yes") {
@@ -596,7 +606,7 @@ router.post('/v1-6-1/evidence-upload-router', function(req, res) {
 // Liability check route
 // Determines if user can access extended property details
 // Uses Government Gateway authentication for verified access
-router.post('/v1-7/liable-check', function(req, res) {
+router.post('/v1-7/liable-check', function (req, res) {
     const answer = req.session.data['liability']
 
     if (answer === "yes" || answer === "proxy") {
@@ -610,7 +620,7 @@ router.post('/v1-7/liable-check', function(req, res) {
 
 // Property type routing for correction journey
 // Routes to type-specific pages for property details updates
-router.post('/v1-7/propertytype', function(req, res) {
+router.post('/v1-7/propertytype', function (req, res) {
     const answer = req.session.data['type']
 
     if (answer === "house") {
@@ -628,7 +638,7 @@ router.post('/v1-7/propertytype', function(req, res) {
 
 // Parking type routing
 // Determines next step based on parking type selected
-router.post('/v1-7/parking-check', function(req, res) {
+router.post('/v1-7/parking-check', function (req, res) {
     const answer = req.session.data['parking-type']
 
     if (answer === "garaging" || answer === "remote-garaging") {
@@ -655,7 +665,7 @@ router.post('/v1-7/parking-check', function(req, res) {
 // 1. No challenge + no changes = Simple confirmation
 // 2. No challenge + changes made = Collect contact details for updates
 // 3. Yes to challenge = Enter formal/informal scenario selection
-router.post('/v1-7/challenge-router', function(req, res) {
+router.post('/v1-7/challenge-router', function (req, res) {
     const answer = req.session.data['challenge'];
     const detailsChanged = req.session.data['detailsChanged'];
 
@@ -679,7 +689,7 @@ router.post('/v1-7/challenge-router', function(req, res) {
 // Routes based on reason for challenge:
 // - "wrong" = Band is incorrect based on wrong property details
 // - "changes" = Physical/material changes to property or area
-router.post('/v1-7/why-challenge', function(req, res) {
+router.post('/v1-7/why-challenge', function (req, res) {
     const answer = req.session.data['why-challenge']
 
     if (answer === "wrong") {
@@ -693,7 +703,7 @@ router.post('/v1-7/why-challenge', function(req, res) {
 
 // Evidence upload choice router
 // Routes based on whether user has documents to upload
-router.post('/v1-7/challenge/evidence-upload-router', function(req, res) {
+router.post('/v1-7/challenge/evidence-upload-router', function (req, res) {
     const answer = req.session.data['has-documents']
 
     if (answer === "yes") {
@@ -707,7 +717,7 @@ router.post('/v1-7/challenge/evidence-upload-router', function(req, res) {
 
 // How long have you lived at the property?
 // Determines eligibility and next steps in challenge
-router.post('/v1-7/howlonglived', function(req, res) {
+router.post('/v1-7/howlonglived', function (req, res) {
     const answer = req.session.data['howLongLived']
 
     if (answer === "yes") {
@@ -721,7 +731,7 @@ router.post('/v1-7/howlonglived', function(req, res) {
 
 // Did you receive a notice of alteration?
 // Required for certain challenge types
-router.post('/v1-7/noticealt', function(req, res) {
+router.post('/v1-7/noticealt', function (req, res) {
     const answer = req.session.data['noticeAlteration']
 
     if (answer === "yes") {
@@ -736,7 +746,7 @@ router.post('/v1-7/noticealt', function(req, res) {
 // What type of change has occurred?
 // Routes to specific change type forms
 // Each change type has different evidence requirements
-router.post('/v1-7/change-reason', function(req, res) {
+router.post('/v1-7/change-reason', function (req, res) {
     const answer = req.session.data['changes'];
 
     if (answer === "demolished_uninhabitable") {
@@ -774,7 +784,7 @@ router.post('/v1-7/change-reason', function(req, res) {
 // option2 = More than 6 months liable (Informal review)
 // option3 = Band changed by VOA in last 6 months (Formal review)
 // option4 = Property or local area changes
-router.post('/v1-7/challenge/scenario-router', function(req, res) {
+router.post('/v1-7/challenge/scenario-router', function (req, res) {
     const answer = req.session.data['challenge-type']
     const languagePreference = req.session.data['languagePreference'] || 'en'
 
@@ -795,7 +805,7 @@ router.post('/v1-7/challenge/scenario-router', function(req, res) {
     }
 })
 
-router.post('/1.7/challenge', function(req, res) {
+router.post('/1.7/challenge', function (req, res) {
     const answer = req.session.data['challenge'];
     const detailsChanged = req.session.data['detailsChanged'];
 
@@ -824,7 +834,7 @@ router.post('/v1-7-1/challenge', function (req, res) { res.redirect('/v1-7-1/cha
 // Liability check route
 // Determines if user can access extended property details
 // Uses Government Gateway authentication for verified access
-router.post('/v1-7-1/liable-check', function(req, res) {
+router.post('/v1-7-1/liable-check', function (req, res) {
     const answer = req.session.data['liability']
 
     if (answer === "yes" || answer === "proxy") {
@@ -838,7 +848,7 @@ router.post('/v1-7-1/liable-check', function(req, res) {
 
 // Property type routing for correction journey
 // Routes to type-specific pages for property details updates
-router.post('/v1-7-1/propertytype', function(req, res) {
+router.post('/v1-7-1/propertytype', function (req, res) {
     const answer = req.session.data['type']
 
     if (answer === "house") {
@@ -856,7 +866,7 @@ router.post('/v1-7-1/propertytype', function(req, res) {
 
 // Parking type routing
 // Determines next step based on parking type selected
-router.post('/v1-7-1/parking-check', function(req, res) {
+router.post('/v1-7-1/parking-check', function (req, res) {
     const answer = req.session.data['parking-type']
 
     if (answer === "garaging" || answer === "remote-garaging") {
@@ -883,7 +893,7 @@ router.post('/v1-7-1/parking-check', function(req, res) {
 // 1. No challenge + no changes = Simple confirmation
 // 2. No challenge + changes made = Collect contact details for updates
 // 3. Yes to challenge = Enter formal/informal scenario selection
-router.post('/v1-7-1/challenge-router', function(req, res) {
+router.post('/v1-7-1/challenge-router', function (req, res) {
     const answer = req.session.data['challenge'];
     const detailsChanged = req.session.data['detailsChanged'];
 
@@ -907,7 +917,7 @@ router.post('/v1-7-1/challenge-router', function(req, res) {
 // Routes based on reason for challenge:
 // - "wrong" = Band is incorrect based on wrong property details
 // - "changes" = Physical/material changes to property or area
-router.post('/v1-7-1/why-challenge', function(req, res) {
+router.post('/v1-7-1/why-challenge', function (req, res) {
     const answer = req.session.data['why-challenge']
 
     if (answer === "wrong") {
@@ -921,7 +931,7 @@ router.post('/v1-7-1/why-challenge', function(req, res) {
 
 // Evidence upload choice router
 // Routes based on whether user has documents to upload
-router.post('/v1-7-1/challenge/evidence-upload-router', function(req, res) {
+router.post('/v1-7-1/challenge/evidence-upload-router', function (req, res) {
     const answer = req.session.data['has-documents']
 
     if (answer === "yes") {
@@ -935,7 +945,7 @@ router.post('/v1-7-1/challenge/evidence-upload-router', function(req, res) {
 
 // How long have you lived at the property?
 // Determines eligibility and next steps in challenge
-router.post('/v1-7-1/howlonglived', function(req, res) {
+router.post('/v1-7-1/howlonglived', function (req, res) {
     const answer = req.session.data['howLongLived']
 
     if (answer === "yes") {
@@ -949,7 +959,7 @@ router.post('/v1-7-1/howlonglived', function(req, res) {
 
 // Did you receive a notice of alteration?
 // Required for certain challenge types
-router.post('/v1-7-1/noticealt', function(req, res) {
+router.post('/v1-7-1/noticealt', function (req, res) {
     const answer = req.session.data['noticeAlteration']
 
     if (answer === "yes") {
@@ -964,7 +974,7 @@ router.post('/v1-7-1/noticealt', function(req, res) {
 // What type of change has occurred?
 // Routes to specific change type forms
 // Each change type has different evidence requirements
-router.post('/v1-7-1/change-reason', function(req, res) {
+router.post('/v1-7-1/change-reason', function (req, res) {
     const answer = req.session.data['changes'];
 
     if (answer === "demolished_uninhabitable") {
@@ -1002,13 +1012,13 @@ router.post('/v1-7-1/change-reason', function(req, res) {
 // option2 = More than 6 months liable (Informal review)
 // option3 = Band changed by VOA in last 6 months (Formal review)
 // option4 = Property or local area changes
-router.post('/v1-7-1/challenge/scenario-router', function(req, res) {
+router.post('/v1-7-1/challenge/scenario-router', function (req, res) {
     const answer = req.session.data['challenge-type']
 
     if (answer === 'option1') {
         // Formal review - less than 6 months
         res.redirect('/v1-7-1/challenge/option1')
-    } 
+    }
     else if (answer === 'option2') {
         // Informal review - more than 6 months
         res.redirect('/v1-7-1/challenge/option2')
@@ -1026,7 +1036,7 @@ router.post('/v1-7-1/challenge/scenario-router', function(req, res) {
     }
 })
 
-router.post('/v1-7-1/challenge', function(req, res) {
+router.post('/v1-7-1/challenge', function (req, res) {
     const answer = req.session.data['challenge'];
     const detailsChanged = req.session.data['detailsChanged'];
 

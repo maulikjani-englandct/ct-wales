@@ -1,0 +1,108 @@
+{% extends "layouts/main.html" %}
+
+<!-- Page title -->
+{% block pageTitle %}
+  {% if data['languagePreference'] == "en" %}
+    When did you become responsible for paying Council Tax for your home? – {{ data['govukTite'] }}
+
+  {% else %}
+    Pryd gwnaethoch chi ddod yn gyfrifol am dalu Treth Gyngor am eich cartref? – {{ data['govukTite'] }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <!-- Language selector -->
+  {% include "v1-7-1/includes/_hmrcLanguageSelect.html" %}
+  <!-- Back link -->
+  {% include "v1-7-1/includes/_backLink.html" %}
+</div>
+{% endblock %}
+
+<!-- Page content -->
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="wrong-details" method="post">
+
+      <!-- English -->
+      {% if data['languagePreference'] == "en" %}
+
+      {{ govukDateInput({
+        id: "date-payer",
+        namePrefix: "date-payer",
+        fieldset: {
+          legend: {
+          text: "When did you become responsible for paying Council Tax for your home?",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+          }
+        },
+        hint: {
+          html: "<br>You are responsible from the date you bought, or started renting, the home. <br><br>For example, if the
+          date was 27 April 2025, enter 27 4 2025."
+        }
+        }) 
+      }}
+
+      {{ govukButton({
+      text: "Continue"
+      }) }}
+
+      <!-- Welsh -->
+      {% else %}
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Pryd gwnaethoch chi ddod yn gyfrifol am dalu Treth Gyngor am eich cartref?
+
+            </h1>
+          </legend>
+          <div id="passport-issued-hint" class="govuk-hint"><br>
+            Rydych yn gyfrifol o’r dyddiad wnaethoch brynu, neu ddechrau rhentu, y cartref. <br><br>
+            Er enghraifft, os taw’r dyddiad oedd 27 Ebrill 2025, rhowch 27 4 2025
+          </div>
+          <div class="govuk-date-input" id="passport-issued">
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                  Dydd
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day"
+                  name="passport-issued-day" type="text" inputmode="numeric">
+              </div>
+            </div>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                  Mis
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month"
+                  name="passport-issued-month" type="text" inputmode="numeric">
+              </div>
+            </div>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                  Blwyddyn
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year"
+                  name="passport-issued-year" type="text" inputmode="numeric">
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      {{ govukButton({
+          text: "Parhau"
+      }) }}
+
+      {% endif %}
+    </form>
+  </div>
+</div>
+
+{% endblock %}

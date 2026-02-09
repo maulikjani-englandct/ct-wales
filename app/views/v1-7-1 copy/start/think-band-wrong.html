@@ -1,0 +1,253 @@
+{% extends "layouts/main.html" %}
+
+<!-- Page title -->
+{% block pageTitle %}
+  {% if data['languagePreference'] == "en" %}
+    What details are used to decide a band – {{ data['govukTite'] }}
+
+  {% else %}
+    Pa fanylion sy'n cael eu defnyddio i benderfynu band – {{ data['govukTite'] }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% if data['languagePreference'] == "en" %}
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Home",
+      href: "#"
+    },
+    {
+      text: "Housing and local services",
+      href: "#"
+    },
+    {
+      text: "Council Tax"
+    }
+  ]
+}) }}
+{% else %}
+{{ govukBreadcrumbs({
+  items: [
+    {
+      text: "Hafan",
+      href: "#"
+    },
+    {
+      text: "Tai a gwasanaethau lleol",
+      href: "#"
+    },
+    {
+      text: "Treth Gyngor"
+    }
+  ]
+}) }}
+{% endif %}
+
+{% endblock %}
+
+<!-- Page content -->
+{% block content %}
+
+  <div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    {% if data['languagePreference'] == "en" %}
+      <h1 class="govuk-heading-xl">Check and review your Council Tax band</h1>
+      <nav data-module="ga4-link-tracker" aria-label="Contents" class="gem-c-contents-list govuk-!-margin-bottom-4">
+        <h2 class="gem-c-contents-list__title">Contents</h2>
+        <ol class="gem-c-contents-list__list">
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="../start"><span class="govuk-visually-hidden">Contents: </span>Check your Council Tax band</a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="how-bands-decided"><span class="govuk-visually-hidden">Contents: </span>How Council Tax bands are decided</a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="property-details-used"><span class="govuk-visually-hidden">Contents: </span>What details are used to decide a band</a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="check-update-property"><span class="govuk-visually-hidden">Contents: </span>Checking and updating the details of your home</a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="changes-affect-band"><span class="govuk-visually-hidden">Contents: </span>What can affect the band a home is in</a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed gem-c-contents-list__list-item--active">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <span class="govuk-visually-hidden">Contents: </span>I think my Council Tax band is wrong
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="role-voa-council"><span class="govuk-visually-hidden">Contents: </span>What the VOA and your local council do</a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="contact-voa"><span class="govuk-visually-hidden">Contents: </span>Contact the VOA</a>
+          </li>
+        </ol>
+      </nav>
+      <h2 class="govuk-heading-l">I think my Council Tax band is wrong</h2>
+      <div class="govuk-inset-text">
+        <p>This page is also available in <a href='?languagePreference=cy'>Welsh (Cymraeg)</a>.</p>
+      </div>
+      <p>There are two ways you can request a review of your Council Tax band if you think it is wrong:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>formal challenge (make a proposal)</li>
+        <li>informal challenge (band review)</li>
+      </ul>
+
+      <h3 class="govuk-heading-m">Formal challenge (making a proposal)</h3>
+      <p>We are required by law to review your band if you ask us to. This is called a formal challenge and is also known as making a proposal.</p>
+      <p>You can make a proposal if:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>you have been paying Council Tax on your property for <strong>less than six months</strong></li>
+        <li>the VOA has changed your Council Tax band in the last six months</li>
+      </ul>
+      <p>You can also make a proposal to tell us that your property has changed. For example:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>the property has been demolished</li>
+        <li>it has been divided into new properties</li>
+        <li>it has been merged into a single property</li>
+        <li>there has been a physical change in your local area that has affected the value of your property</li>
+      </ul>
+      <p>There's no time limit on these examples – you can do it at any time.</p>
+      <p>If you're making a proposal, it's helpful if you can provide supporting evidence.</p>
+
+      <h3 class="govuk-heading-m">Informal challenge (band review)</h3>
+      <p>If you think your band is wrong and you've been paying Council Tax for <strong>more than six months</strong>, you can request a band review.</p>
+      <p>Band reviews are known as informal challenges, and you can ask for one at any time. For band reviews, <strong>you must provide evidence</strong> to support your request for a review. The quality of evidence you provide is key.</p>
+      <p>We must see strong supporting evidence to accept a band review request. Without it, we will not be able to review your band.</p>
+      <p>Evidence to support a band review might include addresses of up to five properties in a lower Council Tax band than yours, if these properties are like yours in age, style, design, size and type.</p>
+      <p>They will need to be in a nearby street or estate if you live in a town or city, or within 10 miles of your property if you live in the countryside. We'll consider a wider distance if you live in a rural area.</p>
+      <p>You can also use evidence from house prices if your property or similar properties were sold between 1 April 2001 and 31 March 2005 in Wales.</p>
+    {% else %}
+      <h1 class="govuk-heading-xl">Gwirio ac adolygu dy fand Treth Gyngor</h1>
+      <nav data-module="ga4-link-tracker" aria-label="Contents" class="gem-c-contents-list govuk-!-margin-bottom-4">
+        <h2 class="gem-c-contents-list__title">Cynnwys</h2>
+        <ol class="gem-c-contents-list__list">
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="../start">
+              <span class="govuk-visually-hidden">Contents: </span>
+              Gwirio dy fand Treth Gyngor
+            </a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="how-bands-decided">
+              <span class="govuk-visually-hidden">Contents: </span>
+              Sut mae bandiau Treth Gyngor yn cael eu penderfynu
+            </a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="property-details-used">
+              <span class="govuk-visually-hidden">Contents: </span>
+              Pa fanylion sy'n cael eu defnyddio i benderfynu band
+            </a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="check-update-property">
+              <span class="govuk-visually-hidden">Contents: </span>
+              Gwirio a diweddaru manylion dy gartref
+            </a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="changes-affect-band">
+              <span class="govuk-visually-hidden">Contents: </span>
+              Beth sy'n gallu effeithio ar y band mae cartref ynddo
+            </a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed gem-c-contents-list__list-item--active">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <span class="govuk-visually-hidden">Contents: </span>
+            Rydw i'n meddwl bod fy mand Treth Gyngor yn anghywir
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="role-voa-council">
+              <span class="govuk-visually-hidden">Contents: </span>
+              Beth mae'r VOA a'r cyngor lleol yn ei wneud
+            </a>
+          </li>
+          <li class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed">
+            <span class="gem-c-contents-list__list-item-dash" aria-hidden="true"></span>
+            <a class="gem-c-contents-list__link govuk-link gem-print-force-link-styles govuk-link--no-underline" href="contact-voa">
+              <span class="govuk-visually-hidden">Contents: </span>
+              Cysylltu â'r VOA
+            </a>
+          </li>
+        </ol>
+      </nav>
+
+      <h2 class="govuk-heading-l">Rydw i'n meddwl bod fy mand Treth Gyngor yn anghywir</h2>
+      <div class="govuk-inset-text">
+        <p>Mae'r dudalen hon hefyd ar gael yn <a href='?languagePreference=en'>Saesneg (English)</a>.</p>
+      </div>
+      <p>Mae dau ffordd i ti ofyn i'r VOA adolygu dy fand Treth Gyngor os wyt ti'n meddwl ei fod yn anghywir.</p>
+
+      <h3 class="govuk-heading-m">Her ffurfiol (gwneud cynnig)</h3>
+      <p>Yn ôl y gyfraith, mae'n rhaid i'r VOA adolygu dy fand os wyt ti'n gofyn. Mae hyn yn cael ei alw'n her ffurfiol, neu 'gwneud cynnig'.</p>
+      <p>Rwyt ti'n gallu gwneud cynnig os:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>wyt ti wedi bod yn gyfrifol am dalu y Dreth Gyngor ar dy gartref <strong>am lai na chwe mis</strong></li>
+        <li>mae'r VOA wedi newid dy fand Treth Gyngor yn ystod y chwe mis diwethaf</li>
+      </ul>
+      <p>Rwyt ti hefyd yn gallu gwneud cynnig os yw dy gartref wedi newid.</p>
+      <p>Er enghraifft:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>mae'r cartref wedi cael ei ddymchwel</li>
+        <li>mae'r cartref wedi cael ei rannu'n gartrefi newydd</li>
+        <li>mae sawl cartref wedi cael eu cyfuno'n un cartref</li>
+        <li>mae rhywbeth wedi newid yn yr ardal leol sy'n effeithio ar werth dy gartref</li>
+      </ul>
+      <p>Does dim terfyn amser ar yr enghreifftiau yma – rwyt ti'n gallu gwneud cynnig unrhyw bryd.</p>
+      <p>Os wyt ti'n gwneud cynnig, mae'n help os wyt ti'n gallu rhoi tystiolaeth i gefnogi beth wyt ti'n ei ddweud.</p>
+
+      <h3 class="govuk-heading-m">Her anffurfiol (adolygiad o fand)</h3>
+      <p>Os wyt ti'n meddwl bod dy fand yn anghywir ac rwyt ti wedi bod yn talu Treth Gyngor <strong>am dros chwe mis</strong>, rwyt ti'n gallu gofyn am adolygiad o'r band.</p>
+      <p>Mae adolygiad o fand hefyd yn cael ei alw'n 'her anffurfiol', ac rwyt ti'n gallu gofyn am un unrhyw bryd.</p>
+      <p>Os wyt ti'n gofyn am adolygiad o fand, <strong>mae'n rhaid i ti roi tystiolaeth</strong> i ddangos pam rwyt ti'n meddwl bod y band yn anghywir.</p>
+      <p>Mae ansawdd y dystiolaeth rwyt ti'n rhoi i ni yn bwysig. Heb dystiolaeth dda, fydd y VOA ddim yn gallu adolygu dy fand.</p>
+      <p>Gall tystiolaeth gynnwys cyfeiriadau hyd at bum cartref sydd mewn band is na dy gartref di, os yw'r cartrefi hynny'n debyg i dy gartref di o ran math, maint, oedran a steil.</p>
+      <p>Mae'n rhaid iddyn nhw fod ar stryd neu ystâd ar bwys dy gartref di os wyt ti'n byw mewn tref neu ddinas, neu o fewn 10 milltir os wyt ti'n byw yng nghefn gwlad.</p>
+      <p>Rwyt ti hefyd yn gallu defnyddio tystiolaeth prisiau tai os cafodd dy gartref neu gartrefi tebyg eu gwerthu rhwng 1 Ebrill 2001 a 31 Mawrth 2005.</p>
+    {% endif %}
+  </div>
+
+  <div class="govuk-grid-column-one-third">
+    <aside class="govuk-prototype-kit-common-templates-related-items" role="complementary">
+      <h2 class="govuk-heading-m" id="subsection-title">
+        {% if data['languagePreference'] == "en" %}
+          Related content
+        {% else %}
+          Cynnwys perthnasol
+        {% endif %}
+      </h2>
+      <nav role="navigation" aria-labelledby="subsection-title">
+        <ul class="govuk-list govuk-!-font-size-16">
+          {% if data['languagePreference'] == "en" %}
+            <li><a href="https://www.gov.uk/council-tax">How Council Tax works</a></li>
+            <li><a href="#">Council Tax in Wales</a></li>
+            <li><a href="https://www.gov.uk/guidance/understand-how-council-tax-bands-are-assessed">How domestic properties are assessed for Council Tax bands</a></li>
+          {% else %}
+            <li><a href="https://www.gov.uk/council-tax">Sut mae'r Dreth Gyngor yn gweithio</a></li>
+            <li><a href="https://www.llyw.cymru/treth-gyngor">Treth Gyngor yng Nghymru</a></li>
+            <li><a href="https://www.gov.uk/guidance/understand-how-council-tax-bands-are-assessed.cy">Sut y caiff eiddo domestig ei asesu ar gyfer bandiau Treth Gyngor</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+    </aside>
+  </div>
+</div>
+
+{% endblock %}

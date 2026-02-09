@@ -2,7 +2,7 @@
 
 <!-- Page title -->
 {% block pageTitle %}
-  {% if data['languagePreference'] == "en" %}
+  {% if languagePreference == "en" %}
     When did all or part of your home change to business use? – {{ data['govukTite'] }}
 
   {% else %}
@@ -25,7 +25,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <form action="new-address" method="post">
-      {% if data['languagePreference'] == "en" %}
+      {% if languagePreference == "en" %}
         {{ govukDateInput({
           id: "business-use-start",
           namePrefix: "business-use-start",

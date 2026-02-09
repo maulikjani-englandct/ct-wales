@@ -1,0 +1,54 @@
+{% extends "layouts/main.html" %}
+
+<!-- Page title -->
+{% block pageTitle %}
+  {% if data['languagePreference'] == "en" %}
+    How have your properties been merged? – {{ data['govukTite'] }}
+
+  {% else %}
+    Sut mae dy gartref wedi eu cyfuno? – {{ data['govukTite'] }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <!-- Language selector -->
+  {% include "v1-7-1/includes/_hmrcLanguageSelect.html" %}
+  <!-- Back link -->
+  {% include "v1-7-1/includes/_backLink.html" %}
+</div>
+{% endblock %}
+
+<!-- Page content -->
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      <form action="merge-property-when" method="post">
+        {% if data['languagePreference'] == "en" %}
+        <h1 class="govuk-heading-l">How have your properties been merged?</h1>
+        {{ govukTextarea({
+          id: "merged-property-reason",
+          name: "merged-property-reason",
+          hint: {
+            text: "For example, two flats have been merged into a single home. Provide as much detail as possible."
+          }
+        }) }}
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+        
+        {% else %}
+        <h1 class="govuk-heading-l">Sut mae dy gartref wedi eu cyfuno?</h1>
+        {{ govukTextarea({
+          id: "merged-property-reason",
+          name: "merged-property-reason",
+          hint: {
+            text: "Er enghraifft, mae dau fflat wedi eu cyfuno'n un cartref. Rho gymaint o wybodaeth â phosibl."
+          }
+        }) }}
+        <button class="govuk-button" data-module="govuk-button">Parhau</button>
+        {% endif %}
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

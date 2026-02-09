@@ -1,0 +1,89 @@
+{% extends "layouts/main.html" %}
+
+<!-- Page title -->
+{% block pageTitle %}
+  {% if data['languagePreference'] == "en" %}
+    Enter the property postcode – {{ data['govukTite'] }}
+
+  {% else %}
+    Rhowch god post yr eiddo – {{ data['govukTite'] }}
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+<div class="govuk-grid-row">
+  <!-- Language selector -->
+  {% include "v1-7-1/includes/_hmrcLanguageSelect.html" %}
+  <!-- Back link -->
+  {% include "v1-7-1/includes/_backLink.html" %}
+</div>
+{% endblock %}
+
+<!-- Page content -->
+{% block content %}
+
+{% if data['languagePreference'] == "en" %}
+
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      Enter the property postcode
+    </h1>
+    <p class="govuk-body">You can search for any home in Wales by entering the postcode.</p>
+    <form action="search-results">
+      <fieldset class="govuk-fieldset">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="address-postcode">
+            Postcode
+          </label>
+          <div id="address-postcode-hint" class="govuk-hint">
+            For example CF10 3NQ
+          </div>
+          <input class="govuk-input govuk-input--width-10" id="address-postcode" name="addressPostcode" type="text"
+            autocomplete="postal-code">
+        </div>
+      </fieldset>
+      <button type="submit" class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+    </form>
+    <p><a href="#">I do not know the postcode</a></p>
+  </div>
+</div>
+
+
+{% else %}
+<div class="govuk-grid-row">
+
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">
+      Rhowch god post yr eiddo
+    </h1>
+    <p class="govuk-body">Rydych yn gallu chwilio am gartref yng Nghymru trwy roi cod post yr eiddo.</p>
+    <form action="search-results">
+      <fieldset class="govuk-fieldset">
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="address-postcode">
+            Cod post
+          </label>
+          <div id="address-postcode-hint" class="govuk-hint">
+            Er enghraifft CF10 3NQ
+          </div>
+          <input class="govuk-input govuk-input--width-10" id="address-postcode" name="addressPostcode" type="text"
+            autocomplete="postal-code">
+        </div>
+      </fieldset>
+      <button type="submit" class="govuk-button" data-module="govuk-button">
+        Parhau
+      </button>
+    </form>
+    <p><a href="#">Dydw i ddim yn gwybod y cod post</a></p>
+  </div>
+</div>
+
+{% endif %}
+
+{% endblock %}

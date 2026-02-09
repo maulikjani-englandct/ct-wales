@@ -2,7 +2,7 @@
 
 <!-- Page title -->
 {% block pageTitle %}
-  {% if data['languagePreference'] == "en" %}
+  {% if languagePreference == "en" %}
     Tell us why you think the Council Tax band is wrong – {{ data['govukTite'] }}
 
   {% else %}
@@ -25,7 +25,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
 <form action="evidence-upload-choice" method="post">
-{% if data['languagePreference'] == "en" %}
+{% if languagePreference == "en" %}
   <h1 class="govuk-heading-l">Tell us why you think the Council Tax band is wrong?</h1>
 
     {{ govukInsetText({

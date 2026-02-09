@@ -2,7 +2,7 @@
 
 <!-- Page title -->
 {% block pageTitle %}
-  {% if data['languagePreference'] == "en" %}
+  {% if languagePreference == "en" %}
     Which parts of your home are being used for business? – {{ data['govukTite'] }}
 
   {% else %}
@@ -25,7 +25,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
       <form action="business-when" method="post">
-        {% if data['languagePreference'] == "en" %}
+        {% if languagePreference == "en" %}
         <h1 class="govuk-heading-l">Which parts of your home are being used for business?</h1>
         {{ govukTextarea({
           id: "business-reason",

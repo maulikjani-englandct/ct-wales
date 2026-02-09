@@ -11,11 +11,8 @@ module.exports = function (app) {
 
     const lang = req.cookies.languagePreference || 'en'
 
-    // Make available to templates
+    // Only locals here – safe on every request
     res.locals.languagePreference = lang
-
-    // Make available to data['languagePreference']
-    req.session.data.languagePreference = lang
 
     next()
   })

@@ -2,7 +2,7 @@
 
 <!-- Page title -->
 {% block pageTitle %}
-  {% if languagePreference == "en" %}
+  {% if data['languagePreference'] == "en" %}
     What date is on the Notice of Alteration? – {{ data['govukTite'] }}
 
   {% else %}
@@ -25,7 +25,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {% if languagePreference == "en" %}
+      {% if data['languagePreference'] == "en" %}
 
       <form class="form" action="which-band" method="post">
 

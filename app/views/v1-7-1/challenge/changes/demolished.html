@@ -2,7 +2,7 @@
 
 <!-- Page title -->
 {% block pageTitle %}
-  {% if languagePreference == "en" %}
+  {% if data['languagePreference'] == "en" %}
     Tell us why your home has been demolished or cannot be lived in – {{ data['govukTite'] }}
 
   {% else %}
@@ -25,7 +25,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
       <form action="demolished-when" method="post">
-        {% if languagePreference == "en" %}
+        {% if data['languagePreference'] == "en" %}
         <h1 class="govuk-heading-l">Tell us why your home has been demolished or cannot be lived in</h1>
         {{ govukTextarea({
           id: "demolished-reason",

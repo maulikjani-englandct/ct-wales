@@ -2,7 +2,7 @@
 
 <!-- Page title -->
 {% block pageTitle %}
-  {% if languagePreference == "en" %}
+  {% if data['languagePreference'] == "en" %}
     19, St David's Crescent, Cardiff, CF5 4GP – {{ data['govukTite'] }}
 
   {% else %}
@@ -22,7 +22,7 @@
 <!-- Page content -->
 {% block content %}
 
-{% if languagePreference == "en" %}
+{% if data['languagePreference'] == "en" %}
 
   <div class="govuk-grid-row">
 

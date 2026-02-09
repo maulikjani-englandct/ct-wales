@@ -2,7 +2,7 @@
 
 <!-- Page title -->
 {% block pageTitle %}
-  {% if languagePreference == "en" %}
+  {% if data['languagePreference'] == "en" %}
     Are you responsible for the Council Tax on this property? – {{ data['govukTite'] }}
 
   {% else %}
@@ -22,7 +22,7 @@
 <!-- Page content -->
 {% block content %}
 
-{% if languagePreference == "en" %}
+{% if data['languagePreference'] == "en" %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">

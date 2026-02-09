@@ -10,7 +10,7 @@
 {% from "hmrc/components/language-select/macro.njk" import hmrcLanguageSelect %}
 
 {{ hmrcLanguageSelect({
-  language: languagePreference,
+  language: data['languagePreference'],
   en: { href: '?languagePreference=en' },
   cy: { href: '?languagePreference=cy' }
 }) }}

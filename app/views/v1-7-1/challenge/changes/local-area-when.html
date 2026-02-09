@@ -2,7 +2,7 @@
 
 <!-- Page title -->
 {% block pageTitle %}
-  {% if languagePreference == "en" %}
+  {% if data['languagePreference'] == "en" %}
     When did these permanent changes take place? – {{ data['govukTite'] }}
 
   {% else %}
@@ -24,7 +24,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds-from-desktop">
     <form action="../contact-details" method="post">
-      {% if languagePreference == "en" %}
+      {% if data['languagePreference'] == "en" %}
       {{ govukDateInput({
         id: "local-area-start",
         namePrefix: "local-area-start",

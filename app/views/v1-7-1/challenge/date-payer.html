@@ -2,7 +2,7 @@
 
 <!-- Page title -->
 {% block pageTitle %}
-  {% if languagePreference == "en" %}
+  {% if data['languagePreference'] == "en" %}
     When did you become responsible for paying Council Tax for your home? – {{ data['govukTite'] }}
 
   {% else %}
@@ -27,7 +27,7 @@
     <form action="wrong-details" method="post">
 
       <!-- English -->
-      {% if languagePreference == "en" %}
+      {% if data['languagePreference'] == "en" %}
 
       {{ govukDateInput({
         id: "date-payer",

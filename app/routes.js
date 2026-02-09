@@ -5,35 +5,6 @@
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 
-// ===================================================================
-// HMRC language select component - set language value in session data
-// ===================================================================
-// router.use((req, res, next) => {
-//   if (req.query.languagePreference) {
-//     req.session.data['languagePreference'] = req.query.languagePreference
-//   }
-//   next()
-// })
-
-const cookieParser = require('cookie-parser')
-router.use(cookieParser())
-
-router.use((req, res, next) => {
-    if (req.query.languagePreference) {
-        res.cookie('languagePreference', req.query.languagePreference, {
-            maxAge: 1000 * 60 * 60 * 24 * 365,
-            httpOnly: false
-        })
-    }
-
-    res.locals.languagePreference = req.cookies.languagePreference || 'en'
-
-    next()
-
-})
-
-
-
 
 // ============================================================
 // VERSION 1.1 ROUTES

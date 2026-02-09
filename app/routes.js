@@ -28,7 +28,6 @@ router.use((req, res, next) => {
     })
   }
 
-  req.session.data.languagePreference = lang
   res.locals.languagePreference = lang
 
   next()

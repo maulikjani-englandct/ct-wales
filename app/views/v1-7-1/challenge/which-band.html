@@ -2,7 +2,7 @@
 
 <!-- Page title -->
 {% block pageTitle %}
-  {% if languagePreference == "en" %}
+  {% if data['languagePreference'] == "en" %}
     What do you think the Council Tax band should be? – {{ data['govukTite'] }}
 
   {% else %}
@@ -24,7 +24,7 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
-      {% if languagePreference == "en" %}
+      {% if data['languagePreference'] == "en" %}
       <form action="contact-details" method="post">
        {{ govukRadios({
   name: "counciltax-band",

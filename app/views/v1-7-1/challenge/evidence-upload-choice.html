@@ -2,7 +2,7 @@
 
 <!-- Page title -->
 {% block pageTitle %}
-  {% if languagePreference == "en" %}
+  {% if data['languagePreference'] == "en" %}
     What date is on the Notice of Alteration? – {{ data['govukTite'] }}
 
   {% else %}
@@ -27,7 +27,7 @@
 
       <form class="form" action="/v1-7-1/challenge/evidence-upload-router" method="post">
 
-        {% if languagePreference == "en" %}
+        {% if data['languagePreference'] == "en" %}
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">

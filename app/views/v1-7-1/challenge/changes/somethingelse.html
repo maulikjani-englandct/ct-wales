@@ -2,7 +2,7 @@
 
 <!-- Page title -->
 {% block pageTitle %}
-  {% if languagePreference == "en" %}
+  {% if data['languagePreference'] == "en" %}
     What has changed? – {{ data['govukTite'] }}
 
   {% else %}
@@ -25,7 +25,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
       <form action="somethingelse-when" method="post">
-        {% if languagePreference == "en" %}
+        {% if data['languagePreference'] == "en" %}
         <h1 class="govuk-heading-l">What has changed?</h1>
         {{ govukTextarea({
           id: "something-else-reason",

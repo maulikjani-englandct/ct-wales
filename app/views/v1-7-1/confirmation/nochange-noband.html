@@ -2,7 +2,7 @@
 
 <!-- Page title -->
 {% block pageTitle %}
-  {% if languagePreference == "en" %}
+  {% if data['languagePreference'] == "en" %}
     Your request has been sent  – {{ data['govukTite'] }}
 
   {% else %}
@@ -20,7 +20,7 @@
 <!-- Page content -->
 {% block content %}
 
-{% if languagePreference == "en" %}
+{% if data['languagePreference'] == "en" %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">

@@ -3,10 +3,10 @@
 <!-- Page title -->
 {% block pageTitle %}
   {% if languagePreference == "en" %}
-    Check and review your Council Tax band – {{ data['govukTite'] }}
+    Check and review your Council Tax band – GOV.UK Prototype Kit
 
   {% else %}
-    Gwirio ac adolygu eich band Treth Gyngor – {{ data['govukTite'] }}
+    Gwirio ac adolygu eich band Treth Gyngor – GOV.UK Prototype Kit
   {% endif %}
 {% endblock %}
 
@@ -54,7 +54,7 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <p>L: {{ languagePreference }}</p>
+      <!-- <p>Lang: {{ languagePreference }}</p> -->
       {% if languagePreference == "en" %}
         
       <h1 class="govuk-heading-xl">Check and review your Council Tax band</h1>

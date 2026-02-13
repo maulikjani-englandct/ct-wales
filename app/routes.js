@@ -5,6 +5,14 @@
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 
+router.get('*', (req, res, next) => {
+  if (req.query.languagePreference) {
+    req.session.data.languagePreference = req.query.languagePreference
+  }
+  next()
+})
+
+
 // ============================================================
 // VERSION 1.1 ROUTES
 // ============================================================

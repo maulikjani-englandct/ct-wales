@@ -5,36 +5,6 @@
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 
-router.use((req, res, next) => {
-  // Ensure session.data exists
-  req.session.data = req.session.data || {}
-
-  // Prefer explicit query change, then existing session, then cookie/locals, then 'en'
-  const langFromQuery = req.query.languagePreference
-  const langFromSession = req.session.data.languagePreference
-  const langFromLocals = res.locals.languagePreference
-
-  const lang =
-    langFromQuery ||
-    langFromSession ||
-    langFromLocals ||
-    'en'
-
-  // If query explicitly set, refresh cookie too
-  if (langFromQuery) {
-    res.cookie('languagePreference', langFromQuery, {
-      maxAge: 1000 * 60 * 60 * 24 * 365,
-      httpOnly: false
-    })
-  }
-
-  res.locals.languagePreference = lang
-
-  next()
-})
-
-
-
 // ============================================================
 // VERSION 1.1 ROUTES
 // ============================================================

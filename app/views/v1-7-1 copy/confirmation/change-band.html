@@ -3,10 +3,10 @@
 <!-- Page title -->
 {% block pageTitle %}
   {% if data['languagePreference'] == "en" %}
-    Your request has been sent  – {{ data['govukTite'] }}
+    Your request has been sent  – {{ data['govukTitle'] }}
 
   {% else %}
-    Newidiadau wedi’u hanfon i’w hadolygu – {{ data['govukTite'] }}
+    Newidiadau wedi’u hanfon i’w hadolygu – {{ data['govukTitle'] }}
   {% endif %}
 {% endblock %}
 

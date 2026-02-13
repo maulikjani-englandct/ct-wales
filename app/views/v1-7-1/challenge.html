@@ -1,12 +1,12 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/main-session.html" %}
 
 <!-- Page title -->
 {% block pageTitle %}
-  {% if languagePreference == "en" %}
-    Council Tax band review  – {{ data['govukTite'] }}
+  {% if data['languagePreference'] == "en" %}
+    Council Tax band review  – {{ data['govukTitle'] }}
 
   {% else %}
-    Adolygiad band Treth Gyngor – {{ data['govukTite'] }}
+    Adolygiad band Treth Gyngor – {{ data['govukTitle'] }}
   {% endif %}
 {% endblock %}
 
@@ -22,7 +22,7 @@
 <!-- Page content -->
 {% block content %}
 
-{% if languagePreference == "en" %}
+{% if data['languagePreference'] == "en" %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <form class="form" action="/v1-7-1/challenge-router" method="post">

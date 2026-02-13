@@ -1,12 +1,12 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/main-session.html" %}
 
 <!-- Page title -->
 {% block pageTitle %}
-  {% if languagePreference == "en" %}
-    When was the work to merge your properties completed? – {{ data['govukTite'] }}
+  {% if data['languagePreference'] == "en" %}
+    When was the work to merge your properties completed? – {{ data['govukTitle'] }}
 
   {% else %}
-    Pryd wnaeth y gwaith o gyfuno dy gartref orffen? – {{ data['govukTite'] }}
+    Pryd wnaeth y gwaith o gyfuno dy gartref orffen? – {{ data['govukTitle'] }}
   {% endif %}
 {% endblock %}
 
@@ -25,7 +25,7 @@
    <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
       <form action="new-address" method="post">
-      {% if languagePreference == "en" %}
+      {% if data['languagePreference'] == "en" %}
         {{ govukDateInput({
           id: "merged-property-start",
           namePrefix: "merged-property-start",

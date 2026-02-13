@@ -1,12 +1,12 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/main-session.html" %}
 
 <!-- Page title -->
 {% block pageTitle %}
-  {% if languagePreference == "en" %}
-    19, St David's Crescent, Cardiff, CF5 4GP – {{ data['govukTite'] }}
+  {% if data['languagePreference'] == "en" %}
+    19, St David's Crescent, Cardiff, CF5 4GP – {{ data['govukTitle'] }}
 
   {% else %}
-    19, St David's Crescent, Cardiff, CF5 4GP – {{ data['govukTite'] }}
+    19, St David's Crescent, Cardiff, CF5 4GP – {{ data['govukTitle'] }}
   {% endif %}
 {% endblock %}
 
@@ -22,7 +22,7 @@
 <!-- Page content -->
 {% block content %}
 
-{% if languagePreference == "en" %}
+{% if data['languagePreference'] == "en" %}
 
   <div class="govuk-grid-row">
 

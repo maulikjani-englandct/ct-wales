@@ -3,10 +3,10 @@
 <!-- Page title -->
 {% block pageTitle %}
   {% if data['languagePreference'] == "en" %}
-    Choose which applies to you – {{ data['govukTite'] }}
+    Choose which applies to you – {{ data['govukTitle'] }}
 
   {% else %}
-    Dewiswch pa un o’r rhain sy’n berthnasol i chi – {{ data['govukTite'] }}
+    Dewiswch pa un o’r rhain sy’n berthnasol i chi – {{ data['govukTitle'] }}
   {% endif %}
 {% endblock %}
 

@@ -1,12 +1,12 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/main-session.html" %}
 
 <!-- Page title -->
 {% block pageTitle %}
-  {% if languagePreference == "en" %}
-    What are your contact details? – {{ data['govukTite'] }}
+  {% if data['languagePreference'] == "en" %}
+    What are your contact details? – {{ data['govukTitle'] }}
 
   {% else %}
-    Beth yw dy fanylion cyswllt? – {{ data['govukTite'] }}
+    Beth yw dy fanylion cyswllt? – {{ data['govukTitle'] }}
   {% endif %}
 {% endblock %}
 
@@ -21,7 +21,7 @@
 
 <!-- Page content -->
 {% block content %}
-{% if languagePreference == "en" %}
+{% if data['languagePreference'] == "en" %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">

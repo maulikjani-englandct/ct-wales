@@ -1,12 +1,12 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/main-session.html" %}
 
 <!-- Page title -->
 {% block pageTitle %}
-  {% if languagePreference == "en" %}
-    What date is on the Notice of Alteration? – {{ data['govukTite'] }}
+  {% if data['languagePreference'] == "en" %}
+    What date is on the Notice of Alteration? – {{ data['govukTitle'] }}
 
   {% else %}
-    Pa ddyddiad sydd ar lythyr yr Hysbysiad o Newid? – {{ data['govukTite'] }}
+    Pa ddyddiad sydd ar lythyr yr Hysbysiad o Newid? – {{ data['govukTitle'] }}
   {% endif %}
 {% endblock %}
 
@@ -25,7 +25,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {% if languagePreference == "en" %}
+      {% if data['languagePreference'] == "en" %}
 
       <form class="form" action="which-band" method="post">
 

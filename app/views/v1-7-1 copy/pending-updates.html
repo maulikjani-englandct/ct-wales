@@ -3,10 +3,10 @@
 <!-- Page title -->
 {% block pageTitle %}
   {% if data['languagePreference'] == "en" %}
-    New information we have about your property – {{ data['govukTite'] }}
+    New information we have about your property – {{ data['govukTitle'] }}
 
   {% else %}
-    Gwybodaeth newydd sydd gennym am eich eiddo – {{ data['govukTite'] }}
+    Gwybodaeth newydd sydd gennym am eich eiddo – {{ data['govukTitle'] }}
   {% endif %}
 {% endblock %}
 

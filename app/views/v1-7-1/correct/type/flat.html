@@ -1,12 +1,12 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/main-session.html" %}
 
 <!-- Page title -->
 {% block pageTitle %}
-  {% if languagePreference == "en" %}
-    What type of flat or apartment is your home? – {{ data['govukTite'] }}
+  {% if data['languagePreference'] == "en" %}
+    What type of flat or apartment is your home? – {{ data['govukTitle'] }}
 
   {% else %}
-    Pa fath o fflat yw dy gartref? – {{ data['govukTite'] }}
+    Pa fath o fflat yw dy gartref? – {{ data['govukTitle'] }}
   {% endif %}
 {% endblock %}
 
@@ -22,7 +22,7 @@
 <!-- Page content -->
 {% block content %}
 
-{% if languagePreference == "en" %}
+{% if data['languagePreference'] == "en" %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 

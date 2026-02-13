@@ -5,12 +5,18 @@
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 
-router.get('*', (req, res, next) => {
+router.use((req, res, next) => {
   if (req.query.languagePreference) {
     req.session.data.languagePreference = req.query.languagePreference
+    console.log("Language updated to:", req.session.data.languagePreference)
+  } else {
+    console.log("Current session language:", req.session.data.languagePreference)
   }
   next()
 })
+
+
+
 
 
 // ============================================================

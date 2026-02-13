@@ -1,12 +1,12 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/main-session.html" %}
 
 <!-- Page title -->
 {% block pageTitle %}
-  {% if languagePreference == "en" %}
-    New information we have about your property – {{ data['govukTite'] }}
+  {% if data['languagePreference'] == "en" %}
+    New information we have about your property – {{ data['govukTitle'] }}
 
   {% else %}
-    Gwybodaeth newydd sydd gennym am eich eiddo – {{ data['govukTite'] }}
+    Gwybodaeth newydd sydd gennym am eich eiddo – {{ data['govukTitle'] }}
   {% endif %}
 {% endblock %}
 
@@ -22,7 +22,7 @@
 <!-- Page content -->
 {% block content %}
 
-{% if languagePreference == "en" %}
+{% if data['languagePreference'] == "en" %}
 
   <div class="govuk-grid-row">
 

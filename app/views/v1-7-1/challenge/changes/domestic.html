@@ -1,12 +1,12 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/main-session.html" %}
 
 <!-- Page title -->
 {% block pageTitle %}
-  {% if languagePreference == "en" %}
-    Which parts of your property are now used as a home? – {{ data['govukTite'] }}
+  {% if data['languagePreference'] == "en" %}
+    Which parts of your property are now used as a home? – {{ data['govukTitle'] }}
 
   {% else %}
-    Pa rannau o dy eiddo sy'n cael eu defnyddio fel cartref erbyn hyn? – {{ data['govukTite'] }}
+    Pa rannau o dy eiddo sy'n cael eu defnyddio fel cartref erbyn hyn? – {{ data['govukTitle'] }}
   {% endif %}
 {% endblock %}
 
@@ -25,7 +25,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
       <form action="domestic-when" method="post">
-        {% if languagePreference == "en" %}
+        {% if data['languagePreference'] == "en" %}
         <h1 class="govuk-heading-l">Which parts of your property are now used as a home?</h1>
         {{ govukTextarea({
           id: "domestic-reason",

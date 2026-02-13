@@ -1,12 +1,12 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/main-session.html" %}
 
 <!-- Page title -->
 {% block pageTitle %}
-  {% if languagePreference == "en" %}
-    Tell us why you think the Council Tax band is wrong – {{ data['govukTite'] }}
+  {% if data['languagePreference'] == "en" %}
+    Tell us why you think the Council Tax band is wrong – {{ data['govukTitle'] }}
 
   {% else %}
-    Dywedwch wrthym pam rydych yn meddwl bod y band Treth Gyngor yn anghywir – {{ data['govukTite'] }}
+    Dywedwch wrthym pam rydych yn meddwl bod y band Treth Gyngor yn anghywir – {{ data['govukTitle'] }}
   {% endif %}
 {% endblock %}
 
@@ -25,7 +25,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
 <form action="evidence-upload-choice" method="post">
-{% if languagePreference == "en" %}
+{% if data['languagePreference'] == "en" %}
   <h1 class="govuk-heading-l">Tell us why you think the Council Tax band is wrong?</h1>
 
     {{ govukInsetText({

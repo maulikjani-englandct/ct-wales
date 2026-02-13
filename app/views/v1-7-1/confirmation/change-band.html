@@ -1,12 +1,12 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/main-session.html" %}
 
 <!-- Page title -->
 {% block pageTitle %}
-  {% if languagePreference == "en" %}
-    Your request has been sent  – {{ data['govukTite'] }}
+  {% if data['languagePreference'] == "en" %}
+    Your request has been sent  – {{ data['govukTitle'] }}
 
   {% else %}
-    Newidiadau wedi’u hanfon i’w hadolygu – {{ data['govukTite'] }}
+    Newidiadau wedi’u hanfon i’w hadolygu – {{ data['govukTitle'] }}
   {% endif %}
 {% endblock %}
 
@@ -20,7 +20,7 @@
 <!-- Page content -->
 {% block content %}
 
-{% if languagePreference == "en" %}
+{% if data['languagePreference'] == "en" %}
 
 {% if data['challenge'] == "yes" %}
 <div class="govuk-grid-row">

@@ -1,12 +1,12 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/main-session.html" %}
 
 <!-- Page title -->
 {% block pageTitle %}
-  {% if languagePreference == "en" %}
-    You do not have permission to view more details – {{ data['govukTite'] }}
+  {% if data['languagePreference'] == "en" %}
+    You do not have permission to view more details – {{ data['govukTitle'] }}
 
   {% else %}
-    Does gen ti ddim caniatâd i weld rhagor o fanylion – {{ data['govukTite'] }}
+    Does gen ti ddim caniatâd i weld rhagor o fanylion – {{ data['govukTitle'] }}
   {% endif %}
 {% endblock %}
 
@@ -19,7 +19,7 @@
 
 <!-- Page content -->
 {% block content %}
-{% if languagePreference == "en" %}
+{% if data['languagePreference'] == "en" %}
 <div class="govuk-width-container">
   <main class="govuk-main-wrapper govuk-main-wrapper--l" id="main-content" role="main">
     <div class="govuk-grid-row">

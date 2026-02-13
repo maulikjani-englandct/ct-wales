@@ -1,12 +1,12 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/main-session.html" %}
 
 <!-- Page title -->
 {% block pageTitle %}
-  {% if languagePreference == "en" %}
-    Which parts of your home are being used for business? – {{ data['govukTite'] }}
+  {% if data['languagePreference'] == "en" %}
+    Which parts of your home are being used for business? – {{ data['govukTitle'] }}
 
   {% else %}
-    Pa rannau o dy gartref sy'n cael eu defnyddio ar gyfer busnes? – {{ data['govukTite'] }}
+    Pa rannau o dy gartref sy'n cael eu defnyddio ar gyfer busnes? – {{ data['govukTitle'] }}
   {% endif %}
 {% endblock %}
 
@@ -25,7 +25,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
       <form action="business-when" method="post">
-        {% if languagePreference == "en" %}
+        {% if data['languagePreference'] == "en" %}
         <h1 class="govuk-heading-l">Which parts of your home are being used for business?</h1>
         {{ govukTextarea({
           id: "business-reason",

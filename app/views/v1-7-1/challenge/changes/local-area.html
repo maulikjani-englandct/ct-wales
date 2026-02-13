@@ -1,12 +1,12 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/main-session.html" %}
 
 <!-- Page title -->
 {% block pageTitle %}
-  {% if languagePreference == "en" %}
-    What permanent changes have taken place in your local area? – {{ data['govukTite'] }}
+  {% if data['languagePreference'] == "en" %}
+    What permanent changes have taken place in your local area? – {{ data['govukTitle'] }}
 
   {% else %}
-    Pa newidiadau parhaol sydd wedi digwydd yn dy ardal lleol? – {{ data['govukTite'] }}
+    Pa newidiadau parhaol sydd wedi digwydd yn dy ardal lleol? – {{ data['govukTitle'] }}
   {% endif %}
 {% endblock %}
 
@@ -24,7 +24,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds-from-desktop">
     <form action="local-area-when" method="post">
-      {% if languagePreference == "en" %}
+      {% if data['languagePreference'] == "en" %}
       <h1 class="govuk-heading-l">What permanent changes have taken place in your local area?</h1>
       {{ govukTextarea({
         id: "local-area-reason",

@@ -1,12 +1,12 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/main-session.html" %}
 
 <!-- Page title -->
 {% block pageTitle %}
-  {% if languagePreference == "en" %}
-    Choose which applies to you – {{ data['govukTite'] }}
+  {% if data['languagePreference'] == "en" %}
+    Choose which applies to you – {{ data['govukTitle'] }}
 
   {% else %}
-    Dewiswch pa un o’r rhain sy’n berthnasol i chi – {{ data['govukTite'] }}
+    Dewiswch pa un o’r rhain sy’n berthnasol i chi – {{ data['govukTitle'] }}
   {% endif %}
 {% endblock %}
 
@@ -24,7 +24,7 @@
 
   <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    {% if languagePreference == "en" %}
+    {% if data['languagePreference'] == "en" %}
     <form action="scenario-router" method="post">
       {{ govukRadios({
         name: "challenge-type",

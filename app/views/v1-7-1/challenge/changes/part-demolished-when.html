@@ -1,12 +1,12 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/main-session.html" %}
 
 <!-- Page title -->
 {% block pageTitle %}
-  {% if languagePreference == "en" %}
-    When did this work to demolish part of your home start? – {{ data['govukTite'] }}
+  {% if data['languagePreference'] == "en" %}
+    When did this work to demolish part of your home start? – {{ data['govukTitle'] }}
 
   {% else %}
-    Pryd wnaeth y gwaith o dymchwel rhan o dy gartref ddechrau? – {{ data['govukTite'] }}
+    Pryd wnaeth y gwaith o dymchwel rhan o dy gartref ddechrau? – {{ data['govukTitle'] }}
   {% endif %}
 {% endblock %}
 
@@ -24,7 +24,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds-from-desktop">
     <form action="../contact-details" method="post">
-      {% if languagePreference == "en" %}
+      {% if data['languagePreference'] == "en" %}
       {{ govukDateInput({
         id: "part-demolition-start",
         namePrefix: "part-demolition-start",

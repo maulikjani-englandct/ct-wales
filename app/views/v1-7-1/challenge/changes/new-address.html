@@ -1,12 +1,12 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/main-session.html" %}
 
 <!-- Page title -->
 {% block pageTitle %}
-  {% if languagePreference == "en" %}
-    Has the address of your home changed? – {{ data['govukTite'] }}
+  {% if data['languagePreference'] == "en" %}
+    Has the address of your home changed? – {{ data['govukTitle'] }}
 
   {% else %}
-    Ydy cyfeiriad dy gartref wedi newid? – {{ data['govukTite'] }}
+    Ydy cyfeiriad dy gartref wedi newid? – {{ data['govukTitle'] }}
   {% endif %}
 {% endblock %}
 
@@ -24,7 +24,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds-from-desktop">
     <form action="../contact-details" method="post">
-      {% if languagePreference == "en" %}
+      {% if data['languagePreference'] == "en" %}
       <h1 class="govuk-heading-l">Has the address of your home changed?</h1>
       {{ govukTextarea({
         id: "new-address",

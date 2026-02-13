@@ -1,12 +1,12 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/main-session.html" %}
 
 <!-- Page title -->
 {% block pageTitle %}
-  {% if languagePreference == "en" %}
-    Review your changes – {{ data['govukTite'] }}
+  {% if data['languagePreference'] == "en" %}
+    Review your changes – {{ data['govukTitle'] }}
 
   {% else %}
-    Adolygu dy newidiadau – {{ data['govukTite'] }}
+    Adolygu dy newidiadau – {{ data['govukTitle'] }}
   {% endif %}
 {% endblock %}
 
@@ -22,7 +22,7 @@
 <!-- Page content -->
 {% block content %}
 
-{% if languagePreference == "en" %}
+{% if data['languagePreference'] == "en" %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
 

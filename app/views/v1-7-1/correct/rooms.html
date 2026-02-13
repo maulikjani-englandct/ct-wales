@@ -1,12 +1,12 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/main-session.html" %}
 
 <!-- Page title -->
 {% block pageTitle %}
-  {% if languagePreference == "en" %}
-    How many rooms are there in your home? – {{ data['govukTite'] }}
+  {% if data['languagePreference'] == "en" %}
+    How many rooms are there in your home? – {{ data['govukTitle'] }}
 
   {% else %}
-    Sawl ystafell sydd yn dy gartref? – {{ data['govukTite'] }}
+    Sawl ystafell sydd yn dy gartref? – {{ data['govukTitle'] }}
   {% endif %}
 {% endblock %}
 
@@ -22,7 +22,7 @@
 <!-- Page content -->
 {% block content %}
 
-{% if languagePreference == "en" %}
+{% if data['languagePreference'] == "en" %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 

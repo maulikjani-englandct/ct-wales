@@ -1,12 +1,12 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/main-session.html" %}
 
 <!-- Page title -->
 {% block pageTitle %}
-  {% if languagePreference == "en" %}
-    Enter the property postcode – {{ data['govukTite'] }}
+  {% if data['languagePreference'] == "en" %}
+    Enter the property postcode – {{ data['govukTitle'] }}
 
   {% else %}
-    Rhowch god post yr eiddo – {{ data['govukTite'] }}
+    Rhowch god post yr eiddo – {{ data['govukTitle'] }}
   {% endif %}
 {% endblock %}
 
@@ -22,7 +22,7 @@
 <!-- Page content -->
 {% block content %}
 
-{% if languagePreference == "en" %}
+{% if data['languagePreference'] == "en" %}
 
 <div class="govuk-grid-row">
 

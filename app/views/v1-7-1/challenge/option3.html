@@ -1,12 +1,12 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/main-session.html" %}
 
 <!-- Page title -->
 {% block pageTitle %}
-  {% if languagePreference == "en" %}
-    Asking for a formal review  – {{ data['govukTite'] }}
+  {% if data['languagePreference'] == "en" %}
+    Asking for a formal review  – {{ data['govukTitle'] }}
 
   {% else %}
-    Gofyn am adolygiad ffurfiol – {{ data['govukTite'] }}
+    Gofyn am adolygiad ffurfiol – {{ data['govukTitle'] }}
   {% endif %}
 {% endblock %}
 
@@ -23,7 +23,7 @@
 {% block content %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
-    {% if languagePreference == "en" %}
+    {% if data['languagePreference'] == "en" %}
     <h1 class="govuk-heading-xl">Asking for a formal review</h1>
 
     <p class="govuk-body">
